@@ -1,8 +1,8 @@
-PORTNAME=       php-zephir-parser
-DISTVERSIONPREFIX=      v
-DISTVERSION=    1.4.2
-CATEGORIES=     devel
-PKGNAMEPREFIX=  ${PHP_PKGNAMEPREFIX}
+PORTNAME=	php-zephir-parser
+DISTVERSIONPREFIX=	v
+DISTVERSION=	1.4.2
+CATEGORIES=	devel
+PKGNAMEPREFIX=	${PHP_PKGNAMEPREFIX}
 
 MAINTAINER=	cmcdonald@netgate.com
 COMMENT=	Zephir Parser delivered as a C extension for the PHP language
@@ -20,5 +20,7 @@ GH_ACCOUNT=	zephir-lang
 PHP_MODNAME=	zephir_parser
 
 GNU_CONFIGURE=	yes
+
+TEST_TARGET=	test
 
 .include <bsd.port.mk>
