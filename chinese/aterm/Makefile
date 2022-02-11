@@ -8,11 +8,13 @@ MASTER_SITES=	SF
 MAINTAINER=	gugod@gugod.org
 COMMENT=	Color vt102 terminal emulator with transparency support
 
-USES=		xorg
+USES=		cpe xorg
 USE_XORG=	xpm
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--enable-xim --enable-big5
 MAKE_JOBS_UNSAFE=	yes
+
+CONFLICTS_INSTALL=	aterm
 
 PLIST_FILES=	"@(,,4711) bin/aterm" \
 		man/man1/aterm.1.gz

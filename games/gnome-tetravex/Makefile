@@ -6,6 +6,9 @@ CATEGORIES=	games gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome3
 
+PATCH_SITES=	https://gitlab.gnome.org/GNOME/${PORTNAME}/-/commit/
+PATCHFILES+=	80912d06f5e5.patch:-p1 # https://gitlab.gnome.org/GNOME/gnome-tetravex/-/merge_requests/20
+
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Gnome tetravex
 
@@ -20,7 +23,6 @@ PORTSCOUT=	limitw:1,even
 USES=		gettext gmake gnome localbase meson pathfix pkgconfig \
 		python:3.7+ tar:xz
 USE_GNOME=	cairo gtk30 intlhack librsvg2 libxml2:build
-INSTALLS_ICONS=	yes
 
 BINARY_ALIAS=	python3=${PYTHON_VERSION}
 

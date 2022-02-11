@@ -21,9 +21,10 @@ RUN_DEPENDS=	\
 		p5-Mouse>=0:devel/p5-Mouse \
 		p5-Net-OpenSSH>=0:net/p5-Net-OpenSSH
 
-
 NO_ARCH=	yes
 USES=		perl5
 USE_PERL5=	configure
+
+CONFLICTS_INSTALL=	glib # bin/gio
 
 .include <bsd.port.mk>

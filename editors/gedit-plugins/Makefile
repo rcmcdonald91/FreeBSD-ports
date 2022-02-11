@@ -1,11 +1,14 @@
 # Created by: Adam Weinberger <adamw@FreeBSD.org>
 
 PORTNAME=	gedit-plugins
-PORTVERSION=	3.38.1
-PORTREVISION=	2
+PORTVERSION=	40.1
+PORTREVISION=	1
 CATEGORIES=	editors gnome
-MASTER_SITES=	GNOME
+MASTER_SITES=	GNOME/sources/${PORTNAME}/${PORTVERSION:C/^([0-9]+)\..*/\1/}
 DIST_SUBDIR=	gnome
+
+PATCH_SITES=	https://gitlab.gnome.org/GNOME/${PORTNAME}/-/commit/
+PATCHFILES+=	70c8ba4a1393.patch:-p1 # https://gitlab.gnome.org/GNOME/gedit-plugins/-/merge_requests/27
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Plugins for GEdit 3

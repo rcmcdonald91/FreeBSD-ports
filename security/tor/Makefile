@@ -1,7 +1,7 @@
 # Created by: peter.thoenen@yahoo.com
 
 PORTNAME=	tor
-DISTVERSION=	0.4.5.8
+DISTVERSION=	0.4.6.10
 CATEGORIES=	security net
 MASTER_SITES=	TOR
 
@@ -26,6 +26,7 @@ OPTIONS_GROUP=	COMPRESSION TRACING
 OPTIONS_GROUP_COMPRESSION=	ZSTD LZMA
 OPTIONS_GROUP_TRACING=	LTTNG USDT LOG_DEBUG
 OPTIONS_DEFAULT=MANPAGES ZSTD LZMA
+OPTIONS_EXCLUDE_FreeBSD_12=DOCS MANPAGES # XXX(rene) a2x somehow broken there
 OPTIONS_SUB=	yes
 STATIC_TOR_DESC=	Build a static tor
 TCMALLOC_DESC=		Use the tcmalloc memory allocation library
@@ -106,10 +107,6 @@ LDFLAGS+=		-lc++ -lm # required by libtcmalloc.a and isn't cocered by google-per
 .else
 LIB_DEPENDS+=		libtcmalloc.so:devel/google-perftools
 .endif
-.endif
-
-.if ${SSL_DEFAULT:Mlibressl*}
-BROKEN=		Libressl 3.2.1 with compatibility issues to Tor relays: https://gitlab.torproject.org/tpo/core/tor/-/issues/40128
 .endif
 
 post-patch:

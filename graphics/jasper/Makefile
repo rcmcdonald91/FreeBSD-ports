@@ -1,9 +1,9 @@
 # Created by: Maxim Sobolev <sobomax@FreeBSD.org>
 
 PORTNAME=	jasper
-PORTVERSION=	2.0.32
-DISTVERSIONPREFIX=	version-
+PORTVERSION=	2.0.33
 CATEGORIES=	graphics
+MASTER_SITES=	https://github.com/jasper-software/jasper/releases/download/version-${PORTVERSION}/
 
 MAINTAINER=	sunpoet@FreeBSD.org
 COMMENT=	Implementation of the codec specified in the JPEG-2000 standard
@@ -20,9 +20,6 @@ CMAKE_ON=	JAS_ENABLE_LIBJPEG
 USE_LDCONFIG=	yes
 
 DOCSDIR=	${PREFIX}/share/doc/JasPer
-
-USE_GITHUB=	yes
-GH_ACCOUNT=	jasper-software
 
 CPE_VENDOR=	jasper_project
 

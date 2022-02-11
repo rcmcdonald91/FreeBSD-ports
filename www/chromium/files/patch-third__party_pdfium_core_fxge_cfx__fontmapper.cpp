@@ -1,6 +1,6 @@
---- third_party/pdfium/core/fxge/cfx_fontmapper.cpp.orig	2021-04-14 18:43:07 UTC
+--- third_party/pdfium/core/fxge/cfx_fontmapper.cpp.orig	2021-12-31 01:00:55 UTC
 +++ third_party/pdfium/core/fxge/cfx_fontmapper.cpp
-@@ -155,13 +155,13 @@ const AltFontFamily g_AltFontFamilies[] = {
+@@ -156,13 +156,13 @@ constexpr AltFontFamily kAltFontFamilies[] = {
      {"ForteMT", "Forte"},
  };
  
@@ -14,5 +14,5 @@
 -#endif  // defined(OS_LINUX) || defined(OS_CHROMEOS) || defined(OS_ASMJS)
 +#endif  // defined(OS_LINUX) || defined(OS_CHROMEOS) || defined(OS_ASMJS) || defined(OS_BSD)
  
- ByteString TT_NormalizeName(const char* family) {
-   ByteString norm(family);
+ ByteString TT_NormalizeName(ByteString norm) {
+   norm.Remove(' ');

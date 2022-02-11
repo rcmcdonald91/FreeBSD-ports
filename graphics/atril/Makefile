@@ -3,8 +3,8 @@
 # Please update update atril-lite also
 
 PORTNAME=	atril
-PORTVERSION=	1.22.3
-PORTREVISION=	17
+PORTVERSION=	1.26.0
+PORTREVISION=	3
 CATEGORIES=	graphics print mate
 MASTER_SITES=	MATE
 DIST_SUBDIR=	mate
@@ -34,18 +34,19 @@ USE_GNOME=	cairo gtk30 intlhack libxml2
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--disable-static \
-		--with-gtk=3.0
-INSTALLS_ICONS=	yes
+		--disable-synctex
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
-INSTALL_TARGET=	install-strip
+# INSTALL_TARGET=	install-strip
 
 .if ${SLAVEPORT} == lite
 CONFIGURE_ARGS+=--disable-thumbnailer \
 		--without-matedesktop \
 		--disable-previewer
+CONFLICTS_INSTALL=	atril
 .else
 USE_MATE+=	desktop
+CONFLICTS_INSTALL=	atril-lite
 .endif
 
 GLIB_SCHEMAS=	org.mate.Atril.gschema.xml

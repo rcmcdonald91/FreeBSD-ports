@@ -1,42 +1,37 @@
 # Created by: Henry Hu <henry.hu.sh@gmail.com>
 
 PORTNAME=	tg_owt
-PORTVERSION=	0.0.20210422
+PORTVERSION=	0.0.20220209
 CATEGORIES=	net-im
 
-MAINTAINER=	henry.hu.sh@gmail.com
+MAINTAINER=	glebius@FreeBSD.org
 COMMENT=	Webrtc library used by telegram-desktop
 
 LICENSE=	BSD3CLAUSE
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-BUILD_DEPENDS=	alsa-lib>0:audio/alsa-lib \
-		pulseaudio>0:audio/pulseaudio \
-		v4l_compat>0:multimedia/v4l_compat \
+BUILD_DEPENDS=	v4l_compat>0:multimedia/v4l_compat \
 		yasm:devel/yasm
 LIB_DEPENDS=	libavformat.so:multimedia/ffmpeg \
+		libepoxy.so:graphics/libepoxy \
+		libevent.so:devel/libevent \
 		libjpeg.so:graphics/jpeg-turbo \
 		libopus.so:audio/opus \
+		libpipewire-0.3.so:multimedia/pipewire \
 		libusrsctp.so:net/libusrsctp
 
-USES=		cmake pkgconfig
+USES=		cmake gl pkgconfig xorg
+USE_XORG=	x11 xcomposite xdamage xrender xrandr xtst
+USE_GL=		gbm
 USE_GITHUB=	yes
 GH_ACCOUNT=	desktop-app
-GH_PROJECT=	tg_owt
-GH_TAGNAME=	18cb4cd
-# libyuv cloned from https://chromium.googlesource.com/libyuv/libyuv
-GH_TUPLE=	webmproject:libvpx:5b63f0f:libvpx/src/third_party/libvpx/source/libvpx \
-		HenryHu:libyuv:ad89006:libyuv/src/third_party/libyuv
+GH_TAGNAME=	4cba1ac
 
-CMAKE_OFF=	BUILD_SHARED_LIBS
+# libyuv cloned from https://chromium.googlesource.com/libyuv/libyuv
+# when updating port check if hash tag in the submodule was updated
+GH_TUPLE=	HenryHu:libyuv:ad89006:libyuv/src/third_party/libyuv
 
 # Disable DCHECKs, otherwise video calls will crash.
 CXXFLAGS+=	-DNDEBUG
-
-.include <bsd.port.options.mk>
-
-.if ${SSL_DEFAULT} == "base" && ${OPSYS} == FreeBSD && ${OSVERSION} < 1200085
-BROKEN=		This port requires OpenSSL 1.1.0. Try DEFAULT_VERSIONS+=ssl=[openssl|libressl*]
-.endif
 
 .include <bsd.port.mk>

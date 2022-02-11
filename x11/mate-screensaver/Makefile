@@ -1,7 +1,8 @@
 # Created by: Joe Marcus Clarke <marcus@FreeBSD.org>
 
 PORTNAME=	mate-screensaver
-PORTVERSION=	1.24.1
+PORTVERSION=	1.26.1
+PORTREVISION=	2
 CATEGORIES=	x11 mate
 MASTER_SITES=	MATE
 DIST_SUBDIR=	mate
@@ -28,7 +29,7 @@ USE_MATE=	desktop libmatekbd menus session:run
 USE_XORG=	ice sm x11 xext xscrnsaver xxf86vm
 USE_GNOME=	cairo gdkpixbuf2 gtk30 intltool
 GNU_CONFIGURE=	yes
-CONFIGURE_ARGS= --with-console-kit=yes \
+CONFIGURE_ARGS=	--with-console-kit=yes \
 		--with-systemd=no
 
 GLIB_SCHEMAS=	org.mate.screensaver.gschema.xml
@@ -41,9 +42,9 @@ OPTIONS_DEFINE=	PAM
 OPTIONS_DEFAULT=PAM
 OPTIONS_SUB=	yes
 
-PAM_RUN_DEPENDS=	pam_helper:security/pam_helper
+PAM_RUN_DEPENDS=	mate_pam_helper:security/mate-pam-helper
 PAM_CONFIGURE_ON=	--enable-authentication-scheme=helper \
-			--with-passwd-helper=${LOCALBASE}/bin/pam_helper
+			--with-passwd-helper=${LOCALBASE}/bin/mate_pam_helper
 PAM_CONFIGURE_OFF=	--disable-pam
 
 .include <bsd.port.options.mk>

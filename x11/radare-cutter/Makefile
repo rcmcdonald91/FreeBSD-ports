@@ -1,5 +1,6 @@
 PORTNAME=	radare-cutter
 PORTVERSION=	0.1.1
+PORTREVISION=	1
 PORTEPOCH=	1
 CATEGORIES=	x11
 
@@ -8,9 +9,6 @@ COMMENT=	GUI for radare2 reverse engineering framework
 
 LICENSE=	GPLv3
 LICENSE_FILE=	${WRKSRC}/../COPYING
-
-DEPRECATED=	Uses EOL Python 2.7 via www/qt5-webengine
-EXPIRATION_DATE=2021-06-23
 
 LIB_DEPENDS=	libcapstone.so:devel/capstone4 \
 		libr_bin.so:devel/radare2

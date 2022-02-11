@@ -2,7 +2,7 @@
 
 PORTNAME=	owncast
 DISTVERSIONPREFIX=	v
-DISTVERSION=	0.0.6
+DISTVERSION=	0.0.10
 CATEGORIES=	www
 DIST_SUBDIR=	${PORTNAME}
 
@@ -14,8 +14,10 @@ LICENSE_FILE=	${WRKSRC}/LICENSE
 
 RUN_DEPENDS=	ffmpeg:multimedia/ffmpeg
 
-USES=		go:modules
+USES=		cpe go:modules
 USE_RC_SUBR=	owncast
+
+CPE_VENDOR=	owncast_project
 
 GO_MODULE=	github.com/owncast/owncast
 
@@ -49,6 +51,5 @@ do-install:
 	${MKDIR} -m 750 ${STAGEDIR}${WWWDIR}/data
 	${MKDIR} -m 750 ${STAGEDIR}${WWWDIR}/hls
 	${MKDIR} -m 750 ${STAGEDIR}${WWWDIR}/webroot/hls
-	${INSTALL_DATA} ${WRKSRC}/data/logo.svg ${STAGEDIR}${WWWDIR}/data
 
 .include <bsd.port.mk>

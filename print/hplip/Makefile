@@ -18,7 +18,7 @@ RUN_DEPENDS=	cups-filters>=0:print/cups-filters \
 		${PYTHON_PKGNAMEPREFIX}dbus>=0:devel/py-dbus@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}gobject3>=0:devel/py-gobject3@${PY_FLAVOR}
 
-CONFLICTS_INSTALL=	hpijs-[0-9]*
+CONFLICTS_INSTALL=	hpijs
 
 INSTALL_TARGET=	install-strip
 USES=		dos2unix jpeg libtool pkgconfig python:3.6+ shebangfix
@@ -63,7 +63,7 @@ SNMP_CONFIGURE_ENABLE=	network-build
 X11_DESC=		Graphical User Interface (Qt)
 X11_CONFIGURE_ENABLE=	gui-build qt5
 X11_USES=		pyqt:5
-X11_USE=		PYQT=core_run,dbussupport_run,gui_run,widgets_run
+X11_USE=		PYQT=pyqt5_run
 
 XSANE_DESC=		Install XSane for scanning (implies SCAN)
 XSANE_IMPLIES=		SCAN

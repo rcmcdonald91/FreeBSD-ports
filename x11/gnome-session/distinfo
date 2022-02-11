@@ -1,3 +1,5 @@
-TIMESTAMP = 1601309787
-SHA256 (gnome/gnome-session-3.38.0.tar.xz) = 7bcc0eb2cdba4b3f6d1b459b3a30873b7bb65b383c1f6a5f63c3e3b5c7943d67
-SIZE (gnome/gnome-session-3.38.0.tar.xz) = 481300
+TIMESTAMP = 1642623165
+SHA256 (gnome/gnome-session-41.3.tar.xz) = ee4a229053f522624054889609335b885287cf67bbde0dc9fd882b01ec9b5b39
+SIZE (gnome/gnome-session-41.3.tar.xz) = 483396
+SHA256 (gnome/1abd59271455.patch) = 5ac21646e26ef56033acc48da680bc74db93bddf64a5f69675338e3cdc37fb6a
+SIZE (gnome/1abd59271455.patch) = 974

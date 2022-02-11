@@ -1,20 +1,11 @@
---- headless/lib/headless_content_main_delegate.cc.orig	2021-04-14 18:41:04 UTC
+--- headless/lib/headless_content_main_delegate.cc.orig	2021-12-14 11:45:07 UTC
 +++ headless/lib/headless_content_main_delegate.cc
-@@ -326,7 +326,7 @@ void HeadlessContentMainDelegate::InitCrashReporter(
+@@ -318,7 +318,7 @@ void HeadlessContentMainDelegate::InitCrashReporter(
      const base::CommandLine& command_line) {
    if (command_line.HasSwitch(::switches::kDisableBreakpad))
      return;
 -#if defined(OS_FUCHSIA)
 +#if defined(OS_FUCHSIA) || defined(OS_BSD)
-   // TODO(fuchsia): Implement this when crash reporting/Breakpad are available
-   // in Fuchsia. (crbug.com/753619)
+   // TODO(crbug.com/1226159): Implement this when crash reporting/Breakpad are
+   // available in Fuchsia.
    NOTIMPLEMENTED();
-@@ -355,7 +355,7 @@ void HeadlessContentMainDelegate::InitCrashReporter(
-   crash_reporter::InitializeCrashpadWithEmbeddedHandler(
-       process_type.empty(), process_type, "", base::FilePath());
- #endif  // defined(HEADLESS_USE_BREAKPAD)
--#endif  // defined(OS_FUCHSIA)
-+#endif  // defined(OS_FUCHSIA) || defined(OS_BSD)
- }
- 
- 

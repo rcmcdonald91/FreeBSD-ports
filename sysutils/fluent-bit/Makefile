@@ -2,7 +2,7 @@
 
 PORTNAME=	fluent-bit
 DISTVERSIONPREFIX=	v
-DISTVERSION=	1.7.5
+DISTVERSION=	1.8.12
 CATEGORIES=	sysutils
 
 MAINTAINER=	girgen@FreeBSD.org
@@ -12,12 +12,11 @@ LICENSE=	APACHE20
 
 BROKEN_mips=		fails to build: conflicting types for 'restrict'
 BROKEN_mips64=		fails to build: conflicting types for 'restrict'
-BROKEN_riscv64=		fails to build: No support for this architecture (yet)
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	fluent
 
-USES=		cmake:noninja compiler:c11 gmake bison
+USES=		cmake:noninja gmake bison
 
 OPTIONS_DEFINE=		SSL PGSQL
 OPTIONS_DEFAULT=	SSL
@@ -40,12 +39,13 @@ USE_RC_SUBR=	${PORTNAME}
 
 .include <bsd.port.options.mk>
 
-.if ${OPSYS} == FreeBSD && ${OSVERSION} < 1200000
-EXTRA_PATCHES=	${PATCHDIR}/extra-patch-lib_luajit__src__lj_prng.c
-.endif
-
-.if ${ARCH:Mpowerpc64*}
+.if ${ARCH:Mpowerpc64*} || ${ARCH:Mriscv64*}
 CMAKE_ARGS+=	-DFLB_LUAJIT:BOOL=OFF
+.elif ${ARCH} == powerpc
+LDFLAGS+=	-latomic
+USES+=		compiler:gcc-c++11-lib
+.else
+USES+=		compiler:c11
 .endif
 
 post-install:

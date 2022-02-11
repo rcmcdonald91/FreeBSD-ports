@@ -1,7 +1,7 @@
 # Created by: Michael Moll <kvedulv@kvedulv.de>
 
 PORTNAME=	hammer_cli
-PORTVERSION=	2.2.0
+PORTVERSION=	3.1.0
 CATEGORIES=	sysutils ruby
 MASTER_SITES=	RG
 
@@ -21,7 +21,7 @@ RUN_DEPENDS=	rubygem-amazing_print>=0:devel/rubygem-amazing_print \
 		rubygem-unicode>=0:devel/rubygem-unicode \
 		rubygem-unicode-display_width>=0:devel/rubygem-unicode-display_width
 
-USES=		gem
+USES=		cpe gem
 USE_RUBY=	yes
 
 NO_ARCH=	yes
@@ -30,6 +30,8 @@ PLIST_FILES=	bin/hammer \
 		bin/hammer-complete \
 		"@sample etc/hammer/cli_config.yml.sample" \
 		"@dir etc/hammer/cli.modules.d"
+
+CPE_VENDOR=	theforeman
 
 post-install:
 	${MKDIR} ${STAGEDIR}${PREFIX}/etc/hammer/cli.modules.d

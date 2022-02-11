@@ -16,7 +16,8 @@ BUILD_DEPENDS=	bash:shells/bash
 LIB_DEPENDS=	libfcitx-config.so:chinese/fcitx
 
 USES=		cmake gettext gnome tar:xz
-INSTALLS_ICONS=	yes
+
+CONFLICTS_INSTALL=	zh-fcitx5-table-extra # share/icons/hicolor/48x48/apps/fcitx-cantonese.png
 STRIP=
 
 .include <bsd.port.mk>

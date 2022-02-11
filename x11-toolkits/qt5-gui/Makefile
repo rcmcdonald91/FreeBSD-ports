@@ -1,6 +1,5 @@
 PORTNAME=	gui
-DISTVERSION=	${QT5_VERSION}
-PORTREVISION=	4
+PORTVERSION=	${QT5_VERSION}${QT5_KDE_PATCH}
 CATEGORIES=	x11-toolkits graphics
 PKGNAMEPREFIX=	qt5-
 
@@ -20,6 +19,7 @@ LIB_DEPENDS=	libdbus-1.so:devel/dbus \
 		libfreetype.so:print/freetype2 \
 		libharfbuzz.so:print/harfbuzz \
 		libinput.so:x11/libinput \
+		libmtdev.so:devel/libmtdev \
 		libpng.so:graphics/png \
 		libxcb-icccm.so:x11/xcb-util-wm \
 		libxcb-image.so:x11/xcb-util-image \
@@ -32,9 +32,10 @@ RUN_DEPENDS=	${LOCALBASE}/include/vulkan/vulkan.h:graphics/vulkan-headers \
 		xdg-open:devel/xdg-utils
 
 USES=			compiler:c++11-lang gl gnome jpeg localbase \
-			qmake:no_env qt-dist:5,base
+			perl5 qmake:no_env qt-dist:5,base
 USE_GL=			egl gl
 USE_GNOME=		glib20
+USE_PERL5=		extract
 USE_QT=			core dbus network buildtools_build qmake_build
 QT_BINARIES=		yes
 QT_CONFIG=		accessibility accessibility-atspi-bridge dbus \

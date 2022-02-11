@@ -316,6 +316,7 @@
 %%WWWDIR%%/j2s/J/adapter/readers/xtal/GulpReader.js
 %%WWWDIR%%/j2s/J/adapter/readers/xtal/JanaReader.js
 %%WWWDIR%%/j2s/J/adapter/readers/xtal/MagresReader.js
+%%WWWDIR%%/j2s/J/adapter/readers/xtal/PWmatReader.js
 %%WWWDIR%%/j2s/J/adapter/readers/xtal/ShelxReader.js
 %%WWWDIR%%/j2s/J/adapter/readers/xtal/SiestaReader.js
 %%WWWDIR%%/j2s/J/adapter/readers/xtal/VaspChgcarReader.js
@@ -331,12 +332,18 @@
 %%WWWDIR%%/j2s/J/adapter/smarter/Bond.js
 %%WWWDIR%%/j2s/J/adapter/smarter/BondIterator.js
 %%WWWDIR%%/j2s/J/adapter/smarter/MSInterface.js
+%%WWWDIR%%/j2s/J/adapter/writers/PWMATWriter.js
 %%WWWDIR%%/j2s/J/adapter/smarter/Resolver.js
 %%WWWDIR%%/j2s/J/adapter/smarter/SmarterJmolAdapter.js
 %%WWWDIR%%/j2s/J/adapter/smarter/Structure.js
 %%WWWDIR%%/j2s/J/adapter/smarter/StructureIterator.js
 %%WWWDIR%%/j2s/J/adapter/smarter/XtalSymmetry.js
+%%WWWDIR%%/j2s/J/adapter/writers/CIFWriter.js
+%%WWWDIR%%/j2s/J/adapter/writers/CMLWriter.js
 %%WWWDIR%%/j2s/J/adapter/writers/QCJSONWriter.js
+%%WWWDIR%%/j2s/J/adapter/writers/MOLWriter.js
+%%WWWDIR%%/j2s/J/adapter/writers/PDBWriter.js
+%%WWWDIR%%/j2s/J/adapter/writers/XSFWriter.js
 %%WWWDIR%%/j2s/J/api/AtomIndexIterator.js
 %%WWWDIR%%/j2s/J/api/EventManager.js
 %%WWWDIR%%/j2s/J/api/FontManager.js
@@ -361,7 +368,6 @@
 %%WWWDIR%%/j2s/J/api/JmolCallbackListener.js
 %%WWWDIR%%/j2s/J/api/JmolDataManager.js
 %%WWWDIR%%/j2s/J/api/JmolDialogInterface.js
-%%WWWDIR%%/j2s/J/api/JmolDomReaderInterface.js
 %%WWWDIR%%/j2s/J/api/JmolDropEditor.js
 %%WWWDIR%%/j2s/J/api/JmolEnvCalc.js
 %%WWWDIR%%/j2s/J/api/JmolFilesReaderInterface.js
@@ -392,6 +398,7 @@
 %%WWWDIR%%/j2s/J/api/JmolSyncInterface.js
 %%WWWDIR%%/j2s/J/api/JmolTouchSimulatorInterface.js
 %%WWWDIR%%/j2s/J/api/JmolViewer.js
+%%WWWDIR%%/j2s/J/api/JmolWriter.js
 %%WWWDIR%%/j2s/J/api/JmolZipUtilities.js
 %%WWWDIR%%/j2s/J/api/PlatformViewer.js
 %%WWWDIR%%/j2s/J/api/PymolAtomReader.js
@@ -586,6 +593,7 @@
 %%WWWDIR%%/j2s/J/jvxl/readers/XplorReader.js
 %%WWWDIR%%/j2s/J/jvxl/readers/XsfReader.js
 %%WWWDIR%%/j2s/J/modelkit/Constraint.js
+%%WWWDIR%%/j2s/J/modelkit/ModelKit.js
 %%WWWDIR%%/j2s/J/modelkit/ModelKitPopup.js
 %%WWWDIR%%/j2s/J/modelkit/ModelKitPopupResourceBundle.js
 %%WWWDIR%%/j2s/J/modelkit/images/atoms.png
@@ -770,7 +778,9 @@
 %%WWWDIR%%/j2s/JM/FF/UFFVDWCalc.js
 %%WWWDIR%%/j2s/JM/FF/data/MMFF94-smarts.txt
 %%WWWDIR%%/j2s/JM/FF/data/UFF.txt
+%%WWWDIR%%/j2s/JM/FF/data/UFF_2d.txt
 %%WWWDIR%%/j2s/JM/FF/data/mmff94.par.txt
+%%WWWDIR%%/j2s/JM/FF/data/mmff94_2d.par.txt
 %%WWWDIR%%/j2s/JM/Group.js
 %%WWWDIR%%/j2s/JM/HBond.js
 %%WWWDIR%%/j2s/JM/Helix.js
@@ -1017,9 +1027,11 @@
 %%WWWDIR%%/j2s/JSV/popup/JSVGenericPopup.js
 %%WWWDIR%%/j2s/JSV/popup/JSVPopupResourceBundle.js
 %%WWWDIR%%/j2s/JSV/source/AnIMLReader.js
+%%WWWDIR%%/j2s/JSV/source/BrukerReader.js
 %%WWWDIR%%/j2s/JSV/source/CMLReader.js
 %%WWWDIR%%/j2s/JSV/source/JDXDataObject.js
 %%WWWDIR%%/j2s/JSV/source/JDXDecompressor.js
+%%WWWDIR%%/j2s/JSV/source/JDXDecompressorTest.js
 %%WWWDIR%%/j2s/JSV/source/JDXHeader.js
 %%WWWDIR%%/j2s/JSV/source/JDXReader.js
 %%WWWDIR%%/j2s/JSV/source/JDXSource.js
@@ -1107,7 +1119,6 @@
 %%WWWDIR%%/j2s/JU/MessagePackReader.js
 %%WWWDIR%%/j2s/JU/Modulation.js
 %%WWWDIR%%/j2s/JU/ModulationSet.js
-%%WWWDIR%%/j2s/JU/MolWriter.js
 %%WWWDIR%%/j2s/JU/Node.js
 %%WWWDIR%%/j2s/JU/Normix.js
 %%WWWDIR%%/j2s/JU/OC.js
@@ -1722,6 +1733,7 @@
 %%WWWDIR%%/mmtf.htm
 %%WWWDIR%%/nmr_predict_1H.htm
 %%WWWDIR%%/nmr_predict_HC.htm
+%%WWWDIR%%/pgtest.htm
 %%WWWDIR%%/php/jsmol.php
 %%WWWDIR%%/resize.htm
 %%WWWDIR%%/simple.htm

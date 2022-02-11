@@ -1,7 +1,7 @@
 # Created by: Sunpoet Po-Chuan Hsieh <sunpoet@FreeBSD.org>
 
 PORTNAME=	nghttp2
-PORTVERSION=	1.43.0
+PORTVERSION=	1.46.0
 CATEGORIES=	www net
 MASTER_SITES=	https://github.com/nghttp2/nghttp2/releases/download/v${PORTVERSION}/
 
@@ -14,12 +14,7 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 BUILD_DEPENDS=	libnghttp2>=${PORTVERSION}:www/libnghttp2
 LIB_DEPENDS=	libnghttp2.so:www/libnghttp2
 
-OPTIONS_DEFINE=	APP ASIO DOCS EXAMPLES HPACK
-OPTIONS_DEFAULT=APP HPACK
-OPTIONS_SUB=	yes
-APP_DESC=	Build h2load, nghttp, nghttpd and nghttpx
-
-USES=		compiler:c++14-lang gmake libtool localbase pathfix pkgconfig ssl tar:xz
+USES=		compiler:c++14-lang cpe gmake libtool localbase pathfix pkgconfig ssl tar:xz
 
 CONFIGURE_ARGS=	--disable-python-bindings --with-jemalloc
 CONFIGURE_ENV=	OPENSSL_CFLAGS="-I${OPENSSLINC}" \
@@ -29,9 +24,10 @@ INSTALL_TARGET=	install-strip
 USE_CXXSTD=	c++14
 USE_RC_SUBR=	nghttpx
 
-PORTDATA=	fetch-ocsp-response
-PORTDOCS=	*
-PORTEXAMPLES=	*
+OPTIONS_DEFINE=	APP ASIO DOCS EXAMPLES HPACK
+OPTIONS_DEFAULT=APP HPACK
+OPTIONS_SUB=	yes
+APP_DESC=	Build h2load, nghttp, nghttpd and nghttpx
 
 APP_BUILD_DEPENDS=	c-ares>=1.7.5:dns/c-ares \
 			libev>=4.11:devel/libev
@@ -52,11 +48,6 @@ EXAMPLES_LIB_DEPENDS=	libevent_openssl.so:devel/libevent
 HPACK_BUILD_DEPENDS=	jansson>=2.5:devel/jansson
 HPACK_CONFIGURE_ENABLE=	hpack-tools
 HPACK_LIB_DEPENDS=	libjansson.so:devel/jansson
-
-post-patch:
-	@${REINPLACE_CMD} -e '/^SUBDIRS = / s| lib||' ${WRKSRC}/Makefile.in
-	@${REINPLACE_CMD} -e 's|$$[({]top_builddir[})]/lib/libnghttp2.la|-lnghttp2|' ${WRKSRC}/*/Makefile.in
-	@${REINPLACE_CMD} -e '1d' ${WRKSRC}/script/fetch-ocsp-response
 
 # lib/libnghttp2.* are not available until configure phase
 post-configure:

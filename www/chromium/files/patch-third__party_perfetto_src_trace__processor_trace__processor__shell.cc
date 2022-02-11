@@ -1,6 +1,6 @@
---- third_party/perfetto/src/trace_processor/trace_processor_shell.cc.orig	2021-04-14 18:43:06 UTC
+--- third_party/perfetto/src/trace_processor/trace_processor_shell.cc.orig	2021-12-14 11:47:12 UTC
 +++ third_party/perfetto/src/trace_processor/trace_processor_shell.cc
-@@ -55,7 +55,8 @@
+@@ -60,7 +60,8 @@
  
  #if PERFETTO_BUILDFLAG(PERFETTO_OS_LINUX) ||   \
      PERFETTO_BUILDFLAG(PERFETTO_OS_ANDROID) || \
@@ -10,7 +10,7 @@
  #define PERFETTO_HAS_SIGNAL_H() 1
  #else
  #define PERFETTO_HAS_SIGNAL_H() 0
-@@ -103,7 +104,8 @@ std::string GetConfigPath() {
+@@ -108,7 +109,8 @@ std::string GetConfigPath() {
    const char* homedir = getenv("HOME");
  #if PERFETTO_BUILDFLAG(PERFETTO_OS_LINUX) ||   \
      PERFETTO_BUILDFLAG(PERFETTO_OS_ANDROID) || \

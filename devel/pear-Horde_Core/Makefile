@@ -1,7 +1,7 @@
 # Created by: Martin Matuska <mm@FreeBSD.org>
 
 PORTNAME=	Horde_Core
-DISTVERSION=	2.31.14
+DISTVERSION=	2.31.16
 CATEGORIES=	devel www pear
 
 MAINTAINER=	horde@FreeBSD.org
@@ -14,7 +14,7 @@ KOLAB_DESC=	Enable Kolab server support
 LZF_DESC=	Depend on lzf PHP extension
 SOCKETS_DESC=	Depend on sockets PHP extension
 
-USES=		horde php
+USES=		horde php cpe
 USE_PHP=	session
 
 USE_HORDE_BUILD=	Horde_Role

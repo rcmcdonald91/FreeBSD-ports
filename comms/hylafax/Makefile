@@ -15,7 +15,7 @@ BUILD_DEPENDS=	${LOCALBASE}/lib/afm/Courier:print/afm
 LIB_DEPENDS=	libtiff.so:graphics/tiff \
 		libjbig.so:graphics/jbigkit
 
-USES=		fakeroot ghostscript jpeg
+USES=		cpe fakeroot ghostscript jpeg
 
 USE_RC_SUBR=	hylafax
 
@@ -34,6 +34,8 @@ CFLAGS+=	-D_XOPEN_SOURCE -D_XOPEN_SOURCE_EXTENDED -Wall -L${LOCALBASE}/lib
 CONFIGURE_ENV=	ENVOPTS="${CFLAGS}"
 MAKE_ENV+=	ROOT=${STAGEDIR}
 MAKE_ARGS+=	OPTIMIZER="" -DOPTIMIZER
+
+CONFLICTS_INSTALL=	mgetty
 
 PORTDOCS=	RELEASENOTES-4.3.txt RELEASENOTES-4.4.txt RELEASENOTES-6.0.txt
 SUB_FILES=	pkg-message

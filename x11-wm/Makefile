@@ -24,6 +24,7 @@
     SUBDIR += cwm
     SUBDIR += devilspie
     SUBDIR += durden
+    SUBDIR += dwl
     SUBDIR += dwm
     SUBDIR += e16
     SUBDIR += e16-docs
@@ -40,7 +41,6 @@
     SUBDIR += fvwm2
     SUBDIR += fvwm3
     SUBDIR += gamescope
-    SUBDIR += gcompmgr
     SUBDIR += herbstluftwm
     SUBDIR += hikari
     SUBDIR += hs-xmonad
@@ -50,6 +50,7 @@
     SUBDIR += jewel
     SUBDIR += jwm
     SUBDIR += kickshaw
+    SUBDIR += kwinft
     SUBDIR += labwc
     SUBDIR += larswm
     SUBDIR += leftwm
@@ -68,6 +69,7 @@
     SUBDIR += metacity
     SUBDIR += muffin
     SUBDIR += mutter
+    SUBDIR += nscde
     SUBDIR += obconf
     SUBDIR += obconf-qt
     SUBDIR += obpager
@@ -90,6 +92,7 @@
     SUBDIR += rubygem-uh-layout
     SUBDIR += rubygem-uh-wm
     SUBDIR += sawfish
+    SUBDIR += sdorfehs
     SUBDIR += selectwm
     SUBDIR += skippy-xd
     SUBDIR += spectrwm

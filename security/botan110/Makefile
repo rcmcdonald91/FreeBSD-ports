@@ -14,12 +14,16 @@ COMMENT=	Portable, easy to use, and efficient C++ crypto library
 LICENSE=	BSD2CLAUSE
 LICENSE_FILE=	${WRKSRC}/doc/license.txt
 
+DEPRECATED=	Deprecated upstream, users are recommended to migrate to 2.x
+EXPIRATION_DATE=2022-03-31
+
 BROKEN_riscv64=		fails to build: Unknown or unidentifiable processor "riscv"
 
 OPTIONS_DEFINE=		SSL GMP DOCS
 OPTIONS_DEFAULT=	SSL GMP
 
-USES=		compiler gmake python:build shebangfix tar:tgz
+USES=		compiler cpe gmake python:build shebangfix tar:tgz
+CPE_VENDOR=	${PORTNAME}_project
 HAS_CONFIGURE=	yes
 CONFIGURE_SCRIPT=	configure.py
 CONFIGURE_ARGS=	--prefix=${PREFIX} --cc ${CHOSEN_COMPILER_TYPE} \

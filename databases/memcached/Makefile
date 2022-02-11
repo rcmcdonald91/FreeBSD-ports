@@ -1,8 +1,7 @@
 # Created by: Sean Chittenden <seanc@FreeBSD.org>
 
 PORTNAME=	memcached
-PORTVERSION=	1.6.9
-PORTREVISION=	1
+PORTVERSION=	1.6.12
 CATEGORIES=	databases
 MASTER_SITES=	http://www.memcached.org/files/ \
 		GENTOO
@@ -35,7 +34,6 @@ OPTIONS_DEFAULT_amd64=	DTRACE
 OPTIONS_DEFINE_powerpc64=	DTRACE
 OPTIONS_DEFAULT_powerpc64=	DTRACE
 OPTIONS_EXCLUDE_powerpc64=	${OPTIONS_EXCLUDE_${ARCH}_${OSREL:R}}
-OPTIONS_EXCLUDE_powerpc64_11=	DTRACE
 OPTIONS_EXCLUDE_powerpc64_12=	DTRACE
 OPTIONS_DEFINE_powerpc64le=	DTRACE
 OPTIONS_DEFAULT_powerpc64le=	DTRACE
@@ -62,7 +60,7 @@ MAKE_JOBS_UNSAFE=	yes
 
 .include <bsd.port.pre.mk>
 
-.if ${OPSYS} == FreeBSD && ${OSVERSION} >= 1200057
+.if ${OPSYS} == FreeBSD
 CONFIGURE_ARGS+=	--enable-tls
 USES+=			ssl
 .endif

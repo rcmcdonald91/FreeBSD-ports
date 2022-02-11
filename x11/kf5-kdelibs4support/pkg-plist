@@ -1216,6 +1216,8 @@ share/kf5/locale/countries/eg/country.desktop
 share/kf5/locale/countries/eg/flag.png
 share/kf5/locale/countries/eh/country.desktop
 share/kf5/locale/countries/eh/flag.png
+share/kf5/locale/countries/epo/country.desktop
+share/kf5/locale/countries/epo/flag.png
 share/kf5/locale/countries/er/country.desktop
 share/kf5/locale/countries/er/flag.png
 share/kf5/locale/countries/es/country.desktop
@@ -1799,7 +1801,6 @@ share/kf5/widgets/pics/kpushbutton.png
 share/kf5/widgets/pics/krestrictedline.png
 share/kf5/widgets/pics/ktextbrowser.png
 share/kservices5/kcm_ssl.desktop
-share/kservices5/metainfo.protocol
 share/kservices5/qimageioplugins/bmp.desktop
 share/kservices5/qimageioplugins/gif.desktop
 share/kservices5/qimageioplugins/ico.desktop

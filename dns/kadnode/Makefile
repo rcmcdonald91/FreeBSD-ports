@@ -3,7 +3,7 @@
 PORTNAME=	kadnode
 DISTVERSIONPREFIX=	v
 DISTVERSION=	2.3.0
-PORTREVISION=	0
+PORTREVISION=	1
 CATEGORIES=	dns
 
 MAINTAINER=	moritzwarning@web.de
@@ -12,7 +12,8 @@ COMMENT=	P2P name resolution daemon
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-USES=		gmake
+USES=		cpe gmake
+CPE_VENDOR=	${PORTNAME}_project
 USE_GITHUB=	yes
 GH_ACCOUNT=	mwarning
 GH_PROJECT=	KadNode

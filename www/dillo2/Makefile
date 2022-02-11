@@ -2,7 +2,7 @@
 
 PORTNAME=	dillo
 PORTVERSION=	3.0.5
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	www
 MASTER_SITES=	http://www.dillo.org/download/ \
 		LOCAL/bf/dillo/ \
@@ -21,7 +21,7 @@ LIB_DEPENDS=	libfltk.so:x11-toolkits/fltk \
 		libfontconfig.so:x11-fonts/fontconfig
 RUN_DEPENDS=	wget:ftp/wget
 
-USES=		gmake iconv pkgconfig tar:bzip2 xorg
+USES=		cpe gmake iconv pkgconfig tar:bzip2 xorg
 USE_XORG=	x11 xcursor xext xfixes xft xinerama xrender
 
 GNU_CONFIGURE=	yes

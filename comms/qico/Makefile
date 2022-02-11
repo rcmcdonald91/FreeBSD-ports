@@ -11,12 +11,10 @@ LICENSE=	BSD4CLAUSE
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
 USES=		autoreconf
+GNU_CONFIGURE=	yes
 USE_GITHUB=	yes
 GH_ACCOUNT=	kosfango
-GH_PROJECT=	qico
 GH_TAGNAME=	15673bf
-
-GNU_CONFIGURE=	yes
 
 CONFDIR?=	${PREFIX}/etc/fido/qico
 QBASEDIR?=	/var/spool/fido/qico
@@ -29,6 +27,8 @@ CONFIGURE_ARGS+=	--with-lock-style=open
 CONFIGURE_ARGS+=	--with-config=${CONFDIR}/qico.conf \
 			--with-default-speed=115200
 CONFIGURE_TARGET=	--build=${MACHINE_ARCH}-portbld-freebsd${OSREL}
+
+CONFLICTS_INSTALL=	qcc # bin/qcc
 
 DOCS=		Changes FAQ README
 EXAMPLES=	koi8r_866.cp onchat qhistory qico.xpm qlinks sfreq \

@@ -1,6 +1,6 @@
---- base/memory/platform_shared_memory_region.h.orig	2021-04-14 18:40:48 UTC
+--- base/memory/platform_shared_memory_region.h.orig	2021-12-14 11:44:55 UTC
 +++ base/memory/platform_shared_memory_region.h
-@@ -27,7 +27,7 @@
+@@ -24,7 +24,7 @@
  #include "base/files/scoped_file.h"
  #endif
  
@@ -9,7 +9,7 @@
  namespace content {
  class SandboxIPCHandler;
  }
-@@ -120,7 +120,7 @@ class BASE_EXPORT PlatformSharedMemoryRegion {
+@@ -117,7 +117,7 @@ class BASE_EXPORT PlatformSharedMemoryRegion {
      kMaxValue = GET_SHMEM_TEMP_DIR_FAILURE
    };
  

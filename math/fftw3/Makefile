@@ -1,8 +1,7 @@
 # Created by: Lars Koeller <Lars.Koeller@Uni-Bielefeld.DE>
 
 PORTNAME=	fftw3
-DISTVERSION=	3.3.9
-PORTREVISION?=	0
+DISTVERSION=	3.3.10
 CATEGORIES=	math
 MASTER_SITES=	http://www.fftw.org/ \
 		ftp://ftp.fftw.org/pub/fftw/
@@ -40,6 +39,8 @@ INSTALL_TARGET=	install-cmakeDATA install-pkgconfigDATA install-libLTLIBRARIES i
 
 OPTIONS_DEFINE=		G77_WRAPPERS OPENMP OPENMPI OPTIMIZED_CFLAGS SIMD
 OPTIONS_DEFAULT=	OPTIMIZED_CFLAGS SIMD
+OPTIONS_DEFAULT_aarch64=	OPENMP
+OPTIONS_DEFAULT_amd64=		OPENMP
 .if ${FFTW3_FLAVOR} == "quad"
 OPTIONS_EXCLUDE+=	OPENMPI
 .endif
@@ -48,7 +49,7 @@ OPTIONS_SUB=		yes
 G77_WRAPPERS_DESC=		Alter Fortran wrappers for use with g77
 
 OPENMP_DESC=			Build OpenMP multithreaded libraries
-OPENMP_USES=			compiler:openmp
+OPENMP_USES=			compiler:env
 OPENMP_USES_OFF=		compiler:env
 OPENMP_CONFIGURE_ENABLE=	openmp
 OPENMP_EXTRA_PATCHES=		${FILESDIR}/extrapatch-tests_fftw-bench.c
@@ -94,7 +95,7 @@ CONFIGURE_ARGS+=--enable-avx2 --enable-fma
 .    if !empty(MACHINE_CPU:Msse)
 CONFIGURE_ARGS+=--enable-sse2
 .    endif
-.    if !empty(ARCH:Mpowerpc*) && !empty(MACHINE_CPU:Maltivec)
+.    if !empty(ARCH:Mpowerpc64*)
 CONFIGURE_ARGS+=--enable-altivec
 .    endif
 .    if ${ARCH} == "aarch64"

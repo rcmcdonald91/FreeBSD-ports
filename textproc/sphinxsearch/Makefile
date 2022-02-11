@@ -20,6 +20,8 @@ LICENSE=	GPLv2
 
 USES=		compiler:c++11-lang
 
+CONFLICTS_INSTALL=	mnogosearch # bin/indexer
+
 BUILD_DEPENDS=	gsed:textproc/gsed
 # If expat is present on the system and configure finds it, it will
 # unconditionally link the output binary against it.  There's no way
@@ -92,8 +94,8 @@ SYSLOG_CONFIGURE_WITH=	syslog
 UNIXODBC_CONFIGURE_WITH=unixodbc
 UNIXODBC_LIB_DEPENDS=	libodbc.so:databases/unixODBC
 
-CONFLICTS=	sphinxsearch-devel-[0-9]* dpsearch-[0-9]* rdb-[0-9]* \
-		swish++-[0-9]* xaira-[0-9]*
+CONFLICTS=	sphinxsearch-devel dpsearch rdb \
+		swish++ xaira
 
 USERS?=		_sphinx
 GROUPS?=	_sphinx

@@ -1,5 +1,5 @@
 PORTNAME=	pysdl2
-PORTVERSION=	0.9.7
+PORTVERSION=	0.9.10
 CATEGORIES=	devel python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -20,8 +20,11 @@ NO_ARCH=	yes
 
 OPTIONS_DEFINE=	DOCS
 
+post-patch:
+	@${RM} ${WRKSRC}/doc/html/.buildinfo
+
 post-install-DOCS-on:
-	@${MKDIR} ${STAGEDIR}${DOCSDIR}
-	cd ${WRKSRC}/doc/html && ${COPYTREE_SHARE} . ${STAGEDIR}${DOCSDIR} '! -name .buildinfo'
+	${MKDIR} ${STAGEDIR}${DOCSDIR}
+	cd ${WRKSRC}/doc/html && ${COPYTREE_SHARE} . ${STAGEDIR}${DOCSDIR}
 
 .include <bsd.port.mk>

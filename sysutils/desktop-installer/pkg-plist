@@ -1,7 +1,6 @@
 man/man1/desktop-installer.1.gz
 sbin/battery-shutdown.sh
 sbin/desktop-installer
-%%DATADIR%%/20-swcursor.conf
 %%DATADIR%%/CDE/cde.desktop
 %%DATADIR%%/CDE/xinitrc
 %%DATADIR%%/CINNAMON/xinitrc
@@ -14,6 +13,7 @@ sbin/desktop-installer
 %%DATADIR%%/LXDE/xinitrc
 %%DATADIR%%/LXQT/xinitrc
 %%DATADIR%%/MATE/xinitrc
+%%DATADIR%%/OTHER/xinitrc
 %%DATADIR%%/Scripts/battery-shutdown.sh
 %%DATADIR%%/Scripts/desktop-admin
 %%DATADIR%%/WMAKER/xinitrc

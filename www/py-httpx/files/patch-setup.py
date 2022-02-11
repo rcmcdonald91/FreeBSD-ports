@@ -1,11 +1,20 @@
---- setup.py.orig	2021-04-29 12:57:41 UTC
+--- setup.py.orig	2022-01-26 14:49:48 UTC
 +++ setup.py
-@@ -63,7 +63,7 @@ setup(
+@@ -59,7 +59,7 @@ setup(
+         "certifi",
+         "charset_normalizer",
+         "sniffio",
+-        "rfc3986[idna2008]>=1.3,<2",
++        "rfc3986[idna2008]>=1.3",
+         "httpcore>=0.14.5,<0.15.0",
          "async_generator; python_version < '3.7'"
      ],
-     extras_require={
--        "http2": "h2==3.*",
-+        "http2": "h2>=3,<5",
-         "brotli": "brotlicffi==1.*",
+@@ -72,7 +72,7 @@ setup(
+         ],
+         "cli": [
+             "click==8.*",
+-            "rich==10.*",
++            "rich==11.*",
+             "pygments==2.*"
+         ]
      },
-     classifiers=[

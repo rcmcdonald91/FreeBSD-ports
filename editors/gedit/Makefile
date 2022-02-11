@@ -1,10 +1,13 @@
 # Created by: Joe Marcus Clarke <marcus@FreeBSD.org>
 
 PORTNAME=	gedit
-PORTVERSION=	3.38.1
+PORTVERSION=	40.1
 CATEGORIES=	editors gnome
-MASTER_SITES=	GNOME
+MASTER_SITES=	GNOME/sources/${PORTNAME}/${PORTVERSION:C/^([0-9]+)\..*/\1/}
 DIST_SUBDIR=	gnome
+
+PATCH_SITES=	https://gitlab.gnome.org/GNOME/${PORTNAME}/-/commit/
+PATCHFILES+=	c6c7c6580bc7.patch:-p1 # https://gitlab.gnome.org/GNOME/gedit/-/merge_requests/124
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Small but powerful text editor for GNOME 3 Desktop Environment
@@ -20,7 +23,7 @@ LIB_DEPENDS=	libenchant.so:textproc/enchant \
 		libpeas-gtk-1.0.so:devel/libpeas \
 		libgspell-1.so:textproc/gspell \
 		libsoup-2.4.so:devel/libsoup \
-		libtepl-5.so:x11-toolkits/tepl \
+		libtepl-6.so:x11-toolkits/tepl6 \
 		libamtk-5.so:x11-toolkits/amtk
 
 RUN_DEPENDS=	iso-codes>=0:misc/iso-codes \
@@ -29,17 +32,18 @@ RUN_DEPENDS=	iso-codes>=0:misc/iso-codes \
 
 PORTSCOUT=	limitw:1,even
 
-USES=		compiler:c11 desktop-file-utils gettext gnome localbase meson \
+USES=		compiler:c11 cpe desktop-file-utils gettext gnome localbase meson \
 		pkgconfig python:3.4+ tar:xz xorg
 USE_CSTD=	c11
 USE_GNOME=	cairo gdkpixbuf2 gtksourceview4 intlhack introspection \
 		libxml2 pygobject3
 USE_XORG=	sm x11
 USE_LDCONFIG=	yes
-PLIST_SUB=	VERSION="3.38"
+PLIST_SUB=	VERSION=${PORTVERSION:R}.0
 INSTALL_TARGET=	install-strip
 MESON_ARGS+=	--buildtype plain
 BINARY_ALIAS=	python3=${PYTHON_CMD}
+CPE_VENDOR=	gnome
 
 GLIB_SCHEMAS=	org.gnome.gedit.enums.xml \
 		org.gnome.gedit.plugins.externaltools.gschema.xml \

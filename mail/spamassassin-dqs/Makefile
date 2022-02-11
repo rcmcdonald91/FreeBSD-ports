@@ -2,7 +2,7 @@
 
 PORTNAME=		spamassassin-dqs
 DISTVERSIONPREFIX=	v
-DISTVERSION=		1.1.0
+DISTVERSION=		1.2.0
 CATEGORIES=		mail
 
 MAINTAINER=	ler@FreeBSD.org
@@ -29,6 +29,7 @@ OPTIONS_DEFINE=	HBL
 HBL_DESC=	enable HBL lookups (PAID OPTION)
 
 HBL_PLIST_FILES=	"@sample etc/mail/spamassassin/sh_hbl.cf.sample" \
+			etc/mail/spamassassin/hbltest.sh \
 			etc/mail/spamassassin/sh_hbl_scores.cf
 
 post-patch:
@@ -42,7 +43,6 @@ do-install:
 	${INSTALL_DATA} ${WRKSRC}/sh_scores.cf ${STAGEDIR}${PREFIX}/etc/mail/spamassassin/
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_MAN}  ${WRKSRC}/README.md ${STAGEDIR}${DOCSDIR}/
-	
 
 do-install-HBL-on:
 	${INSTALL_DATA} ${WRKSRC}/sh_hbl.cf ${STAGEDIR}${PREFIX}/etc/mail/spamassassin/sh_hbl.cf.sample

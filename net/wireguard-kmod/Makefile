@@ -1,5 +1,5 @@
 PORTNAME=	wireguard-kmod
-PORTVERSION=	0.0.20210503
+PORTVERSION=	0.0.20211105
 CATEGORIES=	net net-vpn
 MASTER_SITES=	https://git.zx2c4.com/wireguard-freebsd/snapshot/
 DISTNAME=	wireguard-freebsd-${PORTVERSION}
@@ -9,8 +9,6 @@ COMMENT=	WireGuard implementation for the FreeBSD kernel
 
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/../COPYING
-
-IGNORE_FreeBSD_11=	only for FreeBSD 12.1 and newer
 
 USES=		kmod tar:xz uidfix
 

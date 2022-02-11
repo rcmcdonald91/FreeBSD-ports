@@ -5,8 +5,10 @@ PORTVERSION=	20120501
 PORTREVISION=	1
 CATEGORIES=	devel www pear
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	sunpoet@FreeBSD.org
 COMMENT=	PEAR channel ${PEAR_CHANNEL_HOST}
+
+NO_ARCH=	yes
 
 PEAR_CHANNEL_HOST=	pear.netpirates.net
 

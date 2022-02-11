@@ -1293,7 +1293,6 @@
 %%SOURCE%%%%KMODSRC%%/drivers/gpu/drm/drm_dsc.c
 %%SOURCE%%%%KMODSRC%%/drivers/gpu/drm/drm_dumb_buffers.c
 %%SOURCE%%%%KMODSRC%%/drivers/gpu/drm/drm_edid.c
-%%SOURCE%%%%KMODSRC%%/drivers/gpu/drm/drm_edid_load.c
 %%SOURCE%%%%KMODSRC%%/drivers/gpu/drm/drm_encoder.c
 %%SOURCE%%%%KMODSRC%%/drivers/gpu/drm/drm_encoder_slave.c
 %%SOURCE%%%%KMODSRC%%/drivers/gpu/drm/drm_fb_helper.c
@@ -1958,6 +1957,88 @@
 %%SOURCE%%%%KMODSRC%%/drivers/gpu/drm/ttm/ttm_page_alloc.c
 %%SOURCE%%%%KMODSRC%%/drivers/gpu/drm/ttm/ttm_page_alloc_dma.c
 %%SOURCE%%%%KMODSRC%%/drivers/gpu/drm/ttm/ttm_tt.c
+@comment %%KMODSRC%%/drivers/gpu/drm/vboxvideo/hgsmi_base.c
+@comment %%KMODSRC%%/drivers/gpu/drm/vboxvideo/hgsmi_ch_setup.h
+@comment %%KMODSRC%%/drivers/gpu/drm/vboxvideo/hgsmi_channels.h
+@comment %%KMODSRC%%/drivers/gpu/drm/vboxvideo/hgsmi_defs.h
+@comment %%KMODSRC%%/drivers/gpu/drm/vboxvideo/modesetting.c
+@comment %%KMODSRC%%/drivers/gpu/drm/vboxvideo/vbox_drv.c
+@comment %%KMODSRC%%/drivers/gpu/drm/vboxvideo/vbox_drv.h
+@comment %%KMODSRC%%/drivers/gpu/drm/vboxvideo/vbox_fb.c
+@comment %%KMODSRC%%/drivers/gpu/drm/vboxvideo/vbox_hgsmi.c
+@comment %%KMODSRC%%/drivers/gpu/drm/vboxvideo/vbox_irq.c
+@comment %%KMODSRC%%/drivers/gpu/drm/vboxvideo/vbox_main.c
+@comment %%KMODSRC%%/drivers/gpu/drm/vboxvideo/vbox_mode.c
+@comment %%KMODSRC%%/drivers/gpu/drm/vboxvideo/vbox_ttm.c
+@comment %%KMODSRC%%/drivers/gpu/drm/vboxvideo/vboxvideo.h
+@comment %%KMODSRC%%/drivers/gpu/drm/vboxvideo/vboxvideo_guest.h
+@comment %%KMODSRC%%/drivers/gpu/drm/vboxvideo/vboxvideo_vbe.h
+@comment %%KMODSRC%%/drivers/gpu/drm/vboxvideo/vbva_base.c
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/device_include/includeCheck.h
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/device_include/svga3d_caps.h
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/device_include/svga3d_cmd.h
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/device_include/svga3d_devcaps.h
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/device_include/svga3d_dx.h
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/device_include/svga3d_limits.h
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/device_include/svga3d_reg.h
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/device_include/svga3d_surfacedefs.h
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/device_include/svga3d_types.h
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/device_include/svga_escape.h
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/device_include/svga_overlay.h
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/device_include/svga_reg.h
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/device_include/svga_types.h
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/device_include/vm_basic_types.h
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/device_include/vmware_pack_begin.h
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/device_include/vmware_pack_end.h
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/ttm_lock.c
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/ttm_lock.h
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/ttm_object.c
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/ttm_object.h
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/vmwgfx_binding.c
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/vmwgfx_binding.h
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/vmwgfx_blit.c
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/vmwgfx_bo.c
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/vmwgfx_cmdbuf.c
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/vmwgfx_cmdbuf_res.c
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/vmwgfx_context.c
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/vmwgfx_cotable.c
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/vmwgfx_drv.c
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/vmwgfx_drv.h
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/vmwgfx_execbuf.c
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/vmwgfx_fb.c
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/vmwgfx_fb_freebsd.c
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/vmwgfx_fb_freebsd.h
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/vmwgfx_fence.c
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/vmwgfx_fence.h
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/vmwgfx_fifo.c
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/vmwgfx_gmr.c
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/vmwgfx_gmrid_manager.c
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/vmwgfx_ioctl.c
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/vmwgfx_irq.c
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/vmwgfx_kms.c
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/vmwgfx_kms.h
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/vmwgfx_ldu.c
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/vmwgfx_marker.c
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/vmwgfx_mob.c
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/vmwgfx_msg.c
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/vmwgfx_msg.h
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/vmwgfx_overlay.c
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/vmwgfx_prime.c
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/vmwgfx_reg.h
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/vmwgfx_resource.c
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/vmwgfx_resource_priv.h
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/vmwgfx_scrn.c
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/vmwgfx_shader.c
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/vmwgfx_simple_resource.c
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/vmwgfx_so.c
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/vmwgfx_so.h
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/vmwgfx_stdu.c
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/vmwgfx_surface.c
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/vmwgfx_ttm_buffer.c
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/vmwgfx_ttm_glue.c
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/vmwgfx_va.c
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/vmwgfx_validation.c
+@comment %%KMODSRC%%/drivers/gpu/drm/vmwgfx/vmwgfx_validation.h
 %%SOURCE%%%%KMODSRC%%/drm/Makefile
 %%SOURCE%%%%KMODSRC%%/i915/Makefile
 %%SOURCE%%%%KMODSRC%%/include/drm/amd_asic_type.h
@@ -2077,6 +2158,32 @@
 %%SOURCE%%%%KMODSRC%%/include/uapi/linux/kfd_ioctl.h
 %%SOURCE%%%%KMODSRC%%/include/uapi/linux/vbox_err.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/Makefile
+%%SOURCE%%%%KMODSRC%%/linuxkpi/bsd/include/asm/set_memory.h
+%%SOURCE%%%%KMODSRC%%/linuxkpi/bsd/include/linux/atomic.h
+%%SOURCE%%%%KMODSRC%%/linuxkpi/bsd/include/linux/capability.h
+%%SOURCE%%%%KMODSRC%%/linuxkpi/bsd/include/linux/device.h
+%%SOURCE%%%%KMODSRC%%/linuxkpi/bsd/include/linux/errno.h
+%%SOURCE%%%%KMODSRC%%/linuxkpi/bsd/include/linux/hash.h
+%%SOURCE%%%%KMODSRC%%/linuxkpi/bsd/include/linux/hdmi.h
+%%SOURCE%%%%KMODSRC%%/linuxkpi/bsd/include/linux/kernel.h
+%%SOURCE%%%%KMODSRC%%/linuxkpi/bsd/include/linux/kthread.h
+%%SOURCE%%%%KMODSRC%%/linuxkpi/bsd/include/linux/mm.h
+%%SOURCE%%%%KMODSRC%%/linuxkpi/bsd/include/linux/mmu_context.h
+%%SOURCE%%%%KMODSRC%%/linuxkpi/bsd/include/linux/mmu_notifier.h
+%%SOURCE%%%%KMODSRC%%/linuxkpi/bsd/include/linux/module.h
+%%SOURCE%%%%KMODSRC%%/linuxkpi/bsd/include/linux/moduleparam.h
+%%SOURCE%%%%KMODSRC%%/linuxkpi/bsd/include/linux/pagemap.h
+%%SOURCE%%%%KMODSRC%%/linuxkpi/bsd/include/linux/power_supply.h
+%%SOURCE%%%%KMODSRC%%/linuxkpi/bsd/include/linux/property.h
+%%SOURCE%%%%KMODSRC%%/linuxkpi/bsd/include/linux/refcount.h
+%%SOURCE%%%%KMODSRC%%/linuxkpi/bsd/include/linux/sched/mm.h
+%%SOURCE%%%%KMODSRC%%/linuxkpi/bsd/include/linux/sort.h
+%%SOURCE%%%%KMODSRC%%/linuxkpi/bsd/include/linux/stackdepot.h
+%%SOURCE%%%%KMODSRC%%/linuxkpi/bsd/include/linux/stop_machine.h
+%%SOURCE%%%%KMODSRC%%/linuxkpi/bsd/include/linux/stringify.h
+%%SOURCE%%%%KMODSRC%%/linuxkpi/bsd/include/linux/swap.h
+%%SOURCE%%%%KMODSRC%%/linuxkpi/bsd/include/linux/vga_switcheroo.h
+%%SOURCE%%%%KMODSRC%%/linuxkpi/bsd/include/linux/vgaarb.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/dummy/include/acpi/button.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/dummy/include/asm/agp.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/dummy/include/asm/div64.h
@@ -2091,7 +2198,6 @@
 %%SOURCE%%%%KMODSRC%%/linuxkpi/dummy/include/linux/build_bug.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/dummy/include/linux/byteorder/generic.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/dummy/include/linux/component.h
-%%SOURCE%%%%KMODSRC%%/linuxkpi/dummy/include/linux/cpu.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/dummy/include/linux/cpufreq.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/dummy/include/linux/cpuidle.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/dummy/include/linux/ctype.h
@@ -2106,6 +2212,7 @@
 %%SOURCE%%%%KMODSRC%%/linuxkpi/dummy/include/linux/input.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/dummy/include/linux/intel-iommu.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/dummy/include/linux/io-64-nonatomic-lo-hi.h
+%%SOURCE%%%%KMODSRC%%/linuxkpi/dummy/include/linux/kconfig.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/dummy/include/linux/kfifo.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/dummy/include/linux/kgdb.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/dummy/include/linux/list_sort.h
@@ -2121,6 +2228,7 @@
 %%SOURCE%%%%KMODSRC%%/linuxkpi/dummy/include/linux/of.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/dummy/include/linux/of_device.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/dummy/include/linux/perf_event.h
+%%SOURCE%%%%KMODSRC%%/linuxkpi/dummy/include/linux/platform_device.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/dummy/include/linux/pm_qos.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/dummy/include/linux/pnp.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/dummy/include/linux/proc_fs.h
@@ -2133,7 +2241,6 @@
 %%SOURCE%%%%KMODSRC%%/linuxkpi/dummy/include/linux/stacktrace.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/dummy/include/linux/stat.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/dummy/include/linux/stddef.h
-%%SOURCE%%%%KMODSRC%%/linuxkpi/dummy/include/linux/stringify.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/dummy/include/linux/swiotlb.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/dummy/include/linux/sysrq.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/dummy/include/linux/tracepoint.h
@@ -2153,17 +2260,14 @@
 %%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/asm/pgtable.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/asm/processor.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/asm/required-features.h
-%%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/asm/set_memory.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/agp_backend.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/anon_inodefs.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/anon_inodes.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/ascii85.h
-%%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/atomic.h
-%%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/capability.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/circ_buf.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/compiler.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/console.h
-%%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/device.h
+%%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/cpu.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/dma-buf.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/dma-fence-array.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/dma-fence-chain.h
@@ -2171,13 +2275,9 @@
 %%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/dma-mapping.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/dma-resv.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/fb.h
-%%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/firmware.h
-%%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/fwnode.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/genalloc.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/gpio/consumer.h
-%%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/hash.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/hashtable.h
-%%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/hdmi.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/highmem.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/i2c-algo-bit.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/i2c.h
@@ -2190,48 +2290,24 @@
 %%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/irqdomain.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/irqflags.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/irqhandler.h
-%%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/kconfig.h
-%%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/kernel.h
-%%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/kobject.h
-%%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/mm.h
-%%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/mmu_context.h
-%%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/mmu_notifier.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/mod_devicetable.h
-%%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/module.h
-%%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/moduleparam.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/notifier.h
-%%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/numa.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/oom.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/page.h
-%%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/pagemap.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/pagevec.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/pci.h
-%%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/platform_device.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/pm.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/pm_runtime.h
-%%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/power_supply.h
-%%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/prefetch.h
-%%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/property.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/pwm.h
-%%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/random.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/ratelimit.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/rbtree.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/rbtree_augmented.h
-%%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/refcount.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/scatterlist.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/sched.h
-%%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/sched/mm.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/seqlock.h
-%%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/sort.h
-%%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/stackdepot.h
-%%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/stop_machine.h
-%%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/suspend.h
-%%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/swap.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/sync_file.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/typecheck.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/uuid.h
-%%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/vga_switcheroo.h
-%%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/vgaarb.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/linux/xarray.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/trace/define_trace.h
 %%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/include/trace/events/dma_fence.h
@@ -2247,8 +2323,6 @@
 %%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/src/linux_anon_inodefs.c
 %%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/src/linux_anon_inodes.c
 %%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/src/linux_compat.c
-%%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/src/linux_device.c
-%%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/src/linux_firmware.c
 %%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/src/linux_genalloc.c
 %%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/src/linux_i2c.c
 %%SOURCE%%%%KMODSRC%%/linuxkpi/gplv2/src/linux_interval_tree.c

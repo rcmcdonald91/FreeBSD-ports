@@ -1,4 +1,4 @@
---- net/base/network_change_notifier.cc.orig	2021-04-14 18:41:06 UTC
+--- net/base/network_change_notifier.cc.orig	2021-12-14 11:45:08 UTC
 +++ net/base/network_change_notifier.cc
 @@ -38,7 +38,7 @@
  #include "net/base/network_change_notifier_linux.h"
@@ -9,7 +9,7 @@
  #include "net/base/network_change_notifier_posix.h"
  #elif defined(OS_FUCHSIA)
  #include "net/base/network_change_notifier_fuchsia.h"
-@@ -252,6 +252,9 @@ std::unique_ptr<NetworkChangeNotifier> NetworkChangeNo
+@@ -314,6 +314,9 @@ std::unique_ptr<NetworkChangeNotifier> NetworkChangeNo
  #elif defined(OS_FUCHSIA)
    return std::make_unique<NetworkChangeNotifierFuchsia>(
        /*require_wlan=*/false);
@@ -18,4 +18,22 @@
 +      /*dns_config_notifier*/nullptr);
  #else
    NOTIMPLEMENTED();
+   return NULL;
+@@ -497,7 +500,7 @@ const char* NetworkChangeNotifier::ConnectionTypeToStr
+   return kConnectionTypeNames[type];
+ }
+ 
+-#if defined(OS_LINUX) || defined(OS_CHROMEOS)
++#if defined(OS_LINUX) || defined(OS_CHROMEOS) || defined(OS_BSD)
+ // static
+ const internal::AddressTrackerLinux*
+ NetworkChangeNotifier::GetAddressTracker() {
+@@ -805,7 +808,7 @@ NetworkChangeNotifier::NetworkChangeNotifier(
+   }
+ }
+ 
+-#if defined(OS_LINUX) || defined(OS_CHROMEOS)
++#if defined(OS_LINUX) || defined(OS_CHROMEOS) || defined(OS_BSD)
+ const internal::AddressTrackerLinux*
+ NetworkChangeNotifier::GetAddressTrackerInternal() const {
    return NULL;

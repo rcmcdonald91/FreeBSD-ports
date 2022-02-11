@@ -1,7 +1,7 @@
 # Created by: Steve Wills <swills@FreeBSD.org>
 
 PORTNAME=	kaminari
-PORTVERSION=	1.2.1
+PORTVERSION=	1.2.2
 CATEGORIES=	www rubygems
 MASTER_SITES=	RG
 PKGNAMESUFFIX=	-rails60
@@ -17,9 +17,11 @@ RUN_DEPENDS=	rubygem-activesupport60>=4.1.0:devel/rubygem-activesupport60 \
 		rubygem-kaminari-activerecord-rails60>=${PORTVERSION}:www/rubygem-kaminari-activerecord-rails60 \
 		rubygem-kaminari-core>=${PORTVERSION}:www/rubygem-kaminari-core
 
-USES=		gem
+USES=		cpe gem
 USE_RUBY=	yes
 
 NO_ARCH=	yes
+
+CPE_VENDOR=	kaminari_project
 
 .include <bsd.port.mk>

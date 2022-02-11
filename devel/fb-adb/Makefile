@@ -30,14 +30,14 @@ LICENSE_FILE=	${WRKSRC}/LICENSE
 ONLY_FOR_ARCHS=	amd64 i386
 IGNORE_DragonFly=	requires linuxulator for Android NDK
 
-BUILD_DEPENDS=	xxd:editors/vim-console \
+BUILD_DEPENDS=	xxd:editors/vim \
 		${BASH_CMD}:shells/${BASH_CMD:T}
 RUN_DEPENDS=	adb:devel/android-tools-adb
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	facebook
 
-USES=		7z:partial autoreconf gmake linux ncurses perl5 python:3.4+,build
+USES=		autoreconf gmake linux ncurses perl5 python:3.4+,build
 USE_LINUX=	base:build
 USE_PERL5=	build # pod2man
 BASH_CMD?=	bash # can be zsh

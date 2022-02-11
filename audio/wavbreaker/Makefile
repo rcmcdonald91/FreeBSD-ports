@@ -14,7 +14,8 @@ USES=		desktop-file-utils gettext-tools gnome meson pkgconfig
 USE_GITHUB=	yes
 USE_GNOME=	cairo gtk30
 GH_ACCOUNT=	thp
-INSTALLS_ICONS=	yes
+
+CONFLICTS_INSTALL=	aften # bin/wavinfo
 
 OPTIONS_DEFINE=	MOODBAR MPG123
 OPTIONS_DEFAULT=MOODBAR MPG123

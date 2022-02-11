@@ -1,6 +1,6 @@
 PORTNAME=	ImageMagick
-DISTVERSION=	7.0.10-24
-PORTREVISION=	3
+DISTVERSION=	7.1.0-19
+PORTREVISION=	1
 CATEGORIES=	graphics perl5
 MASTER_SITES=	https://www.imagemagick.org/download/ \
 		https://www.imagemagick.org/download/releases/ \
@@ -26,18 +26,19 @@ MASTER_SITES=	https://www.imagemagick.org/download/ \
 		ftp://ftp.fifi.org/pub/ImageMagick/
 PKGNAMESUFFIX=	7
 
-MAINTAINER=	kwm@FreeBSD.org
+MAINTAINER=	desktop@FreeBSD.org
 COMMENT=	Image processing tools
 
 LICENSE=	APACHE20
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-LIB_DEPENDS=	libltdl.so:devel/libltdl
+LIB_DEPENDS=	libltdl.so:devel/libltdl	\
+		libzip.so:archivers/libzip
 
 TESTS_DEPENDS=	gsfonts>=0:print/gsfonts
 
 # bin/Magick++-config
-CONFLICTS_INSTALL=	ImageMagick ImageMagick-nox11 ImageMagick6 ImageMagick6-nox11
+CONFLICTS_INSTALL=	ImageMagick6 ImageMagick6-nox11
 
 # This port uses .la files, keep libtool:keepla! (magick/module.c)
 USES=		cpe gettext-runtime gmake gnome libtool:keepla \
@@ -61,8 +62,8 @@ SAMPLE_FILES=	colors.xml delegates.xml log.xml mime.xml policy.xml \
 PLIST_SUB=	PORTVERSION=${PORTVERSION:R}
 
 OPTIONS_SUB=	yes
-OPTIONS_DEFINE=	BZIP2 DOCS DJVU FFTW FONTCONFIG FPX FREETYPE \
-		GRAPHVIZ GSLIB JPEG2000 JBIG JPEG LCMS2 LZMA LQR MODULES \
+OPTIONS_DEFINE=	BZIP2 DOCS DJVU FFMPEG FFTW FONTCONFIG FPX FREETYPE \
+		GRAPHVIZ GSLIB JPEG2000 JBIG JPEG JXL LCMS2 LZMA LQR MODULES \
 		OPENEXR OPENMP PANGO PDF PERL PNG RAQM SVG TESTS TIFF WEBP WMF \
 		THREADS X11 16BIT_PIXEL HDRI HEIF RAW
 OPTIONS_DEFAULT=	16BIT_PIXEL BZIP2 FFTW FONTCONFIG FREETYPE \
@@ -71,6 +72,7 @@ OPTIONS_DEFAULT=	16BIT_PIXEL BZIP2 FFTW FONTCONFIG FREETYPE \
 
 DJVU_DESC=		DJVU format support (needs THREADS)
 GSLIB_DESC=		libgs (Postscript SHLIB) support
+FFMPEG_DESC=		VIDEO codec support as FFmpeg
 TESTS_DESC=		Run bundled self-tests after build
 #SIMD_CONFIGURE_WITH=	gcc-arch
 CONFIGURE_ARGS+=	--without-gcc-arch
@@ -125,6 +127,10 @@ JPEG2000_DESC=		OpenJPEG 2000 support via openjpeg
 JPEG2000_CONFIGURE_WITH=openjp2
 JPEG2000_LIB_DEPENDS=	libopenjp2.so:graphics/openjpeg
 
+JXL_DESC=		JPEG XL image format via libjxl
+JXL_CONFIGURE_WITH=	jxl
+JXL_LIB_DEPENDS=	libjxl.so:graphics/libjxl
+
 LCMS2_CONFIGURE_WITH=	lcms
 LCMS2_LIB_DEPENDS=	liblcms2.so:graphics/lcms2
 
@@ -171,9 +177,8 @@ WEBP_LIB_DEPENDS=	libwebp.so:graphics/webp
 X11_CONFIGURE_WITH=	x
 X11_USES=		xorg
 X11_USE=		xorg=ice,sm,x11,xext,xt
-X11_VARS=		CONFLICTS_INSTALL+="ImageMagick7-nox11-* \
-			CONFLICTS+=display-[0-9]*
-X11_VARS_OFF=		CONFLICTS_INSTALL+="ImageMagick7-*" \
+X11_VARS=		CONFLICTS_INSTALL+="ImageMagick7-nox11"
+X11_VARS_OFF=		CONFLICTS_INSTALL+="ImageMagick7" \
 			PKGNAMESUFFIX=7-nox11
 
 .include <bsd.port.options.mk>
@@ -228,13 +233,11 @@ _IMAGEMAGICK_THREADS=no
 . if ${_IMAGEMAGICK_THREADS} == "no"
 IGNORE=OpenMP requires threads${_IMAGEMAGICK_THREADS_IGNORE_MSG}
 . else
-CONFIGURE_ARGS+=	--enable-openmp
-USES+=		compiler:openmp
+CONFIGURE_ARGS+=       --enable-openmp
 . endif
 .else
-CONFIGURE_ARGS+=	--disable-openmp
+CONFIGURE_ARGS+=       --disable-openmp
 .endif
-
 .if defined(WITH_WINDOWS_FONT_DIR)
 CONFIGURE_ARGS+=	--with-windows-font-dir=${WITH_WINDOWS_FONT_DIR}
 .endif
@@ -299,6 +302,11 @@ USES+=		ghostscript
 
 .if ${PORT_OPTIONS:MPDF} || ${PORT_OPTIONS:MGSLIB}
 RUN_DEPENDS+=	gsfonts>=0:print/gsfonts
+.endif
+
+.if ${PORT_OPTIONS:MFFMPEG}
+BUILD_DEPENDS+=		ffmpeg:multimedia/ffmpeg
+RUN_DEPENDS+=		ffmpeg:multimedia/ffmpeg
 .endif
 
 .if ${PORT_OPTIONS:MDOCS}

@@ -1,7 +1,7 @@
 # Created by: Alex Dupre <sysadmin@alexdupre.com>
 
 PORTNAME=	nocc
-PORTVERSION=	1.9.10
+PORTVERSION=	1.9.11
 CATEGORIES=	mail www
 MASTER_SITES=	SF/${PORTNAME}/NOCC/${PORTVERSION}
 
@@ -10,7 +10,7 @@ COMMENT=	Webmail system which access POP3 and IMAP mail servers
 
 LICENSE=	GPLv2
 
-USES=		php:web
+USES=		cpe php:web
 
 OPTIONS_DEFINE=	DOCS
 

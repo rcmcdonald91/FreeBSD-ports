@@ -156,14 +156,16 @@ cabal-extract: ${WRKDIR}
 
 # Fetches and unpacks dependencies sources for a cabal-extract'ed package.
 # Builds them as side-effect.
+.  if !target(cabal-extract-deps)
 cabal-extract-deps:
-.  if ${cabal_ARGS:Mhpack}
+.    if ${cabal_ARGS:Mhpack}
 	cd ${WRKSRC} && ${SETENV} HOME=${CABAL_HOME} hpack
-.  endif
+.    endif
 	cd ${WRKSRC} && \
 		${SETENV} ${LOCALE_ENV} HOME=${CABAL_HOME} cabal new-configure --disable-benchmarks --disable-tests --flags="${CABAL_FLAGS}" ${CONFIGURE_ARGS}
 	cd ${WRKSRC} && \
-		${SETENV} ${LOCALE_ENV} HOME=${CABAL_HOME} cabal new-build --disable-benchmarks --disable-tests --dependencies-only ${BUILD_ARGS}
+		${SETENV} ${LOCALE_ENV} HOME=${CABAL_HOME} cabal new-build --disable-benchmarks --disable-tests --dependencies-only ${BUILD_ARGS} ${BUILD_TARGET}
+.  endif
 
 # Generates USE_CABAL= ... line ready to be pasted into the port based on artifacts of cabal-extract-deps.
 make-use-cabal:
@@ -177,8 +179,8 @@ make-use-cabal:
 # Re-generates USE_CABAL items to have revision numbers.
 make-use-cabal-revs:
 .  for package in ${_use_cabal}
-	@(${SETENV} HTTP_ACCEPT="application/json" fetch -q -o - http://hackage.haskell.org/package/${package:C/_[0-9]+//}/revisions/ | sed -Ee 's/.*":([0-9]+)}\]/${package:C/_[0-9]+//}_\1 /' -e 's/_0//')
-	@echo '\'
+	@(${SETENV} HTTP_ACCEPT="application/json" fetch -q -o - http://hackage.haskell.org/package/${package:C/_[0-9]+//}/revisions/ | python3 -c "import sys, json; print(('${package:C/_[0-9]+//}_' + str(json.load(sys.stdin)[-1]['number'])).replace('_0',''), end='')")
+	@echo ' \'
 .  endfor
 
 .  if !defined(CABAL_BOOTSTRAP)

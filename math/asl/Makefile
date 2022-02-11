@@ -1,6 +1,6 @@
 PORTNAME=	asl
 DISTVERSIONPREFIX=	releases/
-DISTVERSION=	1.4.3
+DISTVERSION=	1.4.4
 CATEGORIES=	math
 MASTER_SITES=	https://coin-or-tools.github.io/ThirdParty-ASL/:solvers
 PKGNAMEPREFIX=	coin-or-
@@ -20,11 +20,13 @@ GH_PROJECT=	ThirdParty-ASL
 
 GNU_CONFIGURE=	yes
 
+INSTALL_TARGET=install-strip
+
 BINARY_ALIAS=	make=${GMAKE}
 
 .include <bsd.port.options.mk>
 
-.if ${ARCH:Mpowerpc*}
+.if ${ARCH:Mpowerpc*} || ${ARCH} == riscv64
 CFLAGS+=	-DASL_NO_FP_INIT
 .endif
 

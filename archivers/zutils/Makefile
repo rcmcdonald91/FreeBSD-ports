@@ -1,7 +1,7 @@
 # Created by: Albert Vernon <f3cun3c02@sneakemail.com>
 
 PORTNAME=	zutils
-PORTVERSION=	1.10
+PORTVERSION=	1.11
 CATEGORIES=	archivers
 MASTER_SITES=	SAVANNAH/zutils
 
@@ -10,9 +10,13 @@ COMMENT=	Utilities for searching in bzip2, gzip, lzip, and xz archives
 
 LICENSE=	GPLv2
 
-USES=		tar:lz
+USES=		cpe tar:lz
 GNU_CONFIGURE=	yes
+
+CONFLICTS_INSTALL=	gzip openzfs # bin/zcat bin/zcmp bin/zdiff bin/zgrep man/man1/ztest.1.gz
+
 INSTALL_TARGET=	install-strip
+CPE_VENDOR=	nongnu
 
 INFO=		zutils
 

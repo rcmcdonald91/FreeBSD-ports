@@ -1,10 +1,8 @@
 PORTNAME=	aom
 DISTVERSIONPREFIX=	v
-DISTVERSION=	3.1.0
+DISTVERSION=	3.2.0
+PORTREVISION=	1
 CATEGORIES=	multimedia
-
-PATCH_SITES=	https://github.com/${GH_ACCOUNT}/${GH_PROJECT}/commit/
-PATCHFILES+=	86874609267d.patch:-p1 # https://bugs.chromium.org/p/aomedia/issues/detail?id=3050
 
 MAINTAINER=	jbeich@FreeBSD.org
 COMMENT=	AV1 reference encoder/decoder
@@ -24,11 +22,17 @@ GH_ACCOUNT=	jbeich # mirror
 CMAKE_ON=	BUILD_SHARED_LIBS
 CMAKE_OFF=	ENABLE_DOCS ENABLE_TESTS
 
-OPTIONS_DEFINE=	VMAF
+OPTIONS_DEFINE=	JXL VMAF
+OPTIONS_DEFAULT=VMAF
+
+JXL_DESC=		Encoding tuning for Butteraugli
+JXL_LIB_DEPENDS=	libjxl.so:graphics/libjxl
+JXL_USES=		pkgconfig
+JXL_CMAKE_ON=		-DCONFIG_TUNE_BUTTERAUGLI:STRING=1
 
 VMAF_DESC=		Encoding tuning for VMAF
 VMAF_LIB_DEPENDS=	libvmaf.so:multimedia/vmaf
-VMAF_USES=		localbase:ldflags pkgconfig
+VMAF_USES=		pkgconfig
 VMAF_CMAKE_ON=		-DCONFIG_TUNE_VMAF:STRING=1
 
 post-patch:

@@ -1,11 +1,13 @@
 PORTNAME=	wlroots
-DISTVERSION=	0.13.0
-PORTREVISION=	2
+DISTVERSION=	0.15.1
+DISTVERSIONSUFFIX=	-g${GL_COMMIT:C/(.{12}).*/\1/}
 CATEGORIES=	x11-toolkits
 
-PATCH_SITES=	https://github.com/${GH_ACCOUNT}/${GH_PROJECT}/commit/
-PATCHFILES+=	7c0e2a271a4c.patch:-p1 # https://github.com/swaywm/wlroots/pull/2064
-PATCHFILES+=	e1b5323f56c3.patch:-p1 # https://github.com/swaywm/wlroots/pull/2064
+PATCH_SITES+=	https://github.com/swaywm/${GL_PROJECT}/commit/:github
+PATCHFILES+=	7c0e2a271a4c.patch:-p1:github # https://gitlab.freedesktop.org/wlroots/wlroots/-/merge_requests/2064
+PATCHFILES+=	55a8d225cf8c.patch:-p1:github # https://gitlab.freedesktop.org/wlroots/wlroots/-/merge_requests/2064
+PATCH_SITES+=	${GL_SITE}/${GL_ACCOUNT}/${GL_PROJECT}/-/commit/
+PATCHFILES+=	347b32642fb6.patch:-p1 # https://gitlab.freedesktop.org/wlroots/wlroots/-/merge_requests/3318
 
 MAINTAINER=	jbeich@FreeBSD.org
 COMMENT=	Modular Wayland compositor library
@@ -13,51 +15,62 @@ COMMENT=	Modular Wayland compositor library
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-BUILD_DEPENDS=	evdev-proto>0:devel/evdev-proto \
-		wayland>=1.18:graphics/wayland \
-		wayland-protocols>=1.17:graphics/wayland-protocols
+BUILD_DEPENDS=	wayland-protocols>=1.24:graphics/wayland-protocols
 LIB_DEPENDS=	libudev.so:devel/libudev-devd \
 		libdrm.so:graphics/libdrm \
 		libwayland-server.so:graphics/wayland \
-		libinput.so:x11/libinput \
+		libseat.so:sysutils/seatd \
 		libxkbcommon.so:x11/libxkbcommon
-RUN_DEPENDS=	libudev-devd>=0.4.1:devel/libudev-devd \
-		mesa-dri>0:graphics/mesa-dri
 
 USES=		compiler:c11 gl meson pkgconfig xorg
-USE_GITHUB=	yes
-USE_GL=		egl gbm glesv2
+USE_GITLAB=	yes
+USE_GL=		gbm
 USE_XORG=	pixman
 USE_LDCONFIG=	yes
-GH_ACCOUNT=	swaywm
-MESON_ARGS=	-Dexamples=false
+GL_SITE=	https://gitlab.freedesktop.org
+GL_COMMIT=	29938b74251e826f3778f6bf9c54974a30488cc1
+MESON_ARGS=	-Dexamples=false -Dbackends=${BACKENDS:ts,} -Drenderers=${RENDERERS:ts,}
 
-OPTIONS_DEFINE=	LIBSEAT NVIDIA UUID X11
-OPTIONS_DEFAULT=LIBSEAT UUID X11
+OPTIONS_DEFINE=	DRM NVIDIA OPENGL VULKAN X11
+OPTIONS_DEFAULT=DRM OPENGL VULKAN X11
 OPTIONS_SUB=	yes
 
-LIBSEAT_DESC=		DRM sessions with/without root via libseat
-LIBSEAT_LIB_DEPENDS=	libseat.so:sysutils/seatd
-LIBSEAT_MESON_ENABLED=	libseat
+DRM_DESC=		KMS console support
+DRM_LIB_DEPENDS=	libinput.so:x11/libinput
+DRM_VARS=		BACKENDS+="drm libinput"
 
 NVIDIA_DESC=		EGLStreams support for DRM backend (experimental)
-NVIDIA_PATCH_SITES=	https://github.com/danvd/${GH_PROJECT}-eglstreams/commit/:nvidia
-NVIDIA_PATCHFILES=	eba4b66f92ca.patch:-p1:nvidia # https://github.com/swaywm/wlroots/pull/2769
+NVIDIA_PATCH_SITES=	https://github.com/danvd/${GL_PROJECT}-eglstreams/commit/:nvidia
+NVIDIA_PATCHFILES=	c0fc017207f0.patch:-p1:nvidia # https://gitlab.freedesktop.org/wlroots/wlroots/-/merge_requests/2769
+NVIDIA_IMPLIES=		DRM OPENGL X11
 .if make(makesum)
 .MAKEFLAGS:		WITH+=NVIDIA
 .endif
 
-# uuid_create() is random on NetBSD and OpenBSD but not DragonFly and FreeBSD
-# See also https://github.com/netbsd/src/commit/8651e9a438af
-UUID_DESC=		Exported surfaces to use random UUIDs via libuuid
-UUID_LIB_DEPENDS=	libuuid.so:misc/e2fsprogs-libuuid
+OPENGL_RUN_DEPENDS=	mesa-dri>0:graphics/mesa-dri
+OPENGL_USE=		GL=egl,glesv2
+OPENGL_VARS=		RENDERERS+=gles2
+
+VULKAN_DESC=		Vulkan renderer
+VULKAN_BUILD_DEPENDS=	glslangValidator:graphics/glslang \
+			vulkan-headers>0:graphics/vulkan-headers
+VULKAN_LIB_DEPENDS=	libvulkan.so:graphics/vulkan-loader
+VULKAN_RUN_DEPENDS=	mesa-dri>0:graphics/mesa-dri
+VULKAN_VARS=		RENDERERS+=vulkan
 
 X11_LIB_DEPENDS=	libxcb-errors.so:x11/xcb-util-errors \
 			libxcb-render-util.so:x11/xcb-util-renderutil \
 			libxcb-icccm.so:x11/xcb-util-wm
-X11_BUILD_DEPENDS=	xwayland-devel>0:x11-servers/xwayland-devel
+X11_BUILD_DEPENDS=	evdev-proto>0:devel/evdev-proto \
+			xwayland-devel>0:x11-servers/xwayland-devel
 X11_RUN_DEPENDS=	xwayland-devel>0:x11-servers/xwayland-devel
 X11_USE=		XORG=xcb
-X11_MESON_ENABLED=	x11-backend xwayland
+X11_MESON_ENABLED=	xwayland
+X11_VARS=		BACKENDS+=x11
+
+post-patch:
+# Extract (snapshot) version from the port instead of meson.build
+	@${REINPLACE_CMD} "/STR/s/meson.project_version()/'${DISTVERSIONFULL}'/" \
+		${WRKSRC}/include/wlr/meson.build
 
 .include <bsd.port.mk>

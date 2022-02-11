@@ -1,13 +1,13 @@
 PORTNAME=	widgets
-DISTVERSION=	${QT5_VERSION}
-PORTREVISION=	1
+PORTVERSION=	${QT5_VERSION}${QT5_KDE_PATCH}
 CATEGORIES=	x11-toolkits
 PKGNAMEPREFIX=	qt5-
 
 MAINTAINER=	kde@FreeBSD.org
 COMMENT=	Qt C++ widgets module
 
-USES=		compiler:c++11-lang qmake:no_env qt-dist:5,base xorg
+USES=		compiler:c++11-lang perl5 qmake:no_env qt-dist:5,base xorg
+USE_PERL5=	extract
 USE_QT=		core gui qmake_build buildtools_build
 USE_XORG=	x11
 HAS_CONFIGURE=	yes
@@ -67,5 +67,6 @@ post-install:
 .endfor
 	${INSTALL_DATA} ${BUILD_WRKSRC}/dialogs/images/qtlogo-64.png \
 		${STAGEDIR}${PREFIX}/share/pixmaps/qt5logo.png
+	${RLN} ${STAGEDIR}${QT_BINDIR}/uic ${STAGEDIR}${PREFIX}/bin/uic-qt5
 
 .include <bsd.port.mk>

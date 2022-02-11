@@ -1,16 +1,20 @@
+# We follow the stable channel on https://omahaproxy.appspot.com/
+# https://chromium.googlesource.com/v8/v8/+/refs/heads/9.7-lkgr
+
 PORTNAME=	v8
-PORTVERSION=	9.0.257.23
+PORTVERSION=	9.7.106.19
 CATEGORIES=	lang
 MASTER_SITES=	LOCAL/sunpoet/v8/${PORTVERSION:R:R}
-DISTFILES=	build-${BUILD_REV}.tar.gz \
+DISTFILES=	v8-${PORTVERSION}.tar.gz \
+		build-${BUILD_REV}.tar.gz \
 		buildtools-${BUILDTOOLS_REV}.tar.gz \
 		clang-${CLANG_REV}.tar.gz \
 		common-${COMMON_REV}.tar.gz \
 		googletest-${GOOGLETEST_REV}.tar.gz \
 		icu-${ICU_REV}.tar.gz \
 		zlib-${ZLIB_REV}.tar.gz
-EXTRACT_ONLY=	${DISTNAME}.tar.gz
 DIST_SUBDIR=	v8/${PORTVERSION:R:R}
+EXTRACT_ONLY=	${DISTNAME}.tar.gz
 
 MAINTAINER=	sunpoet@FreeBSD.org
 COMMENT=	Open source JavaScript engine by Google
@@ -18,36 +22,36 @@ COMMENT=	Open source JavaScript engine by Google
 LICENSE=	BSD3CLAUSE
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
+ONLY_FOR_ARCHS=	aarch64 amd64 i386
+
 BUILD_DEPENDS=	binutils>=0:devel/binutils \
 		gn:devel/gn \
 		${PYTHON_PKGNAMEPREFIX}Jinja2>=0:devel/py-Jinja2@${PY_FLAVOR}
 LIB_DEPENDS=	libicudata.so:devel/icu
 
-USES=		cpe gnome ninja pkgconfig python:3.5+,build tar:xz
+USES=		compiler:c++17-lang cpe gnome ninja pkgconfig python:3.5+,build tar:xz
 USE_GNOME=	glib20
 
-BINARY_ALIAS=	python=${PYTHON_CMD}
+BINARY_ALIAS=	python3=${PYTHON_CMD}
 MAKE_ARGS=	-C out/Release
+NO_WRKSUBDIR=	yes
 USE_LDCONFIG=	yes
 
 SUB_FILES=	v8.pc v8_libbase.pc v8_libplatform.pc
 
-USE_GITHUB=	yes
-
 CPE_VENDOR=	google
 
-# We follow the stable channel on https://omahaproxy.appspot.com/
-PORTSCOUT=	ignore:1
+CONFLICTS_INSTALL=	v8-beta
 
-BUILD_REV=	446bf3e5a00bfe4fd99d91cb76ec3b3a7b34d226
-BUILDTOOLS_REV=	4c78ef9c38b683c5c5cbac70445378c2362cebfc
-CLANG_REV=	cfd0f628093b7382ac054fb33e23fa9d9a278bc3
-COMMON_REV=	7af6071eddf11ad91fbd5df54138f9d3c6d980d5
-GOOGLETEST_REV=	1e315c5b1a62707fac9b8f1d4e03180ee7507f98
-ICU_REV=	e05b663d1c50b4e9ecc3ff9325f5158f1d071471
-ZLIB_REV=	348acca950b1d6de784a954f4fda0952046c652c
+BUILD_REV=	cf325916d58a194a935c26a56fcf6b525d1e2bf4
+BUILDTOOLS_REV=	80e4f838faaf50e18629ae630df1d421f255a62a
+CLANG_REV=	21baac0e13389b03d6f805701c75544ed0b1ebb0
+COMMON_REV=	7f36dbc19d31e2aad895c60261ca8f726442bfbb
+GOOGLETEST_REV=	16f637fbf4ffc3f7a01fa4eceb7906634565242f
+ICU_REV=	eedbaf76e49d28465d9119b10c30b82906e606ff
+ZLIB_REV=	6da1d53b97c89b07e47714d88cab61f1ce003c68
 
-# Run "gn args out/Release --list" for all variables.
+# Run "gn args --list out/Release" for all variables.
 # Some parts don't have use_system_* flag, and can be turned on/off by using
 # replace_gn_files.py script, some parts just turned on/off for target host
 # OS "target_os == is_bsd", like libusb, libpci.
@@ -74,7 +78,7 @@ post-extract:
 post-patch:
 	@${REINPLACE_CMD} -i '' 's|%%LOCALBASE%%|${LOCALBASE}|' ${WRKSRC}/build/toolchain/gcc_toolchain.gni ${WRKSRC}/buildtools/third_party/libc++/BUILD.gn
 	# https://github.com/klzgrad/naiveproxy/blob/master/src/build/config/gclient_args.gni
-	${ECHO_CMD} 'checkout_google_benchmark = false' > ${WRKSRC}/build/config/gclient_args.gni
+	@${ECHO_CMD} 'checkout_google_benchmark = false' > ${WRKSRC}/build/config/gclient_args.gni
 
 # Use ICU from ports and create needed directory
 pre-configure:

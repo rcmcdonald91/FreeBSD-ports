@@ -58,6 +58,7 @@
     SUBDIR += fira
     SUBDIR += firacode
     SUBDIR += firago
+    SUBDIR += fnt
     SUBDIR += fntsample
     SUBDIR += font-adobe-100dpi
     SUBDIR += font-adobe-75dpi
@@ -114,8 +115,14 @@
     SUBDIR += fslsfonts
     SUBDIR += gbdfed
     SUBDIR += geminifonts
+    SUBDIR += genryu
+    SUBDIR += genseki
+    SUBDIR += gensen
     SUBDIR += gentium-basic
     SUBDIR += gentium-plus
+    SUBDIR += genwan
+    SUBDIR += genyo
+    SUBDIR += genyog
     SUBDIR += gnu-unifont
     SUBDIR += gnu-unifont-ttf
     SUBDIR += gofont-ttf
@@ -124,6 +131,7 @@
     SUBDIR += hack-font
     SUBDIR += hanazono-fonts-ttf
     SUBDIR += hermit
+    SUBDIR += iansui
     SUBDIR += inconsolata-lgc-ttf
     SUBDIR += inconsolata-ttf
     SUBDIR += intlfonts
@@ -214,6 +222,7 @@
     SUBDIR += py-fontmake
     SUBDIR += py-glyphsLib
     SUBDIR += py-opentype-sanitizer
+    SUBDIR += py-opentypespec
     SUBDIR += py-ufo2ft
     SUBDIR += py-ufoLib
     SUBDIR += py-ufolint
@@ -222,8 +231,8 @@
     SUBDIR += sgifonts
     SUBDIR += sharefonts
     SUBDIR += showfont
+    SUBDIR += source-sans-ttf
     SUBDIR += sourcecodepro-ttf
-    SUBDIR += sourcesanspro-ttf
     SUBDIR += sourceserifpro-ttf
     SUBDIR += spleen
     SUBDIR += steps-mono
@@ -241,7 +250,7 @@
     SUBDIR += tv-fonts
     SUBDIR += twemoji-color-font-ttf
     SUBDIR += ubuntu-font
-    SUBDIR += urw-core35-fonts
+    SUBDIR += urw-base35-fonts
     SUBDIR += urwfonts
     SUBDIR += urwfonts-ttf
     SUBDIR += uw-ttyp0

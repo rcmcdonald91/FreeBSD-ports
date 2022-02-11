@@ -1,10 +1,13 @@
 # Created by: Koop Mast <kwm@FreeBSD.org>
 
 PORTNAME=	gnome-calendar
-PORTVERSION=	3.38.2
+PORTVERSION=	41.2
 CATEGORIES=	deskutils gnome
-MASTER_SITES=	GNOME
+MASTER_SITES=	GNOME/sources/${PORTNAME}/${PORTVERSION:C/^([0-9]+)\..*/\1/}
 DIST_SUBDIR=	gnome
+
+PATCH_SITES=	https://gitlab.gnome.org/GNOME/${PORTNAME}/-/commit/
+PATCHFILES+=	e35dbc1acd03.patch:-p1 # https://gitlab.gnome.org/GNOME/gnome-calendar/-/merge_requests/198
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Simple and beautiful calendar application for GNOME
@@ -20,7 +23,7 @@ LIB_DEPENDS=	libical.so:devel/libical \
 		libgeoclue-2.so:net/geoclue \
 		libgeocode-glib.so:net/geocode-glib \
 		libgoa-1.0.so:net/gnome-online-accounts \
-		libhandy-0.0.so:x11-toolkits/libhandy0
+		libhandy-1.so:x11-toolkits/libhandy
 RUN_DEPENDS=	gsettings-desktop-schemas>=0:devel/gsettings-desktop-schemas
 
 PORTSCOUT=	limitw:1,even
@@ -28,7 +31,6 @@ PORTSCOUT=	limitw:1,even
 USES=		compiler:c11 desktop-file-utils gettext gnome \
 		localbase:ldflags meson pkgconfig python:3.4+,build tar:xz
 USE_LDCONFIG=	yes
-INSTALLS_ICONS=	yes
 USE_GNOME=	cairo evolutiondataserver3 gtksourceview3
 BINARY_ALIAS=	python3=${PYTHON_VERSION}
 

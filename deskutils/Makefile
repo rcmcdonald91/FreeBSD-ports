@@ -18,6 +18,7 @@
     SUBDIR += bijiben
     SUBDIR += birdtray
     SUBDIR += bitcollider
+    SUBDIR += bookworm
     SUBDIR += cairo-dock
     SUBDIR += cairo-dock-plugins
     SUBDIR += caja-extensions
@@ -37,6 +38,7 @@
     SUBDIR += conkyforecast
     SUBDIR += coolreader
     SUBDIR += copyq
+    SUBDIR += coregarage
     SUBDIR += countdown
     SUBDIR += dailystrips
     SUBDIR += deforaos-todo
@@ -126,6 +128,7 @@
     SUBDIR += just
     SUBDIR += kaddressbook
     SUBDIR += kalarm
+    SUBDIR += kalendar
     SUBDIR += kcharselect
     SUBDIR += kchmviewer
     SUBDIR += kdeconnect-kde
@@ -137,6 +140,7 @@
     SUBDIR += kmail
     SUBDIR += kmail-account-wizard
     SUBDIR += knotes
+    SUBDIR += kodaskanna
     SUBDIR += kongress
     SUBDIR += kontact
     SUBDIR += korganizer
@@ -144,7 +148,9 @@
     SUBDIR += ktimetracker
     SUBDIR += kuserfeedback
     SUBDIR += latte-dock
+    SUBDIR += libcprime
     SUBDIR += libkdepim
+    SUBDIR += libportal
     SUBDIR += ljclive
     SUBDIR += lookbook
     SUBDIR += lumina-archiver
@@ -157,6 +163,8 @@
     SUBDIR += lumina-screenshot
     SUBDIR += lumina-textedit
     SUBDIR += lxqt-notificationd
+    SUBDIR += maliit-framework
+    SUBDIR += maliit-keyboard
     SUBDIR += mate-indicator-applet
     SUBDIR += mate-notification-daemon
     SUBDIR += mate-utils
@@ -164,6 +172,7 @@
     SUBDIR += mencal
     SUBDIR += menumaker
     SUBDIR += meteo
+    SUBDIR += mindforger
     SUBDIR += moregroupware
     SUBDIR += mozo
     SUBDIR += myitcrm
@@ -171,6 +180,7 @@
     SUBDIR += nautilus-sendto
     SUBDIR += nextcloudclient
     SUBDIR += note
+    SUBDIR += notekit
     SUBDIR += noti
     SUBDIR += notification-daemon
     SUBDIR += notify-osd
@@ -191,8 +201,10 @@
     SUBDIR += plans
     SUBDIR += plasma5-milou
     SUBDIR += plasma5-sddm-kcm
+    SUBDIR += plasma5-xdg-desktop-portal-kde
     SUBDIR += plopfolio
     SUBDIR += preferences
+    SUBDIR += presage
     SUBDIR += projectlibre
     SUBDIR += puush
     SUBDIR += py-autokey
@@ -210,6 +222,7 @@
     SUBDIR += py-vobject
     SUBDIR += qlipper
     SUBDIR += qownnotes
+    SUBDIR += qtfeedback
     SUBDIR += recoll
     SUBDIR += remind
     SUBDIR += rolo
@@ -220,6 +233,7 @@
     SUBDIR += showdown
     SUBDIR += simpleagenda
     SUBDIR += sliderule
+    SUBDIR += solanum
     SUBDIR += sowon
     SUBDIR += spice-gtk
     SUBDIR += synapse
@@ -234,6 +248,7 @@
     SUBDIR += thinkingrock
     SUBDIR += timewarrior
     SUBDIR += todo
+    SUBDIR += todour
     SUBDIR += toolboxkit
     SUBDIR += tpb
     SUBDIR += treeline
@@ -246,6 +261,7 @@
     SUBDIR += x026
     SUBDIR += xcalendar
     SUBDIR += xchm
+    SUBDIR += xdg-desktop-portal
     SUBDIR += xfce4-generic-slider
     SUBDIR += xfce4-notes-plugin
     SUBDIR += xfce4-notifyd

@@ -5,7 +5,7 @@ MASTER_SITES=	CPAN
 MASTER_SITE_SUBDIR=	CPAN:BIGPRESH
 PKGNAMEPREFIX=	p5-
 
-MAINTAINER=	kuriyama@FreeBSD.org
+MAINTAINER=	perl@FreeBSD.org
 COMMENT=	Perl extension for minimal-effort oriented web application framework
 
 LICENSE=	ART10 GPLv1+
@@ -30,6 +30,8 @@ TEST_DEPENDS=	\
 	p5-Test-NoWarnings>=0:devel/p5-Test-NoWarnings \
 	p5-Test-TCP>0:devel/p5-Test-TCP \
 	p5-Test-Output>=0:devel/p5-Test-Output
+
+CONFLICTS_INSTALL=	dancer # bin/dancer
 
 OPTIONS_DEFINE=	YAML
 OPTIONS_DEFAULT=	YAML

@@ -1,7 +1,7 @@
 # Created by: Po-Chuan Hsieh <sunpoet@FreeBSD.org>
 
 PORTNAME=	dbf
-PORTVERSION=	4.1.3
+PORTVERSION=	4.2.0
 CATEGORIES=	databases rubygems
 MASTER_SITES=	RG
 
@@ -13,6 +13,8 @@ LICENSE_FILE=	${WRKSRC}/LICENSE
 
 USES=		gem
 USE_RUBY=	yes
+
+CONFLICTS_INSTALL=	dbf
 
 NO_ARCH=	yes
 

@@ -1,7 +1,7 @@
 # Created by: Alexey Dokuchaev <danfe@FreeBSD.org>
 
 PORTNAME=	hxtools
-PORTVERSION=	20201116
+PORTVERSION=	20211204
 CATEGORIES=	misc
 MASTER_SITES=	http://inai.de/files/hxtools/
 
@@ -34,6 +34,8 @@ SHEBANG_FILES=	data/hxtools_bashrc.bash data/hxtools_profile.bash \
 USE_PERL5=	run
 USE_XORG=	xcb
 
+CONFLICTS_INSTALL=	grx psptoolchain-pspsdk-stage2 # bin/bin2c
+
 OPTIONS_DEFINE=	DOCS EXAMPLES
 
 post-patch:
@@ -42,7 +44,7 @@ post-patch:
 
 post-install-DOCS-on:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
-	${INSTALL_DATA} ${WRKSRC}/doc/NEWS.txt ${STAGEDIR}${DOCSDIR}
+	${INSTALL_DATA} ${WRKSRC}/doc/changelog.rst ${STAGEDIR}${DOCSDIR}
 
 post-install-EXAMPLES-on:
 	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}

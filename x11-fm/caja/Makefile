@@ -1,7 +1,8 @@
 # Created by: ade, archie
 
 PORTNAME=	caja
-PORTVERSION=	1.24.0
+PORTVERSION=	1.26.0
+PORTREVISION=	2
 CATEGORIES=	x11-fm mate
 MASTER_SITES=	MATE
 DIST_SUBDIR=	mate
@@ -29,7 +30,6 @@ USE_GNOME=	cairo gtk30 gnomeprefix intltool introspection:build libxml2
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--disable-packagekit
-INSTALLS_ICONS=	yes
 INSTALL_TARGET=	install-strip
 
 GLIB_SCHEMAS=	org.mate.caja.gschema.xml \

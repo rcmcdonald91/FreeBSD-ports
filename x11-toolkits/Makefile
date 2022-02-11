@@ -23,6 +23,7 @@
     SUBDIR += gnustep-gui
     SUBDIR += granite
     SUBDIR += gstreamer1-plugins-gtk
+    SUBDIR += gstreamer1-plugins-gtk4
     SUBDIR += gstreamer1-plugins-pango
     SUBDIR += gtk-layer-shell
     SUBDIR += gtk-sharp-beans
@@ -30,6 +31,7 @@
     SUBDIR += gtk-sharp30
     SUBDIR += gtk20
     SUBDIR += gtk30
+    SUBDIR += gtk40
     SUBDIR += gtkada
     SUBDIR += gtkada3
     SUBDIR += gtkd
@@ -66,12 +68,13 @@
     SUBDIR += libXaw
     SUBDIR += libXmu
     SUBDIR += libXt
+    SUBDIR += libadwaita
     SUBDIR += libdazzle
+    SUBDIR += libdecor
     SUBDIR += libgdiplus
     SUBDIR += libhandy
     SUBDIR += libhandy0
     SUBDIR += libsexy
-    SUBDIR += libsexymm
     SUBDIR += libunique3
     SUBDIR += libwnck
     SUBDIR += libwnck3
@@ -152,20 +155,15 @@
     SUBDIR += py-fltk
     SUBDIR += py-guietta
     SUBDIR += py-qt5-chart
-    SUBDIR += py-qt5-gui
-    SUBDIR += py-qt5-quick
-    SUBDIR += py-qt5-quick3d
-    SUBDIR += py-qt5-quickwidgets
-    SUBDIR += py-qt5-widgets
     SUBDIR += py-tkinter
     SUBDIR += py-tktreectrl
     SUBDIR += py-wxPython40
     SUBDIR += py-xlib
-    SUBDIR += pypy-tkinter
     SUBDIR += qml-box2d
     SUBDIR += qt5-charts
     SUBDIR += qt5-datavis3d
     SUBDIR += qt5-declarative
+    SUBDIR += qt5-declarative-test
     SUBDIR += qt5-gamepad
     SUBDIR += qt5-gui
     SUBDIR += qt5-quick3d
@@ -182,15 +180,16 @@
     SUBDIR += redkite
     SUBDIR += rep-gtk2
     SUBDIR += rubygem-gdk3
+    SUBDIR += rubygem-gdk4
     SUBDIR += rubygem-gtk2
     SUBDIR += rubygem-gtk3
-    SUBDIR += rubygem-gtksourceview2
+    SUBDIR += rubygem-gtk4
     SUBDIR += rubygem-gtksourceview3
+    SUBDIR += rubygem-gtksourceview4
     SUBDIR += rubygem-pango
     SUBDIR += rubygem-poppler
     SUBDIR += rubygem-tk
     SUBDIR += rubygem-uh
-    SUBDIR += rubygem-vte
     SUBDIR += rubygem-vte3
     SUBDIR += scintilla
     SUBDIR += sdl_pango
@@ -199,6 +198,7 @@
     SUBDIR += soqt
     SUBDIR += swt
     SUBDIR += tepl
+    SUBDIR += tepl6
     SUBDIR += termit
     SUBDIR += tix
     SUBDIR += tk-wrapper
@@ -211,7 +211,6 @@
     SUBDIR += tktray
     SUBDIR += tktreectrl
     SUBDIR += unique
-    SUBDIR += v
     SUBDIR += vdk
     SUBDIR += viewklass
     SUBDIR += vte
@@ -227,5 +226,6 @@
     SUBDIR += xbae
     SUBDIR += xforms
     SUBDIR += xmhtml
+    SUBDIR += ztoolkit
 
 .include <bsd.port.subdir.mk>

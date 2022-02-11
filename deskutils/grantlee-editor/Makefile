@@ -7,9 +7,6 @@ COMMENT=	Editor for Grantlee themes
 
 LICENSE=	LGPL21
 
-DEPRECATED=	Uses EOL Python 2.7 via www/qt5-webengine
-EXPIRATION_DATE=2021-06-23
-
 LIB_DEPENDS=	libassuan.so:security/libassuan \
 		libgpg-error.so:security/libgpg-error \
 		libgpgme.so:security/gpgme \
@@ -19,9 +16,10 @@ LIB_DEPENDS=	libassuan.so:security/libassuan \
 USES=		cmake compiler:c++11-lib gettext grantlee:5 \
 		kde:5 qt:5 tar:xz
 USE_KDE=	archive attica auth codecs completion config configwidgets \
-		coreaddons crash dbusaddons  ecm i18n itemmodels jobwidgets \
-		kio newstuff service syntaxhighlighting texteditor \
-		widgetsaddons xmlgui
+		coreaddons crash dbusaddons i18n itemmodels jobwidgets \
+		kio newstuff service solid syntaxhighlighting texteditor \
+		widgetsaddons windowsystem xmlgui \
+		ecm_build
 # pim components
 USE_KDE+=	akonadi akonadicontacts akonadimime contacts grantleetheme \
 		libkleo messagelib mime pimcommon pimtextedit
@@ -31,7 +29,6 @@ USE_QT=		concurrent core dbus declarative gui location network \
 USE_LDCONFIG=	yes
 
 DESCR=		${.CURDIR:H:H}/deskutils/kdepim/pkg-descr
-
 
 OPTIONS_DEFINE=	DOCS
 

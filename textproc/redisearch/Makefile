@@ -2,10 +2,10 @@
 
 PORTNAME=	redisearch
 DISTVERSIONPREFIX=	v
-DISTVERSION=	2.0.9
+DISTVERSION=	2.2.6
 CATEGORIES=	textproc
 
-MAINTAINER=	osa@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Full-text search over Redis
 
 LICENSE=	UNKNOWN

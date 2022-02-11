@@ -1,7 +1,7 @@
 # Created by: Matthew Seaman
 
 PORTNAME=	phpldapadmin
-PORTVERSION=	1.2.6.2
+PORTVERSION=	1.2.6.3
 CATEGORIES=	net www
 PKGNAMESUFFIX=	${PHP_PKGNAMESUFFIX}
 
@@ -19,7 +19,7 @@ GH_PROJECT=	phpLDAPadmin
 
 NO_ARCH=	yes
 NO_BUILD=	yes
-CPE_VENDOR=	deon_george
+CPE_VENDOR=	phpldapadmin_project
 
 OPTIONS_DEFINE=	MCRYPT
 

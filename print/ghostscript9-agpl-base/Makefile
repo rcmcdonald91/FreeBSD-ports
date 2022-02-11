@@ -1,11 +1,11 @@
 PORTNAME=	ghostscript
 PORTVERSION=	9.52
-PORTREVISION=	17
+PORTREVISION=	20
 CATEGORIES=	print
 MASTER_SITES=	https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs${PORTVERSION:S/.//}/
 PKGNAMESUFFIX=	9-agpl-base
 
-MAINTAINER=	doceng@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	PostScript and PDF interpreter
 
 LICENSE=	AGPLv3
@@ -26,10 +26,10 @@ USE_CSTD=	gnu99
 USE_LDCONFIG=	yes
 
 CONFLICTS_INSTALL= \
-		ghostscript[789]-[0-9]* \
-		ghostscript[789]-nox11-[0-9]* \
-		ghostscript9-agpl-[0-9]* \
-		ghostscript9-agpl-nox11-[0-9]*
+		ghostscript[789] \
+		ghostscript[789]-nox11 \
+		ghostscript9-agpl \
+		ghostscript9-agpl-nox11
 CPE_VENDOR=	artifex
 DATADIR=	${PREFIX}/share/${PORTNAME}/${PORTVERSION}
 DOCSDIR=	${PREFIX}/share/doc/${PORTNAME}/${PORTVERSION}

@@ -17,11 +17,10 @@ LIB_DEPENDS=	libfontconfig.so:x11-fonts/fontconfig \
 		libpng.so:graphics/png \
 		libtiff.so:graphics/tiff
 
-USES=		autoreconf compiler:c++11-lang desktop-file-utils gettext gmake \
-		gnome jpeg pkgconfig
+USES=		autoreconf compiler:c++11-lang desktop-file-utils gettext \
+		gmake gnome jpeg pkgconfig
 USE_GITHUB=	yes
 GH_ACCOUNT=	sergiomb2
-GH_PROJECT=	ufraw
 GH_TAGNAME=	f34669b
 USE_GNOME+=	cairo gdkpixbuf2 glib20 gtk20
 
@@ -31,6 +30,8 @@ CONFIGURE_ARGS=	--enable-extras \
 
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-lpthread -L${LOCALBASE}/lib
+
+CONFLICTS_INSTALL=	dcraw
 
 OPTIONS_DEFINE=		CONTRAST DST EXIV2 FITS GIMP GNOME GTK2 LENSFUN
 OPTIONS_DEFAULT=	CONTRAST EXIV2 GTK2 LENSFUN

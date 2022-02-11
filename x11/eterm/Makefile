@@ -28,12 +28,15 @@ CONFIGURE_ENV=	GDB=/usr/bin/gdb
 
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
-USES=		iconv libtool shebangfix xorg
+USES=		cpe iconv libtool shebangfix xorg
 SHEBANG_FILES=	${WRKSRC}/utils/kEsetroot.in
 perl_OLD_CMD=	@PERL@
 USE_CSTD=	gnu89
 USE_LDCONFIG=	yes
 USE_XORG=	x11 xt
+CPE_VENDOR=	eterm_project
+
+CONFLICTS_INSTALL?=	ja-eterm zh-eterm
 
 OPTIONS_DEFINE=	DOCS
 OPTIONS_DEFINE_i386=	MMX

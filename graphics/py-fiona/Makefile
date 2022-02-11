@@ -1,6 +1,5 @@
 PORTNAME=	Fiona
-DISTVERSION=	1.8.18
-PORTREVISION=	1
+DISTVERSION=	1.8.20
 CATEGORIES=	graphics python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -21,6 +20,8 @@ LIB_DEPENDS+=	libgdal.so:graphics/gdal
 
 USES=		compiler:c++11-lang python:3.6+
 USE_PYTHON=	autoplist distutils cython
+
+CONFLICTS_INSTALL=	fio
 
 post-install:
 	${FIND} ${STAGEDIR}${PYTHON_SITELIBDIR}/${PORTNAME:tl} -name *.so -exec ${STRIP_CMD} {} +

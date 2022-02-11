@@ -1,8 +1,8 @@
---- net/socket/udp_socket_posix.cc.orig	2021-04-14 18:41:07 UTC
+--- net/socket/udp_socket_posix.cc.orig	2021-12-14 11:45:09 UTC
 +++ net/socket/udp_socket_posix.cc
-@@ -72,6 +72,32 @@ const int kActivityMonitorMinimumSamplesForThroughputE
- const base::TimeDelta kActivityMonitorMsThreshold =
-     base::TimeDelta::FromMilliseconds(100);
+@@ -75,6 +75,32 @@ const int kActivityMonitorBytesThreshold = 65535;
+ const int kActivityMonitorMinimumSamplesForThroughputEstimate = 2;
+ const base::TimeDelta kActivityMonitorMsThreshold = base::Milliseconds(100);
  
 +#if defined(OS_BSD)
 +int GetIPv4AddressFromIndex(int socket, uint32_t index, uint32_t* address) {
@@ -33,7 +33,7 @@
  #if defined(OS_MAC)
  
  // On OSX the file descriptor is guarded to detect the cause of
-@@ -631,13 +657,13 @@ int UDPSocketPosix::SetDoNotFragment() {
+@@ -625,13 +651,13 @@ int UDPSocketPosix::SetDoNotFragment() {
  }
  
  void UDPSocketPosix::SetMsgConfirm(bool confirm) {

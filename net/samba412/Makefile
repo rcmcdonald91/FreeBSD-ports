@@ -2,7 +2,7 @@
 
 PORTNAME=			${SAMBA4_BASENAME}412
 PORTVERSION=			${SAMBA4_VERSION}
-PORTREVISION=			0
+PORTREVISION=			3
 CATEGORIES?=			net
 MASTER_SITES=			SAMBA/samba/stable SAMBA/samba/rc
 DISTNAME=			${SAMBA4_DISTNAME}
@@ -14,7 +14,7 @@ LICENSE=			GPLv3+
 LICENSE_FILE=			${WRKSRC}/COPYING
 
 IGNORE_NONTHREAD_PYTHON=	needs port lang/python${PYTHON_SUFFIX} to be build with THREADS support
-CONFLICTS_INSTALL?=		samba4-4.0.* samba4[1-9]-4.* samba41[013-9]-4.1* p5-Parse-Pidl-4.*
+CONFLICTS_INSTALL?=		samba4* # bin/cifsdd bin/dbwrap_tool bin/dumpmscat bin/findsmb bin/gentest
 
 USES=				cpe
 
@@ -383,7 +383,7 @@ MANDOC_CONFIGURE_ENV_OFF=	XSLTPROC="true"
 .include <bsd.port.options.mk>
 ##############################################################################
 
-.if ${ARCH} == aarch64 || ${ARCH} == amd64 || ${ARCH} == i386 || ${ARCH} == powerpc64 || ${ARCH} == powerpc64le
+.if ${ARCH} == aarch64 || ${ARCH} == amd64 || ${ARCH} == armv7 || ${ARCH} == i386 || ${ARCH} == powerpc64 || ${ARCH} == powerpc64le
 # unwind
 LIB_DEPENDS+=			libunwind.so:devel/libunwind
 .endif

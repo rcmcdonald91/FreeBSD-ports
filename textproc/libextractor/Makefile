@@ -15,11 +15,14 @@ BUILD_DEPENDS=	tidy-html5>0:www/tidy-html5
 LIB_DEPENDS=	libltdl.so:devel/libltdl libogg.so:audio/libogg \
 		libtiff.so:graphics/tiff
 
-USES=		gnome iconv jpeg libarchive libtool \
+USES=		cpe gnome iconv jpeg libarchive libtool \
 		makeinfo pathfix pkgconfig python
+CPE_VENDOR=	gnu
 
 USE_GNOME=	gtk20 gdkpixbuf2
 USE_LDCONFIG=	yes
+
+CONFLICTS_INSTALL=	csound outguess # bin/extract
 
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--with-gtk-version=2 \

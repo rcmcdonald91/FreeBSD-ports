@@ -1,8 +1,7 @@
 # Created by: vanilla@
 
 PORTNAME=	grpc
-PORTVERSION=	1.34.0
-PORTREVISION=	1
+PORTVERSION=	1.34.1
 DISTVERSIONPREFIX=	v
 CATEGORIES=	devel
 PKGNAMESUFFIX=	134
@@ -20,7 +19,7 @@ LIB_DEPENDS=	libabsl_base.so:devel/abseil \
 		libprotobuf.so:devel/protobuf \
 		libre2.so:devel/re2
 
-USES=		cmake compiler:c++17-lang localbase:ldflags pkgconfig ssl
+USES=		cmake compiler:c++17-lang cpe localbase:ldflags pkgconfig ssl
 
 USE_GITHUB=	yes
 
@@ -36,8 +35,8 @@ CMAKE_ARGS=	-DCMAKE_CXX_STANDARD=17 \
 CMAKE_ON=	BUILD_SHARED_LIBS
 USE_LDCONFIG=	yes
 
-PLIST_SUB=	PORTVERSION=${PORTVERSION}
+CONFLICTS_INSTALL=	grpc grpc130 grpc142
 
-CONFLICTS_INSTALL=	grpc
+PLIST_SUB=	PORTVERSION=${PORTVERSION}
 
 .include <bsd.port.mk>

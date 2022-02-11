@@ -1,6 +1,6 @@
---- src/VBox/Additions/freebsd/vboxvfs/vboxvfs_vnops.c.orig	2021-01-07 15:34:22 UTC
+--- src/VBox/Additions/freebsd/vboxvfs/vboxvfs_vnops.c.orig	2022-01-13 18:49:34 UTC
 +++ src/VBox/Additions/freebsd/vboxvfs/vboxvfs_vnops.c
-@@ -14,228 +14,1350 @@
+@@ -14,228 +14,1362 @@
   * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
   * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
   */
@@ -352,9 +352,17 @@
 +	if (vp->v_type != VFIFO)
 +		VN_LOCK_ASHARE(vp);
 +
++#if __FreeBSD_version < 1400051
 +	error = insmntque1(vp, mp, vboxfs_insmntque_dtr, NULL);
-+	if (error)
++#else
++	error = insmntque(vp, mp);
++#endif
++	if (error) {
++#if __FreeBSD_version >= 1400051
++		vboxfs_insmntque_dtr(vp, NULL);
++#endif
 +		vp = NULL;
++	}
 +
 +unlock:
 +	VBOXFS_NODE_LOCK(node);
@@ -1119,7 +1127,7 @@
 +	struct vnode *vp = ap->a_vp;
 +	struct uio *uio = ap->a_uio;
 +	struct vboxfs_node *dir = VP_TO_VBOXFS_NODE(vp);
-+	struct vboxfs_node *node;
++	struct vboxfs_node *node = NULL;
 +	struct sffs_dirent *dirent = NULL;
 +	sffs_dirents_t *cur_buf;
 +	off_t offset = 0;
@@ -1397,7 +1405,11 @@
 +			    cnp->cn_flags & DOWHITEOUT &&
 +			    cnp->cn_flags & ISWHITEOUT))) {
 +				error = VOP_ACCESS(dvp, VWRITE, cnp->cn_cred,
++#if __FreeBSD_version < 1400037
 +				    cnp->cn_thread);
++#else
++				    curthread);
++#endif
 +				if (error != 0)
 +					goto out;
 +

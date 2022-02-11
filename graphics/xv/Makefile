@@ -21,8 +21,10 @@ LIB_DEPENDS=	libtiff.so:graphics/tiff \
 		libpng.so:graphics/png \
 		libjasper.so:graphics/jasper
 
-USES=		imake jpeg xorg
+USES=		cpe imake jpeg xorg
 USE_XORG=	xext x11 xt
+
+CPE_VENDOR=	xv_project
 
 OPTIONS_DEFINE=	M17N DOCS
 M17N_DESC=	build with Multilingualization support
@@ -38,6 +40,9 @@ CFLAGS:= ${CFLAGS:S/-O2//g}
 .if ${PORT_OPTIONS:MM17N}
 MAKE_ENV=	LOCALE_EXTENSION=-DTV_MULTILINGUAL
 DESCR=	${FILESDIR}/pkg-descr
+CONFLICTS_INSTALL=	xv
+.else
+CONFLICTS_INSTALL=	xv-m17n
 .endif
 
 pre-patch:

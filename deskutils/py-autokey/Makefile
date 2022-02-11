@@ -1,6 +1,7 @@
 PORTNAME=	autokey
 DISTVERSIONPREFIX=	v
 DISTVERSION=	0.95.10
+PORTREVISION=	2
 CATEGORIES=	deskutils python
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 
@@ -18,11 +19,10 @@ RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}dbus>0:devel/py-dbus@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}pyinotify>0:devel/py-pyinotify@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}xlib>0:x11-toolkits/py-xlib@${PY_FLAVOR}
 
-USES=		python:3.6+ shebangfix
+USES=		cpe python:3.6+ shebangfix
+CPE_VENDOR=	${PORTNAME}_project
 USE_PYTHON=	distutils concurrent
 USE_GITHUB=	yes
-
-INSTALLS_ICONS=	yes
 
 NO_ARCH=	yes
 
@@ -36,7 +36,7 @@ GTK3_USES=	gnome
 GTK3_USE=	GNOME=gtk30,gtksourceview3,pygobject3
 
 QT5_USES=	pyqt:5
-QT5_USE=	PYQT=dbus,qscintilla2,sip,svg,xml
+QT5_USE=	PYQT=pyqt5,sip
 
 post-patch:
 	@${REINPLACE_CMD} 's|share/man|man|g' ${WRKSRC}/setup.py

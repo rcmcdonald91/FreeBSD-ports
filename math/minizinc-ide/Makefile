@@ -1,6 +1,6 @@
 PORTNAME=	minizinc-ide
 DISTVERSION=	2.5.5
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	math lang
 
 MAINTAINER=	yuri@FreeBSD.org
@@ -8,9 +8,6 @@ COMMENT=	IDE for MiniZinc, a constraint modeling language
 
 LICENSE=	MPL20
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
-
-DEPRECATED=	Uses EOL Python 2.7 via www/qt5-webengine
-EXPIRATION_DATE=2021-06-23
 
 RUN_DEPENDS=	minizinc:math/minizinc
 

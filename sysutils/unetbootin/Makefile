@@ -1,7 +1,8 @@
 # Created by: Alexey Dokuchaev <danfe@FreeBSD.org>
 
 PORTNAME=	unetbootin
-PORTVERSION=	681
+PORTVERSION=	702
+PORTREVISION=	2
 CATEGORIES=	sysutils
 MASTER_SITES=	https://github.com/${PORTNAME}/${PORTNAME}/releases/download/${PORTVERSION}/
 DISTNAME=	${PORTNAME}-source-${PORTVERSION}
@@ -11,7 +12,7 @@ COMMENT=	Bootable Live USB creator for various Linux distributions
 
 LICENSE=	GPLv2+
 
-RUN_DEPENDS=	7z:archivers/p7zip \
+RUN_DEPENDS=	7zz:archivers/7-zip \
 		syslinux:sysutils/syslinux \
 		mke2fs:sysutils/e2fsprogs
 
@@ -25,6 +26,8 @@ NO_WRKSUBDIR=	yes
 post-patch:
 	@${REINPLACE_CMD} -e 's,/usr/,${PREFIX}/,g' \
 		${WRKSRC}/main.cpp
+	@${REINPLACE_CMD} -e 's,this->setWindowTitle(UNETBOOTINB,& \
+		" ${PORTVERSION}",' ${WRKSRC}/unetbootin.cpp
 
 do-configure:
 	cd ${CONFIGURE_WRKSRC} && ${LUPDATE} unetbootin.pro \

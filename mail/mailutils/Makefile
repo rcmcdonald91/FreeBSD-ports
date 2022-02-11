@@ -1,8 +1,7 @@
 # Created by: Attila Nagy <bra@fsn.hu>
 
 PORTNAME=	mailutils
-PORTVERSION=	3.12
-PORTREVISION=	1
+PORTVERSION=	3.13
 CATEGORIES=	mail
 MASTER_SITES=	GNU GNU_ALPHA
 
@@ -16,12 +15,15 @@ LIB_DEPENDS=	libgc-threaded.so:devel/boehm-gc-threaded \
 		libunistring.so:devel/libunistring
 TEST_DEPENDS=	automake:devel/automake
 
-USES=		gmake iconv libtool localbase readline tar:xz
+USES=		cpe gmake iconv libtool localbase readline tar:xz
+CPE_VENDOR=	gnu
 GNU_CONFIGURE=	yes
 USE_LDCONFIG=	yes
 USE_RC_SUBR=	comsatd imap4d pop3d
 INSTALL_TARGET=	install-strip
 TEST_TARGET=	check
+
+CONFLICTS_INSTALL=	avenger elm # bin/dotlock bin/frm
 
 PLIST_SUB+=	LIBVERSION=8.0.0 LIBSUFX=8 VERSION=${PORTVERSION}
 
@@ -63,9 +65,9 @@ NLS_CONFIGURE_ENABLE=	nls
 
 PAM_CONFIGURE_ENABLE=	pam
 
-PYTHON_BINARY_ALIAS=	python-config=python${PYTHON_VER}-config
 PYTHON_USES=		python:3.0+
 PYTHON_CONFIGURE_ENABLE=python
+PYTHON_CONFIGURE_ENV=	PYTHON_CONFIG=${PYTHON_CMD}-config
 
 BDB_USES=		bdb
 BDB_CONFIGURE_WITH=	berkeley-db

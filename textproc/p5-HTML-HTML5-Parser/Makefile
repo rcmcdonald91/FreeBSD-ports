@@ -1,14 +1,13 @@
 # Created by: jupengfei <jupengfei@gmail.com>
 
 PORTNAME=	HTML-HTML5-Parser
-PORTVERSION=	0.301
-PORTREVISION=	1
+PORTVERSION=	0.992
 CATEGORIES=	textproc perl5
 MASTER_SITES=	CPAN
 MASTER_SITE_SUBDIR=	CPAN:TOBYINK
 PKGNAMEPREFIX=	p5-
 
-MAINTAINER=	culot@FreeBSD.org
+MAINTAINER=	perl@FreeBSD.org
 COMMENT=	Named entity list for HTML parser
 
 LICENSE=	ART10 GPLv1+
@@ -23,5 +22,7 @@ RUN_DEPENDS=	p5-HTML-HTML5-Entities>=0.002:textproc/p5-HTML-HTML5-Entities \
 
 USES=		perl5
 USE_PERL5=	configure
+
+CONFLICTS_INSTALL=	html2xhtml p5-XML-Driver-HTML # bin/html2xhtml
 
 .include <bsd.port.mk>

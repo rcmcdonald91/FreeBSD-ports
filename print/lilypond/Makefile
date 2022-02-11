@@ -2,6 +2,7 @@
 
 PORTNAME=	lilypond
 DISTVERSION=	2.22.1
+PORTREVISION=	1
 CATEGORIES=	print audio
 MASTER_SITES=	http://lilypond.org/download/source/v${DISTVERSION:R}/
 
@@ -11,7 +12,6 @@ COMMENT=	GNU music typesetter
 LICENSE=	GPLv3
 
 BUILD_DEPENDS=	bash:shells/bash \
-		convert:graphics/ImageMagick7 \
 		dblatex:textproc/dblatex \
 		fontforge:print/fontforge \
 		help2man:misc/help2man \
@@ -28,8 +28,8 @@ LIB_DEPENDS=	libfontconfig.so:x11-fonts/fontconfig \
 RUN_DEPENDS=	${LOCALBASE}/share/fonts/dejavu/DejaVuSans-Bold.ttf:x11-fonts/dejavu \
 		mftrace:print/mftrace
 
-USES=		bison:build compiler:c++11-lib ghostscript gmake gnome \
-		perl5 pkgconfig python:3.5+
+USES=		bison:build compiler:c++11-lib cpe ghostscript gmake gnome \
+		magick:7,build perl5 pkgconfig python:3.5+
 USE_CXXSTD=	c++11
 USE_GNOME=	pango
 USE_PERL5=	build
@@ -41,6 +41,8 @@ CONFIGURE_ENV+=		ac_cv_prog_MAKEINFO="${LOCALBASE}/bin/makeinfo" \
 			FLEX=${FLEX} \
 			HOME=${WRKDIR} \
 			YACC=${YACC}
+
+CONFLICTS_INSTALL=	lilypond-devel
 
 MAKEFILE=	GNUmakefile
 ALL_TARGET=	all
@@ -72,9 +74,9 @@ GUILE2_LIB_DEPENDS_OFF=	libguile.so:lang/guile1
 NLS_USES=	gettext
 NLS_USES_OFF=	gettext-tools
 
-URW_BUILD_DEPENDS=	urw-core35-fonts>0:x11-fonts/urw-core35-fonts
-URW_RUN_DEPENDS_OFF=	urw-core35-fonts>0:x11-fonts/urw-core35-fonts
-URW_CONFIGURE_WITH=	urwotf-dir=${LOCALBASE}/share/fonts/urw-core35-fonts
+URW_BUILD_DEPENDS=	urw-base35-fonts>0:x11-fonts/urw-base35-fonts
+URW_RUN_DEPENDS_OFF=	urw-base35-fonts>0:x11-fonts/urw-base35-fonts
+URW_CONFIGURE_WITH=	urwotf-dir=${LOCALBASE}/share/fonts/urw-base35-fonts
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|<FlexLexer.h>|"/usr/include/FlexLexer.h"|' \

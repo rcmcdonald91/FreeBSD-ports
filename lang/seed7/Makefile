@@ -1,7 +1,7 @@
 # Created by: gahr
 
 PORTNAME=	seed7
-DISTVERSION=	05_20210425
+DISTVERSION=	05_20211225
 PORTREVISION=	0
 CATEGORIES=	lang
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/${DISTNAME}/
@@ -16,7 +16,7 @@ COMMENT=	High-level, extensible programming language
 LICENSE=	GPLv2 LGPL21
 LICENSE_COMB=	multi
 
-ONLY_FOR_ARCHS=	amd64 i386 powerpc64 powerpc64le sparc64
+ONLY_FOR_ARCHS=	amd64 armv7 i386 powerpc powerpc64 powerpc64le sparc64
 
 LIB_DEPENDS=	libodbc.so:databases/unixODBC
 
@@ -24,7 +24,7 @@ USES=		mysql:client ncurses pgsql sqlite tar:tgz xorg
 
 OPTIONS_DEFINE=	DOCS EXAMPLES
 
-USE_XORG=	x11
+USE_XORG=	x11 xrender
 WANT_PGSQL=	client
 
 WRKSRC=		${WRKDIR}/${PORTNAME}/src
@@ -67,6 +67,10 @@ do-install:
 	cd ${WRKSRC}/../lib/comp && ${COPYTREE_SHARE} '*.s7i' ${STAGEDIR}${SEED7_LIBRARY}/comp
 #	install static libraries
 	${INSTALL} -d ${STAGEDIR}${S7_LIB_DIR}
+#	install vim syntax files
+	${INSTALL} -d ${STAGEDIR}${DATADIR}
+	${INSTALL_DATA} ${WRKSRC}/../doc/seed7.vim ${STAGEDIR}${DATADIR}
+	${INSTALL_DATA} ${WRKSRC}/../doc/sd7.vim ${STAGEDIR}${DATADIR}
 .for s7_lib in ${S7_LIBS}
 	${INSTALL_DATA} ${WRKSRC}/../bin/${s7_lib} ${STAGEDIR}${S7_LIB_DIR}
 .endfor

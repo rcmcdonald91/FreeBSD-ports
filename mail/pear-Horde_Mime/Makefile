@@ -1,11 +1,11 @@
 PORTNAME=	Horde_Mime
-DISTVERSION=	2.11.0
+DISTVERSION=	2.11.1
 CATEGORIES=	mail www pear
 
 MAINTAINER=	horde@FreeBSD.org
 COMMENT=	Horde MIME Library
 
-USES=	horde
+USES=	horde cpe
 USE_HORDE_RUN=	Horde_Exception \
 		Horde_Mail \
 		Horde_Stream_Filter \

@@ -10,9 +10,10 @@ PKGNAMESUFFIX=	-devel
 MAINTAINER=	bdheeman@gmail.com
 COMMENT=	IPv6 enabled cvs.  You can use IPv6 connection when using pserver
 
-CONFLICTS=	cvsnt-[12]* cvs+ipv6-[12]*
+CONFLICTS=	cvs cvs+ipv6
 
-USES=		makeinfo perl5 tar:bzip2
+USES=		cpe makeinfo perl5 tar:bzip2
+CPE_VENDOR=	gnu
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--enable-ipv6 --without-gssapi \
 		--with-editor="vi" \

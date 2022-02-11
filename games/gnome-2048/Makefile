@@ -2,9 +2,13 @@
 
 PORTNAME=	gnome-2048
 PORTVERSION=	3.38.2
+PORTREVISION=	1
 CATEGORIES=	games gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome
+
+PATCH_SITES=	https://gitlab.gnome.org/GNOME/${PORTNAME}/-/commit/
+PATCHFILES+=	194e22699f71.patch:-p1 # https://gitlab.gnome.org/GNOME/gnome-2048/-/merge_requests/21
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Move the tiles until you obtain the 2048 tile
@@ -25,7 +29,6 @@ USES=		gettext gl gmake gnome localbase meson pathfix pkgconfig tar:xz xorg
 USE_GNOME=	cairo gtk30 intltool libxml2:build
 USE_GL=		egl
 USE_XORG+=	x11 xext xdamage xfixes xcomposite xi xrandr
-INSTALLS_ICONS=	yes
 
 GLIB_SCHEMAS=	org.gnome.TwentyFortyEight.gschema.xml
 

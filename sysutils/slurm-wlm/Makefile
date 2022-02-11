@@ -1,11 +1,10 @@
 PORTNAME=	slurm
-DISTVERSION=	20.02.1
-PORTREVISION=	6
+DISTVERSION=	20.02.7
 CATEGORIES=	sysutils python
 MASTER_SITES=	https://download.schedmd.com/slurm/
 PKGNAMESUFFIX=	-wlm
 
-MAINTAINER=	jwb@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Simple Linux Utility for Resource Management
 
 LICENSE=	GPLv2+
@@ -19,8 +18,9 @@ LIB_DEPENDS=	libjson-c.so:devel/json-c \
 		libmunge.so:security/munge \
 		liblz4.so:archivers/liblz4
 
-USES=		compiler:c11 gmake gnome libtool localbase lua pkgconfig \
+USES=		compiler:c11 cpe gmake gnome libtool localbase lua pkgconfig \
 		python:build readline shebangfix ssl tar:bz2
+CPE_VENDOR=	schedmd
 USE_LDCONFIG=	yes
 USE_RC_SUBR=	slurmctld slurmd
 
@@ -77,7 +77,8 @@ RRD_CONFIGURE_WITH=	rrdtool
 # --docdir is non-functional
 # CONFIGURE_ARGS=	--docdir=${DOCSDIR}
 # FreeBSD Infiniband support is still experimental
-CONFIGURE_ARGS=	--without-ofed
+# slurmrestd does not build on FreeBSD
+CONFIGURE_ARGS=	--without-ofed --disable-slurmrestd
 DOCSDIR=	${PREFIX}/share/doc/${PORTNAME}-${DISTVERSION}
 
 CFLAGS+=	-I${WRKSRC}/slurm -I${LOCALBASE}/include -fcommon

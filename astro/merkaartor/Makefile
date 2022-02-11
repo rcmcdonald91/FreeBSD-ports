@@ -1,8 +1,8 @@
 # Created by: Slaven Rezic <slaven@rezic.de>
 
 PORTNAME=	merkaartor
-PORTVERSION=	0.18.2
-PORTREVISION=	30
+PORTVERSION=	0.19.0
+PORTREVISION=	1
 CATEGORIES=	astro
 
 MAINTAINER=	dev2@heesakkers.info
@@ -19,8 +19,6 @@ USES=		compiler:c++11-lang gnome pkgconfig qmake qt:5 sqlite:3
 USE_GITHUB=	yes
 GH_ACCOUNT=	openstreetmap
 USE_LDCONFIG=	yes
-
-CFLAGS+=	"-DACCEPT_USE_OF_DEPRECATED_PROJ_API_H=1"
 
 QMAKE_ARGS=	SYSTEM_QUAZIP=1
 USE_QT=		buildtools_build \
@@ -48,8 +46,6 @@ DEBUG_QMAKE_OFF=	NODEBUG=1 RELEASE=1
 
 NLS_USES=	qt:5
 NLS_USE=	QT=linguisttools_build
-
-INSTALLS_ICONS= yes
 
 OPTIONS_SUB=	yes
 

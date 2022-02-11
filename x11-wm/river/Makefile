@@ -1,39 +1,43 @@
 PORTNAME=	river
-PORTVERSION=	s20210519
+DISTVERSIONPREFIX=	v
+DISTVERSION=	0.1.3
 CATEGORIES=	x11-wm
 
 MAINTAINER=	jbeich@FreeBSD.org
 COMMENT=	Dynamic tiling Wayland compositor
 
-LICENSE=	GPLv3+
+LICENSE=	GPLv3
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-BUILD_DEPENDS=	wayland-protocols>0:graphics/wayland-protocols \
-		wlroots>=0.13.0:x11-toolkits/wlroots \
-		zig>=0.7.1:lang/zig
+BUILD_DEPENDS=	evdev-proto>0:devel/evdev-proto \
+		wayland-protocols>0:graphics/wayland-protocols \
+		wlroots>=0.15.0:x11-toolkits/wlroots \
+		zig>=0.9.0:lang/zig
 LIB_DEPENDS=	libevdev.so:devel/libevdev \
 		libwayland-server.so:graphics/wayland \
 		libwlroots.so:x11-toolkits/wlroots \
+		libinput.so:x11/libinput \
 		libxkbcommon.so:x11/libxkbcommon
 
 USES=		pkgconfig xorg
 USE_GITHUB=	yes
 USE_XORG=	pixman
-GH_ACCOUNT=	ifreund
-GH_TAGNAME=	c5005ba
-GH_TUPLE=	ifreund:zig-pixman:9acac69:zig_pixman/deps/zig-pixman \
-		ifreund:zig-wayland:a453b26:zig_wayland/deps/zig-wayland \
-		ifreund:zig-xkbcommon:9e4d41f:zig_xkbcommon/deps/zig-xkbcommon \
-		swaywm:zig-wlroots:6c62568:zig_wlroots/deps/zig-wlroots
+GH_ACCOUNT=	riverwm
+GH_TUPLE=	ifreund:zig-pixman:d381567:zig_pixman/deps/zig-pixman \
+		ifreund:zig-wayland:80166ba:zig_wayland/deps/zig-wayland \
+		ifreund:zig-xkbcommon:60dde05:zig_xkbcommon/deps/zig-xkbcommon \
+		swaywm:zig-wlroots:49a5f81:zig_wlroots/deps/zig-wlroots
 MAKE_ENV=	DESTDIR="${STAGEDIR}"
 CONFIGURE_ARGS=	--prefix "${PREFIX}" \
-		${WITH_DEBUG:U-Drelease-fast=true} \
+		${WITH_DEBUG:D:U-Drelease-fast} \
+		-Dcpu=${CPUTYPE:Ubaseline} \
 		--verbose
 NO_INSTALL=	yes # strip(1) breaks runtime
 PLIST_FILES=	bin/${PORTNAME} \
 		bin/${PORTNAME}ctl \
 		bin/${PORTNAME}tile \
-		"@sample ${ETCDIR}/init.sample" \
+		libdata/pkgconfig/${PORTNAME}-protocols.pc \
+		share/${PORTNAME}-protocols/${PORTNAME}-layout-v3.xml \
 		share/bash-completion/completions/${PORTNAME}ctl \
 		share/fish/vendor_completions.d/${PORTNAME}ctl.fish \
 		share/zsh/site-functions/_${PORTNAME}ctl \
@@ -54,9 +58,11 @@ X11_CONFIGURE_ON=	-Dxwayland=true
 X11_CONFIGURE_OFF=	-Dxwayland=false
 
 post-patch:
-# Respect PREFIX for system-wide config (a la sysconfdir in Meson)
-	@${REINPLACE_CMD} -e 's,/etc,${PREFIX}&,' \
-		${WRKSRC}/doc/${PORTNAME}.1.scd \
+# Respect devel/pkgconf default search
+	@${REINPLACE_CMD} -e '/pkgconfig/s/share/libdata/' \
+		${WRKSRC}/build.zig
+# Respect PREFIX in path references
+	@${REINPLACE_CMD} -e 's,/usr,${LOCALBASE},' \
 		${WRKSRC}/doc/${PORTNAME}ctl.1.scd
 
 do-build:
@@ -64,9 +70,5 @@ do-build:
 
 do-test:
 	@(cd ${WRKSRC} && ${TEST_ENV} zig build test ${CONFIGURE_ARGS})
-
-post-install:
-# Let @sample handle default files under etc/
-	@${MV} ${STAGEDIR}${ETCDIR}/init ${STAGEDIR}${ETCDIR}/init.sample
 
 .include <bsd.port.mk>

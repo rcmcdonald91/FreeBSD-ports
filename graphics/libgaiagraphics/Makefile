@@ -9,6 +9,10 @@ MASTER_SITES=	http://www.gaia-gis.it/gaia-sins/
 MAINTAINER=	lbartoletti@FreeBSD.org
 COMMENT=	Library supporting common-utility raster handling methods
 
+DEPRECATED=	Abandoned upstream, replaced by graphics/librasterlite2
+EXPIRATION_DATE=2022-02-27
+BROKEN=		fails to configure: unable to find libproj
+
 LIB_DEPENDS=	libpng.so:graphics/png \
 		libtiff.so:graphics/tiff \
 		libgeotiff.so:graphics/libgeotiff \
@@ -20,6 +24,6 @@ USE_LDCONFIG=	yes
 CFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 GNU_CONFIGURE=	yes
-CONFIGURE_ARGS= CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"
+CONFIGURE_ARGS=	CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"
 
 .include <bsd.port.mk>

@@ -8,9 +8,6 @@ COMMENT=	KDE instant messaging account management module
 LICENSE=	LGPL21+
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-DEPRECATED=	Uses EOL Python 2.7 via www/qt5-webengine
-EXPIRATION_DATE=2021-06-23
-
 LIB_DEPENDS=	libaccounts-qt5.so:net-im/libaccounts-qt5 \
 		libkaccounts.so:net-im/kaccounts-integration \
 		libtelepathy-qt5.so:net-im/telepathy-qt \
@@ -25,9 +22,10 @@ RUN_DEPENDS=	${KDE_PREFIX}/bin/ktp-contactlist:net-im/ktp-contact-list  \
 USES=		compiler:c++11-lang cmake gettext gnome kde:5 \
 		pkgconfig qt:5 tar:xz
 USE_GNOME=	intltool
-USE_KDE=	auth codecs config configwidgets coreaddons ecm i18n \
+USE_KDE=	auth codecs config configwidgets coreaddons i18n \
 		iconthemes itemviews kcmutils kio notifications notifyconfig \
-		service texteditor wallet widgetsaddons windowsystem
+		service texteditor wallet widgetsaddons windowsystem \
+		ecm_build
 USE_QT=		core dbus declarative gui network sql widgets xml \
 		buildtools_build qmake_build
 USE_LDCONFIG=	yes

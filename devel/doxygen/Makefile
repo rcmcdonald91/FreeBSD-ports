@@ -1,7 +1,7 @@
 # Created by: Joep Grooten <joep@di.nl>
 
 PORTNAME=	doxygen
-PORTVERSION=	1.9.1
+PORTVERSION=	1.9.3
 PORTEPOCH=	2
 CATEGORIES=	devel
 MASTER_SITES=	SF/${PORTNAME}/rel-${PORTVERSION} \
@@ -14,7 +14,7 @@ COMMENT=	Documentation system for C, C++, and other languages
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-USES=		bison cmake:noninja compiler:c++14-lang dos2unix \
+USES=		bison cmake:noninja compiler:c++14-lang cpe dos2unix \
 		iconv python shebangfix
 
 ALL_TARGET=	all
@@ -28,7 +28,7 @@ DOS2UNIX_FILES=	doc/translator.py
 PLIST_FILES=	bin/doxygen
 
 OPTIONS_DEFINE=	DOCS GRAPHVIZ LATEX SEARCH QT5
-OPTIONS_DEFAULT=	GRAPHVIZ LATEX
+OPTIONS_DEFAULT=	GRAPHVIZ
 QT5_DESC=	Install Doxywizard GUI with Qt5
 SEARCH_DESC=	Build external search tools (doxysearch and doxyindexer)
 

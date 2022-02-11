@@ -1,7 +1,7 @@
 # Created by: Akinori MUSHA aka knu <knu@idaemons.org>
 
 PORTNAME=	editorconfig-core-c
-PORTVERSION=	0.12.4
+PORTVERSION=	0.12.5
 DISTVERSIONPREFIX=	v
 CATEGORIES=	editors
 
@@ -20,6 +20,8 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	editorconfig
 
 USE_LDCONFIG=	yes
+
+CONFLICTS_INSTALL=	py*-editorconfig
 
 PLIST_SUB=	PORTVERSION=${PORTVERSION} \
 		SHLIB_MAJOR=${PORTVERSION:C/\..+//} \

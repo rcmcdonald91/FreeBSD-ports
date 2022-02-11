@@ -1,5 +1,6 @@
     COMMENT = Archivers
 
+    SUBDIR += 7-zip
     SUBDIR += 9e
     SUBDIR += R-cran-zip
     SUBDIR += advancecomp
@@ -13,6 +14,7 @@
     SUBDIR += bzip
     SUBDIR += bzip2
     SUBDIR += c-blosc
+    SUBDIR += c-blosc2
     SUBDIR += cabextract
     SUBDIR += cmdpack
     SUBDIR += dact
@@ -20,6 +22,7 @@
     SUBDIR += deco
     SUBDIR += deutex
     SUBDIR += dpkg
+    SUBDIR += draco
     SUBDIR += dzip
     SUBDIR += engrampa
     SUBDIR += erlang-snappy
@@ -53,6 +56,7 @@
     SUBDIR += lib1541img
     SUBDIR += libarc
     SUBDIR += libarchive
+    SUBDIR += libarchive-qt
     SUBDIR += libcabinet
     SUBDIR += libcomprex
     SUBDIR += libdeflate
@@ -65,6 +69,7 @@
     SUBDIR += libunrar
     SUBDIR += libunrar6
     SUBDIR += libzip
+    SUBDIR += libzippp
     SUBDIR += linux-c7-lz4
     SUBDIR += lizard
     SUBDIR += lrzip
@@ -83,6 +88,7 @@
     SUBDIR += mar
     SUBDIR += maxcso
     SUBDIR += minizip
+    SUBDIR += minizip-ng
     SUBDIR += mscompress
     SUBDIR += mtf
     SUBDIR += nfpm
@@ -111,6 +117,7 @@
     SUBDIR += p5-Compress-Raw-Lzma
     SUBDIR += p5-Compress-Raw-Zlib
     SUBDIR += p5-Compress-Snappy
+    SUBDIR += p5-Compress-Zstd
     SUBDIR += p5-Gzip-Faster
     SUBDIR += p5-IO-Compress
     SUBDIR += p5-IO-Compress-Brotli
@@ -127,7 +134,6 @@
     SUBDIR += p5-PerlIO-gzip
     SUBDIR += p5-PerlIO-via-Bzip2
     SUBDIR += p7zip
-    SUBDIR += p7zip-codec-rar
     SUBDIR += packddir
     SUBDIR += paq
     SUBDIR += par
@@ -147,10 +153,6 @@
     SUBDIR += php-lz4
     SUBDIR += php-snappy
     SUBDIR += php-zstd
-    SUBDIR += php73-bz2
-    SUBDIR += php73-phar
-    SUBDIR += php73-zip
-    SUBDIR += php73-zlib
     SUBDIR += php74-bz2
     SUBDIR += php74-phar
     SUBDIR += php74-zip
@@ -159,6 +161,10 @@
     SUBDIR += php80-phar
     SUBDIR += php80-zip
     SUBDIR += php80-zlib
+    SUBDIR += php81-bz2
+    SUBDIR += php81-phar
+    SUBDIR += php81-zip
+    SUBDIR += php81-zlib
     SUBDIR += pigz
     SUBDIR += pixz
     SUBDIR += plzip
@@ -171,6 +177,7 @@
     SUBDIR += py-brotli
     SUBDIR += py-brotlicffi
     SUBDIR += py-brotlipy
+    SUBDIR += py-bup
     SUBDIR += py-bz2file
     SUBDIR += py-libarchive-c
     SUBDIR += py-lz4
@@ -214,6 +221,7 @@
     SUBDIR += snzip
     SUBDIR += squsq
     SUBDIR += star
+    SUBDIR += streamvbyte
     SUBDIR += stuffit
     SUBDIR += szip
     SUBDIR += tar-stream-chunker
@@ -234,6 +242,7 @@
     SUBDIR += unmass
     SUBDIR += unrar
     SUBDIR += unrar-iconv
+    SUBDIR += unrpa
     SUBDIR += unshield
     SUBDIR += unzip
     SUBDIR += unzoo
@@ -241,6 +250,7 @@
     SUBDIR += urbackup-client
     SUBDIR += urbackup-server
     SUBDIR += v1541commander
+    SUBDIR += vbz-compression
     SUBDIR += xar
     SUBDIR += xarchive
     SUBDIR += xarchiver
@@ -252,6 +262,7 @@
     SUBDIR += zip-ada
     SUBDIR += zipmix
     SUBDIR += zipper
+    SUBDIR += zlib-ng
     SUBDIR += zoo
     SUBDIR += zopfli
     SUBDIR += zstd

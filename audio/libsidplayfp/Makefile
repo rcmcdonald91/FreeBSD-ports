@@ -1,11 +1,10 @@
 PORTNAME=	libsidplayfp
-PORTVERSION=	2.1.1
-PORTREVISION=	1
+DISTVERSION=	2.3.1
+PORTREVISON=	1
 CATEGORIES=	audio
-MASTER_SITES=	https://github.com/${PORTNAME}/${PORTNAME}/releases/download/v${DISTVERSION}/ \
-		SF/sidplay-residfp/libsidplayfp/${PORTVERSION:R}
+MASTER_SITES=	https://github.com/${PORTNAME}/${PORTNAME}/releases/download/v${DISTVERSION}/
 
-MAINTAINER=	liangtai.s16@gmail.com
+MAINTAINER=	fluffy@FreeBSD.org
 COMMENT=	Library to play Commodore 64 music derived from libsidplay2
 
 LICENSE=	GPLv2+
@@ -30,7 +29,8 @@ PLIST_SUB+=	SIDPLAYFP_SHLIB_VER=${SIDPLAYFP_SHLIB_VERSION:C/\.[[:digit:].]+//} \
 		STILVIEW_SHLIB_VER=${STILVIEW_SHLIB_VERSION:C/\.[[:digit:].]+//} \
 		STILVIEW_SHLIB_VERSION=${STILVIEW_SHLIB_VERSION}
 
-PORTDOCS=	NEWS README TODO
+PORTDOCS1=	NEWS README TODO
+PORTDOCS=	*
 
 OPTIONS_DEFINE=	DEBUG DOCS DOXYGEN
 OPTIONS_SUB=	yes
@@ -40,7 +40,17 @@ DEBUG_CONFIGURE_ON=	--enable-debug=full
 DOXYGEN_BUILD_DEPENDS=		doxygen:devel/doxygen
 DOXYGEN_CONFIGURE_ENV_OFF=	ac_cv_prog_HAVE_DOXYGEN=false
 
-SIDPLAYFP_SHLIB_VERSION=	6.2.17
+.include <bsd.port.options.mk>
+
+.if ${ARCH} == "aarch64"
+CONFIGURE_ARGS+=	--with-simd=neon
+.endif
+
+.if ${ARCH} == "amd64"
+CONFIGURE_ARGS+=	--with-simd=sse2
+.endif
+
+SIDPLAYFP_SHLIB_VERSION=	6.3.23
 STILVIEW_SHLIB_VERSION=		0.0.4
 
 post-build-DOXYGEN-on:
@@ -48,7 +58,7 @@ post-build-DOXYGEN-on:
 
 post-install-DOCS-on:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
-	${INSTALL_DATA} ${PORTDOCS:S,^,${WRKSRC}/,} ${STAGEDIR}${DOCSDIR}
+	${INSTALL_DATA} ${PORTDOCS1:S,^,${WRKSRC}/,} ${STAGEDIR}${DOCSDIR}
 
 post-install-DOXYGEN-on:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}/html

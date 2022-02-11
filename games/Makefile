@@ -14,10 +14,14 @@
     SUBDIR += DDNet
     SUBDIR += HeroesOfMightAndMagic
     SUBDIR += KnightCap
+    SUBDIR += LibreMines
     SUBDIR += NBlood
     SUBDIR += OpenDiablo2
     SUBDIR += OpenLara
     SUBDIR += OpenTomb
+    SUBDIR += SRB2
+    SUBDIR += SpaceCadetPinball
+    SUBDIR += SpaceCadetPinball-devel
     SUBDIR += abbayedesmorts
     SUBDIR += abe
     SUBDIR += abstreet
@@ -64,6 +68,7 @@
     SUBDIR += atr3d
     SUBDIR += atris
     SUBDIR += atris-sounds
+    SUBDIR += augustus
     SUBDIR += auralquiz
     SUBDIR += automuteus
     SUBDIR += avanor
@@ -113,6 +118,7 @@
     SUBDIR += brickshooter
     SUBDIR += brikx
     SUBDIR += briquolo
+    SUBDIR += brogue
     SUBDIR += brumbrumrally
     SUBDIR += brutalchess
     SUBDIR += bs
@@ -120,6 +126,7 @@
     SUBDIR += bsdtris
     SUBDIR += bsp
     SUBDIR += bstone
+    SUBDIR += bubble-chains
     SUBDIR += bugsquish
     SUBDIR += bugsx
     SUBDIR += bumprace
@@ -134,6 +141,7 @@
     SUBDIR += cataclysm-dda-tiles
     SUBDIR += catesc
     SUBDIR += cave9
+    SUBDIR += cavezofphear
     SUBDIR += cdogs-sdl
     SUBDIR += cgoban
     SUBDIR += chapping
@@ -142,6 +150,7 @@
     SUBDIR += chroma
     SUBDIR += chromium-bsu
     SUBDIR += circuslinux
+    SUBDIR += cmatrix
     SUBDIR += cockatrice
     SUBDIR += coffeebreak
     SUBDIR += colobot
@@ -300,6 +309,7 @@
     SUBDIR += gbrainy
     SUBDIR += gcompris-qt
     SUBDIR += gemdropx
+    SUBDIR += gemrb
     SUBDIR += genact
     SUBDIR += gigalomania
     SUBDIR += gillo
@@ -371,7 +381,6 @@
     SUBDIR += hitori
     SUBDIR += hllib
     SUBDIR += holotz-castle
-    SUBDIR += homura
     SUBDIR += hoverboard-sdl
     SUBDIR += hs-scroll
     SUBDIR += hypatia_engine
@@ -438,6 +447,7 @@
     SUBDIR += kobodeluxe
     SUBDIR += kodi-addon-game.libretro
     SUBDIR += kodi-addon-game.libretro.beetle-psx
+    SUBDIR += kodi-addon-game.libretro.fceumm
     SUBDIR += kodi-addon-game.libretro.genplus
     SUBDIR += kodi-addon-game.libretro.pcsx-rearmed
     SUBDIR += kodi-addon-game.libretro.picodrive
@@ -472,6 +482,7 @@
     SUBDIR += libkmahjongg
     SUBDIR += liblcf
     SUBDIR += libmaitretarot
+    SUBDIR += libmanette
     SUBDIR += libmt_client
     SUBDIR += libretro
     SUBDIR += libretro-2048
@@ -483,6 +494,7 @@
     SUBDIR += libretro-beetle_pce_fast
     SUBDIR += libretro-beetle_pcfx
     SUBDIR += libretro-beetle_psx
+    SUBDIR += libretro-beetle_saturn
     SUBDIR += libretro-beetle_supergrafx
     SUBDIR += libretro-beetle_vb
     SUBDIR += libretro-beetle_wswan
@@ -496,6 +508,7 @@
     SUBDIR += libretro-fbneo
     SUBDIR += libretro-fceumm
     SUBDIR += libretro-fmsx
+    SUBDIR += libretro-freeintv
     SUBDIR += libretro-fuse
     SUBDIR += libretro-gambatte
     SUBDIR += libretro-genesis_plus_gx
@@ -558,8 +571,6 @@
     SUBDIR += linux-ssamtfe
     SUBDIR += linux-ssamtse
     SUBDIR += linux-steam-utils
-    SUBDIR += linux-unigine-heaven
-    SUBDIR += linux-unigine-valley
     SUBDIR += linux-unrealgold
     SUBDIR += linux-ut
     SUBDIR += linux-ut2003-demo
@@ -581,7 +592,6 @@
     SUBDIR += madbomber
     SUBDIR += maelstrom
     SUBDIR += magiccube4d
-    SUBDIR += magicmaze
     SUBDIR += mahjong
     SUBDIR += maitretarot
     SUBDIR += manaplus
@@ -627,7 +637,9 @@
     SUBDIR += naev-data
     SUBDIR += narcissu2
     SUBDIR += nazghul
+    SUBDIR += nbsdgames
     SUBDIR += nehquake
+    SUBDIR += neo
     SUBDIR += neo-cowsay
     SUBDIR += nethack32
     SUBDIR += nethack33
@@ -752,7 +764,7 @@
     SUBDIR += pokerth
     SUBDIR += polyglot
     SUBDIR += pongix
-    SUBDIR += ponscripter-sekai
+    SUBDIR += ponscripter-07th-mod
     SUBDIR += popstar
     SUBDIR += pouetchess
     SUBDIR += powder
@@ -765,7 +777,9 @@
     SUBDIR += puckman
     SUBDIR += pushover
     SUBDIR += pvpgn
+    SUBDIR += py-2048-py
     SUBDIR += py-cbeams
+    SUBDIR += py-discord.py
     SUBDIR += py-fife
     SUBDIR += py-mnemosyne
     SUBDIR += py-pychess
@@ -820,6 +834,8 @@
     SUBDIR += re3
     SUBDIR += redeclipse
     SUBDIR += redeclipse-data
+    SUBDIR += redeclipse-data16
+    SUBDIR += redeclipse16
     SUBDIR += redorblack
     SUBDIR += regoth
     SUBDIR += reminiscence
@@ -840,10 +856,12 @@
     SUBDIR += rocksndiamonds
     SUBDIR += rocksndiamonds-data
     SUBDIR += rottdc
+    SUBDIR += rpg-cli
     SUBDIR += rubix
     SUBDIR += rubygem-fortune_gem
     SUBDIR += rubygem-lolcat
     SUBDIR += rubygem-vimgolf
+    SUBDIR += runelite
     SUBDIR += sampsvr
     SUBDIR += sarien
     SUBDIR += sauerbraten
@@ -887,6 +905,7 @@
     SUBDIR += slashem-tty
     SUBDIR += slump
     SUBDIR += sokoban
+    SUBDIR += sokobano
     SUBDIR += sol
     SUBDIR += solarconquest
     SUBDIR += solarus
@@ -908,14 +927,13 @@
     SUBDIR += stockfish
     SUBDIR += stonesoup
     SUBDIR += stormbaancoureur
-    SUBDIR += stransball2
     SUBDIR += stratagus
     SUBDIR += stuntrally
     SUBDIR += sudsol
-    SUBDIR += super_methane_brothers
     SUBDIR += supertux
     SUBDIR += supertux2
     SUBDIR += supertuxkart
+    SUBDIR += suyimazu
     SUBDIR += swell-foop
     SUBDIR += sxsame
     SUBDIR += tads
@@ -937,6 +955,7 @@
     SUBDIR += thegrind
     SUBDIR += tileworld
     SUBDIR += tkmoo
+    SUBDIR += tmatrix
     SUBDIR += tomatoes
     SUBDIR += tome4
     SUBDIR += tome4-beta
@@ -956,7 +975,6 @@
     SUBDIR += trimines
     SUBDIR += triplane
     SUBDIR += trojka
-    SUBDIR += trophy
     SUBDIR += tsito
     SUBDIR += tt
     SUBDIR += ttt
@@ -1000,6 +1018,7 @@
     SUBDIR += voadi
     SUBDIR += volleyball
     SUBDIR += vor
+    SUBDIR += vt100-art-and-animations
     SUBDIR += vultures-eye
     SUBDIR += vvvvvv
     SUBDIR += wanderer
@@ -1017,6 +1036,7 @@
     SUBDIR += wolfpack
     SUBDIR += wop
     SUBDIR += wordplay
+    SUBDIR += wordsearch
     SUBDIR += wordwarvi
     SUBDIR += worldofpadman
     SUBDIR += wtf
@@ -1083,6 +1103,7 @@
     SUBDIR += xmris
     SUBDIR += xmulti
     SUBDIR += xneko
+    SUBDIR += xnethack
     SUBDIR += xoct
     SUBDIR += xoids
     SUBDIR += xoj

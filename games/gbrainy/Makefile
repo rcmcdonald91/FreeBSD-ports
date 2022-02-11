@@ -1,6 +1,5 @@
 PORTNAME=	gbrainy
-PORTREVISION=	1
-DISTVERSION=	2.4.3
+DISTVERSION=	2.4.4
 PORTEPOCH=	2
 CATEGORIES=	games
 MASTER_SITES=	https://gent.softcatala.org/jmas/gbrainy/
@@ -23,7 +22,5 @@ SHEBANG_FILES=	src/Clients/Classical/gbrainy.in
 GNU_CONFIGURE=	yes
 
 MAKE_ENV+=	MONO_REGISTRY_PATH=${WRKDIR}
-
-INSTALLS_ICONS=	yes
 
 .include <bsd.port.mk>

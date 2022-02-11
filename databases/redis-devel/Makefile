@@ -1,18 +1,20 @@
 # Created by: Sergey Skvortsov <skv@protey.ru>
 
 PORTNAME=	redis
-PORTVERSION=	6.2.3
+PORTVERSION=	7.0.0.20220131
 CATEGORIES=	databases
-MASTER_SITES=	https://download.redis.io/releases/
 PKGNAMESUFFIX=	-devel
 
-MAINTAINER=	osa@FreeBSD.org
+MAINTAINER=	yasu@FreeBSD.org
 COMMENT=	Persistent key-value database with built-in net interface
 
 LICENSE=	BSD3CLAUSE
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-USES+=		compiler:c11 gmake
+USES+=		compiler:c11 cpe gmake
+CPE_VENDOR=	redislabs
+USE_GITHUB=	yes
+GH_TUPLE=	redis:redis:6ca97da
 
 OPTIONS_DEFINE=	JEMALLOC TESTS TLS TRIB
 OPTIONS_RADIO=	EXTLUA
@@ -42,6 +44,7 @@ LUAJIT_VARS=		_addflags=true
 LUAJITOR_LIB_DEPENDS=	libluajit-5.1.so:lang/luajit-openresty
 LUAJITOR_BUILD_DEPENDS=	${LOCALBASE}/include/luajit-2.1/lua.h:lang/luajit-openresty
 LUAJITOR_EXTRA_PATCHES=	${PATCHDIR}/extra-patch-src-Makefile.luajit-or \
+			${PATCHDIR}/extra-patch-src-function_lua.c \
 			${PATCHDIR}/extra-patch-deps_lua_src_lua__cjson.c
 LUAJITOR_VARS=		_addflags=true
 
@@ -62,14 +65,14 @@ USE_GCC=	yes
 CFLAGS+=	-march=i586
 .endif
 
-.if defined(_addflags)
+.if defined(_ADDFLAGS)
 CFLAGS=		-fPIC
 LDFLAGS=	-Wl,-E
 .endif
 
 LDFLAGS+=	-lpthread -lm -lexecinfo
 
-CONFLICTS?=	redis5-5.* redis-6.*
+CONFLICTS?=	redis5-5.* redis6-6.* redis-6.*
 
 USE_RC_SUBR=	redis sentinel
 BIN_FILES=	redis-benchmark redis-check-aof redis-check-rdb \

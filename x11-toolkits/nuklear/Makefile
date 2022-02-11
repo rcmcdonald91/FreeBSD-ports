@@ -1,5 +1,5 @@
 PORTNAME=	nuklear
-PORTVERSION=	4.06.2 # from package.json, repository not tagged
+DISTVERSION=	4.9.5
 CATEGORIES=	x11-toolkits
 
 MAINTAINER=	yuri@FreeBSD.org
@@ -11,7 +11,6 @@ LICENSE_COMB=	dual
 USE_GITHUB=	yes
 GH_ACCOUNT=	Immediate-Mode-UI
 GH_PROJECT=	Nuklear
-GH_TAGNAME=	4a74982
 
 NO_BUILD=	yes
 NO_ARCH=	yes

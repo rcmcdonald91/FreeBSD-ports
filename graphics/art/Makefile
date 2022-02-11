@@ -1,5 +1,5 @@
 PORTNAME=	art
-DISTVERSION=	1.8.4
+DISTVERSION=	1.12.1
 CATEGORIES=	graphics
 MASTER_SITES=	https://bitbucket.org/agriggio/art/downloads/
 PKGNAMESUFFIX=	-raw-image-editor
@@ -20,6 +20,7 @@ LIB_DEPENDS=	libcanberra.so:audio/libcanberra \
 		libexiv2.so:graphics/exiv2 \
 		libexpat.so:textproc/expat2 \
 		libfftw3f.so:math/fftw3-float \
+		libharfbuzz.so:print/harfbuzz \
 		liblensfun.so:graphics/lensfun \
 		liblcms2.so:graphics/lcms2 \
 		libpng.so:graphics/png \
@@ -31,20 +32,13 @@ USE_XORG=	x11
 
 EXTRACT_CMD=	gtar
 
-INSTALLS_ICONS=	yes
+OPTIONS_DEFINE=		OPENMP
+#OPTIONS_DEFAULT=	OPENMP
 
-.include <bsd.port.pre.mk>
-
-# breaks with llvm-8
-.if ${CHOSEN_COMPILER_TYPE} == clang
-LLVM_VERSION=	10
-BUILD_DEPENDS+=	clang${LLVM_VERSION}:devel/llvm${LLVM_VERSION}
-CC=		clang${LLVM_VERSION}
-CXX=		clang++${LLVM_VERSION}
-CPP=		clang-cpp${LLVM_VERSION}
-.endif
+OPENMP_CMAKE_BOOL=	OPTION_OMP
+OPENMP_BROKEN=		OpenMP causes asserts, see https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=261360
 
 post-install:
 	${RM} -r ${STAGEDIR}${PREFIX}/share/doc/ART
 
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>

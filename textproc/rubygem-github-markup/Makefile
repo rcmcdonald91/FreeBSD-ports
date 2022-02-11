@@ -1,5 +1,5 @@
 PORTNAME=	github-markup
-PORTVERSION=	3.0.1
+PORTVERSION=	4.0.0
 CATEGORIES=	textproc rubygems
 MASTER_SITES=	RG
 
@@ -11,6 +11,8 @@ LICENSE_FILE=	${WRKSRC}/LICENSE
 
 USES=		gem shebangfix
 USE_RUBY=	yes
+
+CONFLICTS_INSTALL=	rubygem-github-markup*
 
 NO_ARCH=	yes
 REINPLACE_ARGS=	-i ''

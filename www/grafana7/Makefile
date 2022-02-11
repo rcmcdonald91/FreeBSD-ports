@@ -1,6 +1,6 @@
 PORTNAME=	grafana
-DISTVERSION=	7.5.6
 DISTVERSIONPREFIX=	v
+DISTVERSION=	7.5.12
 CATEGORIES=	www
 MASTER_SITES+=	https://dl.grafana.com/oss/release/:public \
 		https://gitea.com/xorm/builder/archive/:builder \
@@ -22,7 +22,9 @@ ONLY_FOR_ARCHS=	aarch64 amd64 i386
 
 RUN_DEPENDS=	ca_root_nss>=0:security/ca_root_nss
 
-USES=		go:modules
+USES=		cpe go:modules
+
+CONFLICTS_INSTALL=	grafana* # bin/grafana-cli bin/grafana-server
 
 USE_GITHUB=	yes
 GH_TUPLE=	\
@@ -206,7 +208,7 @@ GH_TUPLE=	\
 		#	::v0.8.2:group_name/vendor/xorm.io/xorm (from gitea.com/xorm/xorm@v0.8.2)
 
 USE_RC_SUBR=	grafana
-TAG=		5fdad5b
+TAG=		896df74
 
 GO_TARGET=	./pkg/cmd/grafana-server \
 		./pkg/cmd/grafana-cli
@@ -220,7 +222,7 @@ SUB_LIST=	GRAFANA_USER=${GRAFANA_USER} \
 		GRAFANA_LOGDIR=${GRAFANA_LOGDIR} \
 		GRAFANA_PLUGINDIR=${GRAFANA_PLUGINDIR} \
 		GRAFANA_PROVISIONINGDIR=${GRAFANA_PROVISIONINGDIR} \
-		GRAFANA_BUILDHASH=3817b8b78f33fc1605dc
+		GRAFANA_BUILDHASH=0cd8deb042c68e8113e4
 
 GRAFANA_USER?=	grafana
 GRAFANA_GROUP?=	grafana

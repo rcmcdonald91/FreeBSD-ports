@@ -1,9 +1,12 @@
 # Created by: Koop Mast <kwm@FreeBSD.org>
 
 PORTNAME=	gcr
-PORTVERSION=	3.38.1
+PORTVERSION=	3.40.0
 CATEGORIES=	security gnome
 MASTER_SITES=	GNOME
+
+PATCH_SITES=	https://gitlab.gnome.org/GNOME/${PORTNAME}/-/commit/
+PATCHFILES+=	b3ca1d02bb01.patch:-p1 # https://gitlab.gnome.org/GNOME/gcr/-/merge_requests/81
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Library for bits of crypto UI and parsing
@@ -23,7 +26,6 @@ USES=		desktop-file-utils gettext gmake gnome libtool meson pathfix \
 		pkgconfig python:3.6+ shared-mime-info tar:xz
 USE_LDCONFIG=	yes
 BINARY_ALIAS=	python3=${PYTHON_VERSION}
-INSTALLS_ICONS=	yes
 INSTALL_TARGET=	install-strip
 
 GLIB_SCHEMAS=	org.gnome.crypto.pgp.gschema.xml

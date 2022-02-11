@@ -1,17 +1,15 @@
---- chrome/common/BUILD.gn.orig	2021-04-14 18:40:56 UTC
+--- chrome/common/BUILD.gn.orig	2021-12-31 00:57:25 UTC
 +++ chrome/common/BUILD.gn
-@@ -251,6 +251,10 @@ static_library("common") {
-     public_deps += [ "//ppapi/shared_impl" ]
+@@ -329,7 +329,7 @@ static_library("common") {
+     ]
    }
  
-+  if (is_bsd) {
-+    deps -= [ "//components/crash/core/app" ]
-+  }
-+
-   if (enable_extensions) {
-     sources += [
-       "extensions/api/commands/commands_handler.cc",
-@@ -482,13 +486,21 @@ static_library("common") {
+-  if (!is_fuchsia) {
++  if (!is_fuchsia && !is_bsd) {
+     deps += [ "//components/crash/core/app" ]
+   }
+ 
+@@ -490,13 +490,21 @@ static_library("common") {
      public_deps += [ "//chrome/common/safe_browsing" ]
    }
  

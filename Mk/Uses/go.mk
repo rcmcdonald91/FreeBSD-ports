@@ -19,7 +19,7 @@
 #
 # GO_MODULE
 #	The name of the module as specified by "module" directive in go.mod.
-#	In most cases, this is the only requred variable for ports that
+#	In most cases, this is the only required variable for ports that
 #	use Go modules.
 #
 # GO_PKGNAME
@@ -58,7 +58,7 @@
 #
 #	This variable must not be set by individual ports!
 #
-# MAINTAINER: dmgk@FreeBSD.org
+# MAINTAINER: ports@FreeBSD.org
 
 .if !defined(_INCLUDE_USES_GO_MK)
 _INCLUDE_USES_GO_MK=	yes
@@ -215,8 +215,12 @@ do-test:
 
 .if ${go_ARGS:Mmodules} && defined(GO_MODULE)
 gomod-clean:
+.if exists(${GO_CMD})
 	@${ECHO_MSG} "===>  Cleaning Go module cache"
 	@${SETENV} ${GO_ENV} ${GO_CMD} clean -modcache
+.else
+	@${ECHO_MSG} "===>    Skipping since ${GO_CMD} is not installed"
+.endif
 
 # Hook up to distclean
 .if !target(post-clean) && !make(clean)

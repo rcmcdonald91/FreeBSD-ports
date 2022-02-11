@@ -1,6 +1,6 @@
 PORTNAME=	ncbi-blast+
-DISTVERSION=	2.11.0
-PORTREVISION=	1
+DISTVERSION=	2.12.0
+PORTREVISION=	2
 CATEGORIES=	biology perl5 python
 MASTER_SITES=	https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ \
 		https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/${PORTVERSION}/
@@ -27,11 +27,12 @@ LIB_DEPENDS=	libpcre.so:devel/pcre \
 		libgpg-error.so:security/libgpg-error \
 		libsqlite3.so:databases/sqlite3 \
 		libuv.so:devel/libuv \
-		libnghttp2.so:www/libnghttp2
+		libnghttp2.so:www/libnghttp2 \
+		libgrpc.so:devel/grpc
 RUN_DEPENDS=	p5-List-MoreUtils>=0:lang/p5-List-MoreUtils \
 		p5-JSON>=0:converters/p5-JSON
 
-USES=		compiler:c++14-lang gmake localbase:ldflags shebangfix perl5 python
+USES=		compiler:c++14-lang gmake localbase:ldflags shebangfix perl5 python:3.6+
 USE_LDCONFIG=	yes
 
 SHEBANG_FILES=	src/app/blast/legacy_blast.pl \
@@ -47,13 +48,19 @@ GNU_CONFIGURE=	yes
 # a postinstall mv.
 CONFIGURE_ARGS=	AR="ar cr" --without-boost --libdir=${PREFIX}/lib/ncbi-tools++
 
-WRKSRC_SUBDIR=		c++
+CONFLICTS_INSTALL=	ncbi-cxx-toolkit
+
+WRKSRC_SUBDIR=	c++
 
 .include <bsd.port.pre.mk>
 
 .if ${CHOSEN_COMPILER_TYPE} == gcc
 # In case of problems: https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=220822
 LDFLAGS+=	-latomic # Only exists in gcc libs
+.endif
+
+.if ${ARCH} == powerpc
+CONFIGURE_ARGS+=	--without-openmp
 .endif
 
 post-install:

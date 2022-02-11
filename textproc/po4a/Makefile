@@ -2,9 +2,13 @@
 
 PORTNAME=	po4a
 DISTVERSIONPREFIX=	v
-DISTVERSION=	0.63
+DISTVERSION=	0.66
 PORTREVISION=	1
 CATEGORIES=	textproc perl5
+
+PATCH_SITES=	https://github.com/mquinson/po4a/commit/
+PATCHFILES=	fa2546f7a0f327603f7e1cffa8415101acce8a90.diff:-p1 \
+		49902aebbab06e3a376d231eb299fcd3c30d1722.diff:-p1
 
 MAINTAINER=	dbaio@FreeBSD.org
 COMMENT=	Brings gettext translation tools to all kinds of docs
@@ -23,9 +27,10 @@ RUN_DEPENDS=	p5-Term-ReadKey>=2.30:devel/p5-Term-ReadKey \
 		jade>=0:textproc/jade \
 		xsltproc:textproc/libxslt \
 		docbook-xsl>0:textproc/docbook-xsl \
-		OpenSP>0:textproc/opensp
+		OpenSP>0:textproc/opensp \
+		msgmerge:devel/gettext-tools
 
-USES=		gettext perl5
+USES=		cpe gettext perl5
 USE_PERL5=	modbuild
 
 USE_GITHUB=	yes

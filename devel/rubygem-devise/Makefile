@@ -1,7 +1,7 @@
 # Created by: rpsfa@rit.edu
 
 PORTNAME=	devise
-PORTVERSION=	4.8.0
+PORTVERSION=	4.8.1
 CATEGORIES=	devel rubygems
 MASTER_SITES=	RG
 
@@ -17,9 +17,11 @@ RUN_DEPENDS=	rubygem-bcrypt>=3.0<4:security/rubygem-bcrypt \
 		rubygem-responders>=0:www/rubygem-responders \
 		rubygem-warden>=1.2.3<1.3:devel/rubygem-warden
 
-USES=		gem
+USES=		cpe gem
 USE_RUBY=	yes
 
 NO_ARCH=	yes
+
+CPE_VENDOR=	plataformatec
 
 .include <bsd.port.mk>

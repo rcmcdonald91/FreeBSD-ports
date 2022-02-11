@@ -1,0 +1,45 @@
+[
+{ type: install
+  message: <<EOM
+
+crowdsec-firewall-bouncer is installed.
+
+The bouncer should register itself but you may want to check the
+configuration file, which is now in %%ETCDIR%%/crowdsec-firewall-bouncer.yaml
+(for consistency with the other platforms).
+
+In previous versions, the configuration was in /usr/local/etc/crowdsec-firewall-bouncer, you may need
+to check if you made any changes there.
+
+This package depends on the Packet Filter service.
+To make sure it's active:
+
+----------
+# sysrc pf_enable=YES
+pf_enable: NO -> YES
+# service pf start
+Enabling pf.
+----------
+
+Then activate the bouncer via sysrc:
+
+----------
+# sysrc crowdsec_firewall_enable="YES"
+crowdsec_firewall_enable: NO -> YES
+# service crowdsec_firewall start
+----------
+
+After a few seconds, the bouncer should have created the tables and rules:
+
+----------
+# pfctl -s Tables
+crowdsec-blacklists
+crowdsec6-blacklists
+# pfctl -s Tables -s rules
+block drop in quick from <crowdsec-blacklists> to any
+block drop in quick from <crowdsec6-blacklists> to any
+----------
+
+EOM
+}
+]

@@ -1,3 +1,3 @@
-TIMESTAMP = 1621183218
-SHA256 (pre_commit_hooks-4.0.0.tar.gz) = 1502c1d3a7b6a66e4bf21e395498e5a9b37672ae8e64884441e6993284f64d2d
-SIZE (pre_commit_hooks-4.0.0.tar.gz) = 28968
+TIMESTAMP = 1641045962
+SHA256 (pre_commit_hooks-4.1.0.tar.gz) = b6361865d1877c5da5ac3a944aab19ce6bd749a534d2ede28e683d07194a57e1
+SIZE (pre_commit_hooks-4.1.0.tar.gz) = 28528

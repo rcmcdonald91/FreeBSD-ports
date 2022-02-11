@@ -1,7 +1,6 @@
     COMMENT = Shells
 
     SUBDIR += 44bsd-csh
-    SUBDIR += ammonite
     SUBDIR += anongitssh
     SUBDIR += antibody
     SUBDIR += ast-ksh
@@ -29,6 +28,7 @@
     SUBDIR += mksh
     SUBDIR += modernish
     SUBDIR += nologinmsg
+    SUBDIR += nsh
     SUBDIR += ohmyzsh
     SUBDIR += oksh
     SUBDIR += p5-Bash-Completion

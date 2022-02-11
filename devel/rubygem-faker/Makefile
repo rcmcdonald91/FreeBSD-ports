@@ -1,5 +1,5 @@
 PORTNAME=	faker
-PORTVERSION=	2.18.0
+PORTVERSION=	2.19.0
 CATEGORIES=	devel rubygems
 MASTER_SITES=	RG
 
@@ -13,6 +13,8 @@ RUN_DEPENDS=	rubygem-i18n>=1.6,2<2,2:devel/rubygem-i18n
 
 USES=		gem
 USE_RUBY=	yes
+
+CONFLICTS_INSTALL=	py*-Faker
 
 NO_ARCH=	yes
 

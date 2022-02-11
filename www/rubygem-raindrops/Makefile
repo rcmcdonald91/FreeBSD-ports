@@ -1,7 +1,7 @@
 # Created by: Steve Wills <swills@FreeBSD.org>
 
 PORTNAME=	raindrops
-PORTVERSION=	0.19.1
+PORTVERSION=	0.20.0
 CATEGORIES=	www rubygems
 MASTER_SITES=	RG
 

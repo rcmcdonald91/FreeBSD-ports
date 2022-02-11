@@ -31,7 +31,6 @@ share/kconf_update/plasmaVolumeDisableKMixAutostart.pl
 share/kde4/apps/kconf_update/disable_kmix.upd
 share/kde4/apps/kconf_update/plasmaVolumeDisableKMixAutostart.pl
 share/kpackage/kcms/kcm_pulseaudio/contents/code/icon.js
-share/kpackage/kcms/kcm_pulseaudio/contents/ui/Advanced.qml
 share/kpackage/kcms/kcm_pulseaudio/contents/ui/CardListItem.qml
 share/kpackage/kcms/kcm_pulseaudio/contents/ui/DeviceComboBox.qml
 share/kpackage/kcms/kcm_pulseaudio/contents/ui/DeviceListItem.qml
@@ -77,6 +76,7 @@ share/locale/gl/LC_MESSAGES/kcm_pulseaudio.mo
 share/locale/gl/LC_MESSAGES/plasma_applet_org.kde.plasma.volume.mo
 share/locale/he/LC_MESSAGES/kcm_pulseaudio.mo
 share/locale/he/LC_MESSAGES/plasma_applet_org.kde.plasma.volume.mo
+share/locale/hsb/LC_MESSAGES/plasma_applet_org.kde.plasma.volume.mo
 share/locale/hu/LC_MESSAGES/kcm_pulseaudio.mo
 share/locale/hu/LC_MESSAGES/plasma_applet_org.kde.plasma.volume.mo
 share/locale/ia/LC_MESSAGES/kcm_pulseaudio.mo
@@ -92,8 +92,6 @@ share/locale/ko/LC_MESSAGES/plasma_applet_org.kde.plasma.volume.mo
 share/locale/lt/LC_MESSAGES/kcm_pulseaudio.mo
 share/locale/lt/LC_MESSAGES/plasma_applet_org.kde.plasma.volume.mo
 share/locale/lv/LC_MESSAGES/plasma_applet_org.kde.plasma.volume.mo
-share/locale/ml/LC_MESSAGES/kcm_pulseaudio.mo
-share/locale/ml/LC_MESSAGES/plasma_applet_org.kde.plasma.volume.mo
 share/locale/nb/LC_MESSAGES/kcm_pulseaudio.mo
 share/locale/nl/LC_MESSAGES/kcm_pulseaudio.mo
 share/locale/nl/LC_MESSAGES/plasma_applet_org.kde.plasma.volume.mo
@@ -125,6 +123,8 @@ share/locale/sr@latin/LC_MESSAGES/kcm_pulseaudio.mo
 share/locale/sr@latin/LC_MESSAGES/plasma_applet_org.kde.plasma.volume.mo
 share/locale/sv/LC_MESSAGES/kcm_pulseaudio.mo
 share/locale/sv/LC_MESSAGES/plasma_applet_org.kde.plasma.volume.mo
+share/locale/ta/LC_MESSAGES/kcm_pulseaudio.mo
+share/locale/ta/LC_MESSAGES/plasma_applet_org.kde.plasma.volume.mo
 share/locale/tr/LC_MESSAGES/kcm_pulseaudio.mo
 share/locale/tr/LC_MESSAGES/plasma_applet_org.kde.plasma.volume.mo
 share/locale/uk/LC_MESSAGES/kcm_pulseaudio.mo
@@ -134,5 +134,15 @@ share/locale/zh_CN/LC_MESSAGES/plasma_applet_org.kde.plasma.volume.mo
 share/locale/zh_TW/LC_MESSAGES/kcm_pulseaudio.mo
 share/locale/zh_TW/LC_MESSAGES/plasma_applet_org.kde.plasma.volume.mo
 share/metainfo/org.kde.plasma.volume.appdata.xml
-share/plasma/plasmoids/org.kde.plasma.volume/contents.rcc
+share/plasma/plasmoids/org.kde.plasma.volume/contents/code/icon.js
+share/plasma/plasmoids/org.kde.plasma.volume/contents/config/config.qml
+share/plasma/plasmoids/org.kde.plasma.volume/contents/config/main.xml
+share/plasma/plasmoids/org.kde.plasma.volume/contents/ui/ConfigGeneral.qml
+share/plasma/plasmoids/org.kde.plasma.volume/contents/ui/DeviceListItem.qml
+share/plasma/plasmoids/org.kde.plasma.volume/contents/ui/HorizontalStackView.qml
+share/plasma/plasmoids/org.kde.plasma.volume/contents/ui/ListItemBase.qml
+share/plasma/plasmoids/org.kde.plasma.volume/contents/ui/SmallToolButton.qml
+share/plasma/plasmoids/org.kde.plasma.volume/contents/ui/StreamListItem.qml
+share/plasma/plasmoids/org.kde.plasma.volume/contents/ui/main.qml
+share/plasma/plasmoids/org.kde.plasma.volume/metadata.desktop
 share/plasma/plasmoids/org.kde.plasma.volume/metadata.json

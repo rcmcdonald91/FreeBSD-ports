@@ -1,6 +1,5 @@
 PORTNAME=	ausweisapp2
-DISTVERSION=	1.20.0
-PORTREVISION=	2
+DISTVERSION=	1.22.2
 CATEGORIES=	deskutils security
 
 MAINTAINER=	freebsd@sysctl.cz
@@ -13,7 +12,8 @@ LICENSE_PERMS=	dist-mirror dist-sell pkg-mirror pkg-sell auto-accept
 
 BUILD_DEPENDS=	pcsc-lite>0:devel/pcsc-lite
 LIB_DEPENDS=	libhttp_parser.so:www/http-parser \
-		libpcsclite.so:devel/pcsc-lite
+		libpcsclite.so:devel/pcsc-lite \
+		libudev.so:devel/libudev-devd
 
 USES=		cmake compiler:c++17-lang pkgconfig qmake qt:5 ssl
 USE_GITHUB=	yes
@@ -25,11 +25,5 @@ USE_QT=		concurrent core declarative gui network quickcontrols2 svg \
 # The VENDOR variable controls the name of the directory in ${PREFIX}/share.
 CMAKE_ARGS=	-DVENDOR=${PORTNAME}
 MAKE_ENV=	DESTDIR=${STAGEDIR}
-
-.include <bsd.port.options.mk>
-
-.if ${SSL_DEFAULT} == base && ${OPSYS} == FreeBSD && ${OSVERSION} < 1200085
-CMAKE_ON+=	FORCE_LEGACY_OPENSSL
-.endif
 
 .include <bsd.port.mk>

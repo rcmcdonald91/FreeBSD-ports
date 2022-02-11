@@ -1,7 +1,5 @@
-# Created by: Kurt Jaeger <fbsd-ports@opsec.eu>
-
 PORTNAME=	dragon
-PORTVERSION=	1.5.4
+PORTVERSION=	1.5.5
 CATEGORIES=	devel
 MASTER_SITES=	http://www.lemke-it.com/
 
@@ -12,9 +10,10 @@ LICENSE=	GPLv3
 
 LIB_DEPENDS=	liblfcbase.so:devel/lfcbase
 
-
 GNU_CONFIGURE=	yes
 PLIST_FILES=	bin/dragon
+
+CONFLICTS_INSTALL=	dragon-player
 
 MAKE_JOBS_UNSAFE=yes
 

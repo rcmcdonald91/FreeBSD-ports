@@ -1,5 +1,5 @@
 PORTNAME=	homebank
-PORTVERSION=	5.5.1
+PORTVERSION=	5.5.3
 CATEGORIES=	finance
 MASTER_SITES=	http://homebank.free.fr/public/
 
@@ -17,7 +17,6 @@ USES=		desktop-file-utils gettext gmake gnome localbase pkgconfig \
 		shared-mime-info
 USE_CSTD=	c99
 USE_GNOME=	cairo gtk30 intltool
-INSTALLS_ICONS=	yes
 
 PORTDOCS=	AUTHORS ChangeLog NEWS README
 

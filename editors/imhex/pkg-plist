@@ -1,5 +1,5 @@
 bin/imhex
 lib/libimhex.so
-%%DATADIR%%/magic/imhex.mgc
+share/applications/imhex.desktop
 %%DATADIR%%/plugins/builtin.hexplug
-%%DATADIR%%/plugins/example.hexplug
+share/pixmaps/imhex.png

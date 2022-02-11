@@ -1,5 +1,5 @@
 PORTNAME=	nsysctl
-DISTVERSION=	2.0
+DISTVERSION=	2.1
 CATEGORIES=	sysutils
 
 MAINTAINER=	alfix86@gmail.com
@@ -13,7 +13,7 @@ LIB_DEPENDS=	libsysctlmibinfo2.so:devel/libsysctlmibinfo2
 USE_GITLAB=	yes
 
 GL_ACCOUNT=	alfix
-GL_COMMIT=	0e2408202e9c6da7d33f3a65a1e09bca0c6458a8
+GL_COMMIT=	b6520605830a56913ca3ca6dfa0bf20f8f4e8ca1
 
 PLIST_FILES=	man/man8/${PORTNAME}.8.gz \
 		sbin/${PORTNAME}
@@ -24,9 +24,6 @@ OPTIONS_DEFINE=	DOCS EXAMPLES
 
 .include <bsd.port.pre.mk>
 
-.if ${OPSYS} == FreeBSD && ${OSVERSION} < 1200019
-IGNORE=		needs oid_label member of struct sysctl_oid defined in sysctl.h which was first introduced in FreeBSD 12
-.endif
 .if ${OPSYS} != FreeBSD
 IGNORE=		not supported on anything but FreeBSD
 .endif

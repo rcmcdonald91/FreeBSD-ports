@@ -8,6 +8,7 @@ COMMENT=	Gtk3 markdown editor
 LICENSE=	GPLv3
 LICENSE_FILE=	${WRKSRC}/LICENSE.md
 
+BUILD_DEPENDS=	itstool:textproc/itstool
 LIB_DEPENDS=	libgtkspell3-3.so:textproc/gtkspell3 \
 		libwebkit2gtk-4.0.so:www/webkit2-gtk3
 RUN_DEPENDS=	pandoc:textproc/hs-pandoc
@@ -23,7 +24,6 @@ GH_TUPLE=	Mandarancio:scidown:a7b7f063de4f272ef0ec12d00b98470888e8cb32:scidown/s
 
 USE_GNOME=	cairo gdkpixbuf2 glib20 gtk30 gtksourceview3
 GLIB_SCHEMAS=	com.github.fabiocolacio.marker.gschema.xml
-INSTALLS_ICONS=	yes
 
 DATADIR=	${PREFIX}/share/com.github.fabiocolacio.marker
 

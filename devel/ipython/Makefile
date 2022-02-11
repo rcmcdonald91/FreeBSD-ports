@@ -1,8 +1,7 @@
 # Created by: Dryice Liu
 
 PORTNAME=	ipython
-PORTVERSION=	7.23.1
-PORTREVISION=	1
+PORTVERSION=	7.29.0
 CATEGORIES=	devel python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -24,8 +23,10 @@ RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}backcall>=0:devel/py-backcall@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}traitlets>=4.2:devel/py-traitlets@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}matplotlib-inline>0:math/py-matplotlib-inline@${PY_FLAVOR}
 
-USES=		python:3.7+
+USES=		cpe python:3.7+
 USE_PYTHON=	autoplist distutils
+
+CONFLICTS_INSTALL=	py*-ipython5
 
 NO_ARCH=	yes
 

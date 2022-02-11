@@ -1,7 +1,7 @@
 # Created by: Rozhuk Ivan <rozhuk.im@gmail.com>
 
 PORTNAME=	screensaver.stars
-PORTVERSION=	2.4.0
+PORTVERSION=	19.0.0
 DISTVERSIONSUFFIX=	-Matrix
 CATEGORIES=	multimedia
 

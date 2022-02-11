@@ -1,6 +1,6 @@
---- content/test/BUILD.gn.orig	2021-04-14 18:41:03 UTC
+--- content/test/BUILD.gn.orig	2021-12-31 00:57:33 UTC
 +++ content/test/BUILD.gn
-@@ -1476,10 +1476,12 @@ test("content_browsertests") {
+@@ -1593,10 +1593,12 @@ test("content_browsertests") {
    }
  
    if (is_linux || is_chromeos) {
@@ -14,10 +14,10 @@
 +        "../browser/zygote_host/zygote_browsertest.cc",
 +      ]
 +    }
-     deps += [ "//ui/gfx:test_support" ]
- 
-     if (use_atk) {
-@@ -1720,7 +1722,7 @@ static_library("run_all_unittests") {
+     deps += [
+       "//printing/buildflags",
+       "//ui/gfx:test_support",
+@@ -1865,7 +1867,7 @@ static_library("run_all_unittests") {
      ":test_support",
      "//base/test:test_support",
    ]
@@ -26,8 +26,8 @@
      deps += [ "//content/common:set_process_title_linux" ]
    }
  }
-@@ -2558,7 +2560,7 @@ test("content_unittests") {
-     deps += [ "//ui/gfx/x" ]
+@@ -2774,7 +2776,7 @@ test("content_unittests") {
+     deps += [ "//third_party/boringssl" ]
    }
  
 -  if (is_linux || is_chromeos) {

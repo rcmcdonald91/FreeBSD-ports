@@ -1,6 +1,6 @@
---- third_party/blink/renderer/platform/fonts/shaping/harfbuzz_shaper_test.cc.orig	2021-04-14 18:41:10 UTC
+--- third_party/blink/renderer/platform/fonts/shaping/harfbuzz_shaper_test.cc.orig	2021-12-14 11:45:12 UTC
 +++ third_party/blink/renderer/platform/fonts/shaping/harfbuzz_shaper_test.cc
-@@ -651,7 +651,7 @@ TEST_P(ShapeParameterTest, MaxGlyphsClusterDevanagari)
+@@ -667,7 +667,7 @@ TEST_P(ShapeParameterTest, MaxGlyphsClusterDevanagari)
    HarfBuzzShaper shaper(string);
    scoped_refptr<ShapeResult> result = ShapeWithParameter(&shaper);
    EXPECT_EQ(length, result->NumCharacters());

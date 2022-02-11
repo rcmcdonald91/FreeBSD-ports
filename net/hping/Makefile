@@ -12,7 +12,10 @@ DISTNAME=	hping2.0.0-rc3
 MAINTAINER=	ecu@200ok.org
 COMMENT=	Network auditing tool
 
-CONFLICTS=	hping-devel-[0-9]*
+DEPRECATED=	Deprecated upstream, please consider using net/hping3 instead
+EXPIRATION_DATE=2022-03-31
+
+CONFLICTS=	hping-devel
 
 WRKSRC=		${WRKDIR}/hping2-rc3
 

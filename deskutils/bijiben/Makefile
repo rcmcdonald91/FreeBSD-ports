@@ -1,10 +1,14 @@
 # Created by: Gustau Perez <gustau.perez@gmail.com>
 
 PORTNAME=	bijiben
-PORTVERSION=	3.38.0
+PORTVERSION=	40.1
+PORTREVISION=	1
 CATEGORIES=	deskutils gnome
-MASTER_SITES=	GNOME
+MASTER_SITES=	GNOME/sources/${PORTNAME}/${PORTVERSION:C/^([0-9]+)\..*/\1/}
 DIST_SUBDIR=	gnome
+
+PATCH_SITES=	https://gitlab.gnome.org/GNOME/${PORTNAME}/-/commit/
+PATCHFILES+=	01ccae2ccb64.patch:-p1 # https://gitlab.gnome.org/GNOME/bijiben/-/merge_requests/158
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Note editor designed to remain simple to use
@@ -17,9 +21,8 @@ LIB_DEPENDS=	libtracker-control-2.0.so:sysutils/tracker \
 		libwebkit2gtk-4.0.so:www/webkit2-gtk3 \
 		libgoa-1.0.so:net/gnome-online-accounts \
 		libical.so:devel/libical \
-		libzeitgeist-2.0.so:sysutils/zeitgeist \
 		libuuid.so:misc/e2fsprogs-libuuid \
-		libhandy-0.0.so:x11-toolkits/libhandy0
+		libhandy-1.so:x11-toolkits/libhandy
 
 PORTSCOUT=	limitw:1,even
 
@@ -28,8 +31,6 @@ USES=		compiler:c++11-lib desktop-file-utils gettext gnome \
 		shared-mime-info shebangfix tar:xz
 USE_LDCONFIG=	yes
 USE_GNOME=	cairo evolutiondataserver3 intltool
-INSTALLS_ICONS=	yes
-MESON_ARGS=	-Dzeitgeist=true
 SHEBANG_FILES=	${WRKSRC}/build-aux/meson_post_install.py
 
 GLIB_SCHEMAS=	org.gnome.Notes.gschema.xml

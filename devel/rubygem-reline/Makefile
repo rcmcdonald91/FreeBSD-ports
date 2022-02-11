@@ -1,14 +1,14 @@
 PORTNAME=	reline
-PORTVERSION=	0.2.5
+DISTVERSION=	0.3.1
 CATEGORIES=	devel rubygems
 MASTER_SITES=	RG
 
-MAINTAINER=	yasu@utahime.org
+MAINTAINER=	yasu@FreeBSD.org
 COMMENT=	Alternative GNU Readline or Editline implementation by pure Ruby
 
 LICENSE=	BSD2CLAUSE RUBY
 LICENSE_COMB=	dual
-LICENSE_FILE_BSD2CLAUSE=${WRKSRC}/BSDL
+LICENSE_FILE_BSD2CLAUSE=	${WRKSRC}/BSDL
 LICENSE_FILE_RUBY=	${WRKSRC}/COPYING
 
 RUN_DEPENDS=	rubygem-io-console>=0.5<1:devel/rubygem-io-console

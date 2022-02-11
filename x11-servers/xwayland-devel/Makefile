@@ -1,14 +1,14 @@
 PORTNAME=	xwayland
 DISTVERSIONPREFIX=	xorg-server-
-DISTVERSION=	1.20.0-936
-DISTVERSIONSUFFIX=	-g7515c23a4
+DISTVERSION=	21.0.99.1-171
+DISTVERSIONSUFFIX=	-g6ad6517a7
 CATEGORIES=	x11-servers
 PKGNAMESUFFIX=	-devel
 
 PATCH_SITES=	https://github.com/${GH_ACCOUNT}/${GH_PROJECT}/commit/
-PATCHFILES+=	231720f8b212.patch:-p1 # https://gitlab.freedesktop.org/xorg/xserver/-/merge_requests/432
-PATCHFILES+=	48a7bfeb4687.patch:-p1 # https://gitlab.freedesktop.org/xorg/xserver/-/merge_requests/432
-PATCHFILES+=	9fef4b809165.patch:-p1 # https://gitlab.freedesktop.org/xorg/xserver/-/merge_requests/432
+PATCHFILES+=	42e34498f87a.patch:-p1 # https://gitlab.freedesktop.org/xorg/xserver/-/merge_requests/432
+PATCHFILES+=	0d56c27582a2.patch:-p1 # https://gitlab.freedesktop.org/xorg/xserver/-/merge_requests/432
+PATCHFILES+=	1f7b28547011.patch:-p1 # https://gitlab.freedesktop.org/xorg/xserver/-/merge_requests/432
 
 MAINTAINER=	jbeich@FreeBSD.org
 COMMENT=	X11 server as Wayland client (development snapshot)
@@ -21,7 +21,8 @@ BUILD_DEPENDS=	evdev-proto>0:devel/evdev-proto \
 		wayland-protocols>=1.18:graphics/wayland-protocols
 LIB_DEPENDS=	libdrm.so:graphics/libdrm \
 		libepoxy.so:graphics/libepoxy \
-		libwayland-client.so:graphics/wayland
+		libwayland-client.so:graphics/wayland \
+		libxcvt.so:x11/libxcvt
 RUN_DEPENDS=	xkbcomp:x11/xkbcomp \
 		xkeyboard-config>0:x11/xkeyboard-config
 
@@ -31,8 +32,8 @@ USES=		compiler:c11 gl meson pkgconfig xorg
 USE_GITHUB=	yes
 USE_GL=		gbm gl
 USE_XORG=	pixman xau xdmcp xfont2 xkbfile xshmfence xtrans
-GH_ACCOUNT=	mirror
-GH_PROJECT=	xserver
+GH_ACCOUNT=	freedesktop
+GH_PROJECT=	xorg-xserver
 MESON_ARGS=	-D${PORTNAME}=true \
 		-Dxorg=false \
 		-Dxnest=false \

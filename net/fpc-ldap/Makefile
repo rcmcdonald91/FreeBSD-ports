@@ -1,5 +1,6 @@
 # Created by: Christopher Key <cjk32@cam.ac.uk>
 
+PORTREVISION=	2
 CATEGORIES=	net lang
 PKGNAMESUFFIX=	-ldap
 

@@ -1,14 +1,18 @@
 PORTNAME=	labwc
-DISTVERSION=	0.2.1
+DISTVERSION=	0.4.0
 CATEGORIES=	x11-wm
+
+PATCH_SITES=	https://github.com/${GH_ACCOUNT}/${GH_PROJECT}/commit/
+PATCHFILES+=	6a3536cdd74e.patch:-p1 # https://github.com/labwc/labwc/pull/228
 
 MAINTAINER=	jbeich@FreeBSD.org
 COMMENT=	Wayland stacking compositor
 
 LICENSE=	GPLv2
 
-BUILD_DEPENDS=	wayland-protocols>0:graphics/wayland-protocols \
-		wlroots>=0.13.0<0.14.0:x11-toolkits/wlroots
+BUILD_DEPENDS=	evdev-proto>0:devel/evdev-proto \
+		wayland-protocols>0:graphics/wayland-protocols \
+		wlroots>=0.15.0<0.16.0:x11-toolkits/wlroots
 LIB_DEPENDS=	libwayland-server.so:graphics/wayland \
 		libwlroots.so:x11-toolkits/wlroots \
 		libinput.so:x11/libinput \
@@ -18,11 +22,11 @@ USES=		compiler:c11 gnome meson pkgconfig xorg
 USE_GITHUB=	yes
 USE_GNOME=	cairo libxml2 pango
 USE_XORG=	pixman
-GH_ACCOUNT=	johanmalm
-PLIST_FILES=	"${MAYBE_SUID}bin/${PORTNAME}"
+PLIST_FILES=	bin/${PORTNAME} \
+		share/wayland-sessions/${PORTNAME}.desktop
 
-OPTIONS_DEFINE=	MANPAGES SUID X11
-OPTIONS_DEFAULT=MANPAGES SUID X11
+OPTIONS_DEFINE=	MANPAGES X11
+OPTIONS_DEFAULT=MANPAGES X11
 
 MANPAGES_BUILD_DEPENDS=	scdoc:textproc/scdoc
 MANPAGES_MESON_ENABLED=	man-pages
@@ -33,10 +37,11 @@ MANPAGES_PLIST_FILES=	man/man1/${PORTNAME}.1.gz \
 			man/man5/${PORTNAME}-menu.5.gz \
 			man/man5/${PORTNAME}-theme.5.gz
 
-SUID_DESC=		setuid bit on "${PORTNAME}" binary (to claim DRM without seatd/console-kit-daemon)
-SUID_VARS=		MAYBE_SUID="@(,,4755) "
-
 X11_MESON_ENABLED=	xwayland
+
+post-extract:
+# Force system dependencies
+	@${RM} ${WRKSRC}/subprojects/*.wrap
 
 post-patch:
 # Extract (snapshot) version from the port instead of meson.build

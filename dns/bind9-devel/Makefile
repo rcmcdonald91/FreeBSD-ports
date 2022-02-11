@@ -49,13 +49,13 @@ RUN_DEPENDS=	bind-tools>0:dns/bind-tools
 # XXX: remove tar:bz2
 USES=		autoreconf compiler:c11 cpe libedit libtool pkgconfig ssl tar:bz2
 # ISC releases things like 9.8.0-P1, which our versioning doesn't like
-ISCVERSION=	9.17.12a0.2021.05.17
+ISCVERSION=	9.17.22a0.2022.02.09
 # XXX: Remove gitlab
 USE_GITLAB=	yes
 GL_SITE=	https://gitlab.isc.org
 GL_ACCOUNT=	isc-projects
 GL_PROJECT=	bind9
-GL_COMMIT=	d34672796cd8506a0c7f996619c5c38cd417c499
+GL_COMMIT=	59c3b17ad0b7590350b516eff62abde6a1f4382b
 
 CPE_VENDOR=	isc
 CPE_VERSION=	${ISCVERSION:C/-.*//}
@@ -87,43 +87,28 @@ EXTRA_PATCHES=		${PATCHDIR}/extrapatch-no-bind-tools
 PORTDOCS=	*
 
 # XXX: Add -devel
-CONFLICTS=	bind911 bind912 bind913 bind914 bind916
+CONFLICTS=	bind9[0-9][0-9]
 .endif	# BIND_TOOLS_SLAVE
 
 MAKE_JOBS_UNSAFE=	yes
 
-OPTIONS_DEFAULT=	DLZ_FILESYSTEM GSSAPI_NONE IDN JSON LMDB MANPAGES \
+OPTIONS_DEFAULT=	GSSAPI_NONE IDN JSON LMDB MANPAGES \
 			TCP_FASTOPEN DNSTAP
 OPTIONS_DEFINE=		DNSTAP DOCS FIXED_RRSET GEOIP IDN JSON LARGE_FILE LMDB \
 			MANPAGES OVERRIDECACHE PORTREVISION QUERYTRACE \
 			START_LATE TCP_FASTOPEN
 
-OPTIONS_RADIO=		CRYPTO
-OPTIONS_RADIO_CRYPTO=	NATIVE_PKCS11
-
-OPTIONS_GROUP=		DLZ
-OPTIONS_GROUP_DLZ=	DLZ_BDB DLZ_FILESYSTEM DLZ_LDAP DLZ_MYSQL \
-			DLZ_POSTGRESQL DLZ_STUB
-
 OPTIONS_SINGLE=		GSSAPI
 OPTIONS_SINGLE_GSSAPI=	GSSAPI_BASE GSSAPI_HEIMDAL GSSAPI_MIT GSSAPI_NONE
 
 .if defined(BIND_TOOLS_SLAVE)
-OPTIONS_EXCLUDE=	${OPTIONS_GROUP_DLZ} DNSTAP DOCS GEOIP LMDB \
+OPTIONS_EXCLUDE=	DNSTAP DOCS GEOIP LMDB \
 			OVERRIDECACHE PORTREVISION QUERYTRACE START_LATE \
 			TCP_FASTOPEN
 .endif	# BIND_TOOLS_SLAVE
 
 OPTIONS_SUB=	yes
 
-CRYPTO_DESC=		Choose which crypto engine to use
-DLZ_BDB_DESC=		DLZ BDB driver
-DLZ_DESC=		Dynamically Loadable Zones
-DLZ_FILESYSTEM_DESC=	DLZ filesystem driver
-DLZ_LDAP_DESC=		DLZ LDAP driver
-DLZ_MYSQL_DESC=		DLZ MySQL driver (no threading)
-DLZ_POSTGRESQL_DESC=	DLZ Postgres driver
-DLZ_STUB_DESC=		DLZ stub driver
 DNSTAP_DESC=		Provides fast passive logging of DNS messages
 FIXED_RRSET_DESC=	Enable fixed rrset ordering
 GSSAPI_BASE_DESC=	Using Heimdal in base
@@ -133,27 +118,15 @@ GSSAPI_NONE_DESC=	Disable
 LARGE_FILE_DESC=	64-bit file support
 LMDB_DESC=		Use LMDB for zone management
 OVERRIDECACHE_DESC=	Use the override-cache patch
-NATIVE_PKCS11_DESC=	Use PKCS\#11 native API (**READ HELP**)
 PORTREVISION_DESC=	Show PORTREVISION in the version string
 QUERYTRACE_DESC=	Enable the very verbose query tracelogging
 START_LATE_DESC=	Start BIND late in the boot process (see help)
 TCP_FASTOPEN_DESC=	RFC 7413 support
 
-DLZ_BDB_CONFIGURE_ON=	--with-dlz-bdb=yes
-DLZ_BDB_USES=		bdb
-
-DLZ_FILESYSTEM_CONFIGURE_ON=	--with-dlz-filesystem=yes
-
-DLZ_LDAP_CONFIGURE_ON=	--with-dlz-ldap=yes
-DLZ_LDAP_USE=		OPENLDAP=yes
-
-DLZ_MYSQL_CONFIGURE_ON=	--with-dlz-mysql=yes
-DLZ_MYSQL_USES=		mysql
-
-DLZ_POSTGRESQL_CONFIGURE_ON=	--with-dlz-postgres=yes
-DLZ_POSTGRESQL_USES=		pgsql
-
-DLZ_STUB_CONFIGURE_ON=	--with-dlz-stub=yes
+DOCS_ALL_TARGET=	all html
+DOCS_BUILD_DEPENDS=	sphinx-build:textproc/py-sphinx \
+			${PYTHON_PKGNAMEPREFIX}sphinx_rtd_theme>0:textproc/py-sphinx_rtd_theme@${PY_FLAVOR}
+DOCS_USES=	python:env
 
 DNSTAP_CONFIGURE_ENABLE=	dnstap
 DNSTAP_LIB_DEPENDS=		libfstrm.so:devel/fstrm \
@@ -197,8 +170,6 @@ LMDB_LIB_DEPENDS=	liblmdb.so:databases/lmdb
 MANPAGES_BUILD_DEPENDS=	sphinx-build:textproc/py-sphinx
 
 OVERRIDECACHE_EXTRA_PATCHES=	${FILESDIR}/extrapatch-bind-min-override-ttl
-
-NATIVE_PKCS11_CONFIGURE_ENABLE=	native-pkcs11
 
 QUERYTRACE_CONFIGURE_ENABLE=	querytrace
 
@@ -265,9 +236,10 @@ post-install:
 	@${RM} -rf ${STAGEDIR}/wrkdirs
 
 post-install-DOCS-on:
-	${MKDIR} ${STAGEDIR}${DOCSDIR}
-	${INSTALL_DATA} ${WRKSRC}/CHANGES* ${WRKSRC}/HISTORY.md \
+	${MKDIR} ${STAGEDIR}${DOCSDIR}/arm
+	${INSTALL_DATA} ${WRKSRC}/CHANGES* \
 		${WRKSRC}/README.md ${STAGEDIR}${DOCSDIR}
+	cd ${WRKSRC}/doc/arm/_build/html && ${COPYTREE_SHARE} . ${STAGEDIR}${DOCSDIR}/arm
 .else
 
 do-install:

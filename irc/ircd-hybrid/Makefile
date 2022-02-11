@@ -1,7 +1,7 @@
 # Created by: David Taylor <davidt@yadt.co.uk>
 
 PORTNAME=	ircd-hybrid
-PORTVERSION=	8.2.38
+PORTVERSION=	8.2.39
 CATEGORIES=	irc
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/${PORTNAME}-${PORTVERSION}
 
@@ -17,6 +17,8 @@ CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 
 LIB_DEPENDS+=	libltdl.so:devel/libltdl
+
+CONFLICTS_INSTALL=	ircd-ratbox ircd-ratbox-devel
 
 USERS=		ircd
 GROUPS=		${USERS}

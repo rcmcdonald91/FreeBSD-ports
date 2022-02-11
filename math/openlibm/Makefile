@@ -2,8 +2,7 @@
 
 PORTNAME=	openlibm
 DISTVERSIONPREFIX=	v
-DISTVERSION=	0.6.0
-PORTREVISION=	2
+DISTVERSION=	0.8.0
 CATEGORIES=	math
 
 MAINTAINER=	iblis@hs.ntnu.edu.tw
@@ -22,13 +21,11 @@ BROKEN_riscv64=	fails to compile: No rule to make target riscv64/Make.files
 USES=		gmake
 USE_GITHUB=	yes
 GH_ACCOUNT=	JuliaMath
-GH_PROJECT=	openlibm
-
 USE_LDCONFIG=	yes
 
 .include <bsd.port.options.mk>
 
-.if ${ARCH:Mpowerpc64*}
+.if ${ARCH:Mpowerpc*}
 USES+=		compiler:gcc-c++11-lib
 .else
 USES+=		compiler:c11

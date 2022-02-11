@@ -7,9 +7,6 @@ COMMENT=	Akonadi management and debugging console
 
 LICENSE=	LGPL21
 
-DEPRECATED=	Uses EOL Python 2.7 via www/qt5-webengine
-EXPIRATION_DATE=2021-06-23
-
 LIB_DEPENDS=	libassuan.so:security/libassuan  \
 		libgpg-error.so:security/libgpg-error \
 		libgpgme.so:security/gpgme \
@@ -20,14 +17,15 @@ LIB_DEPENDS=	libassuan.so:security/libassuan  \
 
 USES=		cmake compiler:c++11-lib gettext kde:5 qt:5 tar:xz
 USE_KDE=	auth bookmarks codecs completion config configwidgets \
-		coreaddons crash dbusaddons ecm guiaddons i18n iconthemes \
+		coreaddons crash dbusaddons guiaddons i18n iconthemes \
 		itemmodels itemviews jobwidgets kdelibs4support kio \
 		notifications parts service solid sonnet textwidgets \
-		unitconversion widgetsaddons windowsystem xmlgui
+		unitconversion widgetsaddons windowsystem xmlgui \
+		ecm_build
 # pim components
 USE_KDE+=	akonadi akonadicalendar akonadicontacts akonadimime \
 		akonadisearch calendarcore calendarsupport contacts \
-		identitymanagement libkdepim libkleo messagelib mime \
+		grantleetheme identitymanagement libkdepim libkleo messagelib mime \
 		pimcommon pimtextedit
 USE_QT=		concurrent core dbus gui network printsupport sql widgets xml \
 		buildtools_build qmake_build

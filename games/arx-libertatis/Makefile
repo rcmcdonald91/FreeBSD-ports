@@ -1,6 +1,6 @@
 PORTNAME=	arx-libertatis
 PORTVERSION=	1.1.2
-PORTREVISION=	17
+PORTREVISION=	18
 CATEGORIES=	games
 MASTER_SITES=	http://downloads.sourceforge.net/arx/ \
 		http://arx-libertatis.org/files/
@@ -21,6 +21,8 @@ CMAKE_ARGS=	-DDATA_DIR=arx \
 		-DSTRICT_USE=ON \
 		-DBUILD_CRASHREPORTER=OFF
 LDFLAGS_i386=		-Wl,-znotext
+
+CONFLICTS_INSTALL=	rnv
 
 SUB_FILES=	pkg-message
 

@@ -1,7 +1,7 @@
 # Created by: ijliao
 
 PORTNAME=	matplotlib
-PORTVERSION=	3.4.1
+PORTVERSION=	3.4.3
 CATEGORIES=	math python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -18,8 +18,7 @@ BUILD_DEPENDS=	${PYNUMPY} \
 LIB_DEPENDS=	libfreetype.so:print/freetype2 \
 		libqhull.so:math/qhull \
 		libpng.so:graphics/png \
-		libfontconfig.so:x11-fonts/fontconfig \
-		libtcl86.so:lang/tcl86
+		libfontconfig.so:x11-fonts/fontconfig
 RUN_DEPENDS=	${PYNUMPY} \
 		${PYTHON_PKGNAMEPREFIX}cycler>=0.10:devel/py-cycler@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}dateutil>=2.1:devel/py-dateutil@${PY_FLAVOR} \
@@ -35,8 +34,6 @@ RUN_DEPENDS=	${PYNUMPY} \
 USES=		compiler:c++11-lib gettext gnome localbase pkgconfig python:3.7+ shebangfix uniquefiles:dirs
 USE_PYTHON=	distutils
 
-LDFLAGS+=	-fuse-ld=lld
-
 PLIST_SUB=	VER=${PORTVERSION}
 PORTEXAMPLES=	*
 
@@ -49,7 +46,7 @@ QT5AGGBACKEND_DESC=	Qt5Agg backend support
 TKAGGBACKEND_DESC=	TKAgg backend support
 
 QT5AGGBACKEND_USES=	display pyqt:5
-QT5AGGBACKEND_USE=	PYQT=sip,widgets
+QT5AGGBACKEND_USE=	PYQT=pyqt5,sip
 QT5AGGBACKEND_VARS=	QT5AGG_BACKEND=True
 QT5AGGBACKEND_VARS_OFF=	QT5AGG_BACKEND=False
 TKAGGBACKEND_BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}tkinter>0:x11-toolkits/py-tkinter@${PY_FLAVOR}

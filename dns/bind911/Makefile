@@ -15,7 +15,7 @@ LICENSE=	MPL20
 LICENSE_FILE=	${WRKSRC}/COPYRIGHT
 
 DEPRECATED=	End of life, please migrate to a newer version of BIND9
-EXPIRATION_DATE=	2021-12-31
+EXPIRATION_DATE=	2022-03-31
 
 LIB_DEPENDS=	libxml2.so:textproc/libxml2
 RUN_DEPENDS=	bind-tools>0:dns/bind-tools
@@ -23,7 +23,7 @@ RUN_DEPENDS=	bind-tools>0:dns/bind-tools
 USES=	cpe libedit pkgconfig
 
 # ISC releases things like 9.8.0-P1, which our versioning doesn't like
-ISCVERSION=	9.11.32
+ISCVERSION=	9.11.36
 
 CPE_VENDOR=	isc
 CPE_VERSION=	${ISCVERSION:C/-.*//}
@@ -42,7 +42,7 @@ CONFIGURE_ARGS=	--localstatedir=/var --disable-linux-caps \
 		--sysconfdir=${ETCDIR}
 ETCDIR=		${PREFIX}/etc/namedb
 
-CONFLICTS=	bind912 bind913 bind914 bind916 bind9-devel
+CONFLICTS=	bind9[0-9][0-9] bind9-devel
 
 SUB_FILES=	pkg-message named.conf
 USE_RC_SUBR=	named
@@ -102,7 +102,7 @@ TCP_FASTOPEN_DESC=	RFC 7413 support
 TUNING_LARGE_DESC=	Tune named for large systems (**READ HELP**)
 
 ACCFDNS_EXTRA_PATCHES=	${PATCHDIR}/extrapatch-interfacemgr.c
-	
+
 DLZ_BDB_CONFIGURE_ON=	--with-dlz-bdb=yes
 DLZ_BDB_USES=		bdb
 

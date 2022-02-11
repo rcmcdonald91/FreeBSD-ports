@@ -1,6 +1,6 @@
 PORTNAME=	pdf2djvu
-DISTVERSION=	0.9.17.1
-PORTREVISION=	10
+DISTVERSION=	0.9.18.2
+PORTREVISION=	1
 CATEGORIES=	converters
 MASTER_SITES=	https://github.com/jwilk/${PORTNAME}/releases/download/${PORTVERSION}/
 
@@ -14,14 +14,14 @@ BUILD_DEPENDS=	${LOCALBASE}/include/pstreams/pstream.h:devel/pstreams
 LIB_DEPENDS=	libdjvulibre.so:graphics/djvulibre \
 		libpoppler.so:graphics/poppler
 
-USES=		autoreconf:build compiler:c++11-lang gettext-tools \
+USES=		autoreconf:build compiler:c++17-lang gettext-tools \
 		gmake iconv localbase pkgconfig tar:xz
-USE_CXXSTD=	c++11
+USE_CXXSTD=	c++17
 
 GNU_CONFIGURE=	yes
 
 OPTIONS_DEFINE=	COLOR_QUANTIZATION DOCS NLS MULTITHREADING XMP
-OPTIONS_DEFAULT=COLOR_QUANTIZATION          MULTITHREADING XMP
+OPTIONS_DEFAULT=COLOR_QUANTIZATION          MULTITHREADING
 OPTIONS_SUB=	yes
 
 COLOR_QUANTIZATION_DESC=Color quantization via GraphicsMagick++
@@ -45,13 +45,13 @@ MULTITHREADING_CONFIGURE_ENABLE=openmp
 
 XMP_CONFIGURE_ENABLE=	xmp
 XMP_LIB_DEPENDS=	libexiv2.so:graphics/exiv2
+XMP_BROKEN=		graphics/exiv2 and graphics/poppler disagree about usable C++ standard
 
 pre-configure:
 	@cd ${WRKSRC} && ${SH} ${FILESDIR}/bootstrap
 	# Poppler 20.12 no longer installs the pc file for this private backend.
 	# https://github.com/jwilk/pdf2djvu/issues/144
 	${REINPLACE_CMD} -e 's|poppler-splash|poppler|g' ${WRKSRC}/configure
-
 
 post-build-DOCS-on:
 	@cd ${WRKSRC}/doc && ${GMAKE}

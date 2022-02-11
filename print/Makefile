@@ -107,6 +107,7 @@
     SUBDIR += linux-c7-cups-libs
     SUBDIR += linux-c7-freetype
     SUBDIR += linux-c7-harfbuzz
+    SUBDIR += linux-jabref
     SUBDIR += lout
     SUBDIR += lprps
     SUBDIR += lyx
@@ -143,6 +144,7 @@
     SUBDIR += pdf-renderer
     SUBDIR += pdf-tools
     SUBDIR += pdf4tcl
+    SUBDIR += pdfarranger
     SUBDIR += pdfbox
     SUBDIR += pdfchain
     SUBDIR += pdflib
@@ -177,9 +179,9 @@
     SUBDIR += py-fontparts
     SUBDIR += py-fontpens
     SUBDIR += py-fonttools
-    SUBDIR += py-fonttools3
     SUBDIR += py-fpdf
     SUBDIR += py-frescobaldi
+    SUBDIR += py-glyphsets
     SUBDIR += py-glyphtools
     SUBDIR += py-pdf
     SUBDIR += py-pdf2
@@ -187,9 +189,7 @@
     SUBDIR += py-preppy
     SUBDIR += py-psautohint
     SUBDIR += py-pycups
-    SUBDIR += py-pycups1
     SUBDIR += py-python-ly
-    SUBDIR += py-qt5-printsupport
     SUBDIR += py-relatorio
     SUBDIR += py-reportlab
     SUBDIR += py-rtf

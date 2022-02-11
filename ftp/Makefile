@@ -8,14 +8,17 @@
     SUBDIR += bftpd
     SUBDIR += bsdftpd-ssl
     SUBDIR += cmdftp
+    SUBDIR += coeurl
     SUBDIR += curl
     SUBDIR += curlie
     SUBDIR += curlpp
     SUBDIR += dmachine
     SUBDIR += fastdfs
     SUBDIR += filezilla
+    SUBDIR += fineftp-server
     SUBDIR += fmirror
     SUBDIR += fpc-libcurl
+    SUBDIR += freebsd-ftpd
     SUBDIR += ftpcopy
     SUBDIR += ftpfind
     SUBDIR += ftplib
@@ -52,12 +55,12 @@
     SUBDIR += pear-Net_FTP
     SUBDIR += pftpd
     SUBDIR += php-fastdfs
-    SUBDIR += php73-curl
-    SUBDIR += php73-ftp
     SUBDIR += php74-curl
     SUBDIR += php74-ftp
     SUBDIR += php80-curl
     SUBDIR += php80-ftp
+    SUBDIR += php81-curl
+    SUBDIR += php81-ftp
     SUBDIR += phpwebftp
     SUBDIR += proftpd
     SUBDIR += proftpd-mod_vroot
@@ -75,6 +78,7 @@
     SUBDIR += rexx-curl
     SUBDIR += rubygem-curb
     SUBDIR += rubygem-net-ftp
+    SUBDIR += sftpgo
     SUBDIR += smbftpd
     SUBDIR += spegla
     SUBDIR += tftp-hpa
@@ -91,6 +95,7 @@
     SUBDIR += wmget
     SUBDIR += wput
     SUBDIR += wxdfast
+    SUBDIR += wzdftpd
     SUBDIR += yafc
 
 .include <bsd.port.subdir.mk>

@@ -1,7 +1,7 @@
 # Created by: Andrew Pantyukhin <infofarmer@FreeBSD.org>
 
 PORTNAME=	gscan2pdf
-PORTVERSION=	2.12.1
+PORTVERSION=	2.12.4
 CATEGORIES=	graphics
 MASTER_SITES=	SF
 
@@ -15,7 +15,6 @@ BUILD_DEPENDS=	p5-Config-General>=2.40:devel/p5-Config-General \
 		p5-Locale-gettext>=1.05:devel/p5-Locale-gettext \
 		p5-Log-Log4perl>0:devel/p5-Log-Log4perl \
 		p5-Readonly>0:devel/p5-Readonly \
-		ImageMagick6>0:graphics/ImageMagick6 \
 		p5-Image-Sane>=0.14:graphics/p5-Image-Sane \
 		p5-Set-IntSpan>=1.10:math/p5-Set-IntSpan \
 		p5-List-MoreUtils>0:lang/p5-List-MoreUtils \
@@ -31,13 +30,13 @@ RUN_DEPENDS:=	p5-Proc-ProcessTable>0:devel/p5-Proc-ProcessTable \
 		cjb2:graphics/djvulibre \
 		scanimage:graphics/sane-backends \
 		unpaper:graphics/unpaper \
-		ImageMagick6>0:graphics/ImageMagick6 \
 		p5-HTML-Parser>0:www/p5-HTML-Parser \
 		p5-Filesys-Df>0.92:sysutils/p5-Filesys-Df \
 		p5-Data-UUID>=1.220:devel/p5-Data-UUID \
 		p5-Date-Calc>=6.4:devel/p5-Date-Calc \
 		p5-Config-General>=2.40:devel/p5-Config-General \
 		p5-Glib>=1.210:devel/p5-Glib \
+		p5-Locale-Codes>0:misc/p5-Locale-Codes \
 		p5-Locale-gettext>=1.05:devel/p5-Locale-gettext \
 		p5-Log-Log4perl>0:devel/p5-Log-Log4perl \
 		p5-Readonly>0:devel/p5-Readonly \
@@ -56,7 +55,7 @@ RUN_DEPENDS:=	p5-Proc-ProcessTable>0:devel/p5-Proc-ProcessTable \
 
 NO_ARCH=	yes
 
-USES=		desktop-file-utils gettext gmake gnome perl5 tar:xz
+USES=		desktop-file-utils gettext gmake gnome magick:6,build,run perl5 tar:xz
 USE_GNOME=	gtk30 librsvg2
 USE_PERL5=	configure
 
@@ -70,12 +69,6 @@ OCR_DESC=		Optical Character Recognition
 TESSERACT_DESC=		OCR engine developed at Google
 TESSERACT_RUN_DEPENDS=	tesseract:graphics/tesseract
 
-.include <bsd.port.pre.mk>
-
-.if ${PERL_LEVEL} >= 502902
-RUN_DEPENDS+=	p5-Locale-Codes>0:misc/p5-Locale-Codes
-.endif
-
 post-patch:
 	@${REINPLACE_CMD} -e \
 		's|$$sharedir/man|$$prefixdir/man| ; \
@@ -83,4 +76,4 @@ post-patch:
 	@${REINPLACE_CMD} -e \
 		's|/usr/share|${PREFIX}/share|g' ${WRKSRC}/bin/${PORTNAME}
 
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>

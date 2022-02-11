@@ -1,13 +1,13 @@
 # Created by: Po-Chuan Hsieh <sunpoet@FreeBSD.org>
 
 PORTNAME=	ddtrace
-PORTVERSION=	0.48.3
+PORTVERSION=	0.57.3
 CATEGORIES=	devel python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 
 MAINTAINER=	sunpoet@FreeBSD.org
-COMMENT=	Datadog tracing code
+COMMENT=	Datadog APM client library
 
 LICENSE=	APACHE20 BSD3CLAUSE
 LICENSE_COMB=	dual
@@ -31,6 +31,6 @@ post-patch:
 	@${RM} ${WRKSRC}/ddtrace/profiling/collector/stack.c
 
 post-install:
-	${STRIP_CMD} ${STAGEDIR}${PYTHON_SITELIBDIR}/ddtrace/vendor/*/*.so
+	${FIND} ${STAGEDIR}${PYTHON_SITELIBDIR} -name '*.so' -exec ${STRIP_CMD} {} +
 
 .include <bsd.port.mk>

@@ -1,8 +1,7 @@
 # Created by: Konstantin Saurbier <saurbier@math.uni-bielefeld.de>
 
 PORTNAME=	ldns
-PORTVERSION=	1.7.1
-PORTREVISION=	2
+DISTVERSION=	1.8.1
 CATEGORIES=	dns
 MASTER_SITES=	https://www.nlnetlabs.nl/downloads/ldns/ \
 		LOCAL/ehaupt
@@ -35,7 +34,7 @@ DOXYGEN_BUILD_DEPENDS=	doxygen:devel/doxygen
 HTMLDOCS=		doc/html/*
 
 OPTIONS_DEFINE+=	DANETAUSAGE GOST RRTYPEAMTRELAY RRTYPEAVC RRTYPENINFO \
-			RRTYPERKEY RRTYPETA
+			RRTYPERKEY RRTYPETA RRTYPESVCBHTTPS
 
 DANETAUSAGE_DESC=	Enable ta usage, requires openssl >= 1.1.0
 GOST_DESC=		GOST signatures enabled, requires openssl >= 1.0.0
@@ -44,6 +43,7 @@ RRTYPERKEY_DESC=	Enable draft RR type rkey.
 RRTYPETA_DESC=		Enable draft RR type ta.
 RRTYPEAVC_DESC=		Enable draft RR type avc.
 RRTYPEAMTRELAY_DESC=	Enable draft RR type amtrelay.
+RRTYPESVCBHTTPS_DESC= 	Enable SVCB and HTTPS draft RR types.
 
 OPTIONS_SUB=	yes
 
@@ -55,6 +55,7 @@ RRTYPERKEY_CONFIGURE_ENABLE=		rrtype-rkey
 RRTYPETA_CONFIGURE_ENABLE=		rrtype-ta
 RRTYPEAVC_CONFIGURE_ENABLE=		rrtype-avc
 RRTYPEAMTRELAY_CONFIGURE_ENABLE=	rrtype-amtrelay
+RRTYPESVCBHTTPS_CONFIGURE_ENABLE=	rrtype-svcb-https
 EXAMPLES_CONFIGURE_WITH=		examples
 DRILL_CONFIGURE_WITH=			drill
 DRILL_INSTALL_TARGET=			install-drill
@@ -91,7 +92,7 @@ BUILD_DEPENDS=		${RUN_DEPENDS}
 LIB_DEPENDS+=		libldns.so:dns/ldns
 
 post-patch:
-	@${SED} -i '' -e 's=-I./include/ldns=-I${LOCALBASE}/include/ldns=' ${WRKSRC}/Makefile.in
+	${SED} -i '' -e 's=-I./include/ldns=-I${LOCALBASE}/include/ldns=' ${WRKSRC}/Makefile.in
 
 post-install:
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/${SITE_ARCH_REL}/auto/DNS/LDNS/LDNS.so
@@ -102,11 +103,6 @@ INSTALL_TARGET=	install-lib install-h install-config
 .endif # BUILD_PYLDNS || BUILD_P5PERL
 
 .include <bsd.port.pre.mk>
-
-.if ${PORT_OPTIONS:MDANETAUSAGE} && \
-    ((${OSVERSION} < 1200084 && ${SSL_DEFAULT} == base))
-BROKEN=		this option requires openssl >= 1.1.0 ${OSVERSION} ${SSL_DEFAULT}
-.endif
 
 .if ! ${PORT_OPTIONS:MGOST}
 NO_GOST=	--disable-gost

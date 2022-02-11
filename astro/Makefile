@@ -3,8 +3,6 @@
     SUBDIR += R-cran-maptools
     SUBDIR += accrete
     SUBDIR += astrometry
-    SUBDIR += boinc-astropulse
-    SUBDIR += boinc-setiathome
     SUBDIR += celestia
     SUBDIR += celestia-gtk
     SUBDIR += cfitsio
@@ -13,7 +11,6 @@
     SUBDIR += geographiclib
     SUBDIR += gkrellmoon2
     SUBDIR += gnuastro
-    SUBDIR += google-earth
     SUBDIR += gpsbabel
     SUBDIR += gpsbabel14
     SUBDIR += gpscorrelate
@@ -22,6 +19,7 @@
     SUBDIR += gpsprune
     SUBDIR += gpstk
     SUBDIR += gpxloggerd
+    SUBDIR += indiwebmanagerapp
     SUBDIR += jday
     SUBDIR += josm
     SUBDIR += kosmindoormap
@@ -73,17 +71,23 @@
     SUBDIR += p5-Net-GPSD3
     SUBDIR += p5-Starlink-AST
     SUBDIR += p5-Weather-Underground
+    SUBDIR += phd2
     SUBDIR += phoon
     SUBDIR += pp3
     SUBDIR += ptiger
     SUBDIR += py-astlib
+    SUBDIR += py-astral
     SUBDIR += py-astropy
     SUBDIR += py-astropy-helpers
     SUBDIR += py-ephem
+    SUBDIR += py-extension-helpers
     SUBDIR += py-horoscopegenerator
+    SUBDIR += py-indiweb
     SUBDIR += py-jplephem
+    SUBDIR += py-kosmorrolib
     SUBDIR += py-metar
     SUBDIR += py-metpy
+    SUBDIR += py-pyerfa
     SUBDIR += py-pykep
     SUBDIR += py-pymeeus
     SUBDIR += py-pymetar
@@ -110,6 +114,7 @@
     SUBDIR += starplot
     SUBDIR += stars
     SUBDIR += stellarium
+    SUBDIR += stellarsolver
     SUBDIR += sunclock
     SUBDIR += sunwait
     SUBDIR += swe

@@ -1,7 +1,7 @@
 # Created by: Thierry Thomas <thierry@FreeBSD.org>
 
 PORTNAME=	netgen
-PORTVERSION=	6.2.2102
+PORTVERSION=	6.2.2105
 PORTREVISION=	1
 DISTVERSIONPREFIX=	v
 CATEGORIES=	cad
@@ -11,9 +11,6 @@ COMMENT=	Automatic 3D tetrahedral mesh generator
 
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/LICENSE
-
-ONLY_FOR_ARCHS=		amd64 i386
-ONLY_FOR_ARCHS_REASON=	relies on rdtsc() call and the TSC is specific to x86
 
 BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}pytest>=0:devel/py-pytest@${PY_FLAVOR} \
 		git:devel/git
@@ -31,6 +28,10 @@ USE_LDCONFIG=	yes
 CFLAGS+=	-I${LOCALBASE}/include -I${TK_INCLUDEDIR}/generic -I${TK_INCLUDEDIR}/unix
 CXXFLAGS+=	-I${LOCALBASE}/include -I${TK_INCLUDEDIR}/generic -I${TK_INCLUDEDIR}/unix
 LDFLAGS+=	-lexecinfo
+
+CMAKE_OFF=	USE_NATIVE_ARCH
+
+CONFLICTS_INSTALL=	libvisual netgen-lvs pybind11 # bin/netgen include/pybind11/attr.h lib/libvisual.so
 
 OPTIONS_DEFINE=	JPEG MPEG CGNS
 

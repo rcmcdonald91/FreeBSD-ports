@@ -1,12 +1,11 @@
 # Created by: Laurent Courty
 
 PORTNAME=	qgis
-DISTVERSIONPREFIX=	final-
-DISTVERSION=	3_16_7
+DISTVERSION=	3.16.16
+PORTREVISION=	1
 CATEGORIES=	graphics geography
+MASTER_SITES=	https://qgis.org/downloads/
 PKGNAMESUFFIX=	-ltr
-
-PATCH_SITES=	https://github.com/${GH_ACCOUNT}/${GH_PROJECT}/commit/
 
 MAINTAINER=	rhurlin@FreeBSD.org
 COMMENT=	Free and Open Source Geographic Information System
@@ -14,11 +13,9 @@ COMMENT=	Free and Open Source Geographic Information System
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/doc/LICENSE
 
-DEPRECATED=	Uses EOL Python 2.7 via www/qt5-webengine
-EXPIRATION_DATE=2021-06-23
-
 BUILD_DEPENDS=	gpsbabel>=1.5.4:astro/gpsbabel \
 		opencl>=0:devel/opencl \
+		sip:devel/py-sip4 \
 		${PYTHON_PKGNAMEPREFIX}cycler>=0.10.0:devel/py-cycler@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}dateutil>=2.8.1:devel/py-dateutil@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}future>=0.18.2:devel/py-future@${PY_FLAVOR} \
@@ -27,7 +24,7 @@ BUILD_DEPENDS=	gpsbabel>=1.5.4:astro/gpsbabel \
 		${PYTHON_PKGNAMEPREFIX}markupsafe>=1.1.1:textproc/py-markupsafe@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}matplotlib>=2.2.4:math/py-matplotlib@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}mock>=3.0.5:devel/py-mock@${PY_FLAVOR} \
-		${PYTHON_PKGNAMEPREFIX}OWSLib>=0.20.0:graphics/py-OWSLib@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}OWSLib>=0.24.1:graphics/py-OWSLib@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}pbr>=3.1.1:devel/py-pbr@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}pip>=19.1.1:devel/py-pip@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}plotly>=3.0.2:graphics/py-plotly@${PY_FLAVOR} \
@@ -44,6 +41,8 @@ LIB_DEPENDS=	libexiv2.so:graphics/exiv2 \
 		libgeos.so:graphics/geos \
 		libgsl.so:math/gsl \
 		libhdf5.so:science/hdf5 \
+		liblazperf.so:archivers/lazperf \
+		libmdal.so:math/mdal \
 		libnetcdf.so:science/netcdf \
 		libOpenCL.so:devel/ocl-icd \
 		libproj.so:graphics/proj \
@@ -76,8 +75,8 @@ RUN_DEPENDS=	astyle:devel/astyle \
 		${PYTHON_PKGNAMEPREFIX}nbformat>=5.0.7:devel/py-nbformat@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}networkx>=2.1:math/py-networkx@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}nltk>=3.4.1:textproc/py-nltk@${PY_FLAVOR} \
-		${PYTHON_PKGNAMEPREFIX}numpy>=1.16.6:math/py-numpy@${PY_FLAVOR} \
-		${PYTHON_PKGNAMEPREFIX}OWSLib>=0.18.0:graphics/py-OWSLib@${PY_FLAVOR} \
+		${PYNUMPY} \
+		${PYTHON_PKGNAMEPREFIX}OWSLib>=0.24.1:graphics/py-OWSLib@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}pandas>=0.24.2:math/py-pandas@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}pbr>=3.1.1:devel/py-pbr@${PY_FLAVOR} \
 		${PY_PILLOW} \
@@ -92,26 +91,22 @@ RUN_DEPENDS=	astyle:devel/astyle \
 		${PYTHON_PKGNAMEPREFIX}rasterio>=0:graphics/py-rasterio@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}requests>=2.22.0:www/py-requests@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}scikit-image>=0.14.3:graphics/py-scikit-image@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}scikit-learn>=0:science/py-scikit-learn@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}Shapely>=1.6.4:devel/py-shapely@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}six>=1.14.0:devel/py-six@${PY_FLAVOR} \
-		${PYTHON_PKGNAMEPREFIX}scikit-learn>=0:science/py-scikit-learn@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}sqlite3>=3.7.7:databases/py-sqlite3@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}termcolor>=1.1.0:devel/py-termcolor@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}xlrd>=2.0.1:textproc/py-xlrd@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}yaml>=5.3.1:devel/py-yaml@${PY_FLAVOR}
 
 ### Fortran is needed by numpy, GRASS, etc.
-USES=		bison cmake compiler:features cpe desktop-file-utils \
+USES=		bison cmake compiler:features desktop-file-utils \
 		fortran gl gmake gnome pgsql pyqt:5 python:3.7+ qca qt:5 \
-		shebangfix sqlite:3
-USE_GITHUB=	yes
-GH_PROJECT=	${PORTNAME:tu}
+		shebangfix sqlite:3 tar:bz2
 USE_GL=		gl
 USE_GNOME=	libxml2
-INSTALLS_ICONS=	yes
 USE_LDCONFIG=	yes
-USE_PYQT=	core gui network qml quick quickwidgets qscintilla2 \
-		pysip sip sql svg webkit_run webkitwidgets_run xml
+USE_PYQT=	pyqt5 qscintilla2
 USE_QT=		3d buildtools_build core concurrent dbus declarative \
 		designer doc gamepad gui linguist_build location \
 		network printsupport qmake_build script serialport \
@@ -121,20 +116,21 @@ USE_QT=		3d buildtools_build core concurrent dbus declarative \
 SHEBANG_FILES=	src/plugins/grass/scripts/*.py
 
 CMAKE_ARGS+=	-DCMAKE_BUILD_TYPE:STRING=Release \
+		-DCMAKE_POLICY_DEFAULT_CMP0056:STRING=NEW \
+		-DLazPerf_INCLUDE_DIR:PATH=${LOCALBASE}/include/lazperf \
+		-DWITH_INTERNAL_MDAL:BOOL=false \
 		-DPYRCC_PROGRAM:FILEPATH=${LOCALBASE}/bin/pyrcc5-${PYTHON_VER} \
 		-DPYUIC_PROGRAM:FILEPATH=${LOCALBASE}/bin/pyuic5-${PYTHON_VER} \
 		-DQSCI_SIP_DIR:PATH=${PYQT_SIPDIR}/Qsci \
 		-DQWT_INCLUDE_DIR:PATH=${LOCALBASE}/include/qt5/qwt6 \
-		-DQWT_LIBRARY:FILEPATH=${LOCALBASE}/lib/qt5/libqwt6.so \
-		-DCMAKE_POLICY_DEFAULT_CMP0056:STRING=NEW
+		-DQWT_LIBRARY:FILEPATH=${LOCALBASE}/lib/qt5/libqwt6.so
 CMAKE_ON=	BUILD_TESTING ENABLE_TESTS USE_OPENCL WITH_3D WITH_ASTYLE \
-		WITH_BINDINGS WITH_CUSTOM_WIDGETS WITH_INTERNAL_MDAL \
-		WITH_POSTGRESQL
-CMAKE_OFF=	WITH_GLOBE WITH_QWTPOLAR
+		WITH_BINDINGS WITH_CUSTOM_WIDGETS WITH_POSTGRESQL
+CMAKE_OFF=	WITH_QWTPOLAR
 
 CONFLICTS_INSTALL=	qgis
 
-PLIST_SUB=	DISTVERSION=${PORTVERSION}
+PLIST_SUB=	DISTVERSION=${DISTVERSION}
 
 .if !defined(MAINTAINER_MODE)
 CMAKE_ARGS+=	-Wno-dev

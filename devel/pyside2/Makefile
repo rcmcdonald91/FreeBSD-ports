@@ -1,5 +1,6 @@
 PORTNAME=	pyside2
 DISTVERSION=	5.15.2
+PORTREVISION=	2
 CATEGORIES=	devel
 MASTER_SITES=	QT/official_releases/QtForPython/shiboken2/PySide2-${DISTVERSION}-src
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -35,22 +36,18 @@ PLIST_SUB+=	DISTVERSION=${DISTVERSION}
 WRKSRC=		${WRKDIR}/pyside-setup-opensource-src-${DISTVERSION:C/^([0-9].[0-9]+.[0-9])(.[0-9])?/\1/}/sources/pyside2
 
 .if ${ARCH} == amd64 || ${ARCH} == i386
-DEPRECATED=	Uses EOL Python 2.7 via www/qt5-webengine
-EXPIRATION_DATE=2021-06-23
 PLIST_SUB+=	WEBENGINE=""
 USE_QT+=	webengine
 .else
 PLIST_SUB+=	WEBENGINE="@comment "
 .endif
 
-# AVOID a build_fs_violation with poudriere
-post-build:
-	${RM} -r ${PYTHON_SITELIBDIR}/shiboken2/files.dir/shibokensupport/__pycache__
-	${RM} -r ${PYTHON_SITELIBDIR}/shiboken2/files.dir/shibokensupport/signature/__pycache__
-	${RM} -r ${PYTHON_SITELIBDIR}/shiboken2/files.dir/shibokensupport/signature/lib/__pycache__
-post-stage:
-	${RM} -r ${PYTHON_SITELIBDIR}/shiboken2/files.dir/shibokensupport/__pycache__
-	${RM} -r ${PYTHON_SITELIBDIR}/shiboken2/files.dir/shibokensupport/signature/__pycache__
-	${RM} -r ${PYTHON_SITELIBDIR}/shiboken2/files.dir/shibokensupport/signature/lib/__pycache__
+post-install:
+	${PYTHON_CMD} ${PYTHON_LIBDIR}/compileall.py \
+		-f -d ${PYTHONPREFIX_SITELIBDIR} \
+		${STAGEDIR}${PYTHONPREFIX_SITELIBDIR}
+	${PYTHON_CMD} -O ${PYTHON_LIBDIR}/compileall.py \
+		-f -d ${PYTHONPREFIX_SITELIBDIR} \
+		${STAGEDIR}${PYTHONPREFIX_SITELIBDIR}
 
 .include <bsd.port.post.mk>

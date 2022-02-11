@@ -1,6 +1,5 @@
 # Created by: John Merryweather Cooper
 
-PORTREVISION=	2
 CATEGORIES=	databases lang
 PKGNAMESUFFIX=	-mysql
 
@@ -14,7 +13,6 @@ EXTRACTUNITDIR=	${WRKUNITDIR}
 
 OPTIONS_DEFINE=	MYSQL
 MYSQL_DESC=	Install MySQL client
-OPTIONS_DEFAULT=	MYSQL
 
 MYSQL_USES=	mysql
 

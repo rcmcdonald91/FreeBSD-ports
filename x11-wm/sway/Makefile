@@ -1,5 +1,5 @@
 PORTNAME=	sway
-DISTVERSION=	1.6
+DISTVERSION=	1.7
 CATEGORIES=	x11-wm
 
 PATCH_SITES=	https://github.com/${GH_ACCOUNT}/${GH_PROJECT}/commit/
@@ -13,8 +13,8 @@ LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
 BUILD_DEPENDS=	evdev-proto>0:devel/evdev-proto \
-		wayland-protocols>=1.14:graphics/wayland-protocols \
-		wlroots>=0.13.0<0.14.0:x11-toolkits/wlroots
+		wayland-protocols>=1.24:graphics/wayland-protocols \
+		wlroots>=0.15.0<0.16.0:x11-toolkits/wlroots
 LIB_DEPENDS=	libjson-c.so:devel/json-c \
 		libevdev.so:devel/libevdev \
 		libudev.so:devel/libudev-devd \
@@ -33,8 +33,8 @@ USE_XORG=	pixman
 GH_ACCOUNT=	swaywm
 MESON_ARGS=	-Dsd-bus-provider=basu
 
-OPTIONS_DEFINE=	BASU MANPAGES PIXBUF SUID X11
-OPTIONS_DEFAULT=BASU MANPAGES PIXBUF SUID X11
+OPTIONS_DEFINE=	BASU MANPAGES PIXBUF X11
+OPTIONS_DEFAULT=BASU MANPAGES PIXBUF X11
 OPTIONS_SUB=	yes
 
 BASU_DESC=		Tray in swaybar via basu
@@ -46,10 +46,6 @@ MANPAGES_MESON_ENABLED=	man-pages
 
 PIXBUF_USE=		GNOME=gdkpixbuf2
 PIXBUF_MESON_ENABLED=	gdk-pixbuf
-
-SUID_DESC=		setuid bit on "sway" binary (to claim DRM without seatd/console-kit-daemon)
-SUID_PLIST_SUB=		MAYBE_SUID="@(,,4755) "
-SUID_PLIST_SUB_OFF=	MAYBE_SUID=""
 
 X11_USE=		XORG=xcb
 X11_MESON_ENABLED=	xwayland

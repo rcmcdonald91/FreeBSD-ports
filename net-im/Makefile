@@ -2,10 +2,13 @@
 
     SUBDIR += 6cord
     SUBDIR += beebeep
+    SUBDIR += biboumi
+    SUBDIR += cawbird
     SUBDIR += centerim
     SUBDIR += chatterino2
     SUBDIR += climm
     SUBDIR += coccinella
+    SUBDIR += conduit
     SUBDIR += convey
     SUBDIR += coyim
     SUBDIR += cutegram
@@ -14,7 +17,6 @@
     SUBDIR += dino
     SUBDIR += echat
     SUBDIR += ejabberd
-    SUBDIR += ekiga
     SUBDIR += farstream
     SUBDIR += finch
     SUBDIR += folks
@@ -112,6 +114,7 @@
     SUBDIR += psi
     SUBDIR += purple-discord
     SUBDIR += purple-facebook
+    SUBDIR += purple-googlechat
     SUBDIR += purple-hangouts
     SUBDIR += purple-mattermost
     SUBDIR += purple-plugin-pack
@@ -143,6 +146,7 @@
     SUBDIR += scudcloud
     SUBDIR += sendxmpp
     SUBDIR += signal-cli
+    SUBDIR += signald
     SUBDIR += slack-term
     SUBDIR += spectral
     SUBDIR += ssh-chat
@@ -170,12 +174,13 @@
     SUBDIR += tkabber-plugins
     SUBDIR += toot
     SUBDIR += tox
+    SUBDIR += tox_extension_messages
     SUBDIR += toxbot
+    SUBDIR += toxext
     SUBDIR += toxic
     SUBDIR += toxins
     SUBDIR += tut
     SUBDIR += twirssi
-    SUBDIR += twitmail
     SUBDIR += uTox
     SUBDIR += vqcc-gtk
     SUBDIR += xmpp-client

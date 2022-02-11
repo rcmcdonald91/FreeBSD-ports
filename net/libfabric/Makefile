@@ -1,7 +1,7 @@
 PORTNAME=	libfabric
-DISTVERSIONPREFIX=	v
-DISTVERSION=	1.12.1
+DISTVERSION=	1.14.0
 CATEGORIES=	net
+MASTER_SITES=	https://github.com/ofiwg/${PORTNAME}/releases/download/v${DISTVERSION}/
 
 MAINTAINER=	yuri@FreeBSD.org
 COMMENT=	Open Fabric Interfaces
@@ -11,11 +11,8 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 
 LIB_DEPENDS=	libepoll-shim.so:devel/libepoll-shim
 
-USES=		autoreconf gmake libtool pkgconfig
+USES=		gmake libtool pkgconfig tar:bz2
 USE_LDCONFIG=	yes
-
-USE_GITHUB=	yes
-GH_ACCOUNT=	ofiwg
 
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--disable-static
@@ -31,10 +28,8 @@ OPTIONS_DEFAULT=		${OPTIONS_MULTI_PROVIDERS}
 OPTIONS_SUB=			yes
 PROVIDERS_DESC=			Providers to build:
 
-.if exists(/usr/include/infiniband/verbs.h) # some earlier FreeBSD 11 systems don't have it
 OPTIONS_MULTI_PROVIDERS+=	VERBS
 VERBS_PLIST_FILES=		man/man7/fi_verbs.7.gz
-.endif
 
 .for p in ${OPTIONS_MULTI_PROVIDERS}
 ${p}_DESC=			'${p:tl}' provider

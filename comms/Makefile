@@ -132,12 +132,12 @@
     SUBDIR += predict
     SUBDIR += py-adafruit-ampy
     SUBDIR += py-esptool
+    SUBDIR += py-fritzconnection
     SUBDIR += py-hid
     SUBDIR += py-hidapi
     SUBDIR += py-libimobiledevice
+    SUBDIR += py-libscrc
     SUBDIR += py-pyserial
-    SUBDIR += py-qt5-sensors
-    SUBDIR += py-qt5-serialport
     SUBDIR += py-xmodem
     SUBDIR += pyla
     SUBDIR += qico
@@ -151,6 +151,7 @@
     SUBDIR += qtel
     SUBDIR += redsea
     SUBDIR += remserial
+    SUBDIR += rtl-433
     SUBDIR += rtl-sdr
     SUBDIR += rubygem-callsign
     SUBDIR += rubygem-ruby-termios
@@ -199,6 +200,7 @@
     SUBDIR += viewfax
     SUBDIR += vrflash
     SUBDIR += wsjtx
+    SUBDIR += wsjtz
     SUBDIR += wwl
     SUBDIR += wy60
     SUBDIR += xastir

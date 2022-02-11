@@ -7,7 +7,7 @@ PKGNAMEPREFIX=	tex-
 DISTNAME=	texlive-${PORTVERSION}-source
 DIST_SUBDIR=	TeX
 
-MAINTAINER=	freebsd-tex@FreeBSD.org
+MAINTAINER=	tex@FreeBSD.org
 COMMENT=	TeX implementation translating WEB to C
 
 LIB_DEPENDS=	libopenjpeg.so:graphics/openjpeg15 \
@@ -49,6 +49,8 @@ CONFIGURE_ARGS+=--with-system-$L \
 .endfor
 CFLAGS+=	-I${LOCALBASE}/include
 INSTALL_TARGET=	install-strip
+
+CONFLICTS_INSTALL=	cweb
 
 INFO=	web2c
 

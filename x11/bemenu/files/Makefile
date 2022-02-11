@@ -2,7 +2,7 @@ BEMENU_LIB=	libbemenu.so.${VERSION}
 wayland_PC=	epoll-shim pangocairo wayland-client xkbcommon
 x11_PC=		pangocairo x11 xinerama
 CFLAGS+=	-DBM_VERSION="\"${VERSION}\"" -DBM_PLUGIN_VERSION="\"${VERSION}-nogit\"" -DINSTALL_LIBDIR="\"${PREFIX}/lib\"" -std=c99 -fPIC -pthread -Ilib ${:!pkg-config --cflags ${RENDERERS:@r@${${r}_PC}@}!} ${RENDERERS:@r@${${r}_CFLAGS}@}
-LDFLAGS+=	-Wl,--no-undefined -pthread
+LDFLAGS+=	-Wl,--as-needed -Wl,--no-undefined -pthread
 
 all: bemenu bemenu.1 bemenu-run bemenu.pc ${RENDERERS:@r@bemenu-renderer-${r}.so@}
 ${BEMENU_LIB}: lib/3rdparty/cdl.o lib/filter.o lib/item.o lib/library.o lib/list.o lib/menu.o lib/util.o
@@ -31,9 +31,7 @@ bemenu-renderer-curses.so bemenu-renderer-wayland.so bemenu-renderer-x11.so: ${B
 	${CC} ${LDFLAGS} -fPIC -shared -o $@ $> ${${@:R:S,-, ,g:[3]}_LIBS} ${${@:R:S,-, ,g:[3]}_PC:D`pkg-config --libs ${${@:R:S,-, ,g:[3]}_PC}`} -lm
 
 bemenu.pc: bemenu.pc.in
-	sed -e 's,@LIBDIR@,/lib,' -e 's,@PREFIX@,${PREFIX},' -e 's,@VERSION@,${VERSION},' $> > $@
-	echo 'includedir=$${prefix}/include' >> $@
-	echo 'Cflags: -I$${includedir}' >> $@
+	sed -e 's,@INCLUDEDIR@,/include,' -e 's,@LIBDIR@,/lib,' -e 's,@PREFIX@,${PREFIX},' -e 's,@VERSION@,${VERSION},' $> > $@
 	cat $@
 
 bemenu.1: man/bemenu.1.in

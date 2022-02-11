@@ -1,8 +1,8 @@
---- base/threading/platform_thread_internal_posix.h.orig	2021-04-14 18:40:48 UTC
+--- base/threading/platform_thread_internal_posix.h.orig	2021-12-31 00:57:18 UTC
 +++ base/threading/platform_thread_internal_posix.h
-@@ -47,13 +47,13 @@ bool SetCurrentThreadPriorityForPlatform(ThreadPriorit
+@@ -46,13 +46,13 @@ bool SetCurrentThreadPriorityForPlatform(ThreadPriorit
  // of CanIncreaseThreadPriority().
- Optional<ThreadPriority> GetCurrentThreadPriorityForPlatform();
+ absl::optional<ThreadPriority> GetCurrentThreadPriorityForPlatform();
  
 -#if defined(OS_LINUX) || defined(OS_CHROMEOS)
 +#if defined(OS_LINUX) || defined(OS_CHROMEOS) || defined(OS_BSD)

@@ -1,3 +1,5 @@
-TIMESTAMP = 1619892461
-SHA256 (KDE/frameworks/5.82.0/frameworkintegration-5.82.0.tar.xz) = e230c8c3189addc85526321c289eacc225b07b0f8c6fa4d897953e599c48ca75
-SIZE (KDE/frameworks/5.82.0/frameworkintegration-5.82.0.tar.xz) = 1755828
+TIMESTAMP = 1642052250
+SHA256 (KDE/frameworks/5.90.0/frameworkintegration-5.90.0.tar.xz) = 5651afb5bb3563d2212662974bd91750b313e3b58fabf59f59459ef904a6fbec
+SIZE (KDE/frameworks/5.90.0/frameworkintegration-5.90.0.tar.xz) = 1758208
+SHA256 (KDE/frameworks/5.90.0/675802e706a737c008aa74600ac804b06db52140.diff) = 1a40049554953615b017bce64b37cd757ee25c964ed350344fbcdb7bb99f88aa
+SIZE (KDE/frameworks/5.90.0/675802e706a737c008aa74600ac804b06db52140.diff) = 1295

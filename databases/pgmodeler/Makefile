@@ -1,9 +1,8 @@
 # Created by: Loïc BARTOLETTI
 
 PORTNAME=	pgmodeler
-PORTVERSION=	0.9.3
+PORTVERSION=	0.9.4
 DISTVERSIONPREFIX=	v
-DISTVERSIONSUFFIX=	-beta
 CATEGORIES=	databases
 
 MAINTAINER=	lbartoletti@FreeBSD.org

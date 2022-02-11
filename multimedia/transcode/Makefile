@@ -2,7 +2,7 @@
 
 PORTNAME=	transcode
 PORTVERSION=	1.1.7
-PORTREVISION=	47
+PORTREVISION=	48
 CATEGORIES=	multimedia
 MASTER_SITES=	https://bitbucket.org/france/transcode-tcforge/downloads/
 
@@ -96,7 +96,7 @@ SDL_USES=			sdl
 SDL_USE=			SDL=sdl
 SDL_CONFIGURE_ENABLE=		sdl
 
-IMAGEMAGICK_LIB_DEPENDS=	libMagickWand-6.so:graphics/ImageMagick6
+IMAGEMAGICK_USES=		magick:6
 IMAGEMAGICK_CONFIGURE_ENABLE=	imagemagick
 IMAGEMAGICK_CONFIGURE_ON=	--with-imagemagick-prefix=${LOCALBASE}
 

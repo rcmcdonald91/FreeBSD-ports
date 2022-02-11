@@ -5,7 +5,7 @@ PORTREVISION=	1
 CATEGORIES=	net-mgmt www
 PKGNAMESUFFIX=	${PHP_PKGNAMESUFFIX}
 
-MAINTAINER=	lme@FreeBSD.org
+MAINTAINER=	joneum@FreeBSD.org
 COMMENT=	Reporting module for Icinga Web 2
 
 LICENSE=	GPLv2
@@ -34,12 +34,5 @@ do-install:
 	@${MKDIR} ${STAGEDIR}${WWWDIR}
 	(cd ${WRKSRC} && \
 		${COPYTREE_SHARE} . ${STAGEDIR}${WWWDIR})
-
-.include <bsd.port.options.mk>
-
-.if ${PORT_OPTIONS:MPDF}
-DEPRECATED=	Uses EOL Python 2.7 via net-mgmt/icingaweb2-module-pdfexport@${PHP_FLAVOR}
-EXPIRATION_DATE=2021-06-23
-.endif
 
 .include <bsd.port.mk>

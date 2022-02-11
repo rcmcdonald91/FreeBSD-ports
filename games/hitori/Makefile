@@ -1,11 +1,13 @@
 # Created by: FreeBSD GNOME Team <gnome@freebsd.org>
 
 PORTNAME=	hitori
-PORTVERSION=	3.38.0
-PORTREVISION=	1
+PORTVERSION=	3.38.3
 CATEGORIES=	games gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome3
+
+PATCH_SITES=	https://gitlab.gnome.org/GNOME/${PORTNAME}/-/commit/
+PATCHFILES+=	d25728e122f1.patch:-p1 # https://gitlab.gnome.org/GNOME/hitori/-/merge_requests/35
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Hitori
@@ -21,7 +23,6 @@ PORTSCOUT=	limitw:1,even
 USES=		compiler:c11 gettext gmake gnome localbase meson pathfix \
 		pkgconfig tar:xz
 USE_GNOME=	cairo gtk30 librsvg2 libxml2:build
-INSTALLS_ICONS=	yes
 
 GLIB_SCHEMAS=	org.gnome.hitori.gschema.xml
 

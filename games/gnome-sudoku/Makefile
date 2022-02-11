@@ -1,10 +1,13 @@
 # Created by: FreeBSD GNOME Team <gnome@freebsd.org>
 
 PORTNAME=	gnome-sudoku
-PORTVERSION=	3.38.0
+PORTVERSION=	40.2
 CATEGORIES=	games gnome
-MASTER_SITES=	GNOME
+MASTER_SITES=	GNOME/sources/${PORTNAME}/${PORTVERSION:C/^([0-9]+)\..*/\1/}
 DIST_SUBDIR=	gnome
+
+PATCH_SITES=	https://gitlab.gnome.org/GNOME/${PORTNAME}/-/commit/
+PATCHFILES+=	7c9935a02b48.patch:-p1 # https://gitlab.gnome.org/GNOME/gnome-sudoku/-/merge_requests/39
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Sudoku game for gnome
@@ -24,7 +27,6 @@ PORTSCOUT=	limitw:1,even
 USES=		compiler:c++11-lang gettext gmake gnome meson \
 		python:3.7+ pkgconfig tar:xz
 USE_GNOME=	cairo gtk30
-INSTALLS_ICONS=	yes
 
 BINARY_ALIAS=	python3=${PYTHON_CMD}
 

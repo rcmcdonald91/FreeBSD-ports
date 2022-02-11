@@ -1,8 +1,7 @@
 # Created by: Loïc BARTOLETTI <lbartoletti@FreeBSD.org>
 
 PORTNAME=	postgis
-PORTVERSION=	3.0.3
-PORTREVISION=	2
+PORTVERSION=	3.0.5
 CATEGORIES=	databases geography
 MASTER_SITES=	https://download.osgeo.org/postgis/source/
 PKGNAMESUFFIX=	30
@@ -18,7 +17,7 @@ LIB_DEPENDS=	libproj.so:graphics/proj \
 		libjson-c.so:devel/json-c \
 		libgdal.so:graphics/gdal
 
-USES=		alias compiler:c++11-lang gmake gnome iconv:wchar_t libtool:keepla \
+USES=		alias compiler:c++11-lang cpe gmake gnome iconv:wchar_t libtool:keepla \
 		localbase perl5 pkgconfig pgsql:9.5+ shebangfix
 USE_GNOME=	libxml2
 USE_PERL5=	build
@@ -59,7 +58,7 @@ SFCGAL_LIB_DEPENDS=		libSFCGAL.so:databases/sfcgal
 TOPOLOGY_CONFIGURE_WITH=	topology
 WAGYU_CONFIGURE_WITH=		wagyu
 
-CONFLICTS_INSTALL=	postgis20 postgis21 postgis22 postgis23 postgis24 postgis25 postgis31
+CONFLICTS_INSTALL=	postgis20 postgis21 postgis22 postgis23 postgis24 postgis25 postgis31 postgis32
 
 VER=		${PORTVERSION:R}
 

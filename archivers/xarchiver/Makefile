@@ -1,7 +1,7 @@
 # Created by: Andreev Maxim
 
 PORTNAME=	xarchiver
-PORTVERSION=	0.5.4.16
+PORTVERSION=	0.5.4.17
 CATEGORIES=	archivers
 
 MAINTAINER=	ports@FreeBSD.org
@@ -12,7 +12,7 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 
 LIB_DEPENDS=	libfontconfig.so:x11-fonts/fontconfig \
 		libfreetype.so:print/freetype2
-RUN_DEPENDS=	7zr:archivers/p7zip \
+RUN_DEPENDS=	7zz:archivers/7-zip \
 		gtar:archivers/gtar \
 		gzip:archivers/gzip \
 		${LOCALBASE}/bin/unzip:archivers/unzip \
@@ -26,7 +26,6 @@ GH_ACCOUNT=	ib
 
 USE_GNOME=	cairo glib20 intltool
 GNU_CONFIGURE=	yes
-INSTALLS_ICONS=	yes
 
 OPTIONS_DEFINE=	DOCS NLS
 OPTIONS_GROUP=	FORMATS

@@ -4,12 +4,14 @@ DISTVERSION=	${JDK_MAJOR_VERSION}.${JDK_MINOR_VERSION}.${JDK_PATCH_VERSION}+${JD
 CATEGORIES=	java devel
 PKGNAMESUFFIX?=	${JDK_MAJOR_VERSION}
 
+PATCH_SITES=	https://github.com/${GH_ACCOUNT}/${GH_PROJECT}/commit/
+
 MAINTAINER=	java@FreeBSD.org
 COMMENT?=	Java Development Kit ${JDK_MAJOR_VERSION}
 
 LICENSE=	GPLv2
 
-ONLY_FOR_ARCHS=	amd64 i386 powerpc64 powerpc64le
+ONLY_FOR_ARCHS=	aarch64 amd64 armv6 armv7 i386 powerpc64 powerpc64le
 
 BUILD_DEPENDS=	zip:archivers/zip \
 		autoconf>0:devel/autoconf \
@@ -25,12 +27,14 @@ LIB_DEPENDS=	libasound.so:audio/alsa-lib \
 RUN_DEPENDS=	javavm:java/javavmwrapper \
 		xorg-fonts-truetype>0:x11-fonts/xorg-fonts-truetype
 
-USES=		compiler:features gmake iconv jpeg pkgconfig xorg
+USES=		compiler:features cpe gmake iconv jpeg pkgconfig xorg
 USE_XORG=	x11 xext xi xrandr xrender xt xtst
+
+CPE_VENDOR=	oracle
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	battleblow
-GH_PROJECT=	openjdk-jdk11u
+GH_PROJECT=	jdk11u
 
 NO_CCACHE=	yes
 
@@ -58,7 +62,7 @@ NOPRECIOUSMAKEVARS=	yes
 
 JDK_MAJOR_VERSION=	11
 JDK_MINOR_VERSION=	0
-JDK_PATCH_VERSION=	11
+JDK_PATCH_VERSION=	14
 JDK_BUILD_NUMBER=	9
 BSD_JDK_VERSION=	1
 
@@ -109,11 +113,6 @@ JDK_BUILD_TYPE=		release
 
 .include <bsd.port.pre.mk>
 
-# Support aarch64, armv6 and armv7 on FreeBSD 12 and up
-.if ${OSVERSION} >= 1200500
-ONLY_FOR_ARCHS+=aarch64 armv6 armv7
-.endif
-
 BOOTSTRAP_JDKS=	${LOCALBASE}/openjdk11 \
 		${LOCALBASE}/bootstrap-openjdk11
 
@@ -142,6 +141,14 @@ CONFIGURE_ARGS+=	--with-extra-ldflags="-Wl,-rpath=${LOCALBASE}/lib/gcc${GCC_DEFA
 			--with-extra-cxxflags="-Wl,-rpath=${LOCALBASE}/lib/gcc${GCC_DEFAULT}"
 .else
 MAKE_ENV+=	USE_CLANG=true
+.if ${COMPILER_VERSION} >= 130
+# PR258954: OpenJDK <= 13 crash due to undefined behavior with clang >= 13
+# See also https://bugs.openjdk.java.net/browse/JDK-8229258
+LLVM_VER=	12
+BUILD_DEPENDS+=	clang${LLVM_VER}:devel/llvm${LLVM_VER}
+CC=		${LOCALBASE}/bin/clang${LLVM_VER}
+CXX=		${LOCALBASE}/bin/clang++${LLVM_VER}
+.endif
 .endif
 
 .if ${ARCH} == aarch64 || ${ARCH:Marmv*} || ${ARCH:Mpowerpc64*}

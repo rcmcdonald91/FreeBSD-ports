@@ -1,6 +1,6 @@
---- components/os_crypt/os_crypt.h.orig	2021-04-14 18:40:59 UTC
+--- components/os_crypt/os_crypt.h.orig	2021-12-14 11:45:03 UTC
 +++ components/os_crypt/os_crypt.h
-@@ -18,9 +18,9 @@
+@@ -17,9 +17,9 @@
  
  // TODO(crbug.com/1052397): Revisit the macro expression once build flag switch
  // of lacros-chrome is complete.
@@ -12,8 +12,8 @@
  
  #if defined(OS_WIN) || defined(OS_MAC)
  class PrefRegistrySimple;
-@@ -39,16 +39,16 @@ class OSCrypt {
-  public:
+@@ -42,16 +42,16 @@ class OSCrypt {
+ 
  // TODO(crbug.com/1052397): Revisit the macro expression once build flag switch
  // of lacros-chrome is complete.
 -#if defined(OS_LINUX) || BUILDFLAG(IS_CHROMEOS_LACROS)

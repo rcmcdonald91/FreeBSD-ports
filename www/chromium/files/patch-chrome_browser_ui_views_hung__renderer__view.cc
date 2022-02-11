@@ -1,6 +1,6 @@
---- chrome/browser/ui/views/hung_renderer_view.cc.orig	2021-04-14 18:40:55 UTC
+--- chrome/browser/ui/views/hung_renderer_view.cc.orig	2021-12-31 00:57:25 UTC
 +++ chrome/browser/ui/views/hung_renderer_view.cc
-@@ -424,7 +424,7 @@ void HungRendererDialogView::ForceCrashHungRenderer() 
+@@ -402,7 +402,7 @@ void HungRendererDialogView::ForceCrashHungRenderer() 
    content::RenderProcessHost* rph =
        hung_pages_table_model_->GetRenderWidgetHost()->GetProcess();
    if (rph) {

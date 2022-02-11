@@ -1,5 +1,5 @@
 PORTNAME=	rush
-DISTVERSION=	2.1
+DISTVERSION=	2.2
 CATEGORIES=	shells
 MASTER_SITES=	GNU
 
@@ -9,7 +9,10 @@ COMMENT=	Restricted User SHell, providing limited remote access to resources
 LICENSE=	GPLv3
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-USES=		gettext-runtime gmake tar:xz
+USES=		cpe gettext-runtime gmake tar:xz
+
+CPE_VENDOR=	gnu
+
 GNU_CONFIGURE=	yes
 
 INFO=		${PORTNAME}

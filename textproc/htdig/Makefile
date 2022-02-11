@@ -23,12 +23,15 @@ CONFIGURE_ARGS=	--with-config-dir=${PREFIX}/etc/htdig \
 		--with-image-dir=${PREFIX}/www/icons/htdig \
 		--with-image-url-prefix=/icons/htdig \
 		--with-ssl
-USES=		alias libtool ssl
+USES=		alias cpe libtool ssl
+CPE_VENDOR=	${PORTNAME}_project
 USE_CXXSTD=	c++98
 USE_LDCONFIG=	yes
 INSTALL_TARGET=	install-strip
 LDFLAGS+=	-L${OPENSSLLIB}
 CFLAGS+=	-I${OPENSSLINC}
+
+CONFLICTS_INSTALL=	htdump mifluz # bin/htdb_dump bin/htdb_load bin/htdb_stat bin/htdump
 
 OPTIONS_DEFINE=	APACHE DOCS
 OPTIONS_DEFAULT=	APACHE

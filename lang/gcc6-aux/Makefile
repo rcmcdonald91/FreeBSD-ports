@@ -15,6 +15,10 @@ COMMENT=	Version of GCC ${GCC_BRANCH} with full Ada support
 LICENSE=	GPLv3 GPLv3RLE
 LICENSE_COMB=	multi
 
+# PR 248674
+DEPRECATED=	Based on way end-of-life version of GCC, has issues, and is unmaintained
+EXPIRATION_DATE=2022-02-28
+
 .include "${.CURDIR}/Makefile.common"
 
 LANGS=			c c++ ada
@@ -50,17 +54,7 @@ BOOTSTRAP_DESC=		Create bootstrap compiler (overrides other options)
 .if ${OPSYS} == FreeBSD
 ONLY_FOR_ARCHS=		aarch64 amd64 i386
 MODERN_BINUTILS=	yes
-.  if ${ARCH} == aarch64 && ${OSVERSION} > 1200075 #ino64
-BOOTSTRAP_COMPILER=	ada-bootstrap.aarch64.freebsd.120.tar.bz2
-.  elif ${ARCH} == aarch64
-BOOTSTRAP_COMPILER=	ada-bootstrap.aarch64.freebsd.111.tar.bz2
-.  elif ${ARCH} == amd64 && ${OSVERSION} > 1200030 #ino64
 BOOTSTRAP_COMPILER=	ada-bootstrap.${GARCH}.freebsd.120.tar.bz2
-.  elif ${ARCH} == i386  && ${OSVERSION} > 1200030 #ino64
-BOOTSTRAP_COMPILER=	ada-bootstrap.${GARCH}.freebsd.120.tar.bz2
-.  else
-BOOTSTRAP_COMPILER=	ada-bootstrap.${GARCH}.freebsd.100B.tar.bz2
-.  endif
 .endif
 .if ${OPSYS} == DragonFly
 ONLY_FOR_ARCHS=		x86_64

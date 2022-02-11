@@ -22,13 +22,15 @@ USES=		compiler perl5 ssl
 USE_PERL5=	build
 WITH_PGSQL=	client
 
+CONFLICTS_INSTALL=	archiveopteryx # bin/aox bin/aoxdeliver bin/aoxexport bin/aoximport
+
 PORTDOCS=	COPYING README license.txt
 
 SUB_FILES=	pkg-message
 
 USE_RC_SUBR=	${PORTNAME}
 
-CONFLICTS=	archiveopteryx-[0-9]*
+CONFLICTS=	archiveopteryx
 
 USERS=		aox
 GROUPS=		aox

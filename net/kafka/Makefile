@@ -1,8 +1,7 @@
 PORTNAME=	kafka
-PORTVERSION=	2.8.0
-
+DISTVERSION=	3.1.0
 CATEGORIES=	net java
-MASTER_SITES=	APACHE/${PORTNAME}/${PORTVERSION}
+MASTER_SITES=	APACHE/${PORTNAME}/${PORTVERSION}/
 DISTNAME=	${PORTNAME}_2.13-${PORTVERSION}
 
 MAINTAINER=	timp87@gmail.com
@@ -13,7 +12,8 @@ LICENSE_FILE=	${WRKSRC}/LICENSE
 
 RUN_DEPENDS=	bash:shells/bash
 
-USES=		shebangfix tar:tgz
+USES=		cpe shebangfix tar:tgz
+CPE_VENDOR=	apache
 
 SHEBANG_FILES=	bin/*.sh
 
@@ -34,20 +34,20 @@ KAFKA_BINS=	connect-distributed.sh connect-mirror-maker.sh \
 		kafka-console-consumer.sh kafka-console-producer.sh \
 		kafka-consumer-groups.sh kafka-consumer-perf-test.sh \
 		kafka-delegation-tokens.sh kafka-delete-records.sh \
-		kafka-dump-log.sh kafka-leader-election.sh kafka-features.sh \
-		kafka-log-dirs.sh kafka-mirror-maker.sh \
-		kafka-preferred-replica-election.sh \
-		kafka-producer-perf-test.sh kafka-storage.sh \
+		kafka-dump-log.sh kafka-features.sh kafka-get-offsets.sh \
+		kafka-leader-election.sh kafka-log-dirs.sh \
+		kafka-mirror-maker.sh kafka-producer-perf-test.sh \
 		kafka-reassign-partitions.sh kafka-replica-verification.sh \
 		kafka-run-class.sh kafka-server-start.sh kafka-server-stop.sh \
-		kafka-streams-application-reset.sh kafka-topics.sh \
+		kafka-storage.sh kafka-streams-application-reset.sh \
+		kafka-topics.sh kafka-transactions.sh \
 		kafka-verifiable-consumer.sh kafka-verifiable-producer.sh \
-		trogdor.sh zookeeper-security-migration.sh
+		trogdor.sh zookeeper-security-migration.sh zookeeper-shell.sh
 KAFKA_CONFIGS=	connect-console-sink.properties \
 		connect-console-source.properties \
 		connect-distributed.properties connect-file-sink.properties \
-		connect-file-source.properties connect-mirror-maker.properties \
-		connect-log4j.properties \
+		connect-file-source.properties \
+		connect-log4j.properties connect-mirror-maker.properties \
 		connect-standalone.properties consumer.properties \
 		log4j.properties producer.properties server.properties \
 		tools-log4j.properties trogdor.conf

@@ -2,7 +2,7 @@
 
 PORTNAME=	celestia
 PORTVERSION=	1.6.1
-PORTREVISION=	12
+PORTREVISION=	13
 CATEGORIES=	astro
 MASTER_SITES=	SF/${PORTNAME}/Celestia-source/${PORTVERSION}
 PKGNAMESUFFIX=	-${CELESTIA_UI}
@@ -28,7 +28,7 @@ LDFLAGS+=	-L${LOCALBASE}/lib -pthread
 
 UI_LIST=	glut gtk gnome
 CELESTIA_UI?=	glut
-CONFLICTS=	${UI_LIST:S|${CELESTIA_UI}||:S|^|celestia-|:S|$|-[0-9]*|}
+CONFLICTS=	${UI_LIST:S|${CELESTIA_UI}||:S|^|celestia-|}
 
 # Celestia provides different UI frontends; you should pick one that suits
 # you best by setting CELESTIA_UI variable.  Possible values are:

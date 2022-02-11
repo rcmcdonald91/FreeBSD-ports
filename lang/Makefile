@@ -41,12 +41,15 @@
     SUBDIR += crystal
     SUBDIR += csharp-mode.el
     SUBDIR += cython
+    SUBDIR += cython-devel
     SUBDIR += dlang-tools
     SUBDIR += dlv
     SUBDIR += duktape
     SUBDIR += duktape-lib
     SUBDIR += ecl
+    SUBDIR += eisl
     SUBDIR += elixir
+    SUBDIR += elixir-devel
     SUBDIR += elixir-mode.el
     SUBDIR += elk
     SUBDIR += elm
@@ -55,11 +58,10 @@
     SUBDIR += erlang-doc
     SUBDIR += erlang-java
     SUBDIR += erlang-man
-    SUBDIR += erlang-riak
-    SUBDIR += erlang-runtime20
     SUBDIR += erlang-runtime21
     SUBDIR += erlang-runtime22
     SUBDIR += erlang-runtime23
+    SUBDIR += erlang-runtime24
     SUBDIR += erlang-wx
     SUBDIR += execline
     SUBDIR += expect
@@ -91,13 +93,12 @@
     SUBDIR += gcc-ecj45
     SUBDIR += gcc10
     SUBDIR += gcc10-devel
+    SUBDIR += gcc11
     SUBDIR += gcc11-devel
     SUBDIR += gcc12-devel
     SUBDIR += gcc48
     SUBDIR += gcc6-aux
-    SUBDIR += gcc7
     SUBDIR += gcc8
-    SUBDIR += gcc8-devel
     SUBDIR += gcc9
     SUBDIR += gcc9-devel
     SUBDIR += gforth
@@ -140,7 +141,9 @@
     SUBDIR += itcl4
     SUBDIR += janet
     SUBDIR += jimtcl
+    SUBDIR += jpm
     SUBDIR += jruby
+    SUBDIR += julia
     SUBDIR += jython
     SUBDIR += kawa
     SUBDIR += kf5-kross
@@ -169,6 +172,7 @@
     SUBDIR += lua53
     SUBDIR += lua54
     SUBDIR += luajit
+    SUBDIR += luajit-devel
     SUBDIR += luajit-openresty
     SUBDIR += malbolge
     SUBDIR += maude
@@ -200,7 +204,6 @@
     SUBDIR += nhc98
     SUBDIR += nickle
     SUBDIR += nim
-    SUBDIR += nml
     SUBDIR += nqc
     SUBDIR += nwcc
     SUBDIR += nx
@@ -248,7 +251,6 @@
     SUBDIR += pbasic
     SUBDIR += pcc
     SUBDIR += perl5-devel
-    SUBDIR += perl5.28
     SUBDIR += perl5.30
     SUBDIR += perl5.32
     SUBDIR += perl5.34
@@ -256,12 +258,12 @@
     SUBDIR += pfe
     SUBDIR += pharo
     SUBDIR += php-mode.el
-    SUBDIR += php73
-    SUBDIR += php73-extensions
     SUBDIR += php74
     SUBDIR += php74-extensions
     SUBDIR += php80
     SUBDIR += php80-extensions
+    SUBDIR += php81
+    SUBDIR += php81-extensions
     SUBDIR += picoc
     SUBDIR += plexil
     SUBDIR += pocl
@@ -271,10 +273,7 @@
     SUBDIR += purescript
     SUBDIR += py-hy
     SUBDIR += py-lupa
-    SUBDIR += py-qt5-qml
     SUBDIR += py-textX
-    SUBDIR += pypy
-    SUBDIR += pypy3
     SUBDIR += python
     SUBDIR += python-doc-html
     SUBDIR += python-doc-pdf-a4
@@ -285,7 +284,8 @@
     SUBDIR += python2
     SUBDIR += python27
     SUBDIR += python3
-    SUBDIR += python36
+    SUBDIR += python310
+    SUBDIR += python311
     SUBDIR += python37
     SUBDIR += python38
     SUBDIR += python39
@@ -305,6 +305,8 @@
     SUBDIR += ruby26
     SUBDIR += ruby27
     SUBDIR += ruby30
+    SUBDIR += ruby31
+    SUBDIR += rubygem-ruby_language_server
     SUBDIR += runawk
     SUBDIR += rust
     SUBDIR += rust-bootstrap
@@ -314,7 +316,6 @@
     SUBDIR += sather-tutorial
     SUBDIR += sbcl
     SUBDIR += scala
-    SUBDIR += scala-docs
     SUBDIR += scheme48
     SUBDIR += scm
     SUBDIR += sdcc
@@ -334,8 +335,6 @@
     SUBDIR += snobol4
     SUBDIR += solidity
     SUBDIR += spidermonkey17
-    SUBDIR += spidermonkey185
-    SUBDIR += spidermonkey60
     SUBDIR += spidermonkey78
     SUBDIR += spl
     SUBDIR += squeak
@@ -358,6 +357,7 @@
     SUBDIR += urweb
     SUBDIR += v
     SUBDIR += v8
+    SUBDIR += v8-beta
     SUBDIR += vala
     SUBDIR += visualworks
     SUBDIR += voc
@@ -366,5 +366,6 @@
     SUBDIR += yorick
     SUBDIR += ypsilon
     SUBDIR += zig
+    SUBDIR += zig-devel
 
 .include <bsd.port.subdir.mk>

@@ -22,6 +22,11 @@ PORTDOCS=	README README.FreeBSD
 SUB_LIST=	KON16FONT=${KON16FONT} \
 		KON14FONT=${KON14FONT}
 
+USES=		cpe
+CPE_VENDOR=	ishikawa_mutsumi
+
+CONFLICTS_INSTALL=	ja-kon2-*dot # bin/fld
+
 OPTIONS_DEFINE=	DOCS
 
 # XXX Static libraries with PIE are currently unsupported.

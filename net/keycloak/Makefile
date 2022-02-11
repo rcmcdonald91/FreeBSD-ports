@@ -1,5 +1,5 @@
 PORTNAME=	keycloak
-PORTVERSION=	13.0.0
+PORTVERSION=	15.1.1
 CATEGORIES=	net java
 MASTER_SITES=	https://github.com/${PORTNAME}/${PORTNAME}/releases/download/${PORTVERSION}/
 
@@ -28,6 +28,9 @@ PLIST_SUB+=	POSTGRES=""
 PLIST_SUB+=	POSTGRES="@comment "
 .endif
 
+USES=		cpe
+CPE_VENDOR=	redhat
+
 USE_JAVA=	yes
 JAVA_VERSION=	1.8+
 JAVA_OS=	native
@@ -35,6 +38,8 @@ JAVA_VENDOR=	openjdk oracle
 JAVA_RUN=	yes
 
 USE_RC_SUBR=	keycloak
+
+CONFLICTS_INSTALL=	keycloak keycloak-mysql keycloak-postgresql # bin/kcadm bin/kcreg
 
 USER=		www
 GROUP=		www

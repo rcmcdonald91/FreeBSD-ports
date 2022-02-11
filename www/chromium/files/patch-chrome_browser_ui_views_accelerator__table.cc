@@ -1,4 +1,4 @@
---- chrome/browser/ui/views/accelerator_table.cc.orig	2021-04-14 18:40:55 UTC
+--- chrome/browser/ui/views/accelerator_table.cc.orig	2021-12-14 11:44:59 UTC
 +++ chrome/browser/ui/views/accelerator_table.cc
 @@ -62,7 +62,7 @@ const AcceleratorMapping kAcceleratorMap[] = {
      {ui::VKEY_NUMPAD9, ui::EF_PLATFORM_ACCELERATOR, IDC_SELECT_LAST_TAB},
@@ -27,7 +27,7 @@
      {ui::VKEY_B, ui::EF_SHIFT_DOWN | ui::EF_PLATFORM_ACCELERATOR,
       IDC_SHOW_BOOKMARK_BAR},
      {ui::VKEY_OEM_MINUS, ui::EF_PLATFORM_ACCELERATOR, IDC_ZOOM_MINUS},
-@@ -138,14 +138,14 @@ const AcceleratorMapping kAcceleratorMap[] = {
+@@ -139,14 +139,14 @@ const AcceleratorMapping kAcceleratorMap[] = {
       IDC_SHOW_AVATAR_MENU},
  
  // Platform-specific key maps.
@@ -42,5 +42,5 @@
 -#endif  // defined(OS_LINUX) || defined(OS_CHROMEOS)
 +#endif  // defined(OS_LINUX) || defined(OS_CHROMEOS) || defined(OS_BSD)
  
- #if BUILDFLAG(IS_CHROMEOS_ASH)
-     // On Chrome OS, VKEY_BROWSER_SEARCH is handled in Ash.
+ #if BUILDFLAG(IS_CHROMEOS_ASH) || BUILDFLAG(IS_CHROMEOS_LACROS)
+     // Chrome OS keyboard does not have delete key, so assign it to backspace.

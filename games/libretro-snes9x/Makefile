@@ -1,5 +1,5 @@
 PORTNAME=	libretro-snes9x
-PORTVERSION=	0.20210129
+PORTVERSION=	0.20211024
 CATEGORIES=	games
 
 MAINTAINER=	menelkir@itroll.org
@@ -10,8 +10,6 @@ LICENSE=	PS
 LICENSE_NAME=	PS
 LICENSE_FILE=	${WRKSRC}/LICENSE
 LICENSE_PERMS=	dist-mirror pkg-mirror auto-accept
-
-BROKEN_FreeBSD_11=	linker error: unrecognized option '-plugin'
 
 USES=		compiler:c++11-lib gmake
 USE_LDCONFIG=	yes

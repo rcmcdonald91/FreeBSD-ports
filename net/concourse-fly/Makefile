@@ -9,13 +9,15 @@ COMMENT=	CLI for Concourse
 
 LICENSE=	APACHE20
 
-USES=		go:modules tar:xz
+USES=		cpe go:modules tar:xz
+
+CPE_VENDOR=	pivotal_software
 
 GO_TARGET=	./cmd/concourse:fly
 GO_BUILDFLAGS=	-ldflags="-s -w -X github.com/concourse/concourse.Version=${PORTVERSION}"
 CGO_CFLAGS=	-I.
 
-CONFLICTS_INSTALL=	fly
+CONFLICTS_INSTALL=	concourse fly # bin/fly
 
 PLIST_FILES=	bin/fly
 

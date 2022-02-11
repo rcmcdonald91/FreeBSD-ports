@@ -1,5 +1,5 @@
 PORTNAME=	puppetdb
-PORTVERSION=	6.16.1
+PORTVERSION=	6.20.0
 CATEGORIES=	databases java
 MASTER_SITES=	https://downloads.puppetlabs.com/puppetdb/
 PKGNAMESUFFIX=	6
@@ -13,8 +13,9 @@ RUN_DEPENDS=	bash:shells/bash
 
 USE_RC_SUBR=	puppetdb
 
-CONFLICTS_INSTALL=	puppetdb5-* puppetdb7-*
-USES=		shebangfix
+CONFLICTS_INSTALL=	puppetdb5 puppetdb7
+USES=		cpe shebangfix
+CPE_VENDOR=	puppet
 SHEBANG_FILES=	ext/bin/puppetdb \
 		ext/cli/anonymize \
 		ext/cli/config-migration \

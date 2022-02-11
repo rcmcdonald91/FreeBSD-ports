@@ -16,10 +16,13 @@ LICENSE_NAME=	ISC License
 LICENSE_FILE=	${WRKSRC}/COPYING
 LICENSE_PERMS=	dist-mirror dist-sell pkg-mirror pkg-sell auto-accept
 
+DEPRECATED=	Project is in hibernation and not recommended to use in production
+EXPIRATION_DATE=2022-03-31
+
 BROKEN_armv6=		fails to build: Child process terminated abnormally: Segmentation fault
 BROKEN_armv7=		fails to build: Child process terminated abnormally: Segmentation fault
-BROKEN_FreeBSD_11_powerpc64=	fails to configure on powerpc64 elfv1: checking for botan/botan.h... no
 BROKEN_FreeBSD_12_powerpc64=	fails to configure on powerpc64 elfv1: checking for botan/botan.h... no
+BROKEN_FreeBSD_14=	fails to build: error: Boost shared memory does not compile on this system.
 
 BUILD_DEPENDS=	${LOCALBASE}/include/log4cplus/logger.h:devel/log4cplus \
 		sqlite3>=3.3.9:databases/sqlite3 \

@@ -1,9 +1,9 @@
 PORTNAME=	sameboy
 DISTVERSIONPREFIX=	v
-DISTVERSION=	0.14.3
+DISTVERSION=	0.14.7
 CATEGORIES=	emulators games
 
-MAINTAINER=	tobik@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Game Boy and Game Boy Color emulator written in C
 
 LICENSE=	MIT
@@ -21,8 +21,6 @@ USE_SDL=	sdl2
 
 MAKE_ARGS=	FREEDESKTOP=true
 ALL_TARGET=	sdl
-# -flto
-LDFLAGS+=	-fuse-ld=lld
 
 OPTIONS_DEFINE=		LIBRETRO
 OPTIONS_DEFAULT=	LIBRETRO

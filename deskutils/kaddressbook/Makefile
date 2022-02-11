@@ -5,9 +5,6 @@ CATEGORIES=	deskutils kde kde-applications
 MAINTAINER=	kde@FreeBSD.org
 COMMENT=	KDE contact manager
 
-DEPRECATED=	Uses EOL Python 2.7 via www/qt5-webengine
-EXPIRATION_DATE=2021-06-23
-
 LIB_DEPENDS=	libassuan.so:security/libassuan \
 		libgpg-error.so:security/libgpg-error \
 		libgpgme.so:security/gpgme \
@@ -17,8 +14,9 @@ LIB_DEPENDS=	libassuan.so:security/libassuan \
 USES=		cmake compiler:c++11-lib desktop-file-utils gettext grantlee:5 kde:5 \
 		qt:5 tar:xz
 USE_KDE=	auth codecs completion config configwidgets coreaddons crash \
-		ecm i18n iconthemes itemmodels jobwidgets kcmutils kio parts \
-		prison service sonnet textwidgets widgetsaddons xmlgui
+		i18n iconthemes itemmodels jobwidgets kcmutils kio parts \
+		prison service solid sonnet textwidgets widgetsaddons windowsystem xmlgui \
+		ecm_build
 # pim components
 USE_KDE+=	akonadi akonadicontacts akonadisearch contacts grantleetheme \
 		imap kontactinterface libkdepim mime pimcommon \
@@ -28,7 +26,6 @@ USE_QT=		concurrent core dbus gui network printsupport widgets xml \
 USE_LDCONFIG=	yes
 
 DESCR=		${.CURDIR:H:H}/deskutils/kdepim/pkg-descr
-
 
 OPTIONS_DEFINE=	DOCS
 

@@ -1,5 +1,6 @@
 PORTNAME=	lms
 DISTVERSION=	3.25.2
+PORTREVISION=	1
 MASTER_SITES=	https://github.com/epoupon/lms/archive/refs/tags/v${DISTVERSION}${EXTRACT_SUFX}?dummy=/
 CATEGORIES=	multimedia
 
@@ -17,7 +18,7 @@ LIB_DEPENDS=	libavformat.so:multimedia/ffmpeg \
 		libwthttp.so:www/wt
 RUN_DEPENDS=	ffmpeg:multimedia/ffmpeg
 
-USES=		cmake compiler:c++17-lang pkgconfig
+USES=		cmake compiler:c++17-lang cpe pkgconfig
 
 USER=		nobody
 GROUP=		nobody

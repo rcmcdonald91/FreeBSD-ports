@@ -1,9 +1,10 @@
 PORTNAME=	consul-template
-PORTVERSION=	0.25.2
+PORTVERSION=	0.27.2
 DISTVERSIONPREFIX=	v
 CATEGORIES=	textproc
 
 MAINTAINER=	swills@FreeBSD.org
+# co-maintainer: brd
 COMMENT=	Generic template rendering and notifications with Consul
 
 LICENSE=	MPL20
@@ -17,10 +18,10 @@ GH_TUPLE=	hashicorp:${PORTNAME}:${DISTVERSIONPREFIX}${PORTVERSION}:DEFAULT/src/g
 		davecgh:go-spew:v1.1.1:davecgh_go_spew/vendor/github.com/davecgh/go-spew \
 		fatih:color:v1.9.0:fatih_color/vendor/github.com/fatih/color \
 		go-yaml:yaml:v2.3.0:go_yaml_yaml/vendor/gopkg.in/yaml.v2 \
-		golang:crypto:7f63de1d35b0:golang_crypto/vendor/golang.org/x/crypto \
-		golang:net:0a1ea396d57c:golang_net/vendor/golang.org/x/net \
+		golang:crypto:32db794688a5:golang_crypto/vendor/golang.org/x/crypto \
+		golang:net:e18ecbb05110:golang_net/vendor/golang.org/x/net \
 		golang:snappy:v0.0.2:golang_snappy/vendor/github.com/golang/snappy \
-		golang:sys:fdedc70b468f:golang_sys/vendor/golang.org/x/sys \
+		golang:sys:665e8c7367d1:golang_sys/vendor/golang.org/x/sys \
 		golang:text:v0.3.3:golang_text/vendor/golang.org/x/text \
 		golang:time:3af7569d3a1e:golang_time/vendor/golang.org/x/time \
 		hashicorp:consul:v0.4.1:hashicorp_consul_sdk/vendor/github.com/hashicorp/consul/sdk \
@@ -42,6 +43,7 @@ GH_TUPLE=	hashicorp:${PORTNAME}:${DISTVERSIONPREFIX}${PORTVERSION}:DEFAULT/src/g
 		hashicorp:serf:v0.9.4:hashicorp_serf/vendor/github.com/hashicorp/serf \
 		hashicorp:vault:0dc007d98cc8:hashicorp_vault_sdk/vendor/github.com/hashicorp/vault \
 		hashicorp:vault:746c0b111519:hashicorp_vault_api \
+		imdario:mergo:v0.3.12:imdario_mergo/vendor/github.com/imdario/mergo \
 		mattn:go-colorable:v0.1.7:mattn_go_colorable/vendor/github.com/mattn/go-colorable \
 		mattn:go-isatty:v0.0.12:mattn_go_isatty/vendor/github.com/mattn/go-isatty \
 		mattn:go-shellwords:v1.0.10:mattn_go_shellwords/vendor/github.com/mattn/go-shellwords \
@@ -56,12 +58,12 @@ GH_TUPLE=	hashicorp:${PORTNAME}:${DISTVERSIONPREFIX}${PORTVERSION}:DEFAULT/src/g
 		square:go-jose:v2.5.1:square_go_jose/vendor/gopkg.in/square/go-jose.v2 \
 		stretchr:testify:v1.4.0:stretchr_testify/vendor/github.com/stretchr/testify
 
+USE_RC_SUBR=	consul-template
+
 GO_BUILDFLAGS=	-ldflags='\
 		-s -w -X github.com/hashicorp/consul-template/version.Name=${PORTNAME} \
 		-X github.com/hashicorp/consul-template/version.GitCommit=release'
 PLIST_FILES=	bin/consul-template
-
-USE_RC_SUBR=	consul-template
 
 post-extract:
 	@${RM} -r ${WRKSRC}/vendor/github.com/hashicorp/vault/api

@@ -1,7 +1,7 @@
 # Created by: Bernhard Froehlich <decke@bluelife.at>
 
 PORTNAME=	virtualbox-ose
-PORTVERSION=	6.1.22
+PORTVERSION=	6.1.32
 CATEGORIES=	emulators
 MASTER_SITES=	https://download.virtualbox.org/virtualbox/${PORTVERSION}/
 DISTFILES=	VirtualBox-${PORTVERSION}${EXTRACT_SUFX} ${GUESTADDITIONS}
@@ -35,9 +35,9 @@ CONFIGURE_ARGS=	--disable-java --passive-mesa
 CONFIGURE_ARGS+=	--with-gcc="${CC}" --with-g++="${CXX}"
 
 CONFLICTS_INSTALL=	virtualbox-ose-additions-* \
-			virtualbox-ose-devel-[0-9]* \
-			virtualbox-ose-legacy-[0-9]* \
-			virtualbox-ose-lite-[0-9]*
+			virtualbox-ose-devel \
+			virtualbox-ose-legacy \
+			virtualbox-ose-lite
 
 VBOXUSER?=	vboxusers
 VBOXWSUSER?=	vboxusers
@@ -55,6 +55,9 @@ VBOX_UTILS=	VBoxExtPackHelperApp VBoxNetAdpCtl VBoxNetDHCP VBoxNetNAT \
 OPTIONS_DEFINE=	AIO ALSA DBUS DEBUG GUESTADDITIONS MANUAL NLS OPUS PULSEAUDIO \
 		PYTHON QT5 R0LOGGING UDPTUNNEL VDE VNC WEBSERVICE VPX X11
 OPTIONS_DEFAULT=	AIO DBUS QT5 UDPTUNNEL VNC WEBSERVICE X11
+# Since version 6.1.24 pulseaudio is broken at runtime, preventing
+# virtual machines from starting if configured to use it.
+OPTIONS_EXCLUDE+=	PULSEAUDIO
 OPTIONS_SUB=	yes
 
 AIO_DESC=	Enable Asyncronous IO support (check pkg-message)
@@ -111,10 +114,10 @@ USE_RC_SUBR=	vboxheadless vboxwatchdog
 .include <bsd.port.options.mk>
 
 .if ${SLAVE_PORT} == no
-CONFLICTS_INSTALL+=	virtualbox-ose-nox11-[0-9]*
+CONFLICTS_INSTALL+=	virtualbox-ose-nox11
 OPTIONS_DEFAULT+=	PYTHON
 .else
-CONFLICTS_INSTALL+=	virtualbox-ose-[0-9]*
+CONFLICTS_INSTALL+=	virtualbox-ose
 .endif
 
 .if ${ARCH} == "amd64"
@@ -161,7 +164,6 @@ USE_GL=		gl glu
 USE_QT=		buildtools_build core dbus gui linguisttools_build opengl
 USE_QT+=	printsupport widgets x11extras
 USE_XORG=	xcb
-INSTALLS_ICONS=	yes
 VBOX_PROGS+=	VirtualBox VirtualBoxVM
 VBOX_UTILS+=	VBoxTestOGL
 VBOX_WITH_QT=	1
@@ -210,9 +212,9 @@ KMK_FLAGS+=	-j${MAKE_JOBS_NUMBER}
 # llvm10 in FreeBSD before r364284 miscompiles virtualbox 6.1 causing errors.
 # force llvm11 from ports
 .if ${OPSYS} == FreeBSD && ${OSVERSION} < 1300109
-BUILD_DEPENDS+=	clang11:devel/llvm${VBOX_LLVM_VER}
-CC=		${LOCALBASE}/bin/clang${VBOX_LLVM_VER}
-CXX=		${LOCALBASE}/bin/clang++${VBOX_LLVM_VER}
+BUILD_DEPENDS+=	clang${VBOX_LLVM_VER}:devel/llvm${VBOX_LLVM_VER}
+CC=		clang${VBOX_LLVM_VER}
+CXX=		clang++${VBOX_LLVM_VER}
 VBOX_LLVM_VER?=	11
 .endif
 PATCH_DEPENDS+=	${LOCALBASE}/share/kBuild/tools/GXX3.kmk:devel/kBuild
@@ -332,7 +334,7 @@ post-patch-AIO-off:
 
 do-build:
 	cd ${WRKSRC} && ${SH} -c '. ${WRKSRC}/env.sh && \
-	    ${KMK_CONFIG} ${LOCALBASE}/bin/kmk ${KMK_FLAGS}'
+	    ${SETENV} ${MAKE_ENV} ${KMK_CONFIG} ${LOCALBASE}/bin/kmk ${KMK_FLAGS}'
 .if ${PORT_OPTIONS:MPYTHON}
 	${PYTHON_CMD} -mcompileall \
 	    ${KMK_BUILDDIR}/bin/sdk/bindings/xpcom/python/xpcom

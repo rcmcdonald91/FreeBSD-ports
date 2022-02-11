@@ -11,10 +11,15 @@ COMMENT=	Web-based (graphical) interface to The Sleuth Kit
 
 LICENSE=	GPLv2
 
+DEPRECATED=	Very outdated, current version in tree was released back in 2010 and upstream is still active
+EXPIRATION_DATE=2022-03-31
+
+
 BUILD_DEPENDS=	${LOCALBASE}/bin/ifind:sysutils/sleuthkit
 RUN_DEPENDS:=	${BUILD_DEPENDS}
 
-USES=		perl5
+USES=		cpe perl5
+CPE_VENDOR=	sleuthkit
 WEB=		pict/*
 WEBHELP=	help/*
 PERLBITS=	lib/*.pm lib/*.pl conf.pl

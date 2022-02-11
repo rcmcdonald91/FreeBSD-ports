@@ -6,7 +6,7 @@ CATEGORIES=	textproc perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	sunpoet@FreeBSD.org
 COMMENT=	Utility class for building table layouts in a PDF::API2 object
 
 BUILD_DEPENDS=	${RUN_DEPENDS}
@@ -15,9 +15,9 @@ RUN_DEPENDS=	p5-PDF-API2>=0:textproc/p5-PDF-API2
 USES=		perl5
 USE_PERL5=	configure
 
-OPTIONS_DEFINE=	EXAMPLES
+NO_ARCH=	yes
 
-PORTEXAMPLES=	*
+OPTIONS_DEFINE=	EXAMPLES
 
 post-install-EXAMPLES-on:
 	${MKDIR} ${STAGEDIR}${EXAMPLESDIR}

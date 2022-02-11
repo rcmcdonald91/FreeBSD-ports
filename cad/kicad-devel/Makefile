@@ -2,7 +2,7 @@
 
 PORTNAME=	kicad
 DISTVERSION=	r${GIT_SRC_DATE}
-PORTREVISION=	3
+PORTREVISION=	0
 CATEGORIES=	cad
 PKGNAMESUFFIX=	-devel
 DIST_SUBDIR=		${PORTNAME}
@@ -22,7 +22,7 @@ LIB_DEPENDS=	libboost_thread.so:devel/boost-libs \
 		libpng.so:graphics/png \
 		libcurl.so:ftp/curl
 
-CONFLICTS=	kicad-4.*
+CONFLICTS_INSTALL=	kicad # bin/_cvpcb.kiface
 
 USE_GITLAB=	yes
 GL_ACCOUNT=	kicad/code
@@ -53,7 +53,7 @@ SHEBANG_FILES=	pcbnew/python/plugins/touch_slider_wizard.py
 CMAKE_ARGS=	-DLOCALBASE="${LOCALBASE}" \
 		-DCMAKE_BUILD_TYPE="Debug" \
 		-DKICAD_TESTING_VERSION=ON \
-		-DKICAD_BUILD_VERSION=${DISTVERSION} \
+		-DKICAD_VERSION=${DISTVERSION} \
 		-DCMAKE_INCLUDE_PATH="${WRKSRC}/include ${LOCALBASE}/include" \
 		-DwxWidgets_CONFIG_EXECUTABLE="${WX_CONFIG}" \
 		-DwxWidgets_USE_DEBUG=ON \
@@ -70,7 +70,6 @@ CMAKE_ARGS=	-DLOCALBASE="${LOCALBASE}" \
 		-DKICAD_USE_OCC=ON \
 		-DOCC_INCLUDE_DIR=${LOCALBASE}/include/OpenCASCADE
 USE_LDCONFIG=	yes
-INSTALLS_ICONS=	yes
 
 .include "Makefile.git_rev"
 

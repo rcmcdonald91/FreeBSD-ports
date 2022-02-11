@@ -8,13 +8,16 @@ DISTNAME=	${PORTNAME}-${PORTVERSION}-unix
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	HTTP/HTTPS proxy for assessing web application vulnerability
 
+DEPRECATED=	Abandonware, last release in 2006 and dead upstream
+EXPIRATION_DATE=2022-03-31
+
 WRKSRC=		${WRKDIR}/${PORTNAME}
 
 USE_JAVA=	yes
 JAVA_RUN=	yes
 
 NO_BUILD=	yes
-USES=		dos2unix zip
+USES=		cpe dos2unix zip
 DOS2UNIX_FILES=	release.txt
 
 DATADIR=	${JAVASHAREDIR}/${PORTNAME}

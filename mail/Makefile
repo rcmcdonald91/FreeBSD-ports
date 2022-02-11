@@ -30,8 +30,8 @@
     SUBDIR += bincimap
     SUBDIR += bmf
     SUBDIR += bogofilter
+    SUBDIR += bogofilter-bdb
     SUBDIR += bogofilter-kc
-    SUBDIR += bogofilter-lmdb
     SUBDIR += bogofilter-sqlite
     SUBDIR += bsfilter
     SUBDIR += bsmtp
@@ -94,6 +94,7 @@
     SUBDIR += dma
     SUBDIR += dot-forward
     SUBDIR += dovecot
+    SUBDIR += dovecot-fts-flatcurve
     SUBDIR += dovecot-fts-xapian
     SUBDIR += dovecot-pigeonhole
     SUBDIR += dspam
@@ -135,8 +136,6 @@
     SUBDIR += getmail6
     SUBDIR += gmime2
     SUBDIR += gmime2-sharp
-    SUBDIR += gmime24
-    SUBDIR += gmime24-sharp
     SUBDIR += gmime26
     SUBDIR += gmime26-sharp
     SUBDIR += gmime30
@@ -221,6 +220,7 @@
     SUBDIR += meta1
     SUBDIR += metamail
     SUBDIR += mew
+    SUBDIR += mew-devel
     SUBDIR += milter-bogom
     SUBDIR += milter-callback
     SUBDIR += milter-greylist
@@ -251,6 +251,7 @@
     SUBDIR += neomutt
     SUBDIR += nextcloud-mail
     SUBDIR += nmh
+    SUBDIR += nmh-devel
     SUBDIR += noattach
     SUBDIR += nocc
     SUBDIR += normalizemime
@@ -261,7 +262,6 @@
     SUBDIR += opendkim
     SUBDIR += opendmarc
     SUBDIR += opensmtpd
-    SUBDIR += opensmtpd-devel
     SUBDIR += opensmtpd-extras
     SUBDIR += opensmtpd-extras-queue-ram
     SUBDIR += opensmtpd-extras-scheduler-ram
@@ -450,9 +450,9 @@
     SUBDIR += perdition
     SUBDIR += pflogsumm
     SUBDIR += pfqueue
-    SUBDIR += php73-imap
     SUBDIR += php74-imap
     SUBDIR += php80-imap
+    SUBDIR += php81-imap
     SUBDIR += phplist
     SUBDIR += phpmailer
     SUBDIR += phpmailer6
@@ -468,16 +468,15 @@
     SUBDIR += postfinger
     SUBDIR += postfix
     SUBDIR += postfix-current
-    SUBDIR += postfix-current-sasl
-    SUBDIR += postfix-ldap-sasl
     SUBDIR += postfix-logwatch
     SUBDIR += postfix-policyd-sf
     SUBDIR += postfix-policyd-spf-perl
     SUBDIR += postfix-policyd-weight
     SUBDIR += postfix-postfwd
-    SUBDIR += postfix-sasl
-    SUBDIR += postfix35
     SUBDIR += postfixadmin
+    SUBDIR += postfixadmin-lite
+    SUBDIR += postfixadmin33
+    SUBDIR += postfixadmin33-lite
     SUBDIR += postgrey
     SUBDIR += postsrsd
     SUBDIR += prepflog
@@ -565,6 +564,7 @@
     SUBDIR += roundcube-mvision2
     SUBDIR += roundcube-sauserprefs
     SUBDIR += roundcube-thunderbird_labels
+    SUBDIR += roundcube-twofactor_gauthenticator
     SUBDIR += roundcube-umich
     SUBDIR += roundcube-veximaccountadmin
     SUBDIR += roundcube-yubikey_auth
@@ -573,12 +573,14 @@
     SUBDIR += rss2email3
     SUBDIR += rubygem-actionmailbox60
     SUBDIR += rubygem-actionmailbox61
+    SUBDIR += rubygem-actionmailbox70
     SUBDIR += rubygem-actionmailer4
     SUBDIR += rubygem-actionmailer5
     SUBDIR += rubygem-actionmailer50
     SUBDIR += rubygem-actionmailer52
     SUBDIR += rubygem-actionmailer60
     SUBDIR += rubygem-actionmailer61
+    SUBDIR += rubygem-actionmailer70
     SUBDIR += rubygem-email_reply_parser
     SUBDIR += rubygem-email_reply_parser-discourse
     SUBDIR += rubygem-email_reply_trimmer
@@ -598,6 +600,7 @@
     SUBDIR += rubygem-premailer-rails-rails5
     SUBDIR += rubygem-premailer-rails-rails52
     SUBDIR += rubygem-premailer-rails-rails60
+    SUBDIR += rubygem-premailer-rails-rails61
     SUBDIR += rubygem-rmail
     SUBDIR += rubygem-roadie
     SUBDIR += rubygem-roadie-rails-rails4

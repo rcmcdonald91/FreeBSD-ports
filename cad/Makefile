@@ -6,6 +6,7 @@
     SUBDIR += admesh
     SUBDIR += adms
     SUBDIR += alliance
+    SUBDIR += appcsxcad
     SUBDIR += archimedes
     SUBDIR += astk-client
     SUBDIR += astk-serveur
@@ -18,8 +19,10 @@
     SUBDIR += cascade
     SUBDIR += cascade-compiler
     SUBDIR += chipvault
+    SUBDIR += csxcad
     SUBDIR += cura
     SUBDIR += cura-engine
+    SUBDIR += cvc
     SUBDIR += digital
     SUBDIR += dinotrace
     SUBDIR += ecpprog
@@ -32,6 +35,7 @@
     SUBDIR += freecad
     SUBDIR += freehdl
     SUBDIR += fritzing
+    SUBDIR += gds3d
     SUBDIR += gdsreader
     SUBDIR += gdt
     SUBDIR += geda
@@ -64,6 +68,7 @@
     SUBDIR += klayout
     SUBDIR += ktechlab
     SUBDIR += ldraw
+    SUBDIR += ldview
     SUBDIR += leocad
     SUBDIR += lepton-eda
     SUBDIR += libopencad
@@ -80,15 +85,18 @@
     SUBDIR += ngspice_rework
     SUBDIR += nvc
     SUBDIR += opencascade
+    SUBDIR += opencascade740
     SUBDIR += openctm
     SUBDIR += openfpgaloader
     SUBDIR += openroad
     SUBDIR += openscad
     SUBDIR += openscad-devel
+    SUBDIR += opentimer
     SUBDIR += openvsp
     SUBDIR += oregano
     SUBDIR += p5-GDS2
     SUBDIR += p5-Verilog-Perl
+    SUBDIR += padring
     SUBDIR += pcb
     SUBDIR += pdnmesh
     SUBDIR += py-cadquery
@@ -99,8 +107,10 @@
     SUBDIR += py-ocp
     SUBDIR += py-phidl
     SUBDIR += py-pyfda
+    SUBDIR += py-pymtl
     SUBDIR += python-gdsii
     SUBDIR += qcad
+    SUBDIR += qcsxcad
     SUBDIR += qelectrotech
     SUBDIR += qflow
     SUBDIR += qmls
@@ -114,9 +124,11 @@
     SUBDIR += stepcode
     SUBDIR += stm32flash
     SUBDIR += sumo
+    SUBDIR += surelog
     SUBDIR += sweethome3d
     SUBDIR += tkgate
     SUBDIR += tochnog
+    SUBDIR += uhdm
     SUBDIR += uranium
     SUBDIR += verilator
     SUBDIR += verilog-mode.el

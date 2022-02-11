@@ -6,7 +6,7 @@ PORTREVISION=	3
 CATEGORIES=	emulators
 MASTER_SITES=	https://fs-uae.net/stable/${PORTVERSION}/
 
-MAINTAINER=	ndowens@yahoo.com
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	GUI launcher for the FS-UAE Amiga emulator
 
 LICENSE=	GPLv2+
@@ -19,9 +19,8 @@ RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}sqlite3>0:databases/py-sqlite3@${PY_FLAVOR} 
 USES=		gettext gmake gnome pathfix pyqt:5 python:3.4+
 
 USE_PYTHON=	distutils autoplist noflavors
-USE_PYQT=	core sip gui widgets opengl
+USE_PYQT=	pyqt5 sip
 
-INSTALLS_ICONS=	yes
 MAKE_ARGS+=	DESTDIR=${STAGEDIR} prefix=${PREFIX} PYTHON=${PYTHON_CMD}
 
 PYDISTUTILS_INSTALLARGS+=	--install-lib=${PYTHON_SITELIBDIR}

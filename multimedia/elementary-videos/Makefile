@@ -1,6 +1,10 @@
 PORTNAME=	elementary-videos
-DISTVERSION=	2.7.2
+DISTVERSION=	2.7.3
+PORTREVISION=	1
 CATEGORIES=	multimedia
+
+PATCH_SITES=	https://github.com/${GH_ACCOUNT}/${GH_PROJECT}/commit/
+PATCHFILES+=	f6b94db27035.patch:-p1 # https://github.com/elementary/videos/pull/288
 
 MAINTAINER=	miguel@gocobachi.dev
 COMMENT=	Elementary OS video player
@@ -23,7 +27,6 @@ GH_ACCOUNT=	elementary
 GH_PROJECT=	videos
 USE_GNOME=	cairo gdkpixbuf2 gtk30
 GLIB_SCHEMAS=	io.elementary.videos.gschema.xml
-INSTALLS_ICONS=	yes
 USE_GSTREAMER1=	yes
 USE_XORG=	x11
 

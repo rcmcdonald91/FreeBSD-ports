@@ -1,7 +1,7 @@
 # Created by: John von Essen
 
 PORTNAME=	privoxy
-PORTVERSION=	3.0.32
+PORTVERSION=	3.0.33
 CATEGORIES=	www
 MASTER_SITES=	https://www.privoxy.org/sf-download-mirror/Sources/${PORTVERSION}%20(stable)/ \
 		SF/ijbswa/Sources/${PORTVERSION}%20%28stable%29
@@ -28,7 +28,7 @@ LDFLAGS+=	-L${LOCALBASE}/lib
 
 # privoxy-devel is the development release available at the Privoxy website.
 # It's not (yet) part of the FreeBSD ports collection.
-CONFLICTS=	privoxy-devel-[0-9]*
+CONFLICTS=	privoxy-devel
 
 SUB_FILES=	pkg-message
 

@@ -1,14 +1,13 @@
 # Created by: Thierry Thomas <thierry@pompo.net>
 
 PORTNAME=	UCD
-PORTVERSION=	13.0.0
+PORTVERSION=	14.0.0
 CATEGORIES=	textproc
-MASTER_SITES=	http://www.unicode.org/Public/zipped/${PORTVERSION}/:src\
-		ftp://www.unicode.org/Public/zipped/${PORTVERSION}/:src	\
-		http://www.unicode.org/:lic
+MASTER_SITES=	https://www.unicode.org/Public/zipped/${DISTVERSION}/:src	\
+		https://raw.githubusercontent.com/unicode-org/unihan-database/f1e8e08a138bc7e834958c8d50d26ec4bca305d3/:lic
 DISTFILES=	${PORTNAME}.zip:src	\
-		copyright.html:lic
-DIST_SUBDIR=	${PORTNAME}-${PORTVERSION}
+		LICENSE.md:lic
+DIST_SUBDIR=	unicode-${PORTNAME}/${DISTVERSION}
 EXTRACT_ONLY=
 
 MAINTAINER=	thierry@FreeBSD.org
@@ -16,7 +15,7 @@ COMMENT=	Unicode Character Database
 
 LICENSE=	Unicode_License_Agreement
 LICENSE_NAME=	Unicode License Agreement
-LICENSE_FILE=	${_DISTDIR}/copyright.html
+LICENSE_FILE=	${_DISTDIR}/LICENSE.md
 LICENSE_PERMS=	dist-mirror dist-sell pkg-mirror pkg-sell auto-accept
 
 OPTIONS_DEFINE=	HAN

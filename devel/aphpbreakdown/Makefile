@@ -2,7 +2,7 @@ PORTNAME=	aphpbreakdown
 DISTVERSION=	2.2.2
 CATEGORIES=	devel www
 MASTER_SITES=	http://phar.code-mesa.com/
-PKGNAMEPREFIX=  ${PHP_PKGNAMEPREFIX}
+PKGNAMEPREFIX=	${PHP_PKGNAMEPREFIX}
 EXTRACT_SUFX=	.phar
 
 MAINTAINER=	freebsd@code-mesa.com
@@ -15,6 +15,8 @@ USE_PHP=	tokenizer phar hash
 
 NO_ARCH=	yes
 NO_BUILD=	yes
+
+CONFLICTS_INSTALL=	php*-aphpbreakdown
 
 PLIST_FILES=	bin/aphpbreakdown
 

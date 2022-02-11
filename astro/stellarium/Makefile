@@ -1,7 +1,7 @@
 # Created by: Jean-Yves Lefort <jylefort@brutele.be>
 
-PORTNAME=	stellarium
-PORTVERSION=	0.21.0
+PORTNAME=	${GH_ACCOUNT:tl}
+PORTVERSION=	0.21.3
 DISTVERSIONPREFIX=	v
 CATEGORIES=	astro
 EXTRACT_ONLY=	${_DISTFILES:Nstars_*.cat:N*.pdf}
@@ -25,20 +25,20 @@ PORTDOCS=	CREDITS.md ChangeLog README.md \
 		stellarium_user_guide-${GUIDE_VERSION}-1.pdf
 
 OPTIONS_DEFINE=		DOCS GPS MORE_STARS MULTIMEDIA NLS SCRIPTS \
-			TEXTURES TELESCOPE
+			TELESCOPE TEST TEXTURES
 OPTIONS_DEFAULT=	GPS MULTIMEDIA SCRIPTS TELESCOPE
 OPTIONS_SUB=		yes
 
+GPS_DESC=		GPS (NMEA handling) support
 MORE_STARS_DESC=	Install extra star catalogs (1.0GB)
-TEXTURES_DESC=		Install better quality textures
 MULTIMEDIA_DESC=	Sound and video support
 SCRIPTS_DESC=		Remote control and scripting support
 TELESCOPE_DESC=		Telescope control plugin
+TEXTURES_DESC=		Install better quality textures
 
 DOCS_MASTER_SITES=	https://github.com/Stellarium/stellarium/releases/download/v${GUIDE_VERSION}/:ug
 DOCS_DISTFILES=		stellarium_user_guide-${GUIDE_VERSION}-1.pdf:ug
 
-GPS_DESC=		GPS (NMEA handling) support
 GPS_LIB_DEPENDS=	libgps.so:astro/gpsd
 GPS_USE=		QT=location,serialport
 GPS_CMAKE_OFF=		-DENABLE_GPS:BOOL=OFF
@@ -58,6 +58,9 @@ SCRIPTS_CMAKE_OFF=	-DENABLE_SCRIPTING:BOOL=OFF
 TELESCOPE_USE=		QT=serialport
 TELESCOPE_CMAKE_OFF=	-DUSE_PLUGIN_TELESCOPECONTROL:BOOL=OFF
 
+TEST_USE=		QT=testlib_build
+TEST_CMAKE_ON=		-DENABLE_TESTING:BOOL=ON
+
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MMORE_STARS}
@@ -67,14 +70,18 @@ MASTER_SITES+=	SF/${PORTNAME}/Extra-data-files/stars${i}:stars${i}
 DISTFILES+=	stars_4_1v0_2.cat:stars4 stars_5_2v0_1.cat:stars5 \
 		stars_6_2v0_1.cat:stars6 stars_7_2v0_1.cat:stars7 \
 		stars_8_2v0_1.cat:stars8
-PLIST_SUB+=	MORE_STARS=""
-.else
-PLIST_SUB+=	MORE_STARS="@comment "
 .endif
 
 post-extract-DOCS-on:
 	@${LN} -sf ${_DISTDIR}/stellarium_user_guide-${GUIDE_VERSION}-1.pdf \
 		${WRKSRC}
+
+post-patch:
+	@${REINPLACE_CMD} -e '/ADD_PLUGIN(OnlineQueries/s,1,0,' \
+		${WRKSRC}/CMakeLists.txt
+
+post-install:
+	@${RMDIR} ${STAGEDIR}${DATADIR}/skycultures/greek_almagest/almstars
 
 post-install-MORE_STARS-on:
 	${INSTALL_DATA} ${DISTDIR}/stars_4_1v0_2.cat \
@@ -95,5 +102,8 @@ post-install-TEXTURES-on:
 post-install-DOCS-on:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${PORTDOCS:S|^|${WRKSRC}/|} ${STAGEDIR}${DOCSDIR}
+
+do-test-TEST-on:
+	@cd ${TEST_WRKSRC} && ctest -C ${CMAKE_BUILD_TYPE} ${_MAKE_JOBS}
 
 .include <bsd.port.mk>

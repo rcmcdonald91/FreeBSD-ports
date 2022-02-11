@@ -2,7 +2,7 @@
 
 PORTNAME=	kicad
 DISTVERSION=	r${GIT_SYM_DATE}
-PORTREVISION=	1
+PORTREVISION=	0
 CATEGORIES=	cad
 MASTER_SITES=	https://gitlab.com/kicad/libraries/${PORTNAME}-symbols/-/archive/${GL_COMMIT}/
 PKGNAMESUFFIX=	-library-symbols-devel
@@ -15,7 +15,7 @@ LICENSE=	GPLv2
 
 RUN_DEPENDS=	kicad:cad/kicad-devel
 
-CONFLICTS=	kicad-4.*
+CONFLICTS_INSTALL=	kicad-library-symbols # share/kicad/symbols/4xxx.kicad_sym
 
 USE_GITLAB=	nodefault
 GL_ACCOUNT=	kicad
@@ -24,7 +24,7 @@ GL_COMMIT=	${GIT_SYM_HASH}
 
 USES=		cmake
 
-CMAKE_ARGS=     -DLOCALBASE="${LOCALBASE}" \
+CMAKE_ARGS=	-DLOCALBASE="${LOCALBASE}" \
 		-DCMAKE_BUILD_TYPE="Release" \
 		-DKICAD_TESTING_VERSION=ON \
 		-DKICAD_BUILD_VERSION=${DISTVERSION}

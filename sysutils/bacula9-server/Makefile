@@ -14,10 +14,10 @@ COMMENT?=	Network backup solution (server)
 LICENSE=	AGPLv3
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-USES+=		libtool readline shebangfix ssl
+USES+=		cpe libtool readline shebangfix ssl
 SHEBANG_FILES=	src/cats/make_catalog_backup.pl.in
 
-CONFLICTS?=	bacula11-server-* bacula5-server-* bacula-server-*
+CONFLICTS?=	bacula11-server bacula-server
 
 LIB_DEPENDS+=	liblzo2.so:archivers/lzo2
 

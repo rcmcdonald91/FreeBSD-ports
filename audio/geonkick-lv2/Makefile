@@ -1,11 +1,8 @@
 PORTNAME=	geonkick
 DISTVERSIONPREFIX=	v
-DISTVERSION=	2.8.0
+DISTVERSION=	2.8.1
 CATEGORIES=	audio
 PKGNAMESUFFIX=	-lv2
-
-PATCH_SITES=	https://github.com/${GH_ACCOUNT}/${GH_PROJECT}/commit/
-PATCHFILES+=	9dd43995ec37853893db14bce7f420a03ff4194b.patch:-p1 # Support redkite on FreeBSD: https://github.com/iurie-sw/geonkick/pull/160
 
 MAINTAINER=	yuri@FreeBSD.org
 COMMENT=	Software percussion synthesizer
@@ -25,7 +22,5 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	iurie-sw
 USE_GNOME=	cairo
 USE_XORG=	x11
-
-INSTALLS_ICONS=	yes
 
 .include <bsd.port.mk>

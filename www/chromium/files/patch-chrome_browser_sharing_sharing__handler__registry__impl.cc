@@ -1,4 +1,4 @@
---- chrome/browser/sharing/sharing_handler_registry_impl.cc.orig	2021-04-14 18:40:55 UTC
+--- chrome/browser/sharing/sharing_handler_registry_impl.cc.orig	2021-12-14 11:44:59 UTC
 +++ chrome/browser/sharing/sharing_handler_registry_impl.cc
 @@ -23,10 +23,10 @@
  #include "chrome/browser/sharing/shared_clipboard/shared_clipboard_message_handler_desktop.h"
@@ -13,7 +13,7 @@
          // BUILDFLAG(IS_CHROMEOS_LACROS)) defined(OS_CHROMEOS)
  
  SharingHandlerRegistryImpl::SharingHandlerRegistryImpl(
-@@ -71,14 +71,14 @@ SharingHandlerRegistryImpl::SharingHandlerRegistryImpl
+@@ -76,14 +76,14 @@ SharingHandlerRegistryImpl::SharingHandlerRegistryImpl
          {chrome_browser_sharing::SharingMessage::kSharedClipboardMessage});
    }
  

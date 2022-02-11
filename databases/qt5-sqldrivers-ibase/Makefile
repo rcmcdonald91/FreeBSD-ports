@@ -1,3 +1,4 @@
+PORTREVISION=	0
 
 DB=		IBase
 DB_DESC=	InterBase/Firebird

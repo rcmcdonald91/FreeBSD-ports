@@ -2,9 +2,9 @@
 
 PORTNAME=	kicad
 DISTVERSION=	r${GIT_FP_DATE}
-PORTREVISION=	1
+PORTREVISION=	0
 CATEGORIES=	cad
-MASTER_SITES=   https://gitlab.com/kicad/libraries/${PORTNAME}-footprints/-/archive/${GL_COMMIT}/
+MASTER_SITES=	https://gitlab.com/kicad/libraries/${PORTNAME}-footprints/-/archive/${GL_COMMIT}/
 PKGNAMESUFFIX=	-library-footprints-devel
 DISTNAME=	${PORTNAME}-footprints-${GL_COMMIT}
 
@@ -15,17 +15,17 @@ LICENSE=	GPLv2
 
 RUN_DEPENDS=	kicad:cad/kicad-devel
 
-CONFLICTS=	kicad-4.*
+CONFLICTS_INSTALL=	kicad-library-footprints # share/kicad/footprints/Audio_Module.pretty/Reverb_BTDR-1H.kicad_mod
 
 USE_GITLAB=	nodefault
 GL_ACCOUNT=	kicad
 GL_PROJECT=	kicad/libraries
 GL_COMMIT=	${GIT_FP_HASH}
-# WRKSRC=         ${WRKDIR}/${PORTNAME}-${GL_COMMIT}-${GL_COMMIT}
+# WRKSRC=	${WRKDIR}/${PORTNAME}-${GL_COMMIT}-${GL_COMMIT}
 
 USES=		cmake
 
-CMAKE_ARGS=     -DLOCALBASE="${LOCALBASE}" \
+CMAKE_ARGS=	-DLOCALBASE="${LOCALBASE}" \
 		-DCMAKE_BUILD_TYPE="Release" \
 		-DKICAD_TESTING_VERSION=ON \
 		-DKICAD_BUILD_VERSION=${DISTVERSION}

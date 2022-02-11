@@ -1,7 +1,7 @@
 # Created by: Rozhuk Ivan <rozhuk.im@gmail.com>
 
 PORTNAME=	visualization.spectrum
-PORTVERSION=	3.4.0
+PORTVERSION=	19.0.1
 DISTVERSIONSUFFIX=	-Matrix
 CATEGORIES=	multimedia
 

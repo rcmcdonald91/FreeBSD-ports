@@ -1,6 +1,5 @@
 PORTNAME=	ansible-core
-DISTVERSION=	2.11.0
-PORTREVISION=	2
+DISTVERSION=	2.12.2
 CATEGORIES=	sysutils python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -14,7 +13,7 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}cryptography>0:security/py-cryptography@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}Jinja2>0:devel/py-Jinja2@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}packaging>=0:devel/py-packaging@${PY_FLAVOR} \
-		${PYTHON_PKGNAMEPREFIX}resolvelib>=0.5.3<0.6:devel/py-resolvelib@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}resolvelib05>=0.5.3<0.6:devel/py-resolvelib05@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}yaml>0:devel/py-yaml@${PY_FLAVOR}
 TEST_DEPENDS=	${PYTHON_PKGNAMEPREFIX}bcrypt>=0:security/py-bcrypt@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}boto3>0:www/py-boto3@${PY_FLAVOR} \
@@ -27,8 +26,9 @@ TEST_DEPENDS=	${PYTHON_PKGNAMEPREFIX}bcrypt>=0:security/py-bcrypt@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}pytest>0:devel/py-pytest@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}requests>0:www/py-requests@${PY_FLAVOR}
 
-USES=		ansible:env cpe gmake python:3.6+ shebangfix
+USES=		ansible:env cpe gmake python:3.8+ shebangfix
 CPE_VENDOR=	redhat
+CPE_PRODUCT=	ansible
 USE_PYTHON=	autoplist concurrent distutils
 
 SHEBANG_REGEX=	[.]/test/.*[.]py
@@ -39,7 +39,7 @@ TEST_ARGS=	VERSION=${DISTVERSION} \
 TEST_ENV=	PYTHON_VERSION=${PYTHON_VER}
 TEST_TARGET=	tests
 
-CONFLICTS=	py*-ansible-base
+CONFLICTS=	py*-ansible-base py*-ansible2 py-ansible-core211
 
 NO_ARCH=	yes
 

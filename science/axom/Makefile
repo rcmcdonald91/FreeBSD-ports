@@ -1,6 +1,6 @@
 PORTNAME=	axom
 DISTVERSIONPREFIX=	v
-DISTVERSION=	0.5.0
+DISTVERSION=	0.6.1
 CATEGORIES=	science
 
 MAINTAINER=	yuri@FreeBSD.org
@@ -9,20 +9,27 @@ COMMENT=	Infrastructure for development of multi-physics applications and tools
 LICENSE=	BSD3CLAUSE
 LICENSE_FILE=	${WRKSRC}/../LICENSE
 
-LIB_DEPENDS=	libconduit.so:science/conduit
+BROKEN_i386=	https://github.com/LLNL/axom/issues/743
+BROKEN_powerpc=	https://github.com/LLNL/axom/issues/743
+
+LIB_DEPENDS=	libconduit.so:science/conduit \
+		libhdf5.so:science/hdf5 \
+		libsiloh5.so:science/silo \
+		libsz.so:science/szip
 RUN_DEPENDS=	sparsehash>0:devel/sparsehash
 
 USES=		cmake compiler:c++11-lang
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	LLNL
-GH_TUPLE=	LLNL:axom_data:517e53e:axom_data/../data \
-		LLNL:blt:7ec2cb8:blt/cmake/blt \
+GH_TUPLE=	LLNL:axom_data:b3d8e6f:axom_data/../data \
+		LLNL:blt:ddd5a0c:blt/cmake/blt \
 		LLNL:uberenv:a121a45:uberenv/scripts/uberenv
 
 CMAKE_OFF=	AXOM_ENABLE_DOCS AXOM_ENABLE_EXAMPLES AXOM_ENABLE_TESTS FREEBSD_ENABLE_EXAMPLES
 CMAKE_ON=	BUILD_SHARED_LIBS
-CMAKE_ARGS=	-DCONDUIT_DIR=${LOCALBASE}
+CMAKE_ARGS=	-DCONDUIT_DIR=${LOCALBASE} \
+		-DHDF5_DIR=${LOCALBASE}
 
 LDFLAGS+=	-lexecinfo
 

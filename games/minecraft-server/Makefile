@@ -1,7 +1,7 @@
 PORTNAME=	minecraft-server
-PORTVERSION=	1.16.5
+PORTVERSION=	1.18.1
 CATEGORIES=	games java
-MASTER_SITES=	https://launcher.mojang.com/v1/objects/1b557e7b033b583cd9f66746b7a9ab1ec1673ced/
+MASTER_SITES=	https://launcher.mojang.com/v1/objects/125e5adf40c659fd3bce3e66e67a16bb49ecc1b9/
 DISTNAME=	server
 EXTRACT_SUFX=	.jar
 DIST_SUBDIR=	${PORTNAME}-${PORTVERSION}
@@ -29,6 +29,7 @@ GROUPS=		${USERS}
 
 NO_BUILD=	yes
 USE_JAVA=	yes
+JAVA_VERSION=	17
 SUB_FILES=	minecraft-server pkg-deinstall pkg-message
 SUB_LIST=	VERSION=${PORTVERSION}
 PLIST_SUB=	VERSION=${PORTVERSION}

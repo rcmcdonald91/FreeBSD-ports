@@ -1,7 +1,7 @@
 # Created by: Gustau Perez i Querol <gustau.perez@gmail.com>
 
 PORTNAME=	dbus
-DISTVERSION=	1.2.16
+DISTVERSION=	1.2.18
 PORTREVISION?=	0
 CATEGORIES=	devel gnome python
 MASTER_SITES=	http://dbus.freedesktop.org/releases/dbus-python/
@@ -25,6 +25,8 @@ INSTALL_TARGET=	install-strip
 
 .if ${SLAVE_PORT} == no
 USES+=		python:build
+
+NO_ARCH=	yes
 
 DOCSDIR=	${PREFIX}/share/doc/py-${PORTNAME}
 EXAMPLESDIR=	${PREFIX}/share/examples/py-${PORTNAME}

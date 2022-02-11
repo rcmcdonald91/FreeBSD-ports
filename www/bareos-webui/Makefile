@@ -1,9 +1,8 @@
-PORTNAME=       bareos
-DISTVERSIONPREFIX=      Release/
-DISTVERSION=    20.0.0
-PORTREVISION=	1
-CATEGORIES?=    www sysutils
-PKGNAMESUFFIX= -webui
+PORTNAME=	bareos
+DISTVERSIONPREFIX=	Release/
+DISTVERSION=	21.0.0
+CATEGORIES?=	www sysutils
+PKGNAMESUFFIX=	-webui
 
 MAINTAINER=	acm@FreeBSD.org
 COMMENT=	PHP-Frontend to manage Bareos over the web
@@ -13,7 +12,7 @@ LICENSE_FILE=	${WRKSRC}/webui/LICENSE
 
 USE_GITHUB=	yes
 
-USES=		php:build cmake gettext
+USES=		cpe php:build cmake gettext
 USE_PHP=	openssl gettext ctype hash json session iconv
 NO_BUILD=	yes
 NO_ARCH=	yes
@@ -29,10 +28,9 @@ SUB_FILES=	pkg-message
 SUB_LIST+=	ETCDIRWEBUI=${PREFIX}/${ETCDIRWEBUI}
 PLIST_SUB+=	WWWOWN=${WWWOWN} WWWGRP=${WWWGRP} ETCDIRWEBUI=${ETCDIRWEBUI}
 
-OPTIONS_DEFINE=		MYSQL PGSQL
+OPTIONS_DEFINE=		PGSQL
 OPTIONS_DEFAULT=	PGSQL
 
-MYSQL_USE=		PHP=pdo_mysql
 PGSQL_USE=		PHP=pdo_pgsql
 
 ETCDIRWEBUI=		etc/${PORTNAME}${PKGNAMESUFFIX}

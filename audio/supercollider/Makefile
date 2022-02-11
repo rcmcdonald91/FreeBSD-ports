@@ -1,6 +1,6 @@
 PORTNAME=	supercollider
 DISTVERSION=	3.11.0
-PORTREVISION=	1
+PORTREVISION=	3
 CATEGORIES=	audio
 MASTER_SITES=	https://github.com/supercollider/supercollider/releases/download/Version-${PORTVERSION}/
 DISTNAME=	SuperCollider-${PORTVERSION}-Source
@@ -54,8 +54,6 @@ SUPERNOVA_CMAKE_BOOL=	SUPERNOVA
 .if ! ${ARCH} == amd64 && ! ${ARCH} == i386
 CMAKE_ARGS+=	-DSSE:BOOL=FALSE -DSSE2:BOOL=FALSE -DSC_USE_QTWEBENGINE:BOOL=FALSE
 .else
-DEPRECATED=	Uses EOL Python 2.7 via www/qt5-webengine
-EXPIRATION_DATE=2021-06-23
 USE_QT+=	webengine
 .endif
 

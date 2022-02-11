@@ -11,8 +11,14 @@ COMMENT=	Receive/Send files via X/Y/ZMODEM protocol (unrestrictive)
 
 LICENSE=	GPLv2
 
+USES=		cpe
+
+CPE_VENDOR=	lrzsz_project
+
 GNU_CONFIGURE=	yes
 ALL_TARGET=	all # vcheck
+
+CONFLICTS_INSTALL=	lrzip # bin/lrz
 
 OPTIONS_DEFINE=	NLS
 

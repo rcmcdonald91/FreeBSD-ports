@@ -1,11 +1,11 @@
---- content/utility/BUILD.gn.orig	2021-04-14 18:41:03 UTC
+--- content/utility/BUILD.gn.orig	2021-12-14 11:45:06 UTC
 +++ content/utility/BUILD.gn
-@@ -93,7 +93,7 @@ source_set("utility") {
+@@ -103,7 +103,7 @@ source_set("utility") {
      deps += [ "//services/proxy_resolver:lib" ]
    }
  
 -  if (is_linux || is_chromeos) {
 +  if ((is_linux || is_chromeos) && !is_bsd) {
-     deps += [ "//content/utility/speech:speech_recognition_sandbox_hook" ]
-   }
- 
+     deps += [
+       "//content/utility/speech:speech_recognition_sandbox_hook",
+       "//services/network:network_sandbox_hook",
