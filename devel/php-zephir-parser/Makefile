@@ -12,7 +12,7 @@ LICENSE=	MIT
 BUILD_DEPENDS=  re2c>0:devel/re2c
 
 USES=	gmake libtool
-USES+=	php:ext php:phpize php:flavors
+USES+=	php:ext,flavors,phpize
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	zephir-lang
