@@ -13,7 +13,8 @@ COMMENT=	Zephir is a compiled high level language aimed to the \
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	re2c>0:devel/re2c
+RUN_DEPENDS=	re2c>0:devel/re2c \
+		${PHP_FLAVOR}-php-zephir_parser>0:devel/php-zephir-parser
 
 USES=		php:cli,flavors
 USE_PHP=	dom filter phar xml zlib
