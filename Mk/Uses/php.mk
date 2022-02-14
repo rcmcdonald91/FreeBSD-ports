@@ -461,6 +461,7 @@ xmlrpc_DEPENDS=	net/php${PHP_VER}-xmlrpc
 .endif
 xmlwriter_DEPENDS=	textproc/php${PHP_VER}-xmlwriter
 xsl_DEPENDS=	textproc/php${PHP_VER}-xsl
+zephir-parser_DEPENDS=	textproc/php-zephir-parser@${PHP_FLAVOR}
 zip_DEPENDS=	archivers/php${PHP_VER}-zip
 zlib_DEPENDS=	archivers/php${PHP_VER}-zlib
 
