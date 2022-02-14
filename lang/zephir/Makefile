@@ -1,3 +1,5 @@
+# Created by: R. Christian McDonald <cmcdonald@netgate.com>
+
 PORTNAME=	zephir
 DISTVERSION=	0.15.2
 CATEGORIES=	lang
@@ -14,7 +16,7 @@ COMMENT=	Zephir is a compiled high level language aimed to the \
 LICENSE=	MIT
 
 RUN_DEPENDS=	re2c>0:devel/re2c \
-		${PHP_FLAVOR}-php-zephir_parser>0:devel/php-zephir-parser
+		${PHP_FLAVOR}-pecl-zephir_parser>0:textproc/pecl-zephir_parser
 
 USES=		php:cli,flavors
 USE_PHP=	dom filter phar xml zlib
