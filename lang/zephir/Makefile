@@ -10,13 +10,12 @@ EXTRACT_SUFX=	.phar
 DIST_SUBDIR=	${PORTNAME}-${PORTVERSION}
 
 MAINTAINER=	cmcdonald@netgate.com
-COMMENT=	Zephir is a compiled high level language aimed to the \
-		creation of C-extensions for PHP
+COMMENT=	Zephir is a transpiled language used for creating C-extensions for PHP
 
 LICENSE=	MIT
 
 RUN_DEPENDS=	re2c>0:devel/re2c \
-		${PHP_FLAVOR}-pecl-zephir_parser>0:textproc/pecl-zephir_parser
+		${PHP_PKGNAMEPREFIX}pecl-zephir_parser>0:textproc/pecl-zephir_parser@${PHP_FLAVOR}
 
 USES=		php:cli,flavors
 USE_PHP=	dom filter phar xml zlib
