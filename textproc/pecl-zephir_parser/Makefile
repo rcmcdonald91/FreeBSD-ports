@@ -7,7 +7,7 @@ CATEGORIES=	textproc
 MAINTAINER=	cmcdonald@netgate.com
 COMMENT=	Zephir Parser delivered as a C extension for the PHP language
 
-LICENSE=	BSD2CLAUSE
+LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
 USES=		php:pecl
