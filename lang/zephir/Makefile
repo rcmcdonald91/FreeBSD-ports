@@ -18,7 +18,7 @@ RUN_DEPENDS=	re2c>0:devel/re2c \
 		${PHP_PKGNAMEPREFIX}pecl-zephir_parser>0:textproc/pecl-zephir_parser@${PHP_FLAVOR}
 
 USES=		php:cli,flavors
-USE_PHP=	dom filter phar xml zlib
+USE_PHP=	dom filter iconv phar xml zlib
 
 NO_ARCH=	yes
 NO_BUILD=	yes
