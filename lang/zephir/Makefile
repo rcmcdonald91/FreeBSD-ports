@@ -17,7 +17,7 @@ LICENSE=	MIT
 RUN_DEPENDS=	re2c>0:devel/re2c
 
 USES=		php:cli,flavors
-USE_PHP=	dom filter iconv phar xml zephir-parser zlib
+USE_PHP=	dom filter iconv phar xml zephir_parser zlib
 
 NO_ARCH=	yes
 NO_BUILD=	yes
