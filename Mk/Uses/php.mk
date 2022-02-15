@@ -379,7 +379,7 @@ _USE_PHP_ALL=	bcmath bitset bz2 calendar ctype curl dba dom \
 		pdo_odbc pdo_pgsql pdo_sqlite phar pgsql posix \
 		pspell radius readline redis session shmop simplexml snmp soap\
 		sockets sodium spl sqlite3 sysvmsg sysvsem sysvshm \
-		tidy tokenizer xml xmlreader xmlrpc xmlwriter xsl zip zlib
+		tidy tokenizer xml xmlreader xmlrpc xmlwriter xsl zip zephir_parser zlib
 # version specific components
 _USE_PHP_VER74=	${_USE_PHP_ALL} pdf
 _USE_PHP_VER80=	${_USE_PHP_ALL}
@@ -461,7 +461,7 @@ xmlrpc_DEPENDS=	net/php${PHP_VER}-xmlrpc
 .endif
 xmlwriter_DEPENDS=	textproc/php${PHP_VER}-xmlwriter
 xsl_DEPENDS=	textproc/php${PHP_VER}-xsl
-zephir-parser_DEPENDS=	textproc/php-zephir-parser@${PHP_FLAVOR}
+zephir_parser_DEPENDS=	textproc/pecl-zephir_parser@${PHP_FLAVOR}
 zip_DEPENDS=	archivers/php${PHP_VER}-zip
 zlib_DEPENDS=	archivers/php${PHP_VER}-zlib
 

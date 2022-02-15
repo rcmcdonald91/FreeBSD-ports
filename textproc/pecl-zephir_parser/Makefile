@@ -9,6 +9,8 @@ COMMENT=	Zephir Parser delivered as a C extension for the PHP language
 
 LICENSE=	MIT
 
+BUILD_DEPENDS=	re2c>0:devel/re2c
+
 USES=		php:pecl
 
 TEST_TARGET=	test
