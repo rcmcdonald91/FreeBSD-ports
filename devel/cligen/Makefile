@@ -1,5 +1,5 @@
 PORTNAME=	cligen
-PORTVERSION=	4.8.0
+PORTVERSION=	5.5.0
 CATEGORIES=	devel
 
 MAINTAINER=	dcornejo@netgate.com
