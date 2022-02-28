@@ -383,7 +383,6 @@ lib/emby-server/system/dashboard-ui/modules/common/playback/experimentalwarnings
 lib/emby-server/system/dashboard-ui/modules/common/playback/playaccessvalidation.js
 lib/emby-server/system/dashboard-ui/modules/common/playback/playbackmanager.js
 lib/emby-server/system/dashboard-ui/modules/common/playback/playbackvalidation.js
-lib/emby-server/system/dashboard-ui/modules/common/playback/playmethodhelper.js
 lib/emby-server/system/dashboard-ui/modules/common/playback/playqueueconfirmation.js
 lib/emby-server/system/dashboard-ui/modules/common/playback/playqueuemanager.js
 lib/emby-server/system/dashboard-ui/modules/common/pluginmanager.js
@@ -993,6 +992,7 @@ lib/emby-server/system/plugins/AudioDb.dll
 lib/emby-server/system/plugins/BlurayMounter.dll
 lib/emby-server/system/plugins/DvdMounter.dll
 lib/emby-server/system/plugins/Emby.Dlna.dll
+lib/emby-server/system/plugins/Emby.M3UTuner.dll
 lib/emby-server/system/plugins/Emby.PortMapper.dll
 lib/emby-server/system/plugins/Emby.Server.CinemaMode.dll
 lib/emby-server/system/plugins/Emby.Webhooks.dll

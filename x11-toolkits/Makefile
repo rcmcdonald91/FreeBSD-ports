@@ -7,6 +7,7 @@
     SUBDIR += blt
     SUBDIR += bwidget
     SUBDIR += color-widgets-qt5
+    SUBDIR += copperspice
     SUBDIR += ctk
     SUBDIR += fltk
     SUBDIR += fox14
@@ -157,7 +158,7 @@
     SUBDIR += py-qt5-chart
     SUBDIR += py-tkinter
     SUBDIR += py-tktreectrl
-    SUBDIR += py-wxPython40
+    SUBDIR += py-wxPython4
     SUBDIR += py-xlib
     SUBDIR += qml-box2d
     SUBDIR += qt5-charts
