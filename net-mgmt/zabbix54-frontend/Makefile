@@ -1,5 +1,4 @@
 PORTNAME=	zabbix54
-PORTREVISION=	1
 CATEGORIES=	net-mgmt
 PKGNAMESUFFIX=	-frontend${PHP_PKGNAMESUFFIX}
 
@@ -7,7 +6,7 @@ USES+=		php:web,flavors
 USE_PHP=	bcmath ctype dom fileinfo filter gd gettext hash json ldap \
 		mbstring openssl pcre session simplexml snmp sockets xml \
 		xmlreader xmlwriter
-IGNORE_WITH_PHP=	80 81
+IGNORE_WITH_PHP=	80 81 82
 
 MASTERDIR=	${.CURDIR}/../${PORTNAME}-server
 PATCHDIR=

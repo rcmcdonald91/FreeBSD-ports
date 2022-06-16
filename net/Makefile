@@ -7,7 +7,6 @@
     SUBDIR += R-cran-twitteR
     SUBDIR += Sockets
     SUBDIR += activemq
-    SUBDIR += adasockets
     SUBDIR += addrwatch
     SUBDIR += afpfs-ng
     SUBDIR += aget
@@ -17,7 +16,6 @@
     SUBDIR += akonadi-notes
     SUBDIR += akonadi-search
     SUBDIR += aluminum
-    SUBDIR += anet
     SUBDIR += aoe
     SUBDIR += apache-commons-net
     SUBDIR += apinger
@@ -200,9 +198,7 @@
     SUBDIR += go-cs
     SUBDIR += gobgp
     SUBDIR += gofish
-    SUBDIR += gogoc
     SUBDIR += google-cloud-sdk
-    SUBDIR += google-cloud-sdk-app-engine-go
     SUBDIR += gopher
     SUBDIR += goreplay
     SUBDIR += gorss
@@ -221,6 +217,7 @@
     SUBDIR += gsocket
     SUBDIR += gspoof
     SUBDIR += gssdp
+    SUBDIR += gssdp14
     SUBDIR += gstreamer1-plugins-libmms
     SUBDIR += gstreamer1-plugins-srtp
     SUBDIR += gtk-vnc
@@ -231,6 +228,7 @@
     SUBDIR += gupnp-igd
     SUBDIR += gupnp-tools
     SUBDIR += gupnp-ui
+    SUBDIR += gupnp14
     SUBDIR += gutenfetch
     SUBDIR += gwhois
     SUBDIR += h323plus
@@ -239,9 +237,7 @@
     SUBDIR += haproxy-devel
     SUBDIR += haproxy17
     SUBDIR += haproxy18
-    SUBDIR += haproxy19
     SUBDIR += haproxy20
-    SUBDIR += haproxy21
     SUBDIR += haproxy22
     SUBDIR += haproxy23
     SUBDIR += haproxy24
@@ -251,7 +247,6 @@
     SUBDIR += honeyd
     SUBDIR += hostapd
     SUBDIR += hostapd-devel
-    SUBDIR += hping
     SUBDIR += hping3
     SUBDIR += hsflowd
     SUBDIR += htpdate
@@ -270,7 +265,6 @@
     SUBDIR += ilbc
     SUBDIR += imapproxy
     SUBDIR += incidenceeditor
-    SUBDIR += inlets
     SUBDIR += intel-em-kmod
     SUBDIR += intel-ix-kmod
     SUBDIR += intel-ixl-kmod
@@ -290,6 +284,7 @@
     SUBDIR += isc-dhcp44-relay
     SUBDIR += isc-dhcp44-server
     SUBDIR += istgt
+    SUBDIR += iwnet
     SUBDIR += java-beepcore
     SUBDIR += jcifs
     SUBDIR += jgroups
@@ -303,7 +298,6 @@
     SUBDIR += jwhois
     SUBDIR += k6
     SUBDIR += kafka
-    SUBDIR += kalarmcal
     SUBDIR += kamailio
     SUBDIR += kcalutils
     SUBDIR += kcat
@@ -367,10 +361,10 @@
     SUBDIR += libfabric
     SUBDIR += libfb
     SUBDIR += libfixbuf
-    SUBDIR += libgnetwork
     SUBDIR += libgravatar
     SUBDIR += libgrss
     SUBDIR += libgweather
+    SUBDIR += libgweather4
     SUBDIR += libilbc
     SUBDIR += libiscsi
     SUBDIR += libkgapi
@@ -471,7 +465,6 @@
     SUBDIR += mpd-l2tp-ipv6pd-client
     SUBDIR += mpd5
     SUBDIR += mpich
-    SUBDIR += mpich2
     SUBDIR += mpifx
     SUBDIR += mping
     SUBDIR += mptsd
@@ -499,6 +492,7 @@
     SUBDIR += ndpi
     SUBDIR += ndproxy
     SUBDIR += neatvnc
+    SUBDIR += nemesis
     SUBDIR += nepenthes
     SUBDIR += net6
     SUBDIR += netatalk3
@@ -514,6 +508,7 @@
     SUBDIR += netwib
     SUBDIR += nfs-ganesha-kmod
     SUBDIR += nfsshell
+    SUBDIR += nfstrace
     SUBDIR += ng_mikrotik_eoip
     SUBDIR += ngrep
     SUBDIR += nifmon
@@ -989,8 +984,11 @@
     SUBDIR += php80-soap
     SUBDIR += php80-sockets
     SUBDIR += php81-ldap
+    SUBDIR += php82-ldap
     SUBDIR += php81-soap
+    SUBDIR += php82-soap
     SUBDIR += php81-sockets
+    SUBDIR += php82-sockets
     SUBDIR += phpldapadmin
     SUBDIR += pichi
     SUBDIR += pimcommon
@@ -1075,6 +1073,7 @@
     SUBDIR += py-paho-mqtt
     SUBDIR += py-pamqp
     SUBDIR += py-pcapy
+    SUBDIR += py-pcapy-ng
     SUBDIR += py-port-for
     SUBDIR += py-portend
     SUBDIR += py-pyenet
@@ -1126,6 +1125,7 @@
     SUBDIR += py-ripe.atlas.tools
     SUBDIR += py-s3cmd
     SUBDIR += py-s3transfer
+    SUBDIR += py-s4cmd
     SUBDIR += py-saltyrtc.server
     SUBDIR += py-sbws
     SUBDIR += py-shodan
@@ -1141,8 +1141,7 @@
     SUBDIR += py-sshtunnel
     SUBDIR += py-sshuttle
     SUBDIR += py-stomp.py
-    SUBDIR += py-suds-community
-    SUBDIR += py-suds-jurko
+    SUBDIR += py-suds
     SUBDIR += py-tacacs_plus
     SUBDIR += py-terminado
     SUBDIR += py-tofu
@@ -1154,6 +1153,7 @@
     SUBDIR += py-txrestapi
     SUBDIR += py-uritemplate
     SUBDIR += py-uritools
+    SUBDIR += py-url-normalize
     SUBDIR += py-urlextract
     SUBDIR += py-urllib3
     SUBDIR += py-whois
@@ -1169,7 +1169,6 @@
     SUBDIR += qt5-network
     SUBDIR += qt5-networkauth
     SUBDIR += quagga
-    SUBDIR += queso
     SUBDIR += quiche
     SUBDIR += quiterss
     SUBDIR += quoted
@@ -1319,6 +1318,7 @@
     SUBDIR += rubygem-netrc
     SUBDIR += rubygem-network_interface
     SUBDIR += rubygem-nkf
+    SUBDIR += rubygem-no_proxy_fix
     SUBDIR += rubygem-oauth
     SUBDIR += rubygem-oauth2
     SUBDIR += rubygem-octokit
@@ -1449,7 +1449,6 @@
     SUBDIR += ssldump
     SUBDIR += sslh
     SUBDIR += ssspl
-    SUBDIR += ssvnc
     SUBDIR += stone
     SUBDIR += storj
     SUBDIR += stund
@@ -1533,6 +1532,7 @@
     SUBDIR += unison232
     SUBDIR += unison240
     SUBDIR += unison248
+    SUBDIR += unison251
     SUBDIR += unix2tcp
     SUBDIR += urelay
     SUBDIR += uriparser
@@ -1561,10 +1561,13 @@
     SUBDIR += whois
     SUBDIR += widentd
     SUBDIR += wifibox
+    SUBDIR += wifibox-alpine
+    SUBDIR += wifibox-core
     SUBDIR += wireguard
     SUBDIR += wireguard-go
     SUBDIR += wireguard-kmod
     SUBDIR += wireguard-tools
+    SUBDIR += wireproxy
     SUBDIR += wireshark
     SUBDIR += wireshark-lite
     SUBDIR += wlan2eth

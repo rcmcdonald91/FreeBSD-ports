@@ -1,56 +1,71 @@
---- chrome/browser/chrome_browser_interface_binders.cc.orig	2022-02-07 13:39:41 UTC
+--- chrome/browser/chrome_browser_interface_binders.cc.orig	2022-05-19 14:06:27 UTC
 +++ chrome/browser/chrome_browser_interface_binders.cc
-@@ -97,7 +97,7 @@
+@@ -100,13 +100,13 @@
  #endif  // BUILDFLAG(FULL_SAFE_BROWSING)
  
- #if defined(OS_WIN) || defined(OS_MAC) || defined(OS_LINUX) || \
+ #if BUILDFLAG(IS_WIN) || BUILDFLAG(IS_MAC) || BUILDFLAG(IS_LINUX) || \
 -    BUILDFLAG(IS_CHROMEOS_ASH)
-+    BUILDFLAG(IS_CHROMEOS_ASH) || defined(OS_BSD)
++    BUILDFLAG(IS_CHROMEOS_ASH) || BUILDFLAG(IS_BSD)
  #include "chrome/browser/ui/webui/connectors_internals/connectors_internals.mojom.h"
  #include "chrome/browser/ui/webui/connectors_internals/connectors_internals_ui.h"
  #endif
-@@ -165,7 +165,7 @@
- #endif  // defined(OS_ANDROID)
  
- #if defined(OS_WIN) || defined(OS_MAC) || defined(OS_LINUX) || \
--    defined(OS_CHROMEOS)
-+    defined(OS_CHROMEOS) || defined(OS_BSD)
+ #if BUILDFLAG(IS_WIN) || BUILDFLAG(IS_MAC) || BUILDFLAG(IS_LINUX) || \
+-    BUILDFLAG(IS_FUCHSIA)
++    BUILDFLAG(IS_FUCHSIA) || BUILDFLAG(IS_BSD)
+ #include "chrome/browser/ui/webui/app_settings/web_app_settings_ui.h"
+ #include "ui/webui/resources/cr_components/app_management/app_management.mojom.h"
+ #endif
+@@ -177,7 +177,7 @@
+ #endif  // BUILDFLAG(IS_ANDROID)
+ 
+ #if BUILDFLAG(IS_WIN) || BUILDFLAG(IS_MAC) || BUILDFLAG(IS_LINUX) || \
+-    BUILDFLAG(IS_CHROMEOS)
++    BUILDFLAG(IS_CHROMEOS) || BUILDFLAG(IS_BSD)
  #include "chrome/browser/ui/webui/discards/discards.mojom.h"
  #include "chrome/browser/ui/webui/discards/discards_ui.h"
  #include "chrome/browser/ui/webui/discards/site_data.mojom.h"
-@@ -654,7 +654,7 @@ void PopulateChromeFrameBinders(
+@@ -726,7 +726,7 @@ void PopulateChromeFrameBinders(
  #endif
  
- #if defined(OS_WIN) || defined(OS_MAC) || defined(OS_LINUX) || \
--    defined(OS_CHROMEOS)
-+    defined(OS_CHROMEOS) || defined(OS_BSD)
+ #if BUILDFLAG(IS_WIN) || BUILDFLAG(IS_MAC) || BUILDFLAG(IS_LINUX) || \
+-    BUILDFLAG(IS_CHROMEOS)
++    BUILDFLAG(IS_CHROMEOS) || BUILDFLAG(IS_BSD)
    if (!render_frame_host->GetParent()) {
      map->Add<chrome::mojom::DraggableRegions>(
          base::BindRepeating(&DraggableRegionsHostImpl::CreateIfAllowed));
-@@ -662,7 +662,7 @@ void PopulateChromeFrameBinders(
+@@ -734,7 +734,7 @@ void PopulateChromeFrameBinders(
  #endif
  
- #if defined(OS_CHROMEOS) || defined(OS_LINUX) || defined(OS_MAC) || \
--    defined(OS_WIN)
-+    defined(OS_WIN) || defined(OS_BSD)
+ #if BUILDFLAG(IS_CHROMEOS) || BUILDFLAG(IS_LINUX) || BUILDFLAG(IS_MAC) || \
+-    BUILDFLAG(IS_WIN)
++    BUILDFLAG(IS_WIN) || BUILDFLAG(IS_BSD)
    if (base::FeatureList::IsEnabled(blink::features::kDesktopPWAsSubApps) &&
-       !render_frame_host->GetParent()) {
-     map->Add<blink::mojom::SubAppsProvider>(
-@@ -702,7 +702,7 @@ void PopulateChromeWebUIFrameBinders(
+       render_frame_host->IsInPrimaryMainFrame()) {
+     map->Add<blink::mojom::SubAppsService>(
+@@ -781,14 +781,14 @@ void PopulateChromeWebUIFrameBinders(
        SegmentationInternalsUI>(map);
  
- #if defined(OS_WIN) || defined(OS_MAC) || defined(OS_LINUX) || \
+ #if BUILDFLAG(IS_WIN) || BUILDFLAG(IS_MAC) || BUILDFLAG(IS_LINUX) || \
 -    BUILDFLAG(IS_CHROMEOS_ASH)
-+    BUILDFLAG(IS_CHROMEOS_ASH) || defined(OS_BSD)
++    BUILDFLAG(IS_CHROMEOS_ASH) || BUILDFLAG(IS_BSD)
    RegisterWebUIControllerInterfaceBinder<
        connectors_internals::mojom::PageHandler,
        enterprise_connectors::ConnectorsInternalsUI>(map);
-@@ -1003,7 +1003,7 @@ void PopulateChromeWebUIFrameBinders(
  #endif
  
- #if defined(OS_WIN) || defined(OS_MAC) || defined(OS_LINUX) || \
--    defined(OS_CHROMEOS)
-+    defined(OS_CHROMEOS) || defined(OS_BSD)
+ #if BUILDFLAG(IS_WIN) || BUILDFLAG(IS_MAC) || BUILDFLAG(IS_LINUX) || \
+-    BUILDFLAG(IS_FUCHSIA)
++    BUILDFLAG(IS_FUCHSIA) || BUILDFLAG(IS_BSD)
+   RegisterWebUIControllerInterfaceBinder<
+       app_management::mojom::PageHandlerFactory, WebAppSettingsUI>(map);
+ #endif
+@@ -1111,7 +1111,7 @@ void PopulateChromeWebUIFrameBinders(
+ #endif
+ 
+ #if BUILDFLAG(IS_WIN) || BUILDFLAG(IS_MAC) || BUILDFLAG(IS_LINUX) || \
+-    BUILDFLAG(IS_CHROMEOS)
++    BUILDFLAG(IS_CHROMEOS) || BUILDFLAG(IS_BSD)
    RegisterWebUIControllerInterfaceBinder<discards::mojom::DetailsProvider,
                                           DiscardsUI>(map);
  

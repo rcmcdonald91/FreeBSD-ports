@@ -1,11 +1,20 @@
---- chrome/browser/performance_monitor/process_monitor.cc.orig	2022-02-07 13:39:41 UTC
+--- chrome/browser/performance_monitor/process_monitor.cc.orig	2022-05-19 14:06:27 UTC
 +++ chrome/browser/performance_monitor/process_monitor.cc
-@@ -80,7 +80,7 @@ ProcessMonitor::Metrics& operator+=(ProcessMonitor::Me
-   lhs.cpu_usage += rhs.cpu_usage;
+@@ -64,7 +64,7 @@ ProcessMonitor::Metrics SampleMetrics(base::ProcessMet
+   metrics.precise_cpu_usage = process_metrics.GetPreciseCPUUsage();
+ #endif
+ #if BUILDFLAG(IS_MAC) || BUILDFLAG(IS_LINUX) || BUILDFLAG(IS_CHROMEOS) || \
+-    BUILDFLAG(IS_AIX)
++    BUILDFLAG(IS_AIX) || BUILDFLAG(IS_BSD)
+   metrics.idle_wakeups = process_metrics.GetIdleWakeupsPerSecond();
+ #endif
+ #if BUILDFLAG(IS_MAC)
+@@ -119,7 +119,7 @@ ProcessMonitor::Metrics& operator+=(ProcessMonitor::Me
+ #endif
  
- #if defined(OS_MAC) || defined(OS_LINUX) || defined(OS_CHROMEOS) || \
--    defined(OS_AIX)
-+    defined(OS_AIX) || defined(OS_BSD)
+ #if BUILDFLAG(IS_MAC) || BUILDFLAG(IS_LINUX) || BUILDFLAG(IS_CHROMEOS) || \
+-    BUILDFLAG(IS_AIX)
++    BUILDFLAG(IS_AIX) || BUILDFLAG(IS_BSD)
    lhs.idle_wakeups += rhs.idle_wakeups;
  #endif
  

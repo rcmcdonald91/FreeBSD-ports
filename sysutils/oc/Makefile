@@ -3,6 +3,7 @@
 PORTNAME=	oc
 PORTVERSION=	4.9
 DISTVERSIONPREFIX=	release-
+PORTREVISION=	2
 CATEGORIES=	sysutils
 
 MAINTAINER=	jhixson@freebsd.org

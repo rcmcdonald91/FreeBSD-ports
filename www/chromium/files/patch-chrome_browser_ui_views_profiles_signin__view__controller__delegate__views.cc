@@ -1,20 +1,20 @@
---- chrome/browser/ui/views/profiles/signin_view_controller_delegate_views.cc.orig	2022-02-07 13:39:41 UTC
+--- chrome/browser/ui/views/profiles/signin_view_controller_delegate_views.cc.orig	2022-05-19 14:06:27 UTC
 +++ chrome/browser/ui/views/profiles/signin_view_controller_delegate_views.cc
-@@ -82,7 +82,7 @@ SigninViewControllerDelegateViews::CreateReauthConfirm
- }
+@@ -139,7 +139,7 @@ SigninViewControllerDelegateViews::CreateProfileCustom
+ #endif  // BUILDFLAG(ENABLE_DICE_SUPPORT)
  
- #if defined(OS_WIN) || defined(OS_MAC) || defined(OS_LINUX) || \
+ #if BUILDFLAG(IS_WIN) || BUILDFLAG(IS_MAC) || BUILDFLAG(IS_LINUX) || \
 -    BUILDFLAG(IS_CHROMEOS_LACROS)
-+    BUILDFLAG(IS_CHROMEOS_LACROS) || defined(OS_BSD)
++    BUILDFLAG(IS_CHROMEOS_LACROS) || BUILDFLAG(IS_BSD)
  // static
  std::unique_ptr<views::WebView>
  SigninViewControllerDelegateViews::CreateEnterpriseConfirmationWebView(
-@@ -341,7 +341,7 @@ SigninViewControllerDelegate::CreateReauthConfirmation
- }
+@@ -421,7 +421,7 @@ SigninViewControllerDelegate::CreateProfileCustomizati
+ #endif  // BUILDFLAG(ENABLE_DICE_SUPPORT)
  
- #if defined(OS_WIN) || defined(OS_MAC) || defined(OS_LINUX) || \
+ #if BUILDFLAG(IS_WIN) || BUILDFLAG(IS_MAC) || BUILDFLAG(IS_LINUX) || \
 -    BUILDFLAG(IS_CHROMEOS_LACROS)
-+    BUILDFLAG(IS_CHROMEOS_LACROS) || defined(OS_BSD)
++    BUILDFLAG(IS_CHROMEOS_LACROS) || BUILDFLAG(IS_BSD)
  // static
  SigninViewControllerDelegate*
  SigninViewControllerDelegate::CreateEnterpriseConfirmationDelegate(

@@ -2,6 +2,7 @@
 
     SUBDIR += 3270font
     SUBDIR += Hasklig
+    SUBDIR += afdko
     SUBDIR += agave
     SUBDIR += alef
     SUBDIR += alegreya
@@ -191,6 +192,7 @@
     SUBDIR += nucleus
     SUBDIR += office-code-pro
     SUBDIR += ohsnap
+    SUBDIR += ohsnap-otb
     SUBDIR += oldschool-pc-fonts
     SUBDIR += open-sans
     SUBDIR += orbitron
@@ -212,20 +214,26 @@
     SUBDIR += proggy_fonts-ttf
     SUBDIR += psftools
     SUBDIR += py-QtAwesome
+    SUBDIR += py-afdko
+    SUBDIR += py-axisregistry
     SUBDIR += py-babelfont
     SUBDIR += py-bdflib
     SUBDIR += py-booleanOperations
+    SUBDIR += py-cffsubr
     SUBDIR += py-compreffor
     SUBDIR += py-cu2qu
     SUBDIR += py-defcon
     SUBDIR += py-fontMath
     SUBDIR += py-fontmake
+    SUBDIR += py-gflanguages
     SUBDIR += py-glyphsLib
     SUBDIR += py-opentype-sanitizer
     SUBDIR += py-opentypespec
     SUBDIR += py-ufo2ft
     SUBDIR += py-ufoLib
     SUBDIR += py-ufolint
+    SUBDIR += py-ufonormalizer
+    SUBDIR += py-ufoprocessor
     SUBDIR += raleway
     SUBDIR += roboto-fonts-ttf
     SUBDIR += sgifonts

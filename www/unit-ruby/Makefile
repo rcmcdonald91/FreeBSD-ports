@@ -1,7 +1,6 @@
 # Created by: Sergey Osokin <osa@FreeBSD.org>
 
 PKGNAMESUFFIX=	-${UNIT_MODNAME}
-PORTREVISION=	1
 
 UNIT_MODNAME=	ruby${RUBY_VER}
 
@@ -14,6 +13,8 @@ PLIST_FILES=	libexec/unit/modules/${UNIT_MODNAME}.unit.so
 
 USE_RUBY=	yes
 
+CFLAGS+=	-fdeclspec
+
 USE_RC_SUBR?=	# reset to empty
 
 MASTERDIR=	${.CURDIR}/../unit
@@ -21,6 +22,7 @@ MASTERDIR=	${.CURDIR}/../unit
 post-configure:
 	cd ${CONFIGURE_WRKSRC} && \
 	${SETENV} ${CONFIGURE_ENV} ${CONFIGURE_CMD} ruby \
+		--ruby=ruby${RUBY_VER:S|.||} \
 		--module=${UNIT_MODNAME}
 
 do-build:

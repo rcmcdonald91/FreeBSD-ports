@@ -63,15 +63,23 @@ MASTER_SITES_QSCI2=	RIVERBANK/QScintilla/${PORTVERSION} \
 			SF/pyqt/QScintilla2/QScintilla-${PORTVERSION} \
 			GENTOO
 
-SIP_VERSION=		6.3.1
+# PORTEPOCH is important here, because version-comparisons in *_DEPENDS
+# take it into account (visually, 6.5.1 >= 5.5.3,1, but it isn't).
+# Adding the epoch directly into the version here cannot be done,
+# because the DISTVERSION of each of these ports is obtained from the
+# *_VERSION variable (and PORTEPOCH is set in each individual port).
+#
+# Where noted, the ports are epoched and the py-${comp}-PATH variables,
+# below, should have a suitable epoch appended to the version.
+SIP_VERSION=		6.5.1	# ,1
 SIP4_VERSION=		4.19.25
-QSCI2_VERSION=		2.13.1
-PYQT5_VERSION=		5.15.4
-PYQTCHART_VERSION=	${PYQT5_VERSION} # can be different
-PYQTNETWORKAUTH_VERSION=${PYQT5_VERSION}
-PYQTWEBENGINE_VERSION=	${PYQT5_VERSION}
-PYQTSIP_VERSION=	12.9.0
-PYQTBUILDER_VERSION=	1.12.0
+QSCI2_VERSION=		2.13.2
+PYQT5_VERSION=		5.15.6
+PYQTCHART_VERSION=	5.15.5
+PYQTNETWORKAUTH_VERSION=5.15.5
+PYQTWEBENGINE_VERSION=	5.15.5
+PYQTSIP_VERSION=	12.9.1
+PYQTBUILDER_VERSION=	1.12.2
 
 SIP_DISTNAME=		sip-${SIP_VERSION}
 SIP4_DISTNAME=		sip-${SIP4_VERSION}
@@ -99,15 +107,15 @@ PYQT_DISTNAME=		${PYQT${_PYQT_VERSION}_DISTNAME}
 PYQT_DISTINFO_FILE=	${PYQT${_PYQT_VERSION}_DISTINFO_FILE}
 PYQT_LICENSE=		${PYQT${_PYQT_VERSION}_LICENSE}
 
-# PATH
-py-sip_PATH=			${PYTHON_PKGNAMEPREFIX}sip>=${SIP_VERSION}
+# PATH (see note about epochs, above)
+py-sip_PATH=			${PYTHON_PKGNAMEPREFIX}sip>=${SIP_VERSION},1
 py-pysip_PATH=			${PYQT_PY_RELNAME}-sip>=${PYQTSIP_VERSION}
 py-qscintilla2_PATH=		${PYQT_PY_RELNAME}-qscintilla2>=${QSCI2_VERSION}
 py-qtbuilder_PATH=		${PYTHON_PKGNAMEPREFIX}qtbuilder>=${PYQTBUILDER_VERSION}
 py-pyqt5_PATH=			${PYQT_PY_RELNAME}-pyqt>=${PYQT5_VERSION}
-py-chart_PATH=			${PYQT_PY_RELNAME}-chart>=${PYQT5_VERSION}
-py-networkauth_PATH=		${PYQT_PY_RELNAME}-networkauth>=${PYQT5_VERSION}
-py-webengine_PATH=		${PYQT_PY_RELNAME}-webengine>=${PYQT5_VERSION}
+py-chart_PATH=			${PYQT_PY_RELNAME}-chart>=${PYQTCHART_VERSION}
+py-networkauth_PATH=		${PYQT_PY_RELNAME}-networkauth>=${PYQTNETWORKAUTH_VERSION}
+py-webengine_PATH=		${PYQT_PY_RELNAME}-webengine>=${PYQTWEBENGINE_VERSION}
 
 # PORT
 py-sip_PORT=			devel/py-sip
@@ -160,21 +168,21 @@ SIP_ARGS=	--qmake ${QMAKE} \
 		--build-dir build \
 		--protected-is-public \
 		--api-dir ${PYQT_APIDIR}
-.	if ${PORTNAME} == "pyqt"
+.    if ${PORTNAME} == "pyqt"
 SIP_ARGS+=	--confirm-license
-.	endif
+.    endif
 
-.  if ${PORTNAME} == "pyqt"
-.    if !target(post-patch)
+.    if ${PORTNAME} == "pyqt"
+.      if !target(post-patch)
 post-patch:
 	${REINPLACE_CMD} -e "s#%%PYQT_DESIGNERDIR%%#${PYQT_DESIGNERDIR}#" ${WRKSRC}/project.py
 	${REINPLACE_CMD} -e "s#%%PYQT_QMLDIR%%#${PYQT_QMLDIR}#" ${WRKSRC}/project.py
-.    endif  # !target(post-patch)
-.  endif
+.      endif  # !target(post-patch)
+.    endif
 
 .    if !target(do-build)
 do-build:
-	(cd ${WRKSRC}; ${SIP} ${SIP_ARGS}; ${MAKE} -C ./build)
+	(cd ${WRKSRC}; ${SIP} ${SIP_ARGS}; ${MAKE} ${_MAKE_JOBS} -C ./build)
 
 .    endif  # !target(do-build)
 

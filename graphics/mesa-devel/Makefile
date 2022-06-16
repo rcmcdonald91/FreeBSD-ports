@@ -1,12 +1,16 @@
 PORTNAME=	mesa
-DISTVERSION=	22.0-branchpoint-828
-DISTVERSIONSUFFIX=	-ge5c39bc427f
+DISTVERSION=	22.1-branchpoint-3143
+DISTVERSIONSUFFIX=	-gd301883aba5
 CATEGORIES=	graphics
 PKGNAMESUFFIX=	-devel
 
 PATCH_SITES=	https://github.com/${GH_ACCOUNT}/${GH_PROJECT}/commit/
 PATCHFILES+=	700efacda59c.patch:-p1
 PATCHFILES+=	50433886a3e3.patch:-p1 # https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/6881
+PATCHFILES+=	4356e7185193.patch:-p1 # https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/16987
+PATCHFILES+=	b2a22acce617.patch:-p1 # https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/16987
+PATCHFILES+=	19eb2c30bff0.patch:-p1 # https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/16987
+PATCHFILES+=	43a5cfde5955.patch:-p1 # https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/17070
 
 MAINTAINER=	jbeich@FreeBSD.org
 COMMENT=	Bleeding edge Mesa drivers (OpenGL, Vulkan)
@@ -47,11 +51,12 @@ PLIST_SUB=	ARCH=${ARCH:S/amd/x86_/}
 OPTIONS_DEFINE=		LIBUNWIND LLVM LTO VAAPI VDPAU VKLAYERS WAYLAND X11 ZSTD
 OPTIONS_DEFAULT=	LIBUNWIND LLVM LTO VAAPI VDPAU VKLAYERS WAYLAND X11 ZSTD
 OPTIONS_GROUP=		GALLIUM VULKAN
-OPTIONS_GROUP_GALLIUM=	crocus iris r600 radeonsi
+OPTIONS_GROUP_GALLIUM=	crocus iris panfrost r600 radeonsi
 OPTIONS_GROUP_VULKAN=	anv radv
 OPTIONS_EXCLUDE_DragonFly=	LIBUNWIND anv
 OPTIONS_EXCLUDE_i386=	LTO # anv: vkcube fails on vkCreateSwapchainKHR
 OPTIONS_EXCLUDE_powerpc64=	${"${/usr/bin/ld:L:tA}"==/usr/bin/ld.lld:?LTO:} # https://github.com/llvm/llvm-project/issues/46697
+OPTIONS_EXCLUDE+=	${ARCH:Naarch64:C/.+/panfrost/}
 OPTIONS_EXCLUDE+=	${ARCH:Namd64:Ni386:Nx86_64:C/.+/anv crocus iris/}
 OPTIONS_EXCLUDE+=	${ARCH:Naarch64:Namd64:Ni386:Npowerpc64:Npowerpc64le:Nx86_64:C/.+/LIBUNWIND/}
 OPTIONS_EXCLUDE+=	${"${GL_DEFAULT:S/,/ /g:[-1]}"==${.CURDIR:T}:?COINST:}
@@ -70,12 +75,14 @@ ${j}_VARS+=		${i}_DRIVERS+=${j:S/anv/intel/:S/radv/amd/}
 GALLIUM_DESC=		Unified OpenGL drivers
 crocus_DESC=		Broadwater, Eaglelake, Ironlake, Sandybridge, Ivybridge, Haswell
 iris_DESC=		Broadwell and newer
+panfrost_DESC=		Midgard, Bifrost
 r600_DESC=		R600, R700, Evergreen, Northern Islands (implies LLVM)
 radeonsi_DESC=		Southern Islands and newer (implies LLVM)
 
 VULKAN_DESC=		Vulkan drivers
 anv_DESC=		Haswell and newer
 radv_DESC=		Southern Islands and newer (implies LLVM)
+radv_BUILD_DEPENDS=	glslangValidator:graphics/glslang
 
 COINST_DESC=		Allow co-installation with another Mesa port
 COINST_MESON_ON=	-Degl-lib-suffix=${PKGNAMESUFFIX}
@@ -89,7 +96,7 @@ LIBUNWIND_LIB_DEPENDS=	libunwind.so:devel/libunwind
 LIBUNWIND_MESON_ENABLED=	libunwind
 
 LLVM_DESC=		Build with LLVM support (see implies)
-LLVM_LIB_DEPENDS=	libLLVM-${LLVM_DEFAULT:C/^([6-9])0/\1/:S/-devel/14git/}.so:devel/llvm${LLVM_DEFAULT}
+LLVM_LIB_DEPENDS=	libLLVM-${LLVM_DEFAULT:C/^([6-9])0/\1/:S/-devel/15git/}.so:devel/llvm${LLVM_DEFAULT}
 LLVM_MESON_ENABLED=	llvm
 LLVM_BINARY_ALIAS=	llvm-config=llvm-config${LLVM_DEFAULT}
 .for i in r600 radeonsi radv
@@ -110,7 +117,7 @@ VDPAU_IMPLIES=		X11
 VKLAYERS_DESC=		Vulkan layers: ${VKLAYERS_MESON_ON:C/.*=//} (implies ${VKLAYERS_IMPLIES})
 VKLAYERS_BUILD_DEPENDS=	glslangValidator:graphics/glslang
 VKLAYERS_MESON_ON=	-Dvulkan-layers=device-select,overlay
-VKLAYERS_IMPLIES=	${"${PORT_OPTIONS:Mradv}":?radv:anv} # any from OPTIONS_GROUP_VULKAN
+VKLAYERS_IMPLIES=	${"${PORT_OPTIONS:Manv}":?anv:radv} # any from OPTIONS_GROUP_VULKAN
 
 WAYLAND_BUILD_DEPENDS=	wayland-protocols>0:graphics/wayland-protocols
 WAYLAND_LIB_DEPENDS=	libwayland-server.so:graphics/wayland

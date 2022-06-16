@@ -23,6 +23,7 @@
     SUBDIR += R-cran-gridBase
     SUBDIR += R-cran-gridExtra
     SUBDIR += R-cran-jpeg
+    SUBDIR += R-cran-latticeExtra
     SUBDIR += R-cran-munsell
     SUBDIR += R-cran-pROC
     SUBDIR += R-cran-pixmap
@@ -69,7 +70,6 @@
     SUBDIR += avir
     SUBDIR += azpainter
     SUBDIR += azpainterb
-    SUBDIR += barbecue
     SUBDIR += barcode
     SUBDIR += batik
     SUBDIR += birdfont
@@ -77,7 +77,6 @@
     SUBDIR += blend2d
     SUBDIR += blender
     SUBDIR += blender-doc
-    SUBDIR += blender-lts28
     SUBDIR += blender-lts29
     SUBDIR += bmeps
     SUBDIR += bmp2html
@@ -119,7 +118,6 @@
     SUBDIR += curtail
     SUBDIR += cuttlefish
     SUBDIR += darktable
-    SUBDIR += darktable38
     SUBDIR += dataplot
     SUBDIR += dbow2
     SUBDIR += dc20pack
@@ -127,13 +125,6 @@
     SUBDIR += dcp2icc
     SUBDIR += dcraw
     SUBDIR += dcraw-m
-    SUBDIR += deegree-csw
-    SUBDIR += deegree-igeoportal
-    SUBDIR += deegree-wcs
-    SUBDIR += deegree-wfs
-    SUBDIR += deegree-wms
-    SUBDIR += deegree-wps
-    SUBDIR += deegree-wpvs
     SUBDIR += delaboratory
     SUBDIR += derelict-gl3
     SUBDIR += devil
@@ -148,8 +139,8 @@
     SUBDIR += dmtx-utils
     SUBDIR += drawing
     SUBDIR += drawpile
-    SUBDIR += drm-current-kmod
-    SUBDIR += drm-devel-kmod
+    SUBDIR += drm-510-kmod
+    SUBDIR += drm-54-kmod
     SUBDIR += drm-fbsd12.0-kmod
     SUBDIR += drm-fbsd13-kmod
     SUBDIR += drm-kmod
@@ -177,6 +168,8 @@
     SUBDIR += ephoto
     SUBDIR += epix
     SUBDIR += eps2png
+    SUBDIR += epsonscan2
+    SUBDIR += epsonscan2-non-free-plugin
     SUBDIR += epstool
     SUBDIR += eterm-bg
     SUBDIR += evince
@@ -242,7 +235,6 @@
     SUBDIR += gdtclft
     SUBDIR += geeqie
     SUBDIR += gegl
-    SUBDIR += generic_image_decoder
     SUBDIR += geoapi
     SUBDIR += geomorph
     SUBDIR += geomview
@@ -282,7 +274,6 @@
     SUBDIR += glosm
     SUBDIR += glpng
     SUBDIR += glslang
-    SUBDIR += gltt
     SUBDIR += glx-utils
     SUBDIR += gmic
     SUBDIR += gmic-qt
@@ -303,7 +294,10 @@
     SUBDIR += gphoto2
     SUBDIR += gpicview
     SUBDIR += gpsmanshp
+    SUBDIR += gpu-firmware-amd-kmod
+    SUBDIR += gpu-firmware-intel-kmod
     SUBDIR += gpu-firmware-kmod
+    SUBDIR += gpu-firmware-radeon-kmod
     SUBDIR += gpxsee
     SUBDIR += gracula
     SUBDIR += grads
@@ -539,11 +533,8 @@
     SUBDIR += linux-c7-wayland
     SUBDIR += lua-gd
     SUBDIR += luminance-qt5
+    SUBDIR += lux
     SUBDIR += lximage-qt
-    SUBDIR += magnum
-    SUBDIR += magnum-examples
-    SUBDIR += magnum-extras
-    SUBDIR += magnum-plugins
     SUBDIR += mahotas
     SUBDIR += maim
     SUBDIR += mandelbulber
@@ -662,7 +653,6 @@
     SUBDIR += p5-GD-TextUtil
     SUBDIR += p5-GD-Thumbnail
     SUBDIR += p5-Geo-EOP
-    SUBDIR += p5-Geo-GDAL
     SUBDIR += p5-Geo-GDAL-FFI
     SUBDIR += p5-Geo-GML
     SUBDIR += p5-Geo-Gpx
@@ -766,7 +756,6 @@
     SUBDIR += pho
     SUBDIR += photivo
     SUBDIR += photoflare
-    SUBDIR += photoflow
     SUBDIR += photopc
     SUBDIR += photoqt
     SUBDIR += phototonic
@@ -777,7 +766,9 @@
     SUBDIR += php80-exif
     SUBDIR += php80-gd
     SUBDIR += php81-exif
+    SUBDIR += php82-exif
     SUBDIR += php81-gd
+    SUBDIR += php82-gd
     SUBDIR += phplot
     SUBDIR += picpuz
     SUBDIR += piddle
@@ -831,6 +822,7 @@
     SUBDIR += py-PyOpenGL-accelerate
     SUBDIR += py-actdiag
     SUBDIR += py-altair
+    SUBDIR += py-asciitree
     SUBDIR += py-beziers
     SUBDIR += py-blockdiag
     SUBDIR += py-blockdiagcontrib-cisco
@@ -872,6 +864,7 @@
     SUBDIR += py-mcomix
     SUBDIR += py-mgwr
     SUBDIR += py-ming
+    SUBDIR += py-momepy
     SUBDIR += py-mpl-interactions
     SUBDIR += py-mpl-scatter-density
     SUBDIR += py-nwdiag
@@ -898,7 +891,6 @@
     SUBDIR += py-pygeoapi
     SUBDIR += py-pygeos
     SUBDIR += py-pyglet
-    SUBDIR += py-pyglet150
     SUBDIR += py-pygraph
     SUBDIR += py-pygraphviz
     SUBDIR += py-pyinsane2
@@ -913,6 +905,7 @@
     SUBDIR += py-pytesseract
     SUBDIR += py-python-poppler-qt5
     SUBDIR += py-pyvips
+    SUBDIR += py-pyvista
     SUBDIR += py-pyx
     SUBDIR += py-qrencode
     SUBDIR += py-railroad-diagrams
@@ -1073,7 +1066,6 @@
     SUBDIR += swappy
     SUBDIR += swfmill
     SUBDIR += swftools
-    SUBDIR += sxiv
     SUBDIR += synaesthesia
     SUBDIR += synfig
     SUBDIR += synfigstudio
@@ -1143,7 +1135,6 @@
     SUBDIR += xcftools
     SUBDIR += xd3d
     SUBDIR += xdgagrab
-    SUBDIR += xface.el
     SUBDIR += xfig
     SUBDIR += xfpovray
     SUBDIR += xfractint

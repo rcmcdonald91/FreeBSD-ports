@@ -1,7 +1,7 @@
 # Created by: Klaus Aehlig <aehlig@linta.de>
 
 PORTNAME=	bazel
-DISTVERSION=	5.0.0
+DISTVERSION=	5.2.0
 CATEGORIES=	devel java
 MASTER_SITES=	https://storage.googleapis.com/bazel/${PORTVERSION}/rc${FINALRC}/
 DISTNAME=	bazel-${PORTVERSION}rc${FINALRC}-dist
@@ -12,15 +12,15 @@ COMMENT=	Fast and correct build system
 LICENSE=	APACHE20
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-BROKEN_armv6=		fails to package: cp: bazel: No such file or directory
-BROKEN_armv7=		fails to package: cp: bazel: No such file or directory
+BROKEN_armv6=	fails to package: cp: bazel: No such file or directory
+BROKEN_armv7=	fails to package: cp: bazel: No such file or directory
+BROKEN_i386=	fails to build: ./src/tools/singlejar/mapped_file_posix.inc:31:2: error: This code for 64 bit Unix
 BROKEN_FreeBSD_12_powerpc64=	fails to compile: Action failed to execute: java.io.IOException: Cannot run program /usr/bin/clang
 
 BUILD_DEPENDS=	bash:shells/bash \
 		zip:archivers/zip
 
 USES=		cpe python:3.3+ shebangfix zip:infozip
-SHEBANG_REGEX=	.*(sh|txt|_stub|stub_.*|bazel|get_workspace_status|protobuf_support|_so)
 
 CPE_VENDOR=	google
 
@@ -29,6 +29,8 @@ JAVA_VERSION=	11
 JAVA_VENDOR=	openjdk
 JAVA_BUILD=	yes
 JAVA_RUN=	yes
+
+SHEBANG_REGEX=	.*(sh|txt|_stub|stub_.*|bazel|get_workspace_status|protobuf_support|_so)
 
 CONFLICTS_INSTALL=	bazel029
 
@@ -40,7 +42,7 @@ NO_WRKSUBDIR=	YES
 # In bazel, a release is always code-wise identical to the final release candidate.
 # Hence we can also download that one and so have a simple way to also test earlier release
 # candidates.
-FINALRC=	4
+FINALRC=	3
 
 .include <bsd.port.pre.mk>
 

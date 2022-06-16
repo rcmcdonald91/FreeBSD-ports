@@ -1,4 +1,4 @@
---- bolt.gemspec.orig	2021-12-07 15:41:14 UTC
+--- bolt.gemspec.orig	2022-06-10 21:11:14 UTC
 +++ bolt.gemspec
 @@ -27,7 +27,7 @@ Gem::Specification.new do |s|
    if s.respond_to? :add_runtime_dependency then

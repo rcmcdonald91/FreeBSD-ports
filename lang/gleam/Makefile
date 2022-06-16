@@ -1,7 +1,7 @@
 PORTNAME=	gleam
 DISTVERSIONPREFIX=	v
-DISTVERSION=	0.19.0
-PORTREVISION=	2
+DISTVERSION=	0.21.0
+PORTREVISION=	1
 CATEGORIES=	lang
 
 MAINTAINER=	dch@FreeBSD.org
@@ -26,7 +26,7 @@ OPTIONS_DEFINE=	DOCS
 
 do-build:
 	(cd ${WRKSRC} && cargo build --release)
-	(cd ${WRKSRC}/compiler-cli && cargo install --path . --force --locked)
+	(cd ${WRKSRC}/compiler-cli && env HOME=${WRKDIR} cargo install --path . --force --locked)
 
 do-install:
 	${MKDIR} ${STAGEDIR}${PREFIX}/bin/
@@ -37,5 +37,8 @@ post-install:
 
 post-install-DOCS-on:
 	(cd ${WRKSRC} && ${COPYTREE_SHARE} README.md ${STAGEDIR}${DOCSDIR})
+
+do-test:
+	(cd ${WRKSRC} && gleam new hello && cd hello && gleam test)
 
 .include <bsd.port.mk>

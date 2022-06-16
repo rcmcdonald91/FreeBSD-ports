@@ -2,18 +2,15 @@
 
     SUBDIR += J
     SUBDIR += abcl
-    SUBDIR += adacontrol
     SUBDIR += alchemist.el
     SUBDIR += algol68g
     SUBDIR += angelscript
     SUBDIR += apache-commons-jelly
-    SUBDIR += asis
     SUBDIR += asn1c
     SUBDIR += atlast
     SUBDIR += awka
     SUBDIR += bas2tap
     SUBDIR += basic256
-    SUBDIR += bf2c
     SUBDIR += bsh
     SUBDIR += bwbasic
     SUBDIR += c
@@ -62,6 +59,7 @@
     SUBDIR += erlang-runtime22
     SUBDIR += erlang-runtime23
     SUBDIR += erlang-runtime24
+    SUBDIR += erlang-runtime25
     SUBDIR += erlang-wx
     SUBDIR += execline
     SUBDIR += expect
@@ -92,20 +90,19 @@
     SUBDIR += gcc
     SUBDIR += gcc-ecj45
     SUBDIR += gcc10
-    SUBDIR += gcc10-devel
     SUBDIR += gcc11
     SUBDIR += gcc11-devel
+    SUBDIR += gcc12
     SUBDIR += gcc12-devel
+    SUBDIR += gcc13-devel
     SUBDIR += gcc48
     SUBDIR += gcc6-aux
     SUBDIR += gcc8
     SUBDIR += gcc9
-    SUBDIR += gcc9-devel
     SUBDIR += gforth
     SUBDIR += ghc
     SUBDIR += gjs
     SUBDIR += gleam
-    SUBDIR += gnat_util
     SUBDIR += gnatcross-binutils-aarch64
     SUBDIR += gnatcross-sysroot-aarch64
     SUBDIR += gnatdroid-binutils
@@ -117,6 +114,8 @@
     SUBDIR += gnustep-base
     SUBDIR += go
     SUBDIR += go-devel
+    SUBDIR += go117
+    SUBDIR += go118
     SUBDIR += gomacro
     SUBDIR += gprolog
     SUBDIR += gravity
@@ -126,6 +125,7 @@
     SUBDIR += guile1
     SUBDIR += guile2
     SUBDIR += halide
+    SUBDIR += harec
     SUBDIR += haskell-mode.el
     SUBDIR += hermes
     SUBDIR += hla
@@ -166,7 +166,6 @@
     SUBDIR += linux-dotnet11-runtime
     SUBDIR += linux-dotnet11-sdk
     SUBDIR += linux-j
-    SUBDIR += lua-ada
     SUBDIR += lua51
     SUBDIR += lua52
     SUBDIR += lua53
@@ -196,7 +195,6 @@
     SUBDIR += munger
     SUBDIR += myrddin
     SUBDIR += nawk
-    SUBDIR += nbc
     SUBDIR += nbfc
     SUBDIR += neko
     SUBDIR += nesasm
@@ -204,6 +202,7 @@
     SUBDIR += nhc98
     SUBDIR += nickle
     SUBDIR += nim
+    SUBDIR += njs
     SUBDIR += nqc
     SUBDIR += nwcc
     SUBDIR += nx
@@ -251,9 +250,9 @@
     SUBDIR += pbasic
     SUBDIR += pcc
     SUBDIR += perl5-devel
-    SUBDIR += perl5.30
     SUBDIR += perl5.32
     SUBDIR += perl5.34
+    SUBDIR += perl5.36
     SUBDIR += petite-chez
     SUBDIR += pfe
     SUBDIR += pharo
@@ -263,7 +262,9 @@
     SUBDIR += php80
     SUBDIR += php80-extensions
     SUBDIR += php81
+    SUBDIR += php82
     SUBDIR += php81-extensions
+    SUBDIR += php82-extensions
     SUBDIR += picoc
     SUBDIR += plexil
     SUBDIR += pocl
@@ -302,10 +303,10 @@
     SUBDIR += rexx-regutil
     SUBDIR += rexx-wrapper
     SUBDIR += rhino
-    SUBDIR += ruby26
     SUBDIR += ruby27
     SUBDIR += ruby30
     SUBDIR += ruby31
+    SUBDIR += ruby32
     SUBDIR += rubygem-ruby_language_server
     SUBDIR += runawk
     SUBDIR += rust
@@ -336,6 +337,7 @@
     SUBDIR += solidity
     SUBDIR += spidermonkey17
     SUBDIR += spidermonkey78
+    SUBDIR += spidermonkey91
     SUBDIR += spl
     SUBDIR += squeak
     SUBDIR += squirrel

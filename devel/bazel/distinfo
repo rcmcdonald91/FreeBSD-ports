@@ -1,3 +1,3 @@
-TIMESTAMP = 1642256198
-SHA256 (bazel-5.0.0rc4-dist.zip) = c077713b8ee63691b0d5a658ddb6daf879f6082d3cbdd6d610d79f250675350b
-SIZE (bazel-5.0.0rc4-dist.zip) = 235869975
+TIMESTAMP = 1654951394
+SHA256 (bazel-5.2.0rc3-dist.zip) = b51ff87251747dae4d979b4418a36a693c64b702476d7bda261aa3cfdfe9b7ce
+SIZE (bazel-5.2.0rc3-dist.zip) = 235195506

@@ -1,6 +1,7 @@
 PORTNAME=	chronograf
 DISTVERSIONPREFIX=	v
-DISTVERSION=	1.9.3
+DISTVERSION=	1.9.4
+PORTREVISION=	1
 CATEGORIES=	net-mgmt
 MASTER_SITES+=	https://nodejs.org/download/release/v${NODEJS_VERSION}/:node
 DISTFILES=	yarn-cache-${PKGNAME}.tar.xz:prefetch \
@@ -90,6 +91,6 @@ pre-build:
 		npm_config_tarball=${DISTDIR}/${DIST_SUBDIR}/node-v${NODEJS_VERSION}-headers.tar.gz \
 		yarn --frozen-lockfile --offline --no-progress --no-emoji
 	cd ${WRKSRC}/ui && ${SETENV} ${YARN_ENV} yarn run build
-	cd ${WRKSRC} && ${GMAKE} .bindata
+	cd ${WRKSRC} && ${SETENV} ${MAKE_ENV} ${GMAKE} .bindata
 
 .include <bsd.port.post.mk>

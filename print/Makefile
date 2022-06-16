@@ -53,7 +53,6 @@
     SUBDIR += foomatic-filters
     SUBDIR += fpc-libcups
     SUBDIR += fpdf
-    SUBDIR += freetype
     SUBDIR += freetype2
     SUBDIR += ft2demos
     SUBDIR += ghostscript7-base
@@ -92,7 +91,6 @@
     SUBDIR += latex-resume
     SUBDIR += latex2rtf
     SUBDIR += latexdiff
-    SUBDIR += lgrind
     SUBDIR += libharu
     SUBDIR += libijs
     SUBDIR += libmspub01
@@ -189,6 +187,7 @@
     SUBDIR += py-preppy
     SUBDIR += py-psautohint
     SUBDIR += py-pycups
+    SUBDIR += py-pypdf3
     SUBDIR += py-python-ly
     SUBDIR += py-relatorio
     SUBDIR += py-reportlab
@@ -255,7 +254,6 @@
     SUBDIR += trueprint
     SUBDIR += ttf2pt1
     SUBDIR += ttfautohint
-    SUBDIR += ttftot42
     SUBDIR += txtbdf2ps
     SUBDIR += typetools
     SUBDIR += utopia

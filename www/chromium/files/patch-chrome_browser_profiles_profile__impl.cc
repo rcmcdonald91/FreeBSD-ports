@@ -1,25 +1,31 @@
---- chrome/browser/profiles/profile_impl.cc.orig	2022-02-07 13:39:41 UTC
+--- chrome/browser/profiles/profile_impl.cc.orig	2022-05-19 14:06:27 UTC
 +++ chrome/browser/profiles/profile_impl.cc
-@@ -181,6 +181,7 @@
- #include "services/preferences/public/mojom/preferences.mojom.h"
- #include "services/preferences/public/mojom/tracked_preference_validation_delegate.mojom.h"
- #include "services/service_manager/public/cpp/service.h"
-+#include "sandbox/policy/switches.h"
- #include "ui/base/l10n/l10n_util.h"
+@@ -264,6 +264,10 @@
+ #include "chrome/browser/spellchecker/spellcheck_service.h"
+ #endif
  
- #if BUILDFLAG(IS_CHROMEOS_ASH)
-@@ -846,7 +847,13 @@ void ProfileImpl::DoFinalInit(CreateMode create_mode) 
++#if BUILDFLAG(IS_OPENBSD)
++#include "sandbox/policy/openbsd/sandbox_openbsd.h"
++#endif
++
+ using bookmarks::BookmarkModel;
+ using content::BrowserThread;
+ using content::DownloadManagerDelegate;
+@@ -844,7 +848,17 @@ void ProfileImpl::DoFinalInit(CreateMode create_mode) 
  }
  
  base::FilePath ProfileImpl::last_selected_directory() {
--  return GetPrefs()->GetFilePath(prefs::kSelectFileLastDirectory);
++#if BUILDFLAG(IS_OPENBSD)
 +  // If unveil(2) is used, force the file dialog directory to something we
 +  // know is available.
-+  base::CommandLine* command_line = base::CommandLine::ForCurrentProcess();
-+  if (!command_line->HasSwitch(sandbox::policy::switches::kDisableUnveil))
++  auto* sandbox = sandbox::policy::SandboxLinux::GetInstance();
++  if (sandbox->unveil_initialized())
 +    return GetPrefs()->GetFilePath(prefs::kDownloadDefaultDirectory);
 +  else
 +    return GetPrefs()->GetFilePath(prefs::kSelectFileLastDirectory);
++#else
+   return GetPrefs()->GetFilePath(prefs::kSelectFileLastDirectory);
++#endif
  }
  
  void ProfileImpl::set_last_selected_directory(const base::FilePath& path) {
